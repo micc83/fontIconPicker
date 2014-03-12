@@ -165,7 +165,7 @@
 
                 // Actual search
                 this.iconsSearched = $.grep(this.settings.source, function (n) {
-                    if (n.search(searchString) >= 0) {
+                    if (n.search(searchString.toLowerCase()) >= 0) {
                         return n;
                     }
                 });
