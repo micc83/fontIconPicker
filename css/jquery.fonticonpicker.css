@@ -1,3 +1,8 @@
+/**
+ * CSS file for fontIconPicker
+ * This file holds the basic CSS
+ * @link https://github.com/micc83/fontIconPicker
+ */
 /* Reset (thx to Eric A. and Kathryn S. Meyer) */
 .icons-selector * {
 	margin: 0;
@@ -12,38 +17,29 @@
 .icons-selector {
 	display: inline-block;
 }
+
 /* Icon selector */
 .icons-selector .selector {
-	border: 1px solid #EDEDED;
 	width: 100px;
 	height: 40px;
-	background-color: #fff;
 }
+
 /* Selector open button */
 .icons-selector .selector-button {
-	background-color: #F4F4F4;
 	width: 39px;
 	height: 100%;
 	display:block;
 	text-align: center;
 	cursor: pointer;
 	float: left;
-	border-left: 1px solid #E1E1E1;
 }
-/* Selector open button hover */
-.icons-selector .selector-button:hover {
-	background-color: #f1f1f1;
-}
-.icons-selector .selector-button:hover i {
-	color: #999;
-}
+
 /* Selector open button icon */
 .icons-selector .selector-button i {
 	line-height: 40px;
 	text-align: center;
-	color: #aaa;
-	text-shadow: 0px 1px 0px #FFF;
 }
+
 /* Selected icon container */
 .icons-selector .selected-icon {
 	display: block;
@@ -52,27 +48,25 @@
 	float: left;
 	text-align: center;
 }
+
 /* Selected icon */
 .icons-selector .selected-icon i {
 	line-height: 42px;
 	font-size: 18px;
 	cursor: default;
-	color: #404040;
 }
+
 /* IconPicker Popup */
 .icons-selector .selector-popup {
 	position: absolute;
 	z-index: 10000;
 	background-color: #fefefe;
 	padding: 5px;
-	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
-	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
-	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
 	height: auto;
 	width: 342px;
-	border: 1px solid #E5E5E5;
 	margin-top:-1px;
 }
+
 /* Search input & category selector */
 .icons-selector .selector-search input[type="text"],
 .icons-selector .selector-category select {
@@ -80,51 +74,51 @@
 	line-height: 20px;
 	padding: 10px 2.5%;
 	width: 100%;
-	border: 1px solid #EDEDED;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	margin-bottom: 5px;
 	font-size: 12px;
-	color: #404040;
-	-moz-box-shadow: none;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	outline: none;
 }
+.icons-selector .selector-category select {
+	height: 40px;
+}
+.icons-selector .selector-category select option {
+	padding: 10px;
+}
+
+
 /* Search input placeholder */
-.icons-selector input::-webkit-input-placeholder { color:#ddd;text-transform: uppercase; }
-.icons-selector input:-moz-placeholder { color:#ddd;text-transform: uppercase; }
-.icons-selector input::-moz-placeholder { color:#ddd;text-transform: uppercase;}
-.icons-selector input:-ms-input-placeholder { color:#ddd !important;text-transform: uppercase; }
+.icons-selector input::-webkit-input-placeholder { text-transform: uppercase; }
+.icons-selector input:-moz-placeholder { text-transform: uppercase; }
+.icons-selector input::-moz-placeholder { text-transform: uppercase;}
+.icons-selector input:-ms-input-placeholder { text-transform: uppercase; }
+
 /* Search and cancel icon */
 .icons-selector .selector-search i {
-	color: #eee;
 	margin-left: -30px;
 }
+
 /* Icon Container inside Popup */
 .icons-selector .fip-icons-container {
 	width: 100%;
-	background-color: #fff;
-	border: 1px solid #EDEDED;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	padding: 5px;
 }
+
 /* Icon container loading */
 .icons-selector .fip-icons-container .loading {
-	color:#eee;
 	font-size:24px;
 	margin:0 auto;
 	padding:20px 0;
 	text-align:center;
 	width:100%;
 }
+
 /* Single icon box */
 .icons-selector .fip-box {
-	height: 40px;
-	border: 1px solid #EFEFEF;
 	display: inline-block;
 	margin: 2px;
 	width: 60px;
@@ -132,19 +126,17 @@
 	text-align: center;
 	cursor: pointer;
 	vertical-align: top;
+	height: 40px;
 }
-/* Single icon box hover */
-.icons-selector .fip-box:hover {
-	background-color: #f6f6f6;
-}
+
 /* Popup footer */
 .icons-selector .selector-footer {
 	line-height: 12px;
 	padding: 5px 5px 0 5px;
 }
+
 /* Pagination and footer icons */
 .icons-selector .selector-footer, .icons-selector .selector-footer i {
-	color: #ddd;
 	font-size: 14px;
 }
 /* Pagination arrows container */
@@ -159,24 +151,12 @@
 .icons-selector .selector-arrows i {
 	cursor: pointer;
 }
-/* Pagination arrows icons hover */
-.icons-selector .selector-arrows i:hover {
-	color: #777;
-}
-/* Currently selected icon color */
-.icons-selector span.current-icon, .icons-selector span.current-icon:hover {
-	background-color: #2EA2CC;color: #fff;border: 1px solid #298CBA;
-}
+
 /* No icons found */
 .icons-selector .icons-picker-error i:before {
 	color: #eee;
-	font-size: 22px;
-	padding: 20px 0;
-	display: block;
-	margin: 0 auto;
-	width: 20px;
-	cursor: default;
 }
+
 /* Icons */
 @font-face {
   font-family: 'iconpicker';
@@ -301,3 +281,4 @@
     transform: rotate(359deg);
   }
 }
+
