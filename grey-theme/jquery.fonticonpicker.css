@@ -9,7 +9,7 @@
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 /* Display */
-.icons-selector { 
+.icons-selector {
 	display: inline-block;
 }
 /* Icon selector */
@@ -73,8 +73,9 @@
 	border: 1px solid #E5E5E5;
 	margin-top:-1px;
 }
-/* Search input */
-.icons-selector .selector-search input[type="text"] {
+/* Search input & category selector */
+.icons-selector .selector-search input[type="text"],
+.icons-selector .selector-category select {
 	border: 0;
 	line-height: 20px;
 	padding: 10px 2.5%;

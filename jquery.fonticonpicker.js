@@ -7,7 +7,20 @@
  *
  *  Made by Alessandro Benoit
  *  Under MIT License
- * 
+ *
+ */
+/**
+ * Modified by Swashata
+ *
+ * Added Functionality
+ * 1. Icons can be grouped
+ * 2. Icons can be searched within groups
+ * 3. Icons can be set with custom html attribute (like data-attr)
+ * 4. The search values can be given diffently from the source, useful when using data-attr like icons
+ * 5. In case of select fields the search values are taken from the option labels
+ *
+ * TODO:
+ * Add title to the icons
  */
 ;(function ($) {
 
@@ -15,10 +28,17 @@
 
     // Create the defaults once
     var defaults = {
-            source:         false,      // Icons source
-            emptyIcon:      true,       // Empty icon should be shown?
-            iconsPerPage:   20,         // Number of icons per page
-            hasSearch:      true        // Is search enabled?
+            source            : false,                   // Icons source
+            emptyIcon         : true,                    // Empty icon should be shown?
+            emptyIconValue    : '',                      // The value of the empty icon, change if you select has something else, say "none"
+            iconsPerPage      : 20,                      // Number of icons per page
+            hasSearch         : true,                    // Is search enabled?
+            searchSource      : false,                   // Give a manual search values. If using attributes then for proper search feature we also need to pass icon names under the same order of source
+            useAttribute      : false,                   // Whether to use attribute for printing icons
+            attributeName     : 'data-icon',             // HTML Attribute name
+            convertToHex      : true,                    // Whether or not to convert to hexadecimal for attribute value. If true then please pass decimal integer value to the source (or as value="" attribute of the select field)
+            allCategoryText   : 'From all category',     // The text for the select all category option
+            unCategorizedText : 'Uncategorized'          // The text for the select uncategorized option
         };
 
     // The actual plugin constructor
@@ -42,6 +62,10 @@
                                  '<input type="text" name="" value="" placeholder="Search icon" class="icons-search-input"/>' +
                                  '<i class="fip-icon-search"></i>' +
                              '</div>' : '') +
+                             '<div class="selector-category">' +
+                                 '<select name="" class="icon-category-select" style="display: none">' +
+                                 '</select>' +
+                             '</div>' +
                              '<div class="fip-icons-container"></div>' +
                              '<div class="selector-footer" style="display:none;">' +
                                  '<span class="selector-pages">1/2</span>' +
@@ -66,6 +90,17 @@
         this.iconsCount = 0;
         this.open = false;
 
+        // Set the default values for the search related variables
+        this.searchValues = [];
+        this.availableCategoriesSearch = [];
+
+        // Set the default values of the category related variables
+        this.isCategorized = false; // Automatically detects if the icon listing is categorized
+        this.selectCategory = this.iconPicker.find('.icon-category-select'); // The category SELECT input field
+        this.selectedCategory = false; // false means all categories are selected
+        this.availableCategories = []; // Available categories, it is a two dimensional array which holds categorized icons
+        this.unCategorizedKey = null; // Key of the uncategorized category
+
         // Initialize plugin
         this.init();
 
@@ -77,20 +112,116 @@
          */
         init: function () {
             // Hide source element
-            this.element.hide();
+            // Instead of doing a display:none, we would rather
+            // make the element invisible
+            // and adjust the margin
+            this.element.css({
+                visibility: 'hidden',
+                margin: '-40px 0 0',
+                position: 'relative',
+                zIndex: '-1'
+            });
 
             // Add the icon picker after the select
             this.element.before(this.iconPicker);
 
             // If current element is SELECT populate settings.source
             if (!this.settings.source && this.element.is('select')) {
+                // Reset the source and searchSource
+                // These will be populated according to the available options
                 this.settings.source = [];
-                this.element.find('option').each($.proxy(function (i, el) {
-                    if ($(el).val()) {
-                        this.settings.source.push($(el).val());
+                this.settings.searchSource = [];
+
+                // Check if optgroup is present within the select
+                // If it is present then the source has to be grouped
+                if ( this.element.find('optgroup').length ) {
+                    // Set the categorized to true
+                    this.isCategorized = true;
+                    this.element.find('optgroup').each($.proxy(function(i, el) {
+                        // Get the key of the new category array
+                        var thisCategoryKey = this.availableCategories.length,
+                        // Create the new option for the selectCategory SELECT field
+                        categoryOption = $('<option />');
+
+                        // Set the value to this categorykey
+                        categoryOption.attr('value', thisCategoryKey);
+                        // Set the label
+                        categoryOption.html($(el).attr('label'));
+
+                        // Append to the DOM
+                        this.selectCategory.append(categoryOption);
+
+                        // Init the availableCategories array
+                        this.availableCategories[thisCategoryKey] = [];
+                        this.availableCategoriesSearch[thisCategoryKey] = [];
+
+                        // Now loop through it's option elements and add the icons
+                        $(el).find('option').each($.proxy(function(i, cel) {
+                            var newIconValue = $(cel).val(),
+                            newIconLabel = $(cel).html();
+
+                            // Check if the option element has value and this value does not equal to the empty value
+                            if (newIconValue && newIconValue !== this.settings.emptyIconValue) {
+                                // Push to the source, because at first all icons are selected
+                                this.settings.source.push(newIconValue);
+
+                                // Push to the availableCategories child array
+                                this.availableCategories[thisCategoryKey].push(newIconValue);
+
+                                // Push to the search values
+                                this.searchValues.push(newIconLabel);
+                                this.availableCategoriesSearch[thisCategoryKey].push(newIconLabel);
+                            }
+                        }, this));
+                    }, this));
+
+                    // Additionally check for any first label option child
+                    if ( this.element.find('> option').length ) {
+                        this.element.find('> option').each($.proxy(function(i, el) {
+                            var newIconValue = $(el).val(),
+                            newIconLabel = $(el).html();
+
+                            // Don't do anything if the new icon value is empty
+                            if ( !newIconValue || newIconValue === '' || newIconValue == this.settings.emptyIconValue ) {
+                                return true;
+                            }
+
+                            // Set the uncategorized key if not set already
+                            if ( this.unCategorizedKey === null ) {
+                                this.unCategorizedKey = this.availableCategories.length;
+                                this.availableCategories[this.unCategorizedKey] = [];
+                                this.availableCategoriesSearch[this.unCategorizedKey] = [];
+                                // Create an option and append to the category selector
+                                $('<option />').attr('value', this.unCategorizedKey).html(this.settings.unCategorizedText).appendTo(this.selectCategory);
+                            }
+
+                            // Push the icon to the category
+                            this.settings.source.push(newIconValue);
+                            this.availableCategories[this.unCategorizedKey].push(newIconValue);
+
+                            // Push the icon to the search
+                            this.searchValues.push(newIconLabel);
+                            this.availableCategoriesSearch[this.unCategorizedKey].push(newIconLabel);
+                        }, this));
                     }
-                }, this));
+                // Not categorized
+                } else {
+                    this.element.find('option').each($.proxy(function (i, el) {
+                        var newIconValue = $(el).val(),
+                        newIconLabel = $(el).html();
+                        if (newIconValue) {
+                            this.settings.source.push(newIconValue);
+                            this.searchValues.push(newIconLabel);
+                        }
+                    }, this));
+                }
+            // Normalize the given source
+            } else {
+                this.initSourceIndex();
             }
+
+            // Load categories
+            this.loadCategories();
 
             // Load icons
             this.loadIcons();
@@ -164,11 +295,13 @@
                 this.currentPage = 1;
 
                 // Actual search
-                this.iconsSearched = $.grep(this.settings.source, function (n) {
+                // This has been modified to search the searchValues instead
+                // Then return the value from the source if match is found
+                this.iconsSearched = $.grep(this.searchValues, $.proxy(function (n, i) {
                     if (n.search(searchString.toLowerCase()) >= 0) {
-                        return n;
+                        return this.settings.source[i];
                     }
-                });
+                }, this));
 
                 // Render icon list
                 this.renderIconContainer();
@@ -186,7 +319,7 @@
              * On icon selected
              */
             this.iconContainer.on('click', '.fip-box', $.proxy(function (e) {
-                this.setSelectedIcon($(e.currentTarget).find('i').attr('class'));
+                this.setSelectedIcon($(e.currentTarget).find('i').attr('data-fip-value'));
                 this.toggleIconSelector();
             }, this));
 
@@ -207,6 +340,121 @@
                 }
             }, this));
 
+        },
+
+        /**
+         * Reset the search index from the current source
+         * @return {[type]} [description]
+         */
+        initSourceIndex: function() {
+            // First check for any sorts of errors
+            if ( typeof(this.settings.source) !== 'object' ) {
+                return;
+            }
+
+            // We are going to check if the passed source is an array or an object
+            // If it is an array, then don't do anything
+            // otherwise it has to be an object and therefore is it a categorized icon set
+            if ($.isArray(this.settings.source)) {
+                // Just update the search
+                // First check if the search is given by user
+                if ( $.isArray(this.settings.searchSource) ) {
+                    this.searchValues = this.settings.searchSource.slice(0); // Clone the searchSource
+                // Not given so use the source instead
+                } else {
+                    this.searchValues = this.settings.source.slice(0); // Clone the source
+                }
+            // Categorized icon set
+            } else {
+                var originalSource = $.extend(true, {}, this.settings.source);
+
+                // Reset the source
+                this.settings.source = [];
+
+                // Set the categorized to true and reset the HTML
+                this.isCategorized = true;
+                this.selectCategory.html('');
+
+                // Now loop through the source and add to the list
+                for (var categoryLabel in originalSource) {
+                    // Get the key of the new category array
+                    var thisCategoryKey = this.availableCategories.length,
+                    // Create the new option for the selectCategory SELECT field
+                    categoryOption = $('<option />');
+
+                    // Set the value to this categorykey
+                    categoryOption.attr('value', thisCategoryKey);
+                    // Set the label
+                    categoryOption.html(categoryLabel);
+
+                    // Append to the DOM
+                    this.selectCategory.append(categoryOption);
+
+                    // Init the availableCategories array
+                    this.availableCategories[thisCategoryKey] = [];
+                    this.availableCategoriesSearch[thisCategoryKey] = [];
+
+                    // Now loop through it's icons and add to the list
+                    for ( var newIconKey in originalSource[categoryLabel] ) {
+                        // Get the new icon value
+                        var newIconValue = originalSource[categoryLabel][newIconKey];
+                        // Get the label either from the searchSource, if set otherwise from the source itself
+                        var newIconLabel = (this.settings.searchSource && this.settings.searchSource[categoryLabel] && this.settings.searchSource[categoryLabel][newIconKey]) ?
+                                            this.settings.searchSource[categoryLabel][newIconKey] : newIconKey;
+
+                        // Check if the option element has value and this value does not equal to the empty value
+                        if (newIconValue && newIconValue !== this.settings.emptyIconValue) {
+                            // Push to the source, because at first all icons are selected
+                            this.settings.source.push(newIconValue);
+
+                            // Push to the availableCategories child array
+                            this.availableCategories[thisCategoryKey].push(newIconValue);
+
+                            // Push to the search values
+                            this.searchValues.push(newIconLabel);
+                            this.availableCategoriesSearch[thisCategoryKey].push(newIconLabel);
+                        }
+                    }
+                }
+            }
+        },
+
+        /**
+         * Load Categories
+         * @return {void}
+         */
+        loadCategories: function() {
+            // Dont do anything if it is not categorized
+            if ( this.isCategorized === false ) {
+                return;
+            }
+
+            // Now append all to the category selector
+            $('<option value="all">' + this.settings.allCategoryText + '</option>').prependTo(this.selectCategory);
+
+            // Take a backup of all icons and searchValues
+            var allIcons = this.settings.source.slice(0),
+            allSearches = this.searchValues.slice(0);
+
+            // Show and Add the event
+            this.selectCategory.show().val('all').on('change keyup', $.proxy(function(e) {
+                var targetSelect = $(e.currentTarget),
+                currentCategory = targetSelect.val();
+                // Check if all categories are selected
+                if ( targetSelect.val() == 'all' ) {
+                    this.settings.source = allIcons;
+                    this.searchValues = allSearches;
+                // No? So there is a specified category
+                } else {
+                    var key = parseInt( currentCategory );
+                    if ( this.availableCategories[key] ) {
+                        this.settings.source = this.availableCategories[key];
+                        this.searchValues = this.availableCategoriesSearch[key];
+                    }
+                }
+                this.resetSearch();
+                this.loadIcons();
+            }, this));
         },
 
         /**
@@ -263,11 +511,11 @@
             // Should empty icon be shown?
             if (this.settings.emptyIcon) {
                 // Reset icon container HTML and prepend empty icon
-                this.iconContainer.html('<span class="fip-box"><i class="fip-icon-block"></i></span>');
+                this.iconContainer.html('<span class="fip-box"><i class="fip-icon-block" data-fip-value="fip-icon-block"></i></span>');
 
             // If not show an error when no icons are found
             } else if (iconsPaged.length < 1) {
-                this.iconContainer.html('<span class="icons-picker-error"><i class="fip-icon-block"></i></span>');
+                this.iconContainer.html('<span class="icons-picker-error"><i class="fip-icon-block" data-fip-value="fip-icon-block"></i></span>');
                 return;
 
             // else empty the container
@@ -281,7 +529,7 @@
             // List icons
             for (var i = 0, item; item = iconsPaged[i++];) {
                 $('<span/>', {
-                    html:      '<i class="' + item + '"></i>',
+                    html:      '<i data-fip-value="' + item + '" ' + (this.settings.useAttribute ? (this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(item, 10).toString(16) + ';' : item ) + '"') : 'class="' + item + '"') + '></i>',
                     'class':   'fip-box'
                 }).appendTo(this.iconContainer);
             }
@@ -310,7 +558,7 @@
         setHighlightedIcon: function () {
             this.iconContainer.find('.current-icon').removeClass('current-icon');
             if (this.currentIcon) {
-                this.iconContainer.find('.' + this.currentIcon).parent('span').addClass('current-icon');
+                this.iconContainer.find('[data-fip-value="' + this.currentIcon + '"]').parent('span').addClass('current-icon');
             }
         },
 
@@ -323,9 +571,20 @@
             if (theIcon === 'fip-icon-block') {
                 theIcon = '';
             }
-            this.iconPicker.find('.selected-icon').html('<i class="' + (theIcon || 'fip-icon-block') + '"></i>');
+
+            // Check if attribute is to be used
+            if ( this.settings.useAttribute ) {
+                if ( theIcon ) {
+                    this.iconPicker.find('.selected-icon').html('<i ' + this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(theIcon, 10).toString(16) + ';' : theIcon ) + '"></i>' )
+                } else {
+                    this.iconPicker.find('.selected-icon').html('<i class="fip-icon-block"></i>');
+                }
+            // Use class
+            } else {
+                this.iconPicker.find('.selected-icon').html('<i class="' + (theIcon || 'fip-icon-block') + '"></i>');
+            }
             // Set the value of the element and trigger change event
-            this.element.val(theIcon).triggerHandler('change');
+            this.element.val((theIcon == '' ? this.settings.emptyIconValue : theIcon )).triggerHandler('change');
             this.currentIcon = theIcon;
             this.setHighlightedIcon();
         },
@@ -381,9 +640,17 @@
         });
 
         // setIcons method
-        this.setIcons = $.proxy(function (newIcons) {
+        this.setIcons = $.proxy(function (newIcons, iconSearch) {
+            if ( undefined === newIcons ) {
+                newIcons = false;
+            }
+            if ( undefined === iconSearch ) {
+                iconSearch = false;
+            }
             this.each(function () {
                 $.data(this, "fontIconPicker").settings.source = newIcons;
+                $.data(this, "fontIconPicker").settings.searchSource = iconSearch;
+                $.data(this, "fontIconPicker").initSourceIndex();
                 $.data(this, "fontIconPicker").resetSearch();
                 $.data(this, "fontIconPicker").loadIcons();
             });
