@@ -125,12 +125,13 @@
          * Init
          */
         init: function () {
-            
+
             // Add the theme CSS to the iconPicker
             this.iconPicker.addClass(this.settings.theme);
 
             // Add the icon picker after the select
             this.element.before(this.iconPicker);
+
 
             // Hide source element
             // Instead of doing a display:none, we would rather
@@ -138,15 +139,18 @@
             // and adjust the margin
             this.element.css({
                 visibility: 'hidden',
-                top: '-' + this.element.outerHeight(true) + 'px',
+                top: 0,
                 position: 'relative',
                 zIndex: '-1',
-                left: '-' + this.iconPicker.width() + 'px',
+                left: '-' + this.iconPicker.outerWidth() + 'px',
                 display: 'inline-block',
-                padding: 0,
-                margin: 0,
-                height: 0,
-                width: 0
+                height: this.iconPicker.outerHeight() + 'px',
+                width: this.iconPicker.outerWidth() + 'px',
+                // Reset all margin, border and padding
+                padding: '0',
+                margin: '0',
+                border: '0 none',
+                verticalAlign: 'top'
             });
 
             // If current element is SELECT populate settings.source

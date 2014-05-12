@@ -1,0 +1,504 @@
+<!-- Better Demo with Bootstrap theme -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery fontIconPicker</title>
+	<!-- Demo Style -->
+	<link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="lib/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" type="text/css" href="style.new.css" />
+	<link rel="stylesheet" type="text/css" href="lib/css/shCore.css" />
+	<link rel="stylesheet" type="text/css" href="lib/css/shCoreDefault.css" />
+
+	<!-- jQuery -->
+	<script src="lib/js/jquery-1.7.1.min.js"></script>
+
+	<!-- Demo Scripts -->
+	<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/js/shCore.js"></script>
+	<script type="text/javascript" src="lib/js/brush/shBrushCss.js"></script>
+	<script type="text/javascript" src="lib/js/brush/shBrushJScript.js"></script>
+	<script type="text/javascript" src="lib/js/brush/shBrushPlain.js"></script>
+	<script type="text/javascript" src="lib/js/brush/shBrushXml.js"></script>
+
+	<!-- icon picker -->
+	<script type="text/javascript" src="../jquery.fonticonpicker.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/jquery.fonticonpicker.css" />
+	<link rel="stylesheet" type="text/css" href="../themes/grey-theme/jquery.fonticonpicker.grey.min.css" />
+	<link rel="stylesheet" type="text/css" href="../themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css" />
+
+	<!-- Font -->
+	<link rel="stylesheet" type="text/css" href="fontello-7275ca86/css/fontello.css" />
+	<link rel="stylesheet" type="text/css" href="icomoon/icomoon.css" />
+
+	<!-- Init script for this DEMO -->
+	<script type="text/javascript" src="demo.js"></script>
+</head>
+<body>
+
+	<!-- #header -->
+	<header id="header">
+		<nav class="navbar navbar-default navbar-fixed-top navbar-main" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="">fontIconPicker</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="#setup">Setup</a></li>
+						<li><a href="#examples">Examples</a></li>
+						<li><a href="#options">Plugin Options</a></li>
+						<li><a href="#api">Plugin APIs</a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div>
+		</nav>
+	</header> <!-- /#header -->
+
+	<!-- #about -->
+	<section id="about">
+		<div class="jumbotron">
+			<div class="container">
+				<h1>jQuery fontIconPicker <small>v2.0.0</small></h1>
+				<p>jQuery fontIconPicker is a small (1.58kb gzipped) jQuery plugin which allows you to include a simple icon picker with search and pagination inside your administration forms. The list of icons can be loaded manually using a <code>SELECT</code> field, loading an array of icons or directly from a Fontello config.json file.</p>
+				<p class="text-center">
+					<a class="btn btn-primary btn-lg" href="https://github.com/micc83/fontIconPicker"><i class="icon-github"></i> Download</a>
+				</p>
+			</div>
+		</div>
+	</section> <!-- /#about -->
+
+	<!-- #main -->
+	<main class="container" id="main">
+		<!-- #setup -->
+		<section id="setup">
+			<h2><a href="#main" class="icon-up-open"></a><i class="icon-wrench"></i> How it works</h2>
+			<p>
+				Just include a copy of jQuery, the fontIconPickers script, the fontIconPickers theme and your Font Icons. Now you can trigger it on a <code>SELECT</code> or <code>TEXT</code> input.  check the <a href="#examples">first example</a> to start!
+			</p>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#setup_js" data-toggle="tab">Include JavaScript</a></li>
+				<li><a href="#setup_css" data-toggle="tab">Include CSS</a></li>
+				<li><a href="#setup_fonts" data-toggle="tab">Include Fonts</a></li>
+				<li><a href="#setup_fire" data-toggle="tab">Initialize with jQuery</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane active" id="setup_js">
+				<p>Only plugin dependency is jQuery (1.7.1+).</p>
+<pre class="brush: html">
+&lt;!-- jQuery --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.7.1.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- fontIconPicker JS --&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;jquery.fonticonpicker.min.js&quot;&gt;&lt;/script&gt;
+</pre>
+				</div>
+				<div class="tab-pane" id="setup_css">
+					<p>Include the core CSS file and optional theme</p>
+<pre class="brush: html">
+&lt;!-- fontIconPicker core CSS --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;jquery.fonticonpicker.min.css&quot; /&gt;
+
+&lt;!-- required default theme --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;themes/grey-theme/jquery.fonticonpicker.grey.min.css&quot; /&gt;
+
+&lt;!-- optional other themes --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css&quot; /&gt;
+</pre>
+				</div>
+				<div class="tab-pane" id="setup_fonts">
+					<p>Include the font files you wish to pick. In this demo we are using fontAwesome and IcoMoon fonts.</p>
+<pre class="brush: html">
+&lt;!-- Font --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;fontello-7275ca86/css/fontello.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;icomoon/icomoon.css&quot; /&gt;
+</pre>
+				</div>
+				<div class="tab-pane" id="setup_fire">
+					<p>Finally call the fontIconPicker on a <code>select</code> or <code>input[type="text"]</code> element.</p>
+					<h3>Using on SELECT elements</h3>
+					<p>Icons will be populated from <code>OPTION</code> elements and will be used as classes by default.</p>
+<pre class="brush: html">
+&lt;!-- SELECT element --&gt;
+&lt;select id=&quot;myselect2&quot; name=&quot;myselect2&quot; class=&quot;myselect2&quot;&gt;
+	&lt;option value=&quot;&quot;&gt;No icon&lt;/option&gt;
+	&lt;option&gt;icon-user&lt;/option&gt;
+	&lt;option&gt;icon-search&lt;/option&gt;
+	&lt;option&gt;icon-right-dir&lt;/option&gt;
+	&lt;option&gt;icon-star&lt;/option&gt;
+	&lt;option&gt;icon-cancel&lt;/option&gt;
+	&lt;option&gt;icon-help-circled&lt;/option&gt;
+	&lt;option&gt;icon-info-circled&lt;/option&gt;
+	&lt;option&gt;icon-eye&lt;/option&gt;
+	&lt;option&gt;icon-tag&lt;/option&gt;
+	&lt;option&gt;icon-bookmark&lt;/option&gt;
+	&lt;option&gt;icon-heart&lt;/option&gt;
+	&lt;option&gt;icon-thumbs-down-alt&lt;/option&gt;
+	&lt;option&gt;icon-upload-cloud&lt;/option&gt;
+	&lt;option&gt;icon-phone-squared&lt;/option&gt;
+	&lt;option&gt;icon-cog&lt;/option&gt;
+	&lt;option&gt;icon-wrench&lt;/option&gt;
+	&lt;option&gt;icon-volume-down&lt;/option&gt;
+	&lt;option&gt;icon-down-dir&lt;/option&gt;
+	&lt;option&gt;icon-up-dir&lt;/option&gt;
+	&lt;option&gt;icon-left-dir&lt;/option&gt;
+	&lt;option&gt;icon-thumbs-up-alt&lt;/option&gt;
+&lt;/select&gt;
+&lt;!-- JavaScript --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	// Make sure to fire only when the DOM is ready
+	jQuery(document).ready(function($) {
+		$(&#039;#myselect2&#039;).fontIconPicker(); // Load with default options
+	});
+&lt;/script&gt;
+</pre>
+				<h3>Using on simple TEXT elements</h3>
+				<p>If you want to apply to text elements then provide a source.</p>
+<pre class="brush: html">
+&lt;!-- INPUT element --&gt;
+&lt;input type=&quot;text&quot; name=&quot;myselect&quot; id=&quot;myselect&quot; /&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	jQuery(document).ready(function($) {
+		$(&#039;#mytext&#039;).fontIconPicker({
+			source:    [&#039;icon-heart&#039;, &#039;icon-search&#039;, &#039;icon-user&#039;, &#039;icon-tag&#039;, &#039;icon-help&#039;],
+			emptyIcon: false,
+			hasSearch: false
+		});
+	});
+&lt;/script&gt;
+</pre>
+				</div>
+			</div>
+			<hr />
+			<p>More advanced icon picker is available like the one with categorized icons or one with attribute selector (<code>&lt;i data-icon=&quot;&amp;#xe000;&quot;&gt;&lt;/i&gt;</code>).</p>
+			<select name="first-example" id="first-example">
+				<option value="none">No Icon</option>
+				<optgroup label="Web Elements">
+					<option value="57367">List</option>
+					<option value="57419">Sitemap</option>
+					<option value="57556">Cloud</option>
+					<option value="57557">Cloud Download</option>
+					<option value="57558">Cloud Upload</option>
+					<option value="57559">Download</option>
+					<option value="57560">Upload</option>
+					<option value="57563">WWW</option>
+					<option value="57564">Globe</option>
+					<option value="57565">Anchor Link</option>
+					<option value="57413">HTML 5</option>
+					<option value="57718">CSS 3</option>
+					<option value="57750">Embed</option>
+					<option value="57749">Code</option>
+					<option value="57377">Table</option>
+					<option value="57424">Checkbox Unchecked</option>
+					<option value="57746">Checkbox Checked</option>
+					<option value="57678">Checkbox Partial</option>
+					<option value="57745">Radio Unchecked</option>
+					<option value="57744">Radio Checked</option>
+					<option value="57553">Toggle</option>
+					<option value="57742">Solid Check</option>
+					<option value="57743">Hollow Check</option>
+					<option value="57684">Bold</option>
+					<option value="57685">Underline</option>
+					<option value="57686">Italic</option>
+					<option value="57687">Strike Through</option>
+					<option value="57754">Align Justify</option>
+					<option value="57755">Align Right</option>
+					<option value="57756">Align Center</option>
+					<option value="57757">Align Left</option>
+					<option value="57752">Indent Decrease</option>
+					<option value="57753">Indent Increase</option>
+				</optgroup>
+				<optgroup label="Business">
+					<option value="57461">Support</option>
+					<option value="57498">Testimonials</option>
+					<option value="57501">Testimonials 2</option>
+					<option value="57361">Members</option>
+					<option value="57503">Members 2</option>
+					<option value="57500">Comment</option>
+					<option value="57504">User</option>
+					<option value="57505">Corporate</option>
+					<option value="57428">Visiting Card</option>
+					<option value="57427">Office</option>
+				</optgroup>
+				<optgroup label="Charts and Codes">
+					<option value="57529">Pie Chart</option>
+					<option value="57530">Line Chart</option>
+					<option value="57365">Column Chart</option>
+					<option value="57455">QR Code</option>
+					<option value="57454">Bar Code</option>
+				</optgroup>
+				<optgroup label="User Actions">
+					<option value="57372">Cut</option>
+					<option value="57353">Copy</option>
+					<option value="57446">Paste</option>
+					<option value="57735">Settings</option>
+					<option value="57625">Enter</option>
+					<option value="57626">Exit</option>
+					<option value="57732">Save</option>
+					<option value="57544">Trash</option>
+					<option value="57371">Crop</option>
+					<option value="57734">Resize</option>
+					<option value="57373">Console</option>
+				</optgroup>
+				<optgroup label="eCommerce">
+					<option value="57457">Shopping Cart</option>
+					<option value="57354">Shopping Cart 2</option>
+					<option value="57458">USD</option>
+					<option value="57459">Card</option>
+					<option value="57460">Calculator</option>
+					<option value="57452">Tag</option>
+				</optgroup>
+				<optgroup label="Attentive">
+					<option value="57614">Warning</option>
+					<option value="57615">Information</option>
+					<option value="57616">Help</option>
+					<option value="57617">Information 2</option>
+					<option value="57618">Information 3</option>
+					<option value="57619">Not allowed</option>
+					<option value="57621">Allowed</option>
+				</optgroup>
+				<optgroup label="Multimedia">
+					<option value="57346">Image</option>
+					<option value="57417">Gallery</option>
+					<option value="57347">Headphone</option>
+					<option value="57348">Video Play</option>
+					<option value="57349">Video Recorder</option>
+					<option value="57418">Camera</option>
+					<option value="57719">Video Play 2</option>
+					<option value="57364">Equalizer</option>
+					<option value="57627">Play</option>
+					<option value="57628">Pause</option>
+					<option value="57629">Stop</option>
+					<option value="57630">Previous</option>
+					<option value="57631">Next</option>
+					<option value="57729">Music</option>
+					<option value="57642">Volume High</option>
+					<option value="57643">Volume Medium</option>
+					<option value="57644">Volume Low</option>
+					<option value="57645">Volume Mute</option>
+					<option value="57646">Volume Mute 2</option>
+					<option value="57647">Volume Increase</option>
+					<option value="57648">Volume Decrease</option>
+				</optgroup>
+				<optgroup label="Location and Contact">
+					<option value="57464">Phone Book</option>
+					<option value="57465">Phone Book Empty</option>
+					<option value="57466">Email</option>
+					<option value="57471">Map</option>
+					<option value="57472">Map 2</option>
+					<option value="57470">Compass</option>
+					<option value="57468">Location Marker</option>
+					<option value="57469">Location Marker 2</option>
+					<option value="57344">Home</option>
+					<option value="57425">Home 2</option>
+					<option value="57426">Home 3</option>
+				</optgroup>
+				<optgroup label="Date and Time">
+					<option value="57474">Clock</option>
+					<option value="57475">Solid Clock</option>
+					<option value="57476">Alarm Clock</option>
+					<option value="57480">Month Calendar</option>
+					<option value="57481">Day Calendar</option>
+					<option value="57479">Stopwatch</option>
+					<option value="57473">History</option>
+				</optgroup>
+				<optgroup label="Devices">
+					<option value="57482">Printer</option>
+					<option value="57483">Keyboard</option>
+					<option value="57355">Laptop</option>
+					<option value="57484">Phone</option>
+					<option value="57725">Desktop</option>
+					<option value="57727">Tablet</option>
+					<option value="57356">Television</option>
+				</optgroup>
+				<optgroup label="Tools">
+					<option value="57523">Wrench</option>
+					<option value="57420">Cogs</option>
+					<option value="57524">Cog</option>
+					<option value="57525">Hammer</option>
+					<option value="57430">Pen</option>
+					<option value="57345">Pencil</option>
+					<option value="57526">Wand</option>
+					<option value="57433">Paint Brush</option>
+					<option value="57541">Lab</option>
+					<option value="57518">Key</option>
+					<option value="57519">Key 2</option>
+					<option value="57520">Lock</option>
+					<option value="57521">Lock 2</option>
+					<option value="57522">Unlocked</option>
+					<option value="57679">Filter</option>
+					<option value="57680">Filter 2</option>
+				</optgroup>
+				<optgroup label="Social and Networking">
+					<option value="57374">Share</option>
+					<option value="57379">Google Plus</option>
+					<option value="57381">Google Plus Solid</option>
+					<option value="57382">Google Drive</option>
+					<option value="57383">Facebook</option>
+					<option value="57384">Facebook Solid</option>
+					<option value="57385">Instagram</option>
+					<option value="57386">Twitter</option>
+					<option value="57387">Twitter Solid</option>
+					<option value="57388">RSS</option>
+					<option value="57389">RSS Solid</option>
+					<option value="57390">YouTube</option>
+					<option value="57391">Vimeo</option>
+					<option value="57392">Vimeo Solid</option>
+					<option value="57693">Picasa</option>
+					<option value="57700">Steam</option>
+					<option value="57396">Github</option>
+					<option value="57701">Github 2</option>
+					<option value="57702">Github 3</option>
+					<option value="57703">Github Text</option>
+					<option value="57397">WordPress</option>
+					<option value="57407">Pinterest</option>
+					<option value="57399">Tumblr</option>
+					<option value="57705">Tumblr Solid</option>
+					<option value="57706">Yahoo</option>
+					<option value="57404">Last FM</option>
+					<option value="57786">Last FM Solid</option>
+					<option value="57780">LinkedIN</option>
+					<option value="57405">StumbleUpon</option>
+					<option value="57784">StumbleUpon Solid</option>
+					<option value="57704">Blogger</option>
+					<option value="57775">Blogger Solid</option>
+					<option value="57402">SoundCloud</option>
+					<option value="57708">SoundCloud Solid</option>
+					<option value="57403">Reddit</option>
+					<option value="57406">Stack Overflow</option>
+					<option value="57712">Yelp</option>
+				</optgroup>
+				<optgroup label="Brands">
+					<option value="57776">Apple</option>
+					<option value="57777">Android</option>
+					<option value="57410">PayPal</option>
+					<option value="57707">Linux</option>
+					<option value="57400">Finder</option>
+					<option value="57401">Windows 7</option>
+					<option value="57778">Windows 8</option>
+					<option value="57779">Skype</option>
+					<option value="57790">Chrome</option>
+					<option value="57791">FireFox</option>
+					<option value="57792">Internet Explorer</option>
+					<option value="57793">Safari</option>
+					<option value="57794">Opera</option>
+					<option value="57398">Joomla</option>
+				</optgroup>
+				<optgroup label="Files & Documents">
+					<option value="57450">Folder Closed</option>
+					<option value="57451">Folder Open</option>
+					<option value="57350">Empty File</option>
+					<option value="57722">Non Empty File</option>
+					<option value="57714">PDF</option>
+					<option value="57715">Open Office</option>
+					<option value="57411">ZIP</option>
+					<option value="57716">HTML / XML</option>
+					<option value="57717">Source Code / CSS</option>
+					<option value="57787">Word Document</option>
+					<option value="57788">Excel Sheet</option>
+					<option value="57713">Libre Office</option>
+					<option value="57412">PowerPoint</option>
+				</optgroup>
+				<optgroup label="Travel and Living">
+					<option value="57534">Coffee</option>
+					<option value="57535">Knife & Fork</option>
+					<option value="57576">Empty Star</option>
+					<option value="57577">Half Star</option>
+					<option value="57578">Full Star</option>
+					<option value="57547">Truck</option>
+					<option value="57546">Flight</option>
+					<option value="57579">Heart</option>
+					<option value="57581">Broken Heart</option>
+					<option value="57582">Like</option>
+					<option value="57583">Dislike</option>
+					<option value="57445">Library</option>
+					<option value="57443">Book</option>
+					<option value="57444">Books</option>
+				</optgroup>
+				<optgroup label="Emoticons">
+					<option value="57584">Happy</option>
+					<option value="57586">Smiley</option>
+					<option value="57588">Tease</option>
+					<option value="57590">Sad</option>
+					<option value="57592">Wink</option>
+					<option value="57594">Grin</option>
+					<option value="57596">Cool</option>
+					<option value="57598">Angry</option>
+					<option value="57600">Evil</option>
+					<option value="57602">Shocked</option>
+					<option value="57604">Confused</option>
+					<option value="57606">Neutral</option>
+					<option value="57608">Wondering</option>
+					<option value="57585">Happy - 2</option>
+					<option value="57587">Smiley - 2</option>
+					<option value="57589">Tease - 2</option>
+					<option value="57591">Sad - 2</option>
+					<option value="57593">Wink - 2</option>
+					<option value="57595">Grin - 2</option>
+					<option value="57597">Cool - 2</option>
+					<option value="57599">Angry - 2</option>
+					<option value="57601">Evil - 2</option>
+					<option value="57603">Shocked - 2</option>
+					<option value="57605">Confused - 2</option>
+					<option value="57607">Neutral - 2</option>
+					<option value="57609">Wondering - 2</option>
+				</optgroup>
+				<optgroup label="Arrows">
+					<option value="57653">Top Left</option>
+					<option value="57654">Top</option>
+					<option value="57655">Top Right</option>
+					<option value="57656">Right</option>
+					<option value="57657">Bottom Right</option>
+					<option value="57658">Bottom</option>
+					<option value="57659">Bottom Left</option>
+					<option value="57660">Left</option>
+					<option value="57669">Top Left Circular</option>
+					<option value="57670">Top Circular</option>
+					<option value="57671">Top Right Circular</option>
+					<option value="57672">Right Circular</option>
+					<option value="57673">Bottom Right Circular</option>
+					<option value="57674">Bottom Circular</option>
+					<option value="57675">Bottom Left Circular</option>
+					<option value="57676">Left Circular</option>
+				</optgroup>
+			</select>
+			<p>Please see more examples below.</p>
+		</section> <!-- /#setup -->
+
+		<!-- #examples -->
+		<section id="examples">
+
+		</section> <!-- /#examples -->
+	</main>
+	<!-- /#main -->
+
+	<!-- #site-footer -->
+	<footer id="site-footer">
+		<div class="well well-sm">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<h4><i class="icon-globe"></i> Browser Compatibility</h4>
+						<p>jQuery iconPicker has been successfully tested on: <strong>Firefox</strong> (edge), <strong>Safari</strong> (edge), <strong>Chrome</strong> (edge), <strong>IE8+</strong>.</p>
+					</div>
+					<div class="col-md-8">
+						<h4><i class="icon-thumbs-up"></i> Credits</h4>
+						<p><strong>jQuery fontIconPicker</strong> has been made by <a href="http://codeb.it">me</a> &amp; <a href="https://github.com/swashata">swashata</a>. You can contact me at <a href="mailto:micc83@gmail.com">micc83@gmail.com</a> or <a href="https://twitter.com/Micc1983">twitter</a> for any issue or feauture request.</p>
+
+						<p>I really have to thank <a href="http://www.minimamente.com">miniMAC</a> for the idea, <a href="http://zenorocha.com/">Zeno Rocha</a> for jQuery plugin boilerplate, <a href="http://fortawesome.github.io/Font-Awesome/">Dave Gandy</a> for the beautiful set of icons and <a href="http://www.advancedcustomfields.com/">Elliot Condon</a> for the amazing Advanced Custom Field WordPress plugin.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer> <!-- /#site-footer -->
+</body>
+</html>

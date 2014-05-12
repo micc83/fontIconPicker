@@ -1,0 +1,61 @@
+/**
+ * Just some CSS to spice up the demo
+ */
+body {
+	color: #666;
+}
+#about .jumbotron {
+	margin-top: 50px;
+}
+
+section h2 {
+	clear: both;
+}
+section h2:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+section h2 .icon-up-open {
+	float: right;
+	color: #ddd;
+}
+section h2 .icon-up-open:hover {
+	color: #ccc;
+	text-decoration: none;
+}
+
+#site-footer .well {
+	margin: 50px 0 0;
+	border-radius: 0;
+}
+
+/** Make SyntaxHighlighter play nice with bootstrap */
+.syntaxhighlighter,
+.syntaxhighlighter *,
+.syntaxhighlighter:before,
+.syntaxhighlighter:after,
+.syntaxhighlighter *:before,
+.syntaxhighlighter *:after {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+.syntaxhighlighter .container:before,
+.syntaxhighlighter .container:after {
+	display: none;
+}
+.syntaxhighlighter code {
+	white-space: nowrap;
+}
+body .syntaxhighlighter table,
+body .syntaxhighlighter table tbody,
+body .syntaxhighlighter table tr,
+body .syntaxhighlighter table td,
+body .syntaxhighlighter table code,
+body .syntaxhighlighter table div {
+	font-size: 16px !important;
+}
+.syntaxhighlighter {
+	max-height: 200px;
+}
