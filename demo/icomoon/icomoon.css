@@ -1,0 +1,28 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('icomoon.eot');
+	src:url('icomoon.eot?#iefix') format('embedded-opentype'),
+		url('icomoon.woff?') format('woff'),
+		url('icomoon.ttf?') format('truetype'),
+		url('icomoon.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+[data-ipt-icomoon] {
+	font-size: 1em;
+	color: #333;
+}
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-ipt-icomoon]:before {
+	font-family: 'icomoon';
+	content: attr(data-ipt-icomoon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	line-height: inherit;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+	line-height: 1;
+	display: inline;
+	vertical-align: baseline;
+}

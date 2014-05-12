@@ -4,41 +4,46 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width">
-	
+
 	<title>jQuery fontIconPicker</title>
-	
+
 	<!-- Demo style -->
 	<link rel="stylesheet" href="style.css">
-	
+
 	<!-- jQuery -->
 	<script src="js/jquery-1.7.1.min.js"></script>
-	
+
 	<!-- icon picker -->
 	<script src="../jquery.fonticonpicker.min.js"></script>
-	<link rel="stylesheet" href="../grey-theme/jquery.fonticonpicker.min.css">
-	
+	<link rel="stylesheet" href="../css/jquery.fonticonpicker.min.css">
+	<link rel="stylesheet" href="../themes/grey-theme/jquery.fonticonpicker.grey.min.css">
+	<link rel="stylesheet" href="../themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css">
+
 	<!-- Font -->
 	<link rel="stylesheet" href="fontello-7275ca86/css/fontello.css">
-	
+	<link rel="stylesheet" href="icomoon/icomoon.css">
 </head>
 <body>
 
 	<div id="main" class="container" role="main">
-		
+
 		<header>
 			<h1>jQuery fontIconPicker <span>v1.0.0</span></h1>
 		</header>
-		
+
 		<p>jQuery fontIconPicker is a small (1.58kb gzipped) jQuery plugin which allows you to include a simple icon picker with search and pagination inside your administration forms. The list of icons can be loaded manually using a SELECT field, loading an array of icons or directly from a Fontello config.json file.</p>
-		
+
 		<div style="text-align: center;">
 			<a href="https://github.com/micc83/fontIconPicker" class="download-button"><i class="icon-github"></i> Download</a>
 		</div>
-		
+
 		<h3><i class="icon-menu"></i> Legend:</h3>
-		
+
 		<p><i class="icon-angle-double-right"></i> <a href="#h1">How it works</a><br>
 		<i class="icon-angle-double-right"></i> <a href="#e1">Basic: Load from SELECT input field</a><br>
+		<i class="icon-angle-double-right"></i> <a href="#enew1">New: Load from Select field with optgroup and set icons as attributes</a><br>
+		<i class="icon-angle-double-right"></i> <a href="#enew2">New: Load from TEXT input field with categorized icons and custom searchSource</a><br>
+		<i class="icon-angle-double-right"></i> <a href="#enew3">New: Change icons on the fly (categorized icons) (custom search) (HTML attributes)</a><br>
 		<i class="icon-angle-double-right"></i> <a href="#e2">Load from TEXT input field (no empty icon, no search)</a><br>
 		<i class="icon-angle-double-right"></i> <a href="#e3">Load icons from Fontello JSON config file</a><br>
 		<i class="icon-angle-double-right"></i> <a href="#e4">fontIconPicker validation</a><br>
@@ -47,43 +52,55 @@
 		<i class="icon-angle-double-right"></i> <a href="#acf">ACF { fontIconPicker WordPress plugin</a><br>
 		<i class="icon-angle-double-right"></i> <a href="#b1">Browser compatibility</a><br>
 		<i class="icon-angle-double-right"></i> <a href="#c1">Credits</a></p>
-		
+
 		<div class="message">
-			<i class="icon-info-circled"></i> <strong>ONLY FOR LOCAL DEMO (when online everything will be allright)</strong><br> 
+			<i class="icon-info-circled"></i> <strong>ONLY FOR LOCAL DEMO (when online everything will be allright)</strong><br>
 			In <strong>firefox</strong> fontIconPicker icons won't be shown correctly because of CORS. For the same reason "Load icons from Fontello JSON config file" won't work on <strong>Chrome</strong> or <strong>IE 10</strong>. If you need to do some local testing you can disable strict_origin_policy at your risk.
 		</div>
-		
+
 		<h2 id="h1"><i class="icon-wrench"></i> How it works <a href="#main" class="icon-up-open"></a></h2>
-		
+
 		<p>Just include a copy of jQuery, the fontIconPickers script, the fontIconPickers theme and your Font Icons... Now you can trigger it on a SELECT or TEXT input...  check the <a href="#e1">first example</a> to start!</p>
-		
+
 <pre>&lt;!-- jQuery --&gt;
 &lt;script src=&quot;jquery-1.7.1.min.js&quot;&gt;&lt;/script&gt;
 
 &lt;!-- fontIconPicker --&gt;
 &lt;script src=&quot;jquery.fonticonpicker.min.js&quot;&gt;&lt;/script&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;grey-theme/jquery.fonticonpicker.min.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;css/jquery.fonticonpicker.min.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;themes/grey-theme/jquery.fonticonpicker.grey.min.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css&quot;&gt;
 
 &lt;!-- Font Icons --&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;fontello-7275ca86/css/fontello.css&quot;&gt;</pre>
+&lt;link rel=&quot;stylesheet&quot; href=&quot;fontello-7275ca86/css/fontello.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;icomoon/icomoon.css&quot;&gt;</pre>
 
 		<p>Here's fontIconPicker options:</p>
-		
+
 <pre>var $picker = $('.picker').fontIconPicker({
-    source:         false,      // Icons source (array|false)
-    emptyIcon:      true,       // Empty icon should be shown?
-    iconsPerPage:   20,         // Number of icons per page
-    hasSearch:      true        // Is search enabled?
+    theme             : 'fip-grey',              // The CSS theme to use with this fontIconPicker. You can have multiple themes on multiple elements
+    source            : false,                   // Icons source (array|false|object)
+    emptyIcon         : true,                    // Empty icon should be shown?
+    emptyIconValue    : '',                      // The value of the empty icon, change if you select has something else, say "none"
+    iconsPerPage      : 20,                      // Number of icons per page
+    hasSearch         : true,                    // Is search enabled?
+    searchSource      : false,                   // Give a manual search values. If using attributes then for proper search feature we also need to pass icon names under the same order of source
+    useAttribute      : false,                   // Whether to use attribute for printing icons
+    attributeName     : 'data-icon',             // HTML Attribute name
+    convertToHex      : true,                    // Whether or not to convert to hexadecimal for attribute value. If true then please pass decimal integer value to the source (or as value="" attribute of the select field)
+    allCategoryText   : 'From all category',     // The text for the select all category option
+    unCategorizedText : 'Uncategorized'          // The text for the select uncategorized option
 });</pre>
-		
+
 		<p>And it's only custom method <em>.loadIcons()</em> which lets you load icon sets on the fly.</p>
-		
-<pre>$picker.loadIcons(['icon-one', 'icon-two']);</pre>
-		
+
+<pre>$picker.loadIcons(['icon-one', 'icon-two']);
+$picker.loadIcons(['icon-one', 'icon-two'], ['Icon one will be searched by this', 'Icon two will be searched by this']);</pre>
+
 		<h2 id="e1"><i class="icon-code"></i> Basic: Load from SELECT input field <a href="#main" class="icon-up-open"></a></h2>
-				
-		<p>A SELECT input field is the best element to trigger fontIconPicker because it beautifully degrade when js fail. The input value will be used for the current selected icon.</p>		
-				
+
+		<p>A SELECT input field is the best element to trigger fontIconPicker because it beautifully degrade when js fail. The input value will be used for the current selected icon.</p>
+
 		<!-- Example 1 : Select input -->
 		<select id="myselect2" name="myselect2" class="myselect2">
 			<option value="">No icon</option>
@@ -109,7 +126,7 @@
 			<option>icon-left-dir</option>
 			<option>icon-thumbs-up-alt</option>
 		</select>
-				
+
 <span class="title">HTML</span>
 <pre>&lt;select id=&quot;myselect&quot; name=&quot;myselect&quot;&gt;
     &lt;option value=&quot;&quot;&gt;No icon&lt;/option&gt;
@@ -119,29 +136,477 @@
 &lt;/select&gt;</pre>
 <span class="title">JS</span>
 <pre>$('#myselect').fontIconPicker();</pre>
-				
+
+
+		<h2 id="enew1"><i class="icon-code"></i> New: Load from Select field with optgroup and set icons as attributes <a href="#main" class="icon-up-open"></a></h2>
+		<p>A SELECT field with optgroup will automatically categorize the icons. If <code>useAttribute</code> is set to true then the option value <br> (<code>&lt;option value=&quot;<strong>57367</strong>&quot;&gt;List&lt;/option&gt;</code>) will be used to populate that attribute. Under all cases, option labels are used for searching.</p>
+
+		<!-- New Example 1 : Select input -->
+		<select name="new-example1" id="new-example1">
+			<option value="none">No Icon</option>
+			<optgroup label="Web Elements">
+				<option value="57367">List</option>
+				<option value="57419">Sitemap</option>
+				<option value="57556">Cloud</option>
+				<option value="57557">Cloud Download</option>
+				<option value="57558">Cloud Upload</option>
+				<option value="57559">Download</option>
+				<option value="57560">Upload</option>
+				<option value="57563">WWW</option>
+				<option value="57564">Globe</option>
+				<option value="57565">Anchor Link</option>
+				<option value="57413">HTML 5</option>
+				<option value="57718">CSS 3</option>
+				<option value="57750">Embed</option>
+				<option value="57749">Code</option>
+				<option value="57377">Table</option>
+				<option value="57424">Checkbox Unchecked</option>
+				<option value="57746">Checkbox Checked</option>
+				<option value="57678">Checkbox Partial</option>
+				<option value="57745">Radio Unchecked</option>
+				<option value="57744">Radio Checked</option>
+				<option value="57553">Toggle</option>
+				<option value="57742">Solid Check</option>
+				<option value="57743">Hollow Check</option>
+				<option value="57684">Bold</option>
+				<option value="57685">Underline</option>
+				<option value="57686">Italic</option>
+				<option value="57687">Strike Through</option>
+				<option value="57754">Align Justify</option>
+				<option value="57755">Align Right</option>
+				<option value="57756">Align Center</option>
+				<option value="57757">Align Left</option>
+				<option value="57752">Indent Decrease</option>
+				<option value="57753">Indent Increase</option>
+			</optgroup>
+			<optgroup label="Business">
+				<option value="57461">Support</option>
+				<option value="57498">Testimonials</option>
+				<option value="57501">Testimonials 2</option>
+				<option value="57361">Members</option>
+				<option value="57503">Members 2</option>
+				<option value="57500">Comment</option>
+				<option value="57504">User</option>
+				<option value="57505">Corporate</option>
+				<option value="57428">Visiting Card</option>
+				<option value="57427">Office</option>
+			</optgroup>
+			<optgroup label="Charts and Codes">
+				<option value="57529">Pie Chart</option>
+				<option value="57530">Line Chart</option>
+				<option value="57365">Column Chart</option>
+				<option value="57455">QR Code</option>
+				<option value="57454">Bar Code</option>
+			</optgroup>
+			<optgroup label="User Actions">
+				<option value="57372">Cut</option>
+				<option value="57353">Copy</option>
+				<option value="57446">Paste</option>
+				<option value="57735">Settings</option>
+				<option value="57625">Enter</option>
+				<option value="57626">Exit</option>
+				<option value="57732">Save</option>
+				<option value="57544">Trash</option>
+				<option value="57371">Crop</option>
+				<option value="57734">Resize</option>
+				<option value="57373">Console</option>
+			</optgroup>
+			<optgroup label="eCommerce">
+				<option value="57457">Shopping Cart</option>
+				<option value="57354">Shopping Cart 2</option>
+				<option value="57458">USD</option>
+				<option value="57459">Card</option>
+				<option value="57460">Calculator</option>
+				<option value="57452">Tag</option>
+			</optgroup>
+			<optgroup label="Attentive">
+				<option value="57614">Warning</option>
+				<option value="57615">Information</option>
+				<option value="57616">Help</option>
+				<option value="57617">Information 2</option>
+				<option value="57618">Information 3</option>
+				<option value="57619">Not allowed</option>
+				<option value="57621">Allowed</option>
+			</optgroup>
+			<optgroup label="Multimedia">
+				<option value="57346">Image</option>
+				<option value="57417">Gallery</option>
+				<option value="57347">Headphone</option>
+				<option value="57348">Video Play</option>
+				<option value="57349">Video Recorder</option>
+				<option value="57418">Camera</option>
+				<option value="57719">Video Play 2</option>
+				<option value="57364">Equalizer</option>
+				<option value="57627">Play</option>
+				<option value="57628">Pause</option>
+				<option value="57629">Stop</option>
+				<option value="57630">Previous</option>
+				<option value="57631">Next</option>
+				<option value="57729">Music</option>
+				<option value="57642">Volume High</option>
+				<option value="57643">Volume Medium</option>
+				<option value="57644">Volume Low</option>
+				<option value="57645">Volume Mute</option>
+				<option value="57646">Volume Mute 2</option>
+				<option value="57647">Volume Increase</option>
+				<option value="57648">Volume Decrease</option>
+			</optgroup>
+			<optgroup label="Location and Contact">
+				<option value="57464">Phone Book</option>
+				<option value="57465">Phone Book Empty</option>
+				<option value="57466">Email</option>
+				<option value="57471">Map</option>
+				<option value="57472">Map 2</option>
+				<option value="57470">Compass</option>
+				<option value="57468">Location Marker</option>
+				<option value="57469">Location Marker 2</option>
+				<option value="57344">Home</option>
+				<option value="57425">Home 2</option>
+				<option value="57426">Home 3</option>
+			</optgroup>
+			<optgroup label="Date and Time">
+				<option value="57474">Clock</option>
+				<option value="57475">Solid Clock</option>
+				<option value="57476">Alarm Clock</option>
+				<option value="57480">Month Calendar</option>
+				<option value="57481">Day Calendar</option>
+				<option value="57479">Stopwatch</option>
+				<option value="57473">History</option>
+			</optgroup>
+			<optgroup label="Devices">
+				<option value="57482">Printer</option>
+				<option value="57483">Keyboard</option>
+				<option value="57355">Laptop</option>
+				<option value="57484">Phone</option>
+				<option value="57725">Desktop</option>
+				<option value="57727">Tablet</option>
+				<option value="57356">Television</option>
+			</optgroup>
+			<optgroup label="Tools">
+				<option value="57523">Wrench</option>
+				<option value="57420">Cogs</option>
+				<option value="57524">Cog</option>
+				<option value="57525">Hammer</option>
+				<option value="57430">Pen</option>
+				<option value="57345">Pencil</option>
+				<option value="57526">Wand</option>
+				<option value="57433">Paint Brush</option>
+				<option value="57541">Lab</option>
+				<option value="57518">Key</option>
+				<option value="57519">Key 2</option>
+				<option value="57520">Lock</option>
+				<option value="57521">Lock 2</option>
+				<option value="57522">Unlocked</option>
+				<option value="57679">Filter</option>
+				<option value="57680">Filter 2</option>
+			</optgroup>
+			<optgroup label="Social and Networking">
+				<option value="57374">Share</option>
+				<option value="57379">Google Plus</option>
+				<option value="57381">Google Plus Solid</option>
+				<option value="57382">Google Drive</option>
+				<option value="57383">Facebook</option>
+				<option value="57384">Facebook Solid</option>
+				<option value="57385">Instagram</option>
+				<option value="57386">Twitter</option>
+				<option value="57387">Twitter Solid</option>
+				<option value="57388">RSS</option>
+				<option value="57389">RSS Solid</option>
+				<option value="57390">YouTube</option>
+				<option value="57391">Vimeo</option>
+				<option value="57392">Vimeo Solid</option>
+				<option value="57693">Picasa</option>
+				<option value="57700">Steam</option>
+				<option value="57396">Github</option>
+				<option value="57701">Github 2</option>
+				<option value="57702">Github 3</option>
+				<option value="57703">Github Text</option>
+				<option value="57397">WordPress</option>
+				<option value="57407">Pinterest</option>
+				<option value="57399">Tumblr</option>
+				<option value="57705">Tumblr Solid</option>
+				<option value="57706">Yahoo</option>
+				<option value="57404">Last FM</option>
+				<option value="57786">Last FM Solid</option>
+				<option value="57780">LinkedIN</option>
+				<option value="57405">StumbleUpon</option>
+				<option value="57784">StumbleUpon Solid</option>
+				<option value="57704">Blogger</option>
+				<option value="57775">Blogger Solid</option>
+				<option value="57402">SoundCloud</option>
+				<option value="57708">SoundCloud Solid</option>
+				<option value="57403">Reddit</option>
+				<option value="57406">Stack Overflow</option>
+				<option value="57712">Yelp</option>
+			</optgroup>
+			<optgroup label="Brands">
+				<option value="57776">Apple</option>
+				<option value="57777">Android</option>
+				<option value="57410">PayPal</option>
+				<option value="57707">Linux</option>
+				<option value="57400">Finder</option>
+				<option value="57401">Windows 7</option>
+				<option value="57778">Windows 8</option>
+				<option value="57779">Skype</option>
+				<option value="57790">Chrome</option>
+				<option value="57791">FireFox</option>
+				<option value="57792">Internet Explorer</option>
+				<option value="57793">Safari</option>
+				<option value="57794">Opera</option>
+				<option value="57398">Joomla</option>
+			</optgroup>
+			<optgroup label="Files & Documents">
+				<option value="57450">Folder Closed</option>
+				<option value="57451">Folder Open</option>
+				<option value="57350">Empty File</option>
+				<option value="57722">Non Empty File</option>
+				<option value="57714">PDF</option>
+				<option value="57715">Open Office</option>
+				<option value="57411">ZIP</option>
+				<option value="57716">HTML / XML</option>
+				<option value="57717">Source Code / CSS</option>
+				<option value="57787">Word Document</option>
+				<option value="57788">Excel Sheet</option>
+				<option value="57713">Libre Office</option>
+				<option value="57412">PowerPoint</option>
+			</optgroup>
+			<optgroup label="Travel and Living">
+				<option value="57534">Coffee</option>
+				<option value="57535">Knife & Fork</option>
+				<option value="57576">Empty Star</option>
+				<option value="57577">Half Star</option>
+				<option value="57578">Full Star</option>
+				<option value="57547">Truck</option>
+				<option value="57546">Flight</option>
+				<option value="57579">Heart</option>
+				<option value="57581">Broken Heart</option>
+				<option value="57582">Like</option>
+				<option value="57583">Dislike</option>
+				<option value="57445">Library</option>
+				<option value="57443">Book</option>
+				<option value="57444">Books</option>
+			</optgroup>
+			<optgroup label="Emoticons">
+				<option value="57584">Happy</option>
+				<option value="57586">Smiley</option>
+				<option value="57588">Tease</option>
+				<option value="57590">Sad</option>
+				<option value="57592">Wink</option>
+				<option value="57594">Grin</option>
+				<option value="57596">Cool</option>
+				<option value="57598">Angry</option>
+				<option value="57600">Evil</option>
+				<option value="57602">Shocked</option>
+				<option value="57604">Confused</option>
+				<option value="57606">Neutral</option>
+				<option value="57608">Wondering</option>
+				<option value="57585">Happy - 2</option>
+				<option value="57587">Smiley - 2</option>
+				<option value="57589">Tease - 2</option>
+				<option value="57591">Sad - 2</option>
+				<option value="57593">Wink - 2</option>
+				<option value="57595">Grin - 2</option>
+				<option value="57597">Cool - 2</option>
+				<option value="57599">Angry - 2</option>
+				<option value="57601">Evil - 2</option>
+				<option value="57603">Shocked - 2</option>
+				<option value="57605">Confused - 2</option>
+				<option value="57607">Neutral - 2</option>
+				<option value="57609">Wondering - 2</option>
+			</optgroup>
+			<optgroup label="Arrows">
+				<option value="57653">Top Left</option>
+				<option value="57654">Top</option>
+				<option value="57655">Top Right</option>
+				<option value="57656">Right</option>
+				<option value="57657">Bottom Right</option>
+				<option value="57658">Bottom</option>
+				<option value="57659">Bottom Left</option>
+				<option value="57660">Left</option>
+				<option value="57669">Top Left Circular</option>
+				<option value="57670">Top Circular</option>
+				<option value="57671">Top Right Circular</option>
+				<option value="57672">Right Circular</option>
+				<option value="57673">Bottom Right Circular</option>
+				<option value="57674">Bottom Circular</option>
+				<option value="57675">Bottom Left Circular</option>
+				<option value="57676">Left Circular</option>
+			</optgroup>
+		</select>
+
+		<span class="title">HTML</span>
+<pre>&lt;select name=&quot;new-example1&quot; id=&quot;new-example1&quot;&gt;
+	&lt;optgroup label=&quot;Charts and Codes&quot;&gt;
+		&lt;option value=&quot;57529&quot;&gt;Pie Chart&lt;/option&gt;
+		&lt;option value=&quot;57530&quot;&gt;Line Chart&lt;/option&gt;
+		&lt;option value=&quot;57365&quot;&gt;Column Chart&lt;/option&gt;
+		&lt;option value=&quot;57455&quot;&gt;QR Code&lt;/option&gt;
+		&lt;option value=&quot;57454&quot;&gt;Bar Code&lt;/option&gt;
+	&lt;/optgroup&gt;
+	&lt;optgroup label=&quot;User Actions&quot;&gt;
+		&lt;option value=&quot;57372&quot;&gt;Cut&lt;/option&gt;
+		&lt;option value=&quot;57353&quot;&gt;Copy&lt;/option&gt;
+		&lt;option value=&quot;57446&quot;&gt;Paste&lt;/option&gt;
+		&lt;option value=&quot;57735&quot;&gt;Settings&lt;/option&gt;
+		&lt;option value=&quot;57625&quot;&gt;Enter&lt;/option&gt;
+		&lt;option value=&quot;57626&quot;&gt;Exit&lt;/option&gt;
+		&lt;option value=&quot;57732&quot;&gt;Save&lt;/option&gt;
+		&lt;option value=&quot;57544&quot;&gt;Trash&lt;/option&gt;
+		&lt;option value=&quot;57371&quot;&gt;Crop&lt;/option&gt;
+		&lt;option value=&quot;57734&quot;&gt;Resize&lt;/option&gt;
+		&lt;option value=&quot;57373&quot;&gt;Console&lt;/option&gt;
+	&lt;/optgroup&gt;
+	&lt;optgroup label=&quot;eCommerce&quot;&gt;
+		&lt;option value=&quot;57457&quot;&gt;Shopping Cart&lt;/option&gt;
+		&lt;option value=&quot;57354&quot;&gt;Shopping Cart 2&lt;/option&gt;
+		&lt;option value=&quot;57458&quot;&gt;USD&lt;/option&gt;
+		&lt;option value=&quot;57459&quot;&gt;Card&lt;/option&gt;
+		&lt;option value=&quot;57460&quot;&gt;Calculator&lt;/option&gt;
+		&lt;option value=&quot;57452&quot;&gt;Tag&lt;/option&gt;
+	&lt;/optgroup&gt;
+&lt;/select&gt;</pre>
+
+		<span class="title">JS</span>
+<pre>$('#new-example1').fontIconPicker({
+	theme: 'fip-darkgrey', // Set the theme to the new one
+	useAttribute: true, // Use HTML attribute to insert icon code
+	attributeName: 'data-ipt-icomoon', // HTML attribute name, default: data-icon
+	convertToHex: true, // Convert number to hexadecimal while inserting HTML attribute value
+	emptyIconValue: 'none' // Value of the empty icon
+});</pre>
+
+		<!-- New example 2 -->
+		<h2 id="enew2"><i class="icon-code"></i> New: Load from TEXT input field with categorized icons and custom searchSource<a href="#main" class="icon-up-open"></a></h2>
+
+		<p>An Input field with source given as categorized icons along with custom search.</p>
+
+		<input type="text" name="new-example2" id="new-example2" />
+
+		<span class="title">HTML</span>
+<pre>&lt;input type=&quot;text&quot; name=&quot;new-example2&quot; id=&quot;new-example2&quot; /&gt;</pre>
+
+		<span class="title">JS</span>
+<pre>
+var icon_set_all = {
+	'Business' : [0xe075, 0xe09a, 0xe09d, 0xe011, 0xe09f, 0xe09c, 0xe0a0, 0xe0a1, 0xe054, 0xe053],
+	'Charts and Codes' : [0xe0b9, 0xe0ba, 0xe015, 0xe06f, 0xe06e],
+	'User Actions' : [0xe01c, 0xe009, 0xe066, 0xe187, 0xe119, 0xe11a, 0xe184, 0xe0c8, 0xe01b, 0xe186, 0xe01d]
+};
+var icon_search_set_all = {
+	'Business' : ['Support', 'Testimonials', 'Testimonials 2', 'Members', 'Members 2', 'Comment', 'User', 'Corporate', 'Visiting Card', 'Office'],
+	'Charts and Codes' : ['Pie Chart', 'Line Chart', 'Column Chart', 'QR Code', 'Bar Code'],
+	'User Actions' : ['Cut', 'Copy', 'Paste', 'Settings', 'Enter', 'Exit', 'Save', 'Trash', 'Crop', 'Resize', 'Console']
+};
+$('#new-example2').fontIconPicker({
+	theme: 'fip-darkgrey',
+	source: icon_set_all,
+	searchSource: icon_search_set_all,
+	useAttribute: true,
+	attributeName: 'data-ipt-icomoon',
+	convertToHex: true,
+	emptyIconValue: 'none'
+});
+</pre>
+		<!-- New example 3 -->
+		<h2 id="enew3"><i class="icon-code"></i> New: Change icons on the fly (categorized icons) (custom search) (HTML attributes)<a href="#main" class="icon-up-open"></a></h2>
+
+		<p>We can pass multiple parameter to the public method, the first one being the source and the second one being searchSource.</p>
+
+		<input type="text" name="new-example3" id="new-example3" />
+
+		<span class="loadfromjson">Load:
+		<a href="" class="all">All</a> | <a href="" class="filter1">Icon set 1</a> | <a href="" class="filter2">Icon set 2</a> | <a href="" class="filter3">Icon set 3 (uncategorized)</a></span>
+
+<span class="title">HTML</span>
+<pre>&lt;input type=&quot;text&quot; name=&quot;new-example3&quot; id=&quot;new-example3&quot; /&gt;</pre>
+
+<span class="title">JS</span>
+<pre>var icon_set_all = {
+	'Business' : [0xe075, 0xe09a, 0xe09d, 0xe011, 0xe09f, 0xe09c, 0xe0a0, 0xe0a1, 0xe054, 0xe053],
+	'Charts and Codes' : [0xe0b9, 0xe0ba, 0xe015, 0xe06f, 0xe06e],
+	'User Actions' : [0xe01c, 0xe009, 0xe066, 0xe187, 0xe119, 0xe11a, 0xe184, 0xe0c8, 0xe01b, 0xe186, 0xe01d]
+};
+var icon_search_set_all = {
+	'Business' : ['Support', 'Testimonials', 'Testimonials 2', 'Members', 'Members 2', 'Comment', 'User', 'Corporate', 'Visiting Card', 'Office'],
+	'Charts and Codes' : ['Pie Chart', 'Line Chart', 'Column Chart', 'QR Code', 'Bar Code'],
+	'User Actions' : ['Cut', 'Copy', 'Paste', 'Settings', 'Enter', 'Exit', 'Save', 'Trash', 'Crop', 'Resize', 'Console']
+};
+var icon_set_1 = {
+	'Business' : [0xe075, 0xe09a, 0xe09d, 0xe011, 0xe09f, 0xe09c, 0xe0a0, 0xe0a1, 0xe054, 0xe053],
+	'User Actions' : [0xe01c, 0xe009, 0xe066, 0xe187, 0xe119, 0xe11a, 0xe184, 0xe0c8, 0xe01b, 0xe186, 0xe01d]
+};
+var icon_search_set_1 = {
+	'Business' : ['Support', 'Testimonials', 'Testimonials 2', 'Members', 'Members 2', 'Comment', 'User', 'Corporate', 'Visiting Card', 'Office'],
+	'User Actions' : ['Cut', 'Copy', 'Paste', 'Settings', 'Enter', 'Exit', 'Save', 'Trash', 'Crop', 'Resize', 'Console']
+};
+
+var icon_set_2 = {
+	'Charts and Codes' : [0xe0b9, 0xe0ba, 0xe015, 0xe06f, 0xe06e],
+	'User Actions' : [0xe01c, 0xe009, 0xe066, 0xe187, 0xe119, 0xe11a, 0xe184, 0xe0c8, 0xe01b, 0xe186, 0xe01d],
+	'eCommerce' : [0xe071, 0xe00a, 0xe072, 0xe073, 0xe074, 0xe06c]
+};
+var icon_search_set_2 = {
+	'Charts and Codes' : ['Pie Chart', 'Line Chart', 'Column Chart', 'QR Code', 'Bar Code'],
+	'User Actions' : ['Cut', 'Copy', 'Paste', 'Settings', 'Enter', 'Exit', 'Save', 'Trash', 'Crop', 'Resize', 'Console'],
+	'eCommerce' : ['Shopping Cart', 'Shopping Cart 2', 'USD', 'Card', 'Calculator', 'Tag']
+};
+
+var icon_set_3 = [0xe0be, 0xe0bf, 0xe0e8, 0xe0e9, 0xe0ea, 0xe0cb, 0xe0ca, 0xe0eb, 0xe0ed, 0xe0ee, 0xe0ef, 0xe065, 0xe063, 0xe064];
+var icon_search_set_3 = ['Coffee', 'Knife & Fork', 'Empty Star', 'Half Star', 'Full Star', 'Truck', 'Flight', 'Heart', 'Broken Heart', 'Like', 'Dislike', 'Library', 'Book', 'Books'];
+
+var new_example_3 = $('#new-example3').fontIconPicker({
+	theme: 'fip-darkgrey',
+	source: icon_set_all,
+	searchSource: icon_search_set_all,
+	useAttribute: true,
+	attributeName: 'data-ipt-icomoon',
+	convertToHex: true,
+	emptyIconValue: 'none'
+});
+
+$('.all').click(function () {
+	new_example_3.setIcons(icon_set_all, icon_search_set_all);
+	return false;
+});
+
+$('.filter1').click(function () {
+	new_example_3.setIcons(icon_set_1, icon_search_set_1);
+	return false;
+});
+
+$('.filter2').click(function () {
+	new_example_3.setIcons(icon_set_2, icon_search_set_2);
+	return false;
+});
+
+$('.filter3').click(function (e) {
+	e.preventDefault();
+	new_example_3.setIcons(icon_set_3, icon_search_set_3);
+	return false;
+});
+</pre>
 
 		<h2 id="e2"><i class="icon-code"></i> Load from TEXT input field (no empty icon, no search) <a href="#main" class="icon-up-open"></a></h2>
-		
+
 		<p>You can of course trigger fontIconPicker on a TEXT field, loading the icon set through the <em>source</em> option. In this example we're going to disable search and the ability to leave fontIconPicker empty.</p>
-		
+
 		<!-- Example 2 : Array input -->
 		<input type="text" name="myselect" id="myselect"></input>
 
-<span class="title">HTML</span>	
+<span class="title">HTML</span>
 <pre>&lt;input type=&quot;text&quot; name=&quot;mytext&quot; id=&quot;mytext&quot;&gt;&lt;/input&gt;</pre>
-		
+
 <span class="title">JS</span>
 <pre>$('#mytext').fontIconPicker({
     source:    ['icon-heart', 'icon-search', 'icon-user', 'icon-tag', 'icon-help'],
     emptyIcon: false,
     hasSearch: false
 });</pre>
-		
+
 		<h2 id="e3"><i class="icon-code"></i> Load icons from Fontello JSON config file <a href="#main" class="icon-up-open"></a></h2>
-		
+
 		<p>Without having to manually populate fonts you can load them from a json file. Following an example using Fontello config.json file. fontIconPicker will be first instantiated with a loading icon, when ajax does its thing icons will magically appears! If something goes wrong, before asking for help, remember <strong>CORS</strong>!!</p>
-		
+
 		<!-- Example 3 : Fontello JSON -->
 		<input type="text" name="myselect3" id="myselect3" value="icon-heart"></input>
 		<a href="" class="loadicons">Load icons from Fontello config.json file</a>
@@ -150,7 +615,7 @@
 <pre>&lt;input type=&quot;text&quot; name=&quot;mytext&quot; id=&quot;mytext&quot; value=&quot;icon-heart&quot;&gt;&lt;/input&gt;
 &lt;a href=&quot;#&quot; class=&quot;loadicons&quot;&gt;Load icons from Fontello config.json file&lt;/a&gt;</pre>
 
-<span class="title">JS</span>	
+<span class="title">JS</span>
 <pre>var icons = [], myIconPicker = $('#mytext').fontIconPicker();
 
 $('loadicons').click(function (){
@@ -164,11 +629,11 @@ $('loadicons').click(function (){
         myIconPicker.setIcons(icons);
     });
 });</pre>
-		
+
 		<h2 id="e4"><i class="icon-code"></i> fontIconPicker validation <a href="#main" class="icon-up-open"></a></h2>
-		
+
 		<p>Since fontIconPicker is nothing more than an interface to a common SELECT or TEXT input you can easily implement the validation on the original item.</p>
-		
+
 		<form method="post" action="" id="myform">
 			<input type="text" name="myselect3" id="myselect4"></input>
 			<input type="submit" name="" value="Send form" />
@@ -182,29 +647,29 @@ $('loadicons').click(function (){
     &lt;option&gt;icon-right-dir&lt;/option&gt;
 &lt;/select&gt;</pre>
 
-<span class="title">JS</span>		
+<span class="title">JS</span>
 <pre>$('#myselect').fontIconPicker();
 
 $('#myform').submit(function () {
-	
+
     $(this).find('span.error').remove();
-	
+
     if (!$('#myselect').val()){
         $('#myselect').after('&lt;span class=&quot;error&quot;&gt;Required&lt;/span&gt;');
         return false;
     }
-    
+
     // Continue...
 
 });</pre>
-		
+
 		<h2 id="e5"><i class="icon-code"></i> Change icon set on the fly <a href="#main" class="icon-up-open"></a></h2>
-		
+
 		<p>You can use <em>.setIcons()</em> also to load a custom set of icons on the fly. If the current selected icon is not there, the empty icon will be used ( or the first icon of the set if <em>emptyIcon: false</em> ).</p>
-		
+
 		<input type="text" name="" value="icon-heart" id="example6"/>
 
-		<span class="loadfromjson">Load: 
+		<span class="loadfromjson">Load:
 		<a href="" class="all">All</a> | <a href="" class="filter1">Icon set 1</a> | <a href="" class="filter2">Icon set 2</a></span>
 
 <span class="title">HTML</span>
@@ -213,7 +678,7 @@ $('#myform').submit(function () {
 &lt;a href=&quot;#&quot; class=&quot;filter1&quot;&gt;Icon set 1&lt;/a&gt;
 &lt;a href=&quot;#&quot; class=&quot;filter2&quot;&gt;Icon set 2&lt;/a&gt;</pre>
 
-<span class="title">JS</span>		
+<span class="title">JS</span>
 <pre>var icons = ['icon-heart', 'icon-search', 'icon-user', 'icon-tag'],
     myIconPicker = $('#mytext').fontIconPicker({
         emptyIcon: false,
@@ -235,19 +700,19 @@ $('.filter2').click(function () {
     myIconPicker.setIcons(['icon-user', 'icon-tag']);
     return false;
 });</pre>
-		
+
 		<h2 id="e6"><i class="icon-code"></i> Trigger event on icon change <a href="#main" class="icon-up-open"></a></h2>
-		
+
 		<p>Change event is triggered on the element on icon change so you'll be able to trigger custom action each time a icon get selected.</p>
-		
+
 		<input type="text" name="" value="" id="example7"/>
-		
+
 		<span class="current_icon"></span>
 
 <span class="title">HTML</span>
 <pre>&lt;input type=&quot;text&quot; name=&quot;mytext&quot; id=&quot;mytext&quot;&gt;&lt;/input&gt;</pre>
 
-<span class="title">JS</span>	
+<span class="title">JS</span>
 <pre>$('#mytext').fontIconPicker({
     source: ['icon-heart', 'icon-lemon', 'icon-user', 'icon-tag']
 }).change(function () {
@@ -257,11 +722,11 @@ $('.filter2').click(function () {
         $('.current_icon').text('No icon selected');
     }
 });</pre>
-		
+
 		<h2 id="acf"><i class="icon-leaf"></i> ACF { fontIconPicker WordPress plugin <a href="#main" class="icon-up-open"></a></h2>
-		
+
 		<p>I've first written jQuery fontIconPicker in order to build an <a href="http://www.advancedcustomfields.com/" target="_blank">Advanced Custom Field</a> plugin to associate Font icons to WordPress categories. So here it is, <strong>ACF { fontIconPicker</strong>, the best real world example of jQuery fontIconPicker use.</p>
-		
+
 			<div style="text-align: center;">
 				<a href="https://github.com/micc83/acf-fontIconPicker" class="download-button"><i class="icon-github"></i> Download</a>
 			</div>
@@ -287,7 +752,7 @@ if ( get_field('myicon') ){
 
 		<p><strong>ACF { fontIconPicker</strong> provide an hook to set your own theme custom set of Font Icons. Just download a set of icons from <a href="http://fontello.com/" target="_blank">Fontello</a> (or build one using the same file and folder settings) and upload it in your theme folder. Now add this little piece of code to your <em>functions.php</em> file and you're done!</p>
 
-		<span class="title">PHP</span>	
+		<span class="title">PHP</span>
 		<pre>/**
  * Filter ACF { fontIconPicker settings
  *
@@ -307,24 +772,143 @@ function edit_fonticonpicker_settings( $settings ) {
 }</pre>
 
 		<h2 id="b1"><i class="icon-globe"></i> Browser Compatibility <a href="#main" class="icon-up-open"></a></h2>
-		
+
 		<p>jQuery iconPicker has been successfully tested on: <strong>Firefox</strong> (edge), <strong>Safari</strong> (edge), <strong>Chrome</strong> (edge), <strong>IE8+</strong>.</p>
-		
-		
+
+
 		<h2 id="c1"><i class="icon-thumbs-up"></i> Credits <a href="#main" class="icon-up-open"></a></h2>
-		
+
 		<p><strong>jQuery fontIconPicker</strong> has been made by <a href="http://codeb.it">me</a>. You can contact me at <a href="mailto:micc83@gmail.com">micc83@gmail.com</a> or <a href="https://twitter.com/Micc1983">twitter</a> for any issue or feauture request.</p>
-		
+
 		<p>I really have to thank <a href="http://www.minimamente.com">miniMAC</a> for the idea, <a href="http://zenorocha.com/">Zeno Rocha</a> for jQuery plugin boilerplate, <a href="http://fortawesome.github.io/Font-Awesome/">Dave Gandy</a> for the beautiful set of icons and <a href="http://www.advancedcustomfields.com/">Elliot Condon</a> for the amazing Advanced Custom Field WordPress plugin.</p>
-		
+
 		<footer>
-		
+
 		</footer>
-		
+
 	</div>
-	
+
 	<script type="text/javascript">
-	
+
+	/**
+	 * New Example 1: Select
+	 */
+	$('#new-example1').fontIconPicker({
+		theme: 'fip-darkgrey', // Set the theme to the new one
+		useAttribute: true, // Use HTML attribute to insert icon code
+		attributeName: 'data-ipt-icomoon', // HTML attribute name, default: data-icon
+		convertToHex: true, // Convert number to hexadecimal while inserting HTML attribute value
+		emptyIconValue: 'none' // Value of the empty icon
+	});
+
+	/**
+	 * New Example 2: Input with Source Object
+	 */
+	var icon_set_all = {
+		'Web Elements' : [0xe017, 0xe04b, 0xe0d4, 0xe0d5, 0xe0d6, 0xe0d7, 0xe0d8, 0xe0db, 0xe0dc, 0xe0dd, 0xe045, 0xe176, 0xe196, 0xe195, 0xe021, 0xe050, 0xe192, 0xe14e, 0xe191, 0xe190, 0xe0d1, 0xe18e, 0xe18f, 0xe154, 0xe155, 0xe156, 0xe157, 0xe19a, 0xe19b, 0xe19c, 0xe19d, 0xe198, 0xe199],
+		'Business' : [0xe075, 0xe09a, 0xe09d, 0xe011, 0xe09f, 0xe09c, 0xe0a0, 0xe0a1, 0xe054, 0xe053],
+		'Charts and Codes' : [0xe0b9, 0xe0ba, 0xe015, 0xe06f, 0xe06e],
+		'User Actions' : [0xe01c, 0xe009, 0xe066, 0xe187, 0xe119, 0xe11a, 0xe184, 0xe0c8, 0xe01b, 0xe186, 0xe01d],
+		'eCommerce' : [0xe071, 0xe00a, 0xe072, 0xe073, 0xe074, 0xe06c],
+		'Attentive' : [0xe10e, 0xe10f, 0xe110, 0xe111, 0xe112, 0xe113, 0xe115],
+		'Multimedia' : [0xe002, 0xe049, 0xe003, 0xe004, 0xe005, 0xe04a, 0xe177, 0xe014, 0xe11b, 0xe11c, 0xe11d, 0xe11e, 0xe11f, 0xe181, 0xe12a, 0xe12b, 0xe12c, 0xe12d, 0xe12e, 0xe12f, 0xe130],
+		'Location and Contact' : [0xe078, 0xe079, 0xe07a, 0xe07f, 0xe080, 0xe07e, 0xe07c, 0xe07d, 0xe000, 0xe051, 0xe052],
+		'Date and Time' : [0xe082, 0xe083, 0xe084, 0xe088, 0xe089, 0xe087, 0xe081],
+		'Devices' : [0xe08a, 0xe08b, 0xe00b, 0xe08c, 0xe17d, 0xe17f, 0xe00c],
+		'Tools' : [0xe0b3, 0xe04c, 0xe0b4, 0xe0b5, 0xe056, 0xe001, 0xe0b6, 0xe059, 0xe0c5, 0xe0ae, 0xe0af, 0xe0b0, 0xe0b1, 0xe0b2, 0xe14f, 0xe150],
+		'Social and Networking' : [0xe01e, 0xe023, 0xe025, 0xe026, 0xe027, 0xe028, 0xe029, 0xe02a, 0xe02b, 0xe02c, 0xe02d, 0xe02e, 0xe02f, 0xe030, 0xe15d, 0xe164, 0xe034, 0xe165, 0xe166, 0xe167, 0xe035, 0xe03f, 0xe037, 0xe169, 0xe16a, 0xe03c, 0xe1ba, 0xe1b4, 0xe03d, 0xe1b8, 0xe168, 0xe1af, 0xe03a, 0xe16c, 0xe03b, 0xe03e, 0xe170],
+		'Brands' : [0xe1b0, 0xe1b1, 0xe042, 0xe16b, 0xe038, 0xe039, 0xe1b2, 0xe1b3, 0xe1be, 0xe1bf, 0xe1c0, 0xe1c1, 0xe1c2, 0xe036],
+		'Files & Documents' : [0xe06a, 0xe06b, 0xe006, 0xe17a, 0xe172, 0xe173, 0xe043, 0xe174, 0xe175, 0xe1bb, 0xe1bc, 0xe171, 0xe044],
+		'Travel and Living' : [0xe0be, 0xe0bf, 0xe0e8, 0xe0e9, 0xe0ea, 0xe0cb, 0xe0ca, 0xe0eb, 0xe0ed, 0xe0ee, 0xe0ef, 0xe065, 0xe063, 0xe064],
+		'Emoticons' : [0xe0f0, 0xe0f2, 0xe0f4, 0xe0f6, 0xe0f8, 0xe0fa, 0xe0fc, 0xe0fe, 0xe100, 0xe102, 0xe104, 0xe106, 0xe108, 0xe0f1, 0xe0f3, 0xe0f5, 0xe0f7, 0xe0f9, 0xe0fb, 0xe0fd, 0xe0ff, 0xe101, 0xe103, 0xe105, 0xe107, 0xe109],
+		'Arrows' : [0xe135, 0xe136, 0xe137, 0xe138, 0xe139, 0xe13a, 0xe13b, 0xe13c, 0xe145, 0xe146, 0xe147, 0xe148, 0xe149, 0xe14a, 0xe14b, 0xe14c]
+	};
+	var icon_search_set_all = {
+		'Web Elements' : ['List', 'Sitemap', 'Cloud', 'Cloud Download', 'Cloud Upload', 'Download', 'Upload', 'WWW', 'Globe', 'Anchor Link', 'HTML 5', 'CSS 3', 'Embed', 'Code', 'Table', 'Checkbox Unchecked', 'Checkbox Checked', 'Checkbox Partial', 'Radio Unchecked', 'Radio Checked', 'Toggle', 'Solid Check', 'Hollow Check', 'Bold', 'Underline', 'Italic', 'Strike Through', 'Align Justify', 'Align Right', 'Align Center', 'Align Left', 'Indent Decrease', 'Indent Increase'],
+		'Business' : ['Support', 'Testimonials', 'Testimonials 2', 'Members', 'Members 2', 'Comment', 'User', 'Corporate', 'Visiting Card', 'Office'],
+		'Charts and Codes' : ['Pie Chart', 'Line Chart', 'Column Chart', 'QR Code', 'Bar Code'],
+		'User Actions' : ['Cut', 'Copy', 'Paste', 'Settings', 'Enter', 'Exit', 'Save', 'Trash', 'Crop', 'Resize', 'Console'],
+		'eCommerce' : ['Shopping Cart', 'Shopping Cart 2', 'USD', 'Card', 'Calculator', 'Tag'],
+		'Attentive' : ['Warning', 'Information', 'Help', 'Information 2', 'Information 3', 'Not allowed', 'Allowed'],
+		'Multimedia' : ['Image', 'Gallery', 'Headphone', 'Video Play', 'Video Recorder', 'Camera', 'Video Play 2', 'Equalizer', 'Play', 'Pause', 'Stop', 'Previous', 'Next', 'Music', 'Volume High', 'Volume Medium', 'Volume Low', 'Volume Mute', 'Volume Mute 2', 'Volume Increase', 'Volume Decrease'],
+		'Location and Contact' : ['Phone Book', 'Phone Book Empty', 'Email', 'Map', 'Map 2', 'Compass', 'Location Marker', 'Location Marker 2', 'Home', 'Home 2', 'Home 3'],
+		'Date and Time' : ['Clock', 'Solid Clock', 'Alarm Clock', 'Month Calendar', 'Day Calendar', 'Stopwatch', 'History'],
+		'Devices' : ['Printer', 'Keyboard', 'Laptop', 'Phone', 'Desktop', 'Tablet', 'Television'],
+		'Tools' : ['Wrench', 'Cogs', 'Cog', 'Hammer', 'Pen', 'Pencil', 'Wand', 'Paint Brush', 'Lab', 'Key', 'Key 2', 'Lock', 'Lock 2', 'Unlocked', 'Filter', 'Filter 2'],
+		'Social and Networking' : ['Share', 'Google Plus', 'Google Plus Solid', 'Google Drive', 'Facebook', 'Facebook Solid', 'Instagram', 'Twitter', 'Twitter Solid', 'RSS', 'RSS Solid', 'YouTube', 'Vimeo', 'Vimeo Solid', 'Picasa', 'Steam', 'Github', 'Github 2', 'Github 3', 'Github Text', 'WordPress', 'Pinterest', 'Tumblr', 'Tumblr Solid', 'Yahoo', 'Last FM', 'Last FM Solid', 'LinkedIN', 'StumbleUpon', 'StumbleUpon Solid', 'Blogger', 'Blogger Solid', 'SoundCloud', 'SoundCloud Solid', 'Reddit', 'Stack Overflow', 'Yelp'],
+		'Brands' : ['Apple', 'Android', 'PayPal', 'Linux', 'Finder', 'Windows 7', 'Windows 8', 'Skype', 'Chrome', 'FireFox', 'Internet Explorer', 'Safari', 'Opera', 'Joomla'],
+		'Files & Documents' : ['Folder Closed', 'Folder Open', 'Empty File', 'Non Empty File', 'PDF', 'Open Office', 'ZIP', 'HTML / XML', 'Source Code / CSS', 'Word Document', 'Excel Sheet', 'Libre Office', 'PowerPoint'],
+		'Travel and Living' : ['Coffee', 'Knife & Fork', 'Empty Star', 'Half Star', 'Full Star', 'Truck', 'Flight', 'Heart', 'Broken Heart', 'Like', 'Dislike', 'Library', 'Book', 'Books'],
+		'Emoticons' : ['Happy', 'Smiley', 'Tease', 'Sad', 'Wink', 'Grin', 'Cool', 'Angry', 'Evil', 'Shocked', 'Confused', 'Neutral', 'Wondering', 'Happy - 2', 'Smiley - 2', 'Tease - 2', 'Sad - 2', 'Wink - 2', 'Grin - 2', 'Cool - 2', 'Angry - 2', 'Evil - 2', 'Shocked - 2', 'Confused - 2', 'Neutral - 2', 'Wondering - 2'],
+		'Arrows' : ['Top Left', 'Top', 'Top Right', 'Right', 'Bottom Right', 'Bottom', 'Bottom Left', 'Left', 'Top Left Circular', 'Top Circular', 'Top Right Circular', 'Right Circular', 'Bottom Right Circular', 'Bottom Circular', 'Bottom Left Circular', 'Left Circular']
+	};
+	$('#new-example2').fontIconPicker({
+		theme: 'fip-darkgrey',
+		source: icon_set_all,
+		searchSource: icon_search_set_all,
+		useAttribute: true,
+		attributeName: 'data-ipt-icomoon',
+		convertToHex: true,
+		emptyIconValue: 'none'
+	});
+
+	/**
+	 * New Example 3: Input with change object on the fly
+	 */
+	var new_example_3 = $('#new-example3').fontIconPicker({
+		theme: 'fip-darkgrey',
+		source: icon_set_all,
+		searchSource: icon_search_set_all,
+		useAttribute: true,
+		attributeName: 'data-ipt-icomoon',
+		convertToHex: true,
+		emptyIconValue: 'none'
+	});
+
+	var icon_set_1 = {
+		'Web Elements' : [0xe017, 0xe04b, 0xe0d4, 0xe0d5, 0xe0d6, 0xe0d7, 0xe0d8, 0xe0db, 0xe0dc, 0xe0dd, 0xe045, 0xe176, 0xe196, 0xe195, 0xe021, 0xe050, 0xe192, 0xe14e, 0xe191, 0xe190, 0xe0d1, 0xe18e, 0xe18f, 0xe154, 0xe155, 0xe156, 0xe157, 0xe19a, 0xe19b, 0xe19c, 0xe19d, 0xe198, 0xe199],
+		'Business' : [0xe075, 0xe09a, 0xe09d, 0xe011, 0xe09f, 0xe09c, 0xe0a0, 0xe0a1, 0xe054, 0xe053]
+	};
+	var icon_search_set_1 = {
+		'Web Elements' : ['List', 'Sitemap', 'Cloud', 'Cloud Download', 'Cloud Upload', 'Download', 'Upload', 'WWW', 'Globe', 'Anchor Link', 'HTML 5', 'CSS 3', 'Embed', 'Code', 'Table', 'Checkbox Unchecked', 'Checkbox Checked', 'Checkbox Partial', 'Radio Unchecked', 'Radio Checked', 'Toggle', 'Solid Check', 'Hollow Check', 'Bold', 'Underline', 'Italic', 'Strike Through', 'Align Justify', 'Align Right', 'Align Center', 'Align Left', 'Indent Decrease', 'Indent Increase'],
+		'Business' : ['Support', 'Testimonials', 'Testimonials 2', 'Members', 'Members 2', 'Comment', 'User', 'Corporate', 'Visiting Card', 'Office']
+	};
+
+	var icon_set_2 = {
+		'Charts and Codes' : [0xe0b9, 0xe0ba, 0xe015, 0xe06f, 0xe06e],
+		'User Actions' : [0xe01c, 0xe009, 0xe066, 0xe187, 0xe119, 0xe11a, 0xe184, 0xe0c8, 0xe01b, 0xe186, 0xe01d],
+		'eCommerce' : [0xe071, 0xe00a, 0xe072, 0xe073, 0xe074, 0xe06c]
+	};
+	var icon_search_set_2 = {
+		'Charts and Codes' : ['Pie Chart', 'Line Chart', 'Column Chart', 'QR Code', 'Bar Code'],
+		'User Actions' : ['Cut', 'Copy', 'Paste', 'Settings', 'Enter', 'Exit', 'Save', 'Trash', 'Crop', 'Resize', 'Console'],
+		'eCommerce' : ['Shopping Cart', 'Shopping Cart 2', 'USD', 'Card', 'Calculator', 'Tag']
+	};
+
+	var icon_set_3 = [0xe0be, 0xe0bf, 0xe0e8, 0xe0e9, 0xe0ea, 0xe0cb, 0xe0ca, 0xe0eb, 0xe0ed, 0xe0ee, 0xe0ef, 0xe065, 0xe063, 0xe064];
+	var icon_search_set_3 = ['Coffee', 'Knife & Fork', 'Empty Star', 'Half Star', 'Full Star', 'Truck', 'Flight', 'Heart', 'Broken Heart', 'Like', 'Dislike', 'Library', 'Book', 'Books'];
+
+	$('#new-example3 + .loadfromjson .all').click(function () {
+		new_example_3.setIcons(icon_set_all, icon_search_set_all);
+		return false;
+	});
+
+	$('#new-example3 + .loadfromjson .filter1').click(function () {
+		new_example_3.setIcons(icon_set_1, icon_search_set_1);
+		return false;
+	});
+
+	$('#new-example3 + .loadfromjson .filter2').click(function () {
+		new_example_3.setIcons(icon_set_2, icon_search_set_2);
+		return false;
+	});
+
+	$('#new-example3 + .loadfromjson .filter3').click(function (e) {
+		e.preventDefault();
+		new_example_3.setIcons(icon_set_3, icon_search_set_3);
+		return false;
+	});
+
 	/**
 	 * Example 1: Source Array
 	 */
@@ -333,12 +917,12 @@ function edit_fonticonpicker_settings( $settings ) {
 		emptyIcon: false,
 		hasSearch: false
 	});
-	
+
 	/**
 	 * Example 2: Source Select
 	 */
 	$('.myselect2').fontIconPicker();
-	
+
 	/**
 	 * Example 3: Source Fontello JSON
 	 */
@@ -358,7 +942,7 @@ function edit_fonticonpicker_settings( $settings ) {
 		$(this).fadeOut(300);
 		return false;
 	});
-	
+
 	/**
 	 * Example 4: Form validation
 	 */
@@ -366,19 +950,19 @@ function edit_fonticonpicker_settings( $settings ) {
 		source: ['icon-heart', 'icon-lemon', 'icon-user', 'icon-tag']
 	});
 	$('#myform').submit(function () {
-		
+
 		$('span.error').remove();
-		
+
 		if (!fieldtoval.val()){
 			fieldtoval.after('<span class="error">Required</span>');
 		} else {
 			alert( fieldtoval.val() + ' has been selected!' );
 		}
-		
+
 		return false;
-		
+
 	});
-	
+
 	/**
 	 * Example 6: Change icon set on the fly
 	 */
@@ -388,24 +972,24 @@ function edit_fonticonpicker_settings( $settings ) {
 		source: icons6,
 		iconsPerPage: 30
 	});
-	
-	$('.all').click(function () {
+
+	$('#example6 + .loadfromjson .all').click(function () {
 		example6.setIcons(icons6);
 		return false;
 	});
-	
-	$('.filter1').click(function () {
+
+	$('#example6 + .loadfromjson .filter1').click(function () {
 		var iconstest1 = ['icon-heart', 'icon-lemon', "icon-upload-cloud", "icon-reply", "icon-code"];
 		example6.setIcons(iconstest1);
 		return false;
 	});
-	
-	$('.filter2').click(function () {
+
+	$('#example6 + .loadfromjson .filter2').click(function () {
 		var iconstest2 = ['icon-user', 'icon-tag', "icon-star", "icon-star-empty", "icon-comment" ];
 		example6.setIcons(iconstest2);
 		return false;
 	});
-	
+
 	/**
 	 * Example 7: Trigger event on icon change
 	 */
@@ -419,6 +1003,6 @@ function edit_fonticonpicker_settings( $settings ) {
 		}
 	});
 	</script>
-	
+
 </body>
 </html>

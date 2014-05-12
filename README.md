@@ -8,30 +8,42 @@ Just include a copy of jQuery, the fontIconPickers script, the fontIconPickers t
 
     <!-- jQuery -->
     <script src="jquery-1.7.1.min.js"></script>
-    
+
     <!-- fontIconPicker -->
     <script src="jquery.fonticonpicker.min.js"></script>
-    <link rel="stylesheet" href="grey-theme/jquery.fonticonpicker.min.css">
-    
+    <link rel="stylesheet" href="css/jquery.fonticonpicker.min.css">
+    <link rel="stylesheet" href="themes/grey-theme/jquery.fonticonpicker.grey.min.css">
+    <link rel="stylesheet" href="themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css">
+
     <!-- Font Icons -->
     <link rel="stylesheet" href="fontello-7275ca86/css/fontello.css">
-    
+    <link rel="stylesheet" href="icomoon/icomoon.css">
+
 Here's fontIconPicker options:
 
     var $picker = $('.picker').fontIconPicker({
-        source:         false,      // Icons source (array|false)
-        emptyIcon:      true,       // Empty icon should be shown?
-        iconsPerPage:   20,         // Number of icons per page
-        hasSearch:      true        // Is search enabled?
+        theme             : 'fip-grey',              // The CSS theme to use with this fontIconPicker. You can have multiple themes on multiple elements
+        source            : false,                   // Icons source (array|false|object)
+        emptyIcon         : true,                    // Empty icon should be shown?
+        emptyIconValue    : '',                      // The value of the empty icon, change if you select has something else, say "none"
+        iconsPerPage      : 20,                      // Number of icons per page
+        hasSearch         : true,                    // Is search enabled?
+        searchSource      : false,                   // Give a manual search values. If using attributes then for proper search feature we also need to pass icon names under the same order of source
+        useAttribute      : false,                   // Whether to use attribute for printing icons
+        attributeName     : 'data-icon',             // HTML Attribute name
+        convertToHex      : true,                    // Whether or not to convert to hexadecimal for attribute value. If true then please pass decimal integer value to the source (or as value="" attribute of the select field)
+        allCategoryText   : 'From all category',     // The text for the select all category option
+        unCategorizedText : 'Uncategorized'          // The text for the select uncategorized option
     });
 
 And it's only custom method .loadIcons() which lets you load icon sets on the fly.
 
     $picker.loadIcons(['icon-one', 'icon-two']);
-    
+    $picker.loadIcons(['icon-one', 'icon-two'], ['Icon one will be searched by this', 'Icon two will be searched by this']);
+
 ### Important notes for local demo
 
-Only when loading demo locally: In firefox fontIconPicker icons won't be shown correctly because of CORS. For the same reason "Load icons from Fontello JSON config file" won't work on Chrome or IE 10. If you need to do some local testing you can disable strict_origin_policy at your risk. 
+Only when loading demo locally: In firefox fontIconPicker icons won't be shown correctly because of CORS. For the same reason "Load icons from Fontello JSON config file" won't work on Chrome or IE 10. If you need to do some local testing you can disable strict_origin_policy at your risk.
 
 ## Browser Compatibility
 
