@@ -51,6 +51,6 @@ jQuery iconPicker has been successfully tested on: Firefox (edge), Safari (edge)
 
 ## Credits
 
-jQuery fontIconPicker has been made by [me](http://codeb.it). You can contact me at micc83@gmail.com or [twitter](https://twitter.com/Micc1983) for any issue or feauture request.
+jQuery fontIconPicker has been made by [me](http://codeb.it) & [swashata](https://github.com/swashata). You can contact me at micc83@gmail.com or [twitter](https://twitter.com/Micc1983) for any issue or feauture request.
 
 I really have to thank miniMAC for the idea, Zeno Rocha for jQuery plugin boilerplate, Dave Gandy for the beautiful set of icons and Elliot Condon for the amazing Advanced Custom Field WordPress plugin.
