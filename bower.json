@@ -1,0 +1,25 @@
+{
+    "name": "fontIconPicker",
+    "version": "1.0.0",
+    "description": "An icon picker built on top of font icons and jQuery",
+    "keywords": [
+        "icons",
+        "font icons",
+        "picker"
+    ],
+    "main": [
+        "jquery.fonticonpicker.min.js",
+        "grey-theme/fonticonpicker.woff",
+        "grey-theme/iconpicker.eot",
+        "grey-theme/iconpicker.svg",
+        "grey-theme/iconpicker.ttf",
+        "grey-theme/jquery.fonticonpicker.css"
+    ],
+    "ignore": [
+      "demo"
+    ],
+    "dependencies": {
+        "jquery": ">=1.6.4"
+    },
+    "license": "MIT"
+}
