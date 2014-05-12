@@ -1,11 +1,11 @@
 /**
- *  jQuery fontIconPicker - v1.1.0
+ *  jQuery fontIconPicker - v2.0.0
  *
  *  An icon picker built on top of font icons and jQuery
  *
  *  http://codeb.it/fontIconPicker
  *
- *  Made by Alessandro Benoit
+ *  Made by Alessandro Benoit & Swashata
  *  Under MIT License
  *
  */
@@ -23,8 +23,7 @@
  * 5.  In case of select fields the search values are taken from the option labels
  * 6.  Custom theming support
  * 7.  Icons show titles (from source or searchValues)
- * 8.  Custom theming support
- * 			Added theme parameter which is applied as a class for the iconpicker
+ * 8.  Custom theming support (Added theme parameter which is applied as a class for the iconpicker)
  * 9.  A new dark grey theme with rounded cornering and CSS3 design
  * 10. Modified setIcons API to pass a second parameter of search values
  *
@@ -36,7 +35,7 @@
 
     // Create the defaults once
     var defaults = {
-            theme             : 'fip-grey',              // The CSS theme to use with this fontIconPicker. You can have multiple themes on multiple elements
+            theme             : 'fip-grey',              // The CSS theme to use with this fontIconPicker. You can set different themes on multiple elements on the same page
             source            : false,                   // Icons source (array|false|object)
             emptyIcon         : true,                    // Empty icon should be shown?
             emptyIconValue    : '',                      // The value of the empty icon, change if you select has something else, say "none"
