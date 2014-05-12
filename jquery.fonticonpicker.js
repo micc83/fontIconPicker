@@ -125,6 +125,13 @@
          * Init
          */
         init: function () {
+            
+            // Add the theme CSS to the iconPicker
+            this.iconPicker.addClass(this.settings.theme);
+
+            // Add the icon picker after the select
+            this.element.before(this.iconPicker);
+
             // Hide source element
             // Instead of doing a display:none, we would rather
             // make the element invisible
@@ -134,14 +141,13 @@
                 top: '-' + this.element.outerHeight(true) + 'px',
                 position: 'relative',
                 zIndex: '-1',
-                left: '-100px'
+                left: '-' + this.iconPicker.width() + 'px',
+                display: 'inline-block',
+                padding: 0,
+                margin: 0,
+                height: 0,
+                width: 0
             });
-
-            // Add the theme CSS to the iconPicker
-            this.iconPicker.addClass(this.settings.theme);
-
-            // Add the icon picker after the select
-            this.element.before(this.iconPicker);
 
             // If current element is SELECT populate settings.source
             if (!this.settings.source && this.element.is('select')) {
