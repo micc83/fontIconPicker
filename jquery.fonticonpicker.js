@@ -261,15 +261,15 @@
                 var targetSelect = $(e.currentTarget),
                 currentCategory = targetSelect.val();
                 // Check if all categories are selected
-                if ( targetSelect.val() == 'all' ) {
+                if (targetSelect.val() === 'all') {
                     // Restore from the backups
                     // @note These backups must be rebuild on source change, otherwise it will lead to error
                     this.settings.source = this.backupSource;
                     this.searchValues = this.backupSearch;
                 // No? So there is a specified category
                 } else {
-                    var key = parseInt( currentCategory );
-                    if ( this.availableCategories[key] ) {
+                    var key = parseInt(currentCategory, 10);
+                    if (this.availableCategories[key]) {
                         this.settings.source = this.availableCategories[key];
                         this.searchValues = this.availableCategoriesSearch[key];
                     }
@@ -662,7 +662,7 @@
             // Check if attribute is to be used
             if ( this.settings.useAttribute ) {
                 if ( theIcon ) {
-                    this.iconPicker.find('.selected-icon').html('<i ' + this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(theIcon, 10).toString(16) + ';' : theIcon ) + '"></i>' )
+                    this.iconPicker.find('.selected-icon').html('<i ' + this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(theIcon, 10).toString(16) + ';' : theIcon ) + '"></i>' );
                 } else {
                     this.iconPicker.find('.selected-icon').html('<i class="fip-icon-block"></i>');
                 }
@@ -671,7 +671,7 @@
                 this.iconPicker.find('.selected-icon').html('<i class="' + (theIcon || 'fip-icon-block') + '"></i>');
             }
             // Set the value of the element and trigger change event
-            this.element.val((theIcon == '' ? this.settings.emptyIconValue : theIcon )).triggerHandler('change');
+            this.element.val((theIcon === '' ? this.settings.emptyIconValue : theIcon )).triggerHandler('change');
             this.currentIcon = theIcon;
             this.setHighlightedIcon();
         },
