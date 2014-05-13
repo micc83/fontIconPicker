@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="lib/css/shCoreDefault.css" />
 
 	<!-- jQuery -->
-	<script src="lib/js/jquery-1.7.1.min.js"></script>
+	<script src="lib/js/jquery-1.11.1.min.js"></script>
 
 	<!-- Demo Scripts -->
 	<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
@@ -24,12 +24,12 @@
 	<script type="text/javascript" src="lib/js/brush/shBrushXml.js"></script>
 
 	<!-- icon picker -->
-	<script type="text/javascript" src="../jquery.fonticonpicker.js"></script>
-	<link rel="stylesheet" type="text/css" href="../css/jquery.fonticonpicker.css" />
-	<link rel="stylesheet" type="text/css" href="../themes/grey-theme/jquery.fonticonpicker.grey.css" />
+	<script type="text/javascript" src="../jquery.fonticonpicker.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/jquery.fonticonpicker.min.css" />
+	<link rel="stylesheet" type="text/css" href="../themes/grey-theme/jquery.fonticonpicker.grey.min.css" />
 	<link rel="stylesheet" type="text/css" href="../themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css" />
-	<link rel="stylesheet" type="text/css" href="../themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="../themes/inverted-theme/jquery.fonticonpicker.inverted.css" />
+	<link rel="stylesheet" type="text/css" href="../themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="../themes/inverted-theme/jquery.fonticonpicker.inverted.min.css" />
 
 	<!-- Font -->
 	<link rel="stylesheet" type="text/css" href="fontello-7275ca86/css/fontello.css" />
@@ -109,7 +109,7 @@
 				<li><a href="#setup_fire" data-toggle="tab">Initialize with jQuery</a></li>
 			</ul>
 			<div class="tab-content">
-				<div class="tab-pane active" id="setup_js">
+				<div class="tab-pane in fade active" id="setup_js">
 				<p>Only plugin dependency is jQuery (1.7.1+).</p>
 <pre class="brush: html">
 &lt;!-- jQuery --&gt;
@@ -119,7 +119,7 @@
 &lt;script type=&quot;text/javascript&quot; src=&quot;jquery.fonticonpicker.min.js&quot;&gt;&lt;/script&gt;
 </pre>
 				</div>
-				<div class="tab-pane" id="setup_css">
+				<div class="tab-pane fade" id="setup_css">
 					<p>Include the core CSS file and optional theme</p>
 <pre class="brush: html">
 &lt;!-- fontIconPicker core CSS --&gt;
@@ -134,7 +134,7 @@
 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../themes/inverted-theme/jquery.fonticonpicker.inverted.min.css&quot; /&gt;
 </pre>
 				</div>
-				<div class="tab-pane" id="setup_fonts">
+				<div class="tab-pane fade" id="setup_fonts">
 					<p>Include the font files you wish to pick. In this demo we are using fontAwesome and IcoMoon fonts.</p>
 <pre class="brush: html">
 &lt;!-- Font --&gt;
@@ -142,7 +142,7 @@
 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;icomoon/icomoon.css&quot; /&gt;
 </pre>
 				</div>
-				<div class="tab-pane" id="setup_fire">
+				<div class="tab-pane fade" id="setup_fire">
 					<p>Finally call the fontIconPicker on a <code>select</code> or <code>input[type="text"]</code> element.</p>
 					<h3>Using on SELECT elements</h3>
 					<p>Icons will be populated from <code>OPTION</code> elements and will be used as classes by default.</p>
@@ -215,16 +215,16 @@
 							<span class="badge pull-right">basic</span> Load from <code>SELECT</code> field
 						</a></li>
 						<li><a href="#e2" data-toggle="tab">
-							<span class="badge pull-right">basic</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Load from <code>SELECT</code> with optgroup for auto categorizing
+							<span class="badge pull-right">basic</span><span class="bstooltip" title="New in v2.0.0"><i class="icon-star"></i></span> Load from <code>SELECT</code> with optgroup for auto categorizing
 						</a></li>
 						<li><a href="#e3" data-toggle="tab">
 							<span class="badge pull-right">basic</span> Load from <code>INPUT</code> text field with simple source
 						</a></li>
 						<li><a href="#e4" data-toggle="tab">
-							<span class="badge pull-right">advanced</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Load from <code>INPUT</code> text field with categorized source
+							<span class="badge pull-right">advanced</span><span class="bstooltip" title="New in v2.0.0"><i class="icon-star"></i></span> Load from <code>INPUT</code> text field with categorized source
 						</a></li>
 						<li><a href="#e5" data-toggle="tab">
-							<span class="badge pull-right">advanced</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Load with custom search and attribute selector
+							<span class="badge pull-right">advanced</span><span class="bstooltip" title="New in v2.0.0"><i class="icon-star"></i></span> Load with custom search and attribute selector
 						</a></li>
 						<li><a href="#e6" data-toggle="tab">
 							<span class="badge pull-right">advanced</span> Change icon set on the fly
@@ -236,16 +236,16 @@
 							<span class="badge pull-right">pro</span> Load icons from Fontello JSON config file
 						</a></li>
 						<li><a href="#e9" data-toggle="tab">
-							<span class="badge pull-right">pro</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Load icons from icomoon JSON selection file
+							<span class="badge pull-right">pro</span><span class="bstooltip" title="New in v2.0.0"><i class="icon-star"></i></span> Load icons from icomoon JSON selection file
 						</a></li>
 						<li><a href="#e10" data-toggle="tab">
 							<span class="badge pull-right">pro</span> Trigger event on icon change
 						</a></li>
 						<li><a href="#e11" data-toggle="tab">
-							<span class="badge pull-right">pro</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Reinitialize with DOM modifications
+							<span class="badge pull-right">pro</span><span class="bstooltip" title="New in v2.0.0"><i class="icon-star"></i></span> Reinitialize with DOM modifications
 						</a></li>
 						<li><a href="#e12" data-toggle="tab">
-							<span class="badge pull-right">pro</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Form Validation with validator engines
+							<span class="badge pull-right">pro</span><span class="bstooltip" title="New in v2.0.0"><i class="icon-star"></i></span> Form Validation with validator engines
 						</a></li>
 					</ul>
 				</div>
@@ -253,7 +253,7 @@
 					<div class="tab-content vertical">
 
 						<!-- Example 1 -->
-						<article id="e1" class="tab-pane active">
+						<article id="e1" class="tab-pane in fade active">
 							<p>This is a basic example where no configuration options are used. Icons are loaded from <code>SELECT > OPTION</code> elements.</p>
 							<div class="live-preview">
 								<select id="e1_element" name="e1_element">
@@ -284,10 +284,10 @@
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e1_html" data-toggle="tab">HTML</a></li>
-									<li><a href="#e1_js" data-toggle="tab">JS</a></li>
+									<li><a href="#e1_js" data-toggle="tab">JavaScript</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="e1_html">
+									<div class="tab-pane in fade active" id="e1_html">
 										<pre class="brush: html">
 &lt;select id=&quot;e1_element&quot; name=&quot;e1_element&quot;&gt;
 	&lt;option value=&quot;&quot;&gt;No icon&lt;/option&gt;
@@ -315,7 +315,7 @@
 &lt;/select&gt;
 										</pre>
 									</div>
-									<div class="tab-pane" id="e1_js">
+									<div class="tab-pane fade" id="e1_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
 	$(&#039;#e1_element&#039;).fontIconPicker();
@@ -327,7 +327,7 @@ jQuery(document).ready(function($) {
 						</article>
 
 						<!-- Example 2 -->
-						<article id="e2" class="tab-pane">
+						<article id="e2" class="tab-pane fade">
 							<p>When applied on <code>SELECT</code> elements with <code>OPTGROUP</code> the icons will be categorized. Any <code>OPTION</code> field which is not under any <code>OPTGROUP</code> will be put to the <em>Uncategorized</em> category.</p>
 							<div class="live-preview">
 								<select name="e2_element" id="e2_element">
@@ -828,10 +828,10 @@ jQuery(document).ready(function($) {
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e2_html" data-toggle="tab">HTML</a></li>
-									<li><a href="#e2_js" data-toggle="tab">JS</a></li>
+									<li><a href="#e2_js" data-toggle="tab">JavaScript</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="e2_html">
+									<div class="tab-pane in fade active" id="e2_html">
 										<pre class="brush: html">
 &lt;select name=&quot;e2_element&quot; id=&quot;e2_element&quot;&gt;
 	&lt;option value=&quot;&quot;&gt;No Icon&lt;/option&gt;
@@ -1329,7 +1329,7 @@ jQuery(document).ready(function($) {
 &lt;/select&gt;
 										</pre>
 									</div>
-									<div class="tab-pane" id="e2_js">
+									<div class="tab-pane fade" id="e2_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
 	// Example 2
@@ -1346,7 +1346,7 @@ jQuery(document).ready(function($) {
 						</article>
 
 						<!-- Example 3 -->
-						<article id="e3" class="tab-pane">
+						<article id="e3" class="tab-pane fade">
 							<p>
 								You can of course trigger fontIconPicker on an <code>INPUT[type=&quot;text&quot;]</code> field, loading the icon set through the <em>source</em> option.
 							</p>
@@ -1356,15 +1356,15 @@ jQuery(document).ready(function($) {
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e3_html" data-toggle="tab">HTML</a></li>
-									<li><a href="#e3_js" data-toggle="tab">JS</a></li>
+									<li><a href="#e3_js" data-toggle="tab">JavaScript</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="e3_html">
+									<div class="tab-pane in fade active" id="e3_html">
 										<pre class="brush: html">
 &lt;input type=&quot;text&quot; id=&quot;e3_element&quot; name=&quot;e3_element&quot; /&gt;
 										</pre>
 									</div>
-									<div class="tab-pane" id="e3_js">
+									<div class="tab-pane fade" id="e3_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
 	// Example 3
@@ -1380,7 +1380,7 @@ jQuery(document).ready(function($) {
 						</article>
 
 						<!-- Example 4 -->
-						<article id="e4" class="tab-pane">
+						<article id="e4" class="tab-pane fade">
 							<p>
 								You can pass an <code>object</code> to the source option to categorize the icons.
 							</p>
@@ -1390,15 +1390,15 @@ jQuery(document).ready(function($) {
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e4_html" data-toggle="tab">HTML</a></li>
-									<li><a href="#e4_js" data-toggle="tab">JS</a></li>
+									<li><a href="#e4_js" data-toggle="tab">JavaScript</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="e4_html">
+									<div class="tab-pane in fade active" id="e4_html">
 										<pre class="brush: html">
 &lt;input type=&quot;text&quot; id=&quot;e4_element&quot; name=&quot;e4_element&quot; /&gt;
 										</pre>
 									</div>
-									<div class="tab-pane" id="e4_js">
+									<div class="tab-pane fade" id="e4_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
 	// Example 4
@@ -1414,7 +1414,7 @@ jQuery(document).ready(function($) {
 						</article>
 
 						<!-- Example 5 -->
-						<article id="e5" class="tab-pane">
+						<article id="e5" class="tab-pane fade">
 							<p>Pass <code>searchSource</code> option to give manual search strings for icons. The <code>searchSource</code> should be of the same format (i.e, either <code>Array</code> or <code>Object</code>) and order of the <code>source</code> option.</p>
 							<div class="live-preview">
 								<input type="text" id="e5_element" name="e5_element" />
@@ -1423,15 +1423,15 @@ jQuery(document).ready(function($) {
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e5_html" data-toggle="tab">HTML</a></li>
-									<li><a href="#e5_js" data-toggle="tab">JS</a></li>
+									<li><a href="#e5_js" data-toggle="tab">JavaScript</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="e5_html">
+									<div class="tab-pane in fade active" id="e5_html">
 										<pre class="brush: html">
 &lt;input type=&quot;text&quot; id=&quot;e5_element&quot; name=&quot;e5_element&quot; /&gt;
 										</pre>
 									</div>
-									<div class="tab-pane" id="e5_js">
+									<div class="tab-pane fade" id="e5_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
 	// Example 5
@@ -1450,7 +1450,7 @@ jQuery(document).ready(function($) {
 						</article>
 
 						<!-- Example 6 -->
-						<article id="e6" class="tab-pane">
+						<article id="e6" class="tab-pane fade">
 							<p>You can change icons on the fly using the <a href="#plugin-apis"><em>setIcons</em></a> API.</p>
 							<div class="live-preview">
 								<input type="text" id="e6_element" name="e6_element" />
@@ -1465,10 +1465,10 @@ jQuery(document).ready(function($) {
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e6_html" data-toggle="tab">HTML</a></li>
-									<li><a href="#e6_js" data-toggle="tab">JS</a></li>
+									<li><a href="#e6_js" data-toggle="tab">JavaScript</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="e6_html">
+									<div class="tab-pane in fade active" id="e6_html">
 										<pre class="brush: js">
 &lt;input type=&quot;text&quot; id=&quot;e6_element&quot; name=&quot;e6_element&quot; /&gt;
 &lt;span id=&quot;e6_buttons&quot;&gt;
@@ -1479,7 +1479,7 @@ jQuery(document).ready(function($) {
 &lt;/span&gt;
 										</pre>
 									</div>
-									<div class="tab-pane" id="e6_js">
+									<div class="tab-pane fade" id="e6_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
 	// Example 6
@@ -1525,7 +1525,7 @@ jQuery(document).ready(function($) {
 						</article>
 
 						<!-- Example 7 -->
-						<article id="e7" class="tab-pane">
+						<article id="e7" class="tab-pane fade">
 							<p>In this example we're going to disable search and the ability to leave fontIconPicker empty.</p>
 							<div class="live-preview">
 								<input type="text" id="e7_element" name="e7_element" />
@@ -1533,15 +1533,15 @@ jQuery(document).ready(function($) {
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e7_html" data-toggle="tab">HTML</a></li>
-									<li><a href="#e7_js" data-toggle="tab">JS</a></li>
+									<li><a href="#e7_js" data-toggle="tab">JavaScript</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="e7_html">
+									<div class="tab-pane in fade active" id="e7_html">
 										<pre class="brush: html">
 &lt;input type=&quot;text&quot; id=&quot;e7_element&quot; name=&quot;e7_element&quot; /&gt;
 										</pre>
 									</div>
-									<div class="tab-pane" id="e7_js">
+									<div class="tab-pane fade" id="e7_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
 	// Example 7
@@ -1558,7 +1558,7 @@ jQuery(document).ready(function($) {
 						</article>
 
 						<!-- Example 8 -->
-						<article id="e8" class="tab-pane">
+						<article id="e8" class="tab-pane fade">
 							<p>Without having to manually populate fonts you can load them from a json file. Following an example using Fontello config.json file. fontIconPicker will be first instantiated with a loading icon, when AJAX does its thing icons will magically appears! If something goes wrong, before asking for help, remember <strong>CORS</strong>!!</p>
 							<div class="live-preview">
 								<input type="text" id="e8_element" name="e8_element" />
@@ -1569,10 +1569,10 @@ jQuery(document).ready(function($) {
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e8_html" data-toggle="tab">HTML</a></li>
-									<li><a href="#e8_js" data-toggle="tab">JS</a></li>
+									<li><a href="#e8_js" data-toggle="tab">JavaScript</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="e8_html">
+									<div class="tab-pane in fade active" id="e8_html">
 										<pre class="brush: html">
 &lt;input type=&quot;text&quot; id=&quot;e8_element&quot; name=&quot;e8_element&quot; /&gt;
 &lt;span id=&quot;e8_buttons&quot;&gt;
@@ -1580,7 +1580,7 @@ jQuery(document).ready(function($) {
 &lt;/span&gt;
 										</pre>
 									</div>
-									<div class="tab-pane" id="e8_js">
+									<div class="tab-pane fade" id="e8_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
 	// Example 8
@@ -1629,7 +1629,7 @@ jQuery(document).ready(function($) {
 						</article>
 
 						<!-- Example 9 -->
-						<article id="e9" class="tab-pane">
+						<article id="e9" class="tab-pane fade">
 							<p>Similar to before you can also load fonts from IcoMoon <code>selection.json</code> file. The examples are very similar with just the difference being the data format of the json file. We will also be joining the tags of the icons to create a different search set.</p>
 							<div class="live-preview">
 								<input type="text" id="e9_element" name="e9_element" />
@@ -1640,10 +1640,10 @@ jQuery(document).ready(function($) {
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e9_html" data-toggle="tab">HTML</a></li>
-									<li><a href="#e9_js" data-toggle="tab">JS</a></li>
+									<li><a href="#e9_js" data-toggle="tab">JavaScript</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="e9_html">
+									<div class="tab-pane in fade active" id="e9_html">
 										<pre class="brush: html">
 &lt;input type=&quot;text&quot; id=&quot;e9_element&quot; name=&quot;e9_element&quot; /&gt;
 &lt;span id=&quot;e9_buttons&quot;&gt;
@@ -1651,7 +1651,7 @@ jQuery(document).ready(function($) {
 &lt;/span&gt;
 										</pre>
 									</div>
-									<div class="tab-pane" id="e9_js">
+									<div class="tab-pane fade" id="e9_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
 	// Example 8
@@ -1711,7 +1711,7 @@ jQuery(document).ready(function($) {
 						</article>
 
 						<!-- Example 10 -->
-						<article id="e10" class="tab-pane">
+						<article id="e10" class="tab-pane fade">
 							<p><code>CHANGE</code> event is triggered on the element on icon change so you'll be able to trigger custom action each time an icon get selected.</p>
 							<input type="text" class="trigger_change" id="e10_element_1" name="e10_element_1" />
 							<span>Selected Icon: <span class="selected_icon text-danger"><i class="icon-block"></i></span></span>
@@ -1720,10 +1720,10 @@ jQuery(document).ready(function($) {
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e10_html" data-toggle="tab">HTML</a></li>
-									<li><a href="#e10_js" data-toggle="tab">JS</a></li>
+									<li><a href="#e10_js" data-toggle="tab">JavaScript</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="e10_html">
+									<div class="tab-pane in fade active" id="e10_html">
 										<pre class="brush: html">
 &lt;input type=&quot;text&quot; class=&quot;trigger_change&quot; id=&quot;e10_element_1&quot; name=&quot;e10_element_1&quot; /&gt;
 &lt;span&gt;Selected Icon: &lt;span class=&quot;selected_icon text-danger&quot;&gt;&lt;i class=&quot;icon-block&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;
@@ -1731,7 +1731,7 @@ jQuery(document).ready(function($) {
 &lt;span&gt;Selected Icon: &lt;span class=&quot;selected_icon text-danger&quot;&gt;&lt;i class=&quot;icon-block&quot;&gt;&lt;/i&gt;&lt;/span&gt;&lt;/span&gt;
 										</pre>
 									</div>
-									<div class="tab-pane" id="e10_js">
+									<div class="tab-pane fade" id="e10_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
 	// Example 10
@@ -1776,7 +1776,7 @@ jQuery(document).ready(function($) {
 						</article>
 
 						<!-- Example 11 -->
-						<article id="e11" class="tab-pane">
+						<article id="e11" class="tab-pane fade">
 							<p>If you are changing the DOM content dynamically then you can call <code>refreshPicker</code> public method to get the new DOM items.</p>
 							<button type="button" id="e11_element_helper_change" class="btn btn-primary pull-right">Change DOM</button>
 							<button type="button" style="display: none" id="e11_element_helper_restore" class="btn btn-default pull-right">Restore DOM</button>
@@ -1832,7 +1832,7 @@ jQuery(document).ready(function($) {
 									<li><a href="#e11_js" data-toggle="tab">JavaScript</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="e11_html">
+									<div class="tab-pane in fade active" id="e11_html">
 										<pre class="brush: html">
 &lt;button type=&quot;button&quot; id=&quot;e11_element_helper_change&quot; class=&quot;btn btn-primary pull-right&quot;&gt;Change DOM&lt;/button&gt;
 &lt;button type=&quot;button&quot; style=&quot;display: none&quot; id=&quot;e11_element_helper_restore&quot; class=&quot;btn btn-default pull-right&quot;&gt;Restore DOM&lt;/button&gt;
@@ -1883,7 +1883,7 @@ jQuery(document).ready(function($) {
 &lt;/select&gt;
 										</pre>
 									</div>
-									<div class="tab-pane" id="e11_js">
+									<div class="tab-pane fade" id="e11_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
 	/**
@@ -1979,7 +1979,7 @@ jQuery(document).ready(function($) {
 						</article>
 
 						<!-- Example 12 -->
-						<article id="e12" class="tab-pane">
+						<article id="e12" class="tab-pane fade">
 							<p>fontIconPicker works with most (if not all) form validators. fontIconPicker does not remove or hide the original element, rather puts it behind the icon picker. So validation engines will not have any difficulty finding the original element or putting tooltips near it. The demo below shows form validation with </p>
 							<div class="live-preview text-left">
 								<form action="" method="POST" role="form" class="form-horizontal" id="e12_form">
@@ -2015,10 +2015,10 @@ jQuery(document).ready(function($) {
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e12_html" data-toggle="tab">HTML</a></li>
-									<li><a href="#e12_js" data-toggle="tab">JS</a></li>
+									<li><a href="#e12_js" data-toggle="tab">JavaScript</a></li>
 								</ul>
 								<div class="tab-content">
-									<div class="tab-pane active" id="e12_html">
+									<div class="tab-pane in fade active" id="e12_html">
 										<pre class="brush: html">
 &lt;form action=&quot;&quot; method=&quot;POST&quot; role=&quot;form&quot; class=&quot;form-horizontal&quot; id=&quot;e12_form&quot;&gt;
 	&lt;legend&gt;Sample Form&lt;/legend&gt;
@@ -2051,7 +2051,7 @@ jQuery(document).ready(function($) {
 &lt;/form&gt;
 										</pre>
 									</div>
-									<div class="tab-pane" id="e12_js">
+									<div class="tab-pane fade" id="e12_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
 	// Example 12

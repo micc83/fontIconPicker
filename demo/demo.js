@@ -16,28 +16,34 @@ jQuery(document).ready(function($) {
 	// Cache selectors
 	var lastId,
 	topMenu = $("#header .navbar-main"),
-	topMenuHeight = topMenu.outerHeight()+15,
+	topMenuHeight = topMenu.outerHeight() + 15,
 	// All list items
 	menuItems = topMenu.find("a"),
 	// Anchors corresponding to menu items
 	scrollItems = menuItems.map(function() {
 		var item = $($(this).attr("href"));
-		if (item.length) {
+		if ( item.length ) {
 			return item;
 		}
 	});
 
-	console.log(topMenuHeight);
-
 	// Bind click handler to menu items
 	// so we can get a fancy scroll animation
-	menuItems.click(function(e){
+	menuItems.click(function(e) {
 		var href = $(this).attr("href"),
-		offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight+1;
+		offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
 		$('html, body').stop().animate({
 			scrollTop: offsetTop
 		}, 300);
 		e.preventDefault();
+	});
+
+	$('a[href="#main"]').click(function(e) {
+		e.preventDefault();
+		var offsetTop = $('#main').offset().top - topMenuHeight + 1;
+		$('html, body').stop().animate({
+			scrollTop: offsetTop
+		}, 300);
 	});
 
 	var fipScrollSpy = function() {
@@ -46,20 +52,22 @@ jQuery(document).ready(function($) {
 
 		// Get id of current scroll item
 		var maxScrollTop = 0, cur = null;
-		scrollItems.map(function(){
-			var scrollPosition = $(this).offset().top;
-			if ( scrollPosition < fromTop ) {
-				if ( scrollPosition > maxScrollTop ) {
-					maxScrollTop = scrollPosition;
-					cur = this;
+		if ( fromTop >= $('body').height() - $(window).height() ) {
+			cur = $('#site-footer');
+		} else {
+			scrollItems.map(function(){
+				var scrollPosition = $(this).offset().top;
+				if ( scrollPosition < fromTop ) {
+					if ( scrollPosition > maxScrollTop ) {
+						maxScrollTop = scrollPosition;
+						cur = this;
+					}
 				}
-			}
-			return this;
-		});
-		console.log(cur);
+				return this;
+			});
+		}
 
 		var id = cur && cur.length ? cur[0].id : "";
-		console.log(id);
 
 		if (lastId !== id) {
 			lastId = id;
@@ -73,7 +81,7 @@ jQuery(document).ready(function($) {
 	// Bind to scroll + resize
 	$(window).scroll(fipScrollSpy);
 	$(window).on('resize', fipScrollSpy);
-	fipScrollSpy();
+	fipScrollSpy.apply(window);
 
 	/**
 	 * fip examples

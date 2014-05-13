@@ -8,29 +8,9 @@
  *  Made by Alessandro Benoit & Swashata
  *  Under MIT License
  *
+ * {@link https://github.com/micc83/fontIconPicker}
  */
-/**
- * Modified by Swashata
- *
- * This information is added for the plugin author
- * Please remove them once you have done testing :)
- *
- * Added Functionality
- * 1.  Icons can be grouped
- * 2.  Icons can be searched within groups
- * 3.  Icons can be set with custom html attribute (like data-attr)
- * 4.  The search values can be given diffently from the source, useful when using data-attr like icons
- * 5.  In case of select fields the search values are taken from the option labels
- * 6.  Custom theming support
- * 7.  Icons show titles (from source or searchValues)
- * 8.  Custom theming support (Added theme parameter which is applied as a class for the iconpicker)
- * 9.  A new dark grey theme with rounded cornering and CSS3 design
- * 10. Modified setIcons API to pass a second parameter of search values
- *
- * TODO
- * Add destroy method
- * Add reinit method
- */
+
 ;(function ($) {
 
 	'use strict';
@@ -44,10 +24,10 @@
 			iconsPerPage      : 20,                      // Number of icons per page
 			hasSearch         : true,                    // Is search enabled?
 			searchSource      : false,                   // Give a manual search values. If using attributes then for proper search feature we also need to pass icon names under the same order of source
-			useAttribute      : false,                   // Whether to use attribute for printing icons
+			useAttribute      : false,                   // Whether to use attribute selector for printing icons
 			attributeName     : 'data-icon',             // HTML Attribute name
 			convertToHex      : true,                    // Whether or not to convert to hexadecimal for attribute value. If true then please pass decimal integer value to the source (or as value="" attribute of the select field)
-			allCategoryText   : 'From all categories',     // The text for the select all category option
+			allCategoryText   : 'From all categories',   // The text for the select all category option
 			unCategorizedText : 'Uncategorized'          // The text for the select uncategorized option
 		};
 
@@ -523,9 +503,9 @@
 					for ( var newIconKey in originalSource[categoryLabel] ) {
 						// Get the new icon value
 						var newIconValue = originalSource[categoryLabel][newIconKey];
-						// Get the label either from the searchSource, if set otherwise from the source itself
+						// Get the label either from the searchSource if set, otherwise from the source itself
 						var newIconLabel = (this.settings.searchSource && this.settings.searchSource[categoryLabel] && this.settings.searchSource[categoryLabel][newIconKey]) ?
-											this.settings.searchSource[categoryLabel][newIconKey] : newIconKey;
+											this.settings.searchSource[categoryLabel][newIconKey] : newIconValue;
 
 						// Try to convert to the source value string
 						// This is to avoid attribute related icon sets
