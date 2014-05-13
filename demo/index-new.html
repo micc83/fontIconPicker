@@ -2174,6 +2174,8 @@
 			<hr />
 			<div class="row">
 				<div class="col-md-5 col-md-push-7">
+
+					<!-- Examples Menu -->
 					<ul class="nav nav-pills nav-stacked">
 						<li class="active"><a href="#e1" data-toggle="tab">
 							<span class="badge pull-right">basic</span> Load from <code>SELECT</code> field
@@ -2212,40 +2214,63 @@
 				</div>
 				<div class="col-md-7 col-md-pull-5">
 					<div class="tab-content vertical">
+
+						<!-- Example 1 -->
 						<article id="e1" class="tab-pane active">
 							<p>This is a basic example where no configuration options are used. Icons are loaded from <code>SELECT > OPTION</code> elements.</p>
-
 						</article>
+
+						<!-- Example 2 -->
 						<article id="e2" class="tab-pane">
 
 						</article>
+
+						<!-- Example 3 -->
 						<article id="e3" class="tab-pane">
 
 						</article>
+
+						<!-- Example 4 -->
 						<article id="e4" class="tab-pane">
 
 						</article>
+
+						<!-- Example 5 -->
 						<article id="e5" class="tab-pane">
 
 						</article>
+
+						<!-- Example 6 -->
 						<article id="e6" class="tab-pane">
 
 						</article>
+
+						<!-- Example 7 -->
 						<article id="e7" class="tab-pane">
 
 						</article>
+
+						<!-- Example 8 -->
 						<article id="e8" class="tab-pane">
 
 						</article>
+
+						<!-- Example 9 -->
 						<article id="e9" class="tab-pane">
 
 						</article>
+
+						<!-- Example 10 -->
 						<article id="e10" class="tab-pane">
 
 						</article>
+
+						<!-- Example 11 -->
 						<article id="e10" class="tab-pane">
 
 						</article>
+
+						<!-- Example 12 -->
 						<article id="e11" class="tab-pane">
 							<p>If you are changing the dom content dynamically then you can call <code>refreshPicker</code> public method to get the new DOM items.</p>
 							<button type="button" id="e11_element_helper_change" class="btn btn-primary pull-right">Change DOM</button>
@@ -2734,7 +2759,8 @@ $(&#039;.myselect&#039;).fontIconPicker({
 						<tr>
 							<th rowspan="2">setIcons</th>
 							<td>
-								<code>Array | Object</code> <code>newIcons</code><br /><em>An array or object of new icons. The format is same as <code>source</code> option.</em>
+								<strong>newIcons</strong><br />
+								<code>Array | Object</code><br /><em>An array or object of new icons. The format is same as <code>source</code> option.</em>
 							</td>
 							<td rowspan="2">
 								Use this method to dynamically change icons on the fly.
@@ -2824,7 +2850,8 @@ $(&#039;.change-icons-3&#039;).on(&#039;click&#039;, function(e) {
 						</tr>
 						<tr>
 							<td>
-								<code>Array | Object</code> <code>iconSearch</code><br /><em>An array or object of new icon search values. The format is same as <code>searchSource</code> option.</em>
+								<strong>iconSearch</strong> <em>(optional)</em><br />
+								<code>Array | Object</code> <br /><em>An array or object of new icon search values. The format is same as <code>searchSource</code> option.</em>
 							</td>
 						</tr>
 						<tr>
@@ -2928,7 +2955,8 @@ restoreButton.on(&#039;click&#039;, function() {
 						<tr>
 							<th>refreshPicker</th>
 							<td>
-								<code>Object | Boolean</code> <code>newOptions</code><br /><em><strong>(Optional)</strong> Pass plugin options to override original ones. Pass false or do not pass anything to use the original ones.</em>
+								<strong>newOptions</strong> <em>(optional)</em><br />
+								<code>Object | Boolean</code> <br /><em>Pass plugin options to override original ones. Pass false or do not pass anything to use the original ones.</em>
 							</td>
 							<td>
 								Refresh the icon picker from DOM or passed options. Useful when DOM has been changed or reinitializing after calling the destroy method.
