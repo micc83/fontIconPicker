@@ -1,0 +1,29 @@
+{
+    "name": "fontIconPicker",
+    "version": "2.0.0",
+    "description": "An icon picker built on top of font icons and jQuery",
+    "keywords": [
+        "icons",
+        "font icons",
+        "picker"
+    ],
+    "main": [
+        "jquery.fonticonpicker.min.js",
+        "css/iconpicker.woff",
+        "css/iconpicker.eot",
+        "css/iconpicker.svg",
+        "css/iconpicker.ttf",
+        "css/jquery.fonticonpicker.min.css",
+        "themes/grey-theme/jquery.fonticonpicker.grey.min.css",
+        "themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css",
+        "themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css",
+        "themes/inverted-theme/jquery.fonticonpicker.inverted.min.css",
+    ],
+    "ignore": [
+      "demo"
+    ],
+    "dependencies": {
+        "jquery": ">=1.7.1"
+    },
+    "license": "MIT"
+}
