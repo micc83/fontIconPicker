@@ -2570,7 +2570,7 @@ $(&#039;.change-icons-3&#039;).on(&#039;click&#039;, function(e) {
 							<td>Use this to remove the icon picker and restore the original element.</td>
 							<td>
 								<h4>Live</h4>
-								<select id="destroy-api" name="destroy-api">
+								<select id="destroy-api" name="destroy-api" class="form-control">
 									<option value="">No icon</option>
 									<option>icon-user</option>
 									<option>icon-search</option>
@@ -2595,9 +2595,10 @@ $(&#039;.change-icons-3&#039;).on(&#039;click&#039;, function(e) {
 									<option>icon-thumbs-up-alt</option>
 								</select>
 								<span class="destroy-api-buttons">
-									<button type="button" class="btn btn-default destroy-button-destroy">Destroy</button>
-									<button type="button" class="btn btn-default destroy-button-restore" style="display: none;">Restore</button>
+									<button type="button" class="btn btn-danger destroy-button-destroy"><i class="icomoon-remove2"></i> Destroy</button>
+									<button type="button" class="btn btn-success destroy-button-restore" style="display: none; margin-top: 10px;"><i class="icomoon-undo2"></i> Restore</button>
 								</span>
+								<div class="clearfix"></div>
 								<h4>HTML</h4>
 								<pre class="brush: html">
 &lt;select id=&quot;destroy-api&quot; name=&quot;destroy-api&quot;&gt;
@@ -2698,7 +2699,7 @@ restoreButton.on(&#039;click&#039;, function() {
 									<option>icon-thumbs-up-alt</option>
 								</select>
 								<span class="refresh-api-buttons">
-									<button type="button" class="btn btn-default">Toggle Search</button>
+									<button type="button" class="btn btn-default"><i class="icomoon-search"></i> Toggle Search</button>
 								</span>
 								<h4>HTML</h4>
 									<pre class="brush: html">
