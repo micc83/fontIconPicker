@@ -106,6 +106,9 @@
 		this.searchValues = [];
 		this.availableCategoriesSearch = [];
 
+		// The trigger event for change
+		this.triggerEvent = null;
+
 		// Backups
 		this.backupSource = [];
 		this.backupSearch = [];
@@ -131,6 +134,19 @@
 			// Add the theme CSS to the iconPicker
 			this.iconPicker.addClass(this.settings.theme);
 
+			// To properly calculate iconPicker height and width
+			// We will first append it to body (with left: -9999px so that it is not visible)
+			this.iconPicker.css({
+				left: -9999
+			}).appendTo('body');
+			var iconPickerHeight = this.iconPicker.outerHeight(),
+			iconPickerWidth = this.iconPicker.outerWidth();
+
+			// Now reset the iconPicker CSS
+			this.iconPicker.css({
+				left: ''
+			});
+
 			// Add the icon picker after the select
 			this.element.before(this.iconPicker);
 
@@ -144,16 +160,32 @@
 				top: 0,
 				position: 'relative',
 				zIndex: '-1',
-				left: '-' + this.iconPicker.outerWidth() + 'px',
+				left: '-' + iconPickerWidth + 'px',
 				display: 'inline-block',
-				height: this.iconPicker.outerHeight() + 'px',
-				width: this.iconPicker.outerWidth() + 'px',
+				height: iconPickerHeight + 'px',
+				width: iconPickerWidth + 'px',
 				// Reset all margin, border and padding
 				padding: '0',
-				margin: '0 -' + this.iconPicker.outerWidth() + 'px 0 0', // Left margin adjustment to account for dangling space
+				margin: '0 -' + iconPickerWidth + 'px 0 0', // Left margin adjustment to account for dangling space
 				border: '0 none',
 				verticalAlign: 'top'
 			});
+
+			// Set the trigger event
+			if ( ! this.element.is('select') ) {
+				// Determine the event that is fired when user change the field value
+				// Most modern browsers supports input event except IE 7, 8.
+				// IE 9 supports input event but the event is still not fired if I press the backspace key.
+				// Get IE version
+				// https://gist.github.com/padolsey/527683/#comment-7595
+				var ieVersion = (function() {
+				    var v = 3, div = document.createElement('div'), a = div.all || [];
+				    while (div.innerHTML = '<!--[if gt IE '+(++v)+']><br><![endif]-->', a[0]);
+				    return v > 4 ? v : !v;
+				}());
+				var el = document.createElement('div');
+				this.triggerEvent = (ieVersion === 9 || !('oninput' in el)) ? 'keyup' : 'input';
+			}
 
 			// If current element is SELECT populate settings.source
 			if (!this.settings.source && this.element.is('select')) {
@@ -539,7 +571,7 @@
 			$('<option value="all">' + this.settings.allCategoryText + '</option>').prependTo(this.selectCategory);
 
 			// Show it and set default value to all categories
-			this.selectCategory.show().val('all').triggerHandler('change');
+			this.selectCategory.show().val('all').trigger('change');
 		},
 
 		/**
@@ -682,7 +714,10 @@
 				this.iconPicker.find('.selected-icon').html('<i class="' + (theIcon || 'fip-icon-block') + '"></i>');
 			}
 			// Set the value of the element and trigger change event
-			this.element.val((theIcon === '' ? this.settings.emptyIconValue : theIcon )).triggerHandler('change');
+			this.element.val((theIcon === '' ? this.settings.emptyIconValue : theIcon )).trigger('change');
+			if ( this.triggerEvent !== null ) {
+				this.element.trigger(this.triggerEvent);
+			}
 			this.currentIcon = theIcon;
 			this.setHighlightedIcon();
 		},

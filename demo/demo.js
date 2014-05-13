@@ -203,6 +203,137 @@ jQuery(document).ready(function($) {
 		e.stopPropagation();
 	});
 
+	// Example 7
+	$('#e7_element').fontIconPicker({
+		source: fnt_icons_categorized,
+		emptyIcon: false,
+		hasSearch: false
+	});
+
+	// Example 8
+	// Init the font icon picker
+	var e8_element = $('#e8_element').fontIconPicker({
+		theme: 'fip-bootstrap'
+	}),
+	fontello_json_icons = [];
+
+	// Add the event on the button
+	$('#e8_buttons button').on('click', function(e) {
+		e.preventDefault();
+		// Show processing message
+		$(this).prop('disabled', true).html('<i class="icon-cog demo-animate-spin"></i> Please wait...');
+		// Get the JSON file
+		$.ajax({
+			url: 'fontello-7275ca86/config.json',
+			type: 'GET',
+			dataType: 'json'
+		})
+		.done(function(response) {
+			// Normalize the fonts
+			$.each(response.glyphs, function(i, v) {
+				fontello_json_icons.push( response.css_prefix_text + v.css );
+			});
+
+			setTimeout(function() {
+				// Set new fonts
+				e8_element.setIcons(fontello_json_icons);
+
+				// Show success message and disable
+				$('#e8_buttons button').removeClass('btn-primary').addClass('btn-success').text('Successfully loaded icons').prop('disabled', true);
+			}, 1000);
+		})
+		.fail(function() {
+			// Show error message and enable
+			$('#e8_buttons button').removeClass('btn-primary').addClass('btn-danger').text('Error: Try Again?').prop('disabled', false);
+		});
+		e.stopPropagation();
+	});
+
+	// Example 8
+	// Init the font icon picker
+	var e9_element = $('#e9_element').fontIconPicker({
+		theme: 'fip-bootstrap'
+	}),
+	icomoon_json_icons = [],
+	icomoon_json_search = [];
+
+	// Add the event on the button
+	$('#e9_buttons button').on('click', function(e) {
+		e.preventDefault();
+		// Show processing message
+		$(this).prop('disabled', true).html('<i class="icon-cog demo-animate-spin"></i> Please wait...');
+		// Get the JSON file
+		$.ajax({
+			url: 'icomoon/selection.json',
+			type: 'GET',
+			dataType: 'json'
+		})
+		.done(function(response) {
+			// Get the class prefix
+			var classPrefix = response.preferences.fontPref.prefix;
+
+			$.each(response.icons, function(i, v) {
+				// Set the source
+				icomoon_json_icons.push( classPrefix + v.properties.name );
+
+				// Create and set the search source
+				if ( v.icon && v.icon.tags && v.icon.tags.length ) {
+					icomoon_json_search.push( v.properties.name + ' ' + v.icon.tags.join(' ') );
+				} else {
+					icomoon_json_search.push( v.properties.name );
+				}
+			});
+
+			setTimeout(function() {
+				// Set new fonts
+				e9_element.setIcons(icomoon_json_icons, icomoon_json_search);
+
+				// Show success message and disable
+				$('#e9_buttons button').removeClass('btn-primary').addClass('btn-success').text('Successfully loaded icons').prop('disabled', true);
+			}, 1000);
+		})
+		.fail(function() {
+			// Show error message and enable
+			$('#e9_buttons button').removeClass('btn-primary').addClass('btn-danger').text('Error: Try Again?').prop('disabled', false);
+		});
+		e.stopPropagation();
+	});
+
+	// Example 10
+	$('#e10_element_1').fontIconPicker({
+		theme: 'fip-darkgrey',
+		source: fnt_icons_categorized
+	}).on('change', function() {
+		var nextSpan = $(this).next('span'),
+		iconToChange = nextSpan.find('.selected_icon'),
+		selectedIcon = $(this).val();
+		if ( selectedIcon == '' ) {
+			iconToChange.html('<i class="icon-block"></i>');
+			iconToChange.removeClass('text-primary').addClass('text-danger');
+		} else {
+			iconToChange.html('<i class="' + selectedIcon + '"></i>');
+			iconToChange.addClass('text-primary').removeClass('text-danger');
+		}
+	})
+	$('#e10_element_2').fontIconPicker({
+		theme: 'fip-bootstrap',
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		useAttribute: true,
+		attributeName: 'data-icomoon'
+	}).on('change', function() {
+		var nextSpan = $(this).next('span'),
+		iconToChange = nextSpan.find('.selected_icon'),
+		selectedIcon = $(this).val();
+		if ( selectedIcon == '' ) {
+			iconToChange.html('<i class="icon-block"></i>');
+			iconToChange.removeClass('text-primary').addClass('text-danger');
+		} else {
+			iconToChange.html('<i data-icomoon="&#x' + parseInt(selectedIcon, 10).toString(16) + ';"></i>');
+			iconToChange.addClass('text-primary').removeClass('text-danger');
+		}
+	});
+
 	/**
 	 * Refresh iconPicker on DOM change
 	 * Example 11
@@ -287,6 +418,30 @@ jQuery(document).ready(function($) {
 
 		// Show the change button
 		$('#e11_element_helper_change').fadeIn('fast');
+	});
+
+	// Example 12
+	$('#e12_picker_1').fontIconPicker({
+		source: fnt_icons_categorized,
+		theme: 'fip-bootstrap'
+	});
+	$('#e12_picker_2').fontIconPicker({
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		theme: 'fip-bootstrap'
+	});
+	$('#e12_form').bootstrapValidator({
+		excluded: [':disabled', ':hidden'],
+		feedbackIcons: {
+			valid: 'glyphicon glyphicon-ok',
+			invalid: 'glyphicon glyphicon-remove',
+			validating: 'glyphicon glyphicon-refresh'
+		},
+		submitHandler: function(validator, form, submitButton) {
+			alert('Validated');
+		}
 	});
 
 	// No hexadecimal

@@ -42,6 +42,9 @@ section h2 .icon-up-open:hover {
 .example-code {
 	margin-top: 20px;
 }
+.selected_icon {
+	font-size: 16px;
+}
 
 #options table th:last-child,
 #options table td:last-child {
@@ -104,4 +107,13 @@ body .syntaxhighlighter table div {
 }
 .syntaxhighlighter {
 	max-height: 200px;
+}
+
+/* Little animation */
+.demo-animate-spin {
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block;
 }

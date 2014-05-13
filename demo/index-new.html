@@ -6,6 +6,7 @@
 	<!-- Demo Style -->
 	<link rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="lib/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" type="text/css" href="lib/css/bootstrapValidator.min.css" />
 	<link rel="stylesheet" type="text/css" href="style.new.css" />
 	<link rel="stylesheet" type="text/css" href="lib/css/shCore.css" />
 	<link rel="stylesheet" type="text/css" href="lib/css/shCoreDefault.css" />
@@ -15,6 +16,7 @@
 
 	<!-- Demo Scripts -->
 	<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/js/bootstrapValidator.min.js"></script>
 	<script type="text/javascript" src="lib/js/shCore.js"></script>
 	<script type="text/javascript" src="lib/js/brush/shBrushCss.js"></script>
 	<script type="text/javascript" src="lib/js/brush/shBrushJScript.js"></script>
@@ -2210,6 +2212,9 @@
 						<li><a href="#e11" data-toggle="tab">
 							<span class="badge pull-right">pro</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Reinitialize with DOM modifications
 						</a></li>
+						<li><a href="#e12" data-toggle="tab">
+							<span class="badge pull-right">pro</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Form Validation with validator engines
+						</a></li>
 					</ul>
 				</div>
 				<div class="col-md-7 col-md-pull-5">
@@ -2853,7 +2858,10 @@
 
 						<!-- Example 7 -->
 						<article id="e7" class="tab-pane">
-							<p></p>
+							<p>In this example we're going to disable search and the ability to leave fontIconPicker empty.</p>
+							<div class="live-preview">
+								<input type="text" id="e7_element" name="e7_element" />
+							</div>
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e7_html" data-toggle="tab">HTML</a></li>
@@ -2868,6 +2876,13 @@
 
 						<!-- Example 8 -->
 						<article id="e8" class="tab-pane">
+							<p>Without having to manually populate fonts you can load them from a json file. Following an example using Fontello config.json file. fontIconPicker will be first instantiated with a loading icon, when ajax does its thing icons will magically appears! If something goes wrong, before asking for help, remember <strong>CORS</strong>!!</p>
+							<div class="live-preview">
+								<input type="text" id="e8_element" name="e8_element" />
+								<span id="e8_buttons">
+									<button autocomplete="off" type="button" class="btn btn-primary">Load from Fontello config.json</button>
+								</span>
+							</div>
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e8_html" data-toggle="tab">HTML</a></li>
@@ -2882,6 +2897,13 @@
 
 						<!-- Example 9 -->
 						<article id="e9" class="tab-pane">
+							<p>Similar to before you can also load fonts from icomoon <code>selection.json</code> file. The examples are very similar with just the difference being the data format of the json file. We will also be joining the tags of the icons to create a different search set.</p>
+							<div class="live-preview">
+								<input type="text" id="e9_element" name="e9_element" />
+								<span id="e9_buttons">
+									<button autocomplete="off" type="button" class="btn btn-primary">Load from Icomoon selection.json</button>
+								</span>
+							</div>
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e9_html" data-toggle="tab">HTML</a></li>
@@ -2896,6 +2918,11 @@
 
 						<!-- Example 10 -->
 						<article id="e10" class="tab-pane">
+							<p><code>CHANGE</code> event is triggered on the element on icon change so you'll be able to trigger custom action each time an icon get selected.</p>
+							<input type="text" class="trigger_change" id="e10_element_1" name="e10_element_1" />
+							<span>Selected Icon: <span class="selected_icon text-danger"><i class="icon-block"></i></span></span>
+							<input type="text" class="trigger_change" id="e10_element_2" name="e10_element_2" />
+							<span>Selected Icon: <span class="selected_icon text-danger"><i class="icon-block"></i></span></span>
 							<div class="example-code">
 								<ul class="nav nav-tabs">
 									<li class="active"><a href="#e10_html" data-toggle="tab">HTML</a></li>
@@ -3103,6 +3130,50 @@ $(&#039;#e11_element_helper_restore&#039;).on(&#039;click&#039;, function() {
 });
 										</pre>
 									</div>
+								</div>
+							</div>
+						</article>
+
+						<!-- Example 12 -->
+						<article id="e12" class="tab-pane">
+							<p>fontIconPicker works with most (if not all) form validators. fontIconPicker does not remove or hide the original element, rather puts it behind the icon picker. So validation engines will not have any difficulty finding the original element or putting tooltips near it. The demo below shows form validation with </p>
+							<form action="" method="POST" role="form" class="form-horizontal" id="e12_form">
+								<legend>Sample Form</legend>
+
+								<div class="form-group">
+									<label class="col-md-4" for="e12_f_name">Full Name</label>
+									<div class="col-md-4">
+										<input data-bv-notempty="true" data-bv-notempty-message="You must enter a first name" type="text" class="form-control" id="e12_f_name" name="e12_f_name" placeholder="First Name" />
+									</div>
+									<div class="col-md-4">
+										<input data-bv-notempty="true" data-bv-notempty-message="You must enter a last name" type="text" class="form-control" id="e12_l_name" name="e12_l_name" placeholder="Last Name" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="e12_picker_1" class="col-md-4">Pick a Fontello Font</label>
+									<div class="col-md-8">
+										<input data-bv-notempty="true" data-bv-notempty-message="You must pick a font" type="text" class="form-control" id="e12_picker_1" name="e12_picker_1" placeholder="Fontello" />
+									</div>
+								</div>
+
+								<div class="form-group">
+									<label for="e12_picker_2" class="col-md-4">Pick an IcoMoon Font</label>
+									<div class="col-md-8">
+										<input data-bv-notempty="true" data-bv-notempty-message="You must pick a font" type="text" class="form-control" id="e12_picker_2" name="e12_picker_2" placeholder="IcoMoon" />
+									</div>
+								</div>
+
+								<button type="submit" class="btn btn-primary">Validate</button>
+							</form>
+							<div class="example-code">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#e12_html" data-toggle="tab">HTML</a></li>
+									<li><a href="#e12_js" data-toggle="tab">JS</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="e12_html"></div>
+									<div class="tab-pane" id="e12js"></div>
 								</div>
 							</div>
 						</article>
