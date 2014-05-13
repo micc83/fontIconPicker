@@ -122,26 +122,14 @@ body .syntaxhighlighter table div {
 }
 
 /* Make IcoMoon render a little better */
-[class^="icomoon-"]:before,
-[class*=" icomoon-"]:before,
-[data-icomoon]:before {
-	display: inline-block;
-	margin: 0 0.2em;
-	line-height: 1;
-	font-weight: normal;
-	text-decoration: none;
-}
-
 h2 [class^="icomoon-"]:before,
 h2 [class*=" icomoon-"]:before,
 h2 [data-icomoon]:before {
 	font-size: 32px;
-	vertical-align: top;
 }
 
 h3 [class^="icomoon-"]:before,
 h3 [class*=" icomoon-"]:before,
 h3 [data-icomoon]:before {
 	font-size: 24px;
-	vertical-align: top;
 }
