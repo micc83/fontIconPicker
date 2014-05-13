@@ -47,7 +47,7 @@
 			useAttribute      : false,                   // Whether to use attribute for printing icons
 			attributeName     : 'data-icon',             // HTML Attribute name
 			convertToHex      : true,                    // Whether or not to convert to hexadecimal for attribute value. If true then please pass decimal integer value to the source (or as value="" attribute of the select field)
-			allCategoryText   : 'From all category',     // The text for the select all category option
+			allCategoryText   : 'From all categories',     // The text for the select all category option
 			unCategorizedText : 'Uncategorized'          // The text for the select uncategorized option
 		};
 

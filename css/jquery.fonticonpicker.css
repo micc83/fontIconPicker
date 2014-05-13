@@ -27,6 +27,7 @@
 .icons-selector {
 	display: inline-block;
 	vertical-align: middle;
+	text-align: left;
 }
 
 /* Icon selector */
@@ -90,6 +91,7 @@
 	box-sizing: border-box;
 	margin-bottom: 5px;
 	font-size: 12px;
+	display: block; /* Fixes the positioning inside hidden/floated/text-aligned elements, where it would leave a margin */
 }
 .icons-selector .selector-category select {
 	height: 40px;
@@ -106,8 +108,13 @@
 .icons-selector input:-ms-input-placeholder { text-transform: uppercase; }
 
 /* Search and cancel icon */
+.icons-selector .selector-search {
+	position: relative;
+}
 .icons-selector .selector-search i {
-	margin-left: -30px;
+	position: absolute;
+	right: 10px;
+	top: 7px;
 }
 
 /* Icon Container inside Popup */

@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
 	$('.bstooltip').tooltip();
 
 	/**
-	 * Init the fontIconPickers
+	 * Init the fontIconPickers on the jumbotron
 	 */
 	$('#inverted-theme').fontIconPicker({
 		useAttribute: true,
@@ -38,6 +38,10 @@ jQuery(document).ready(function($) {
 		attributeName: 'data-icomoon',
 		emptyIconValue: 'none'
 	});
+
+	/**
+	 * fip examples
+	 */
 
 	// Icomoon icon index
 	// If you are wondering who was the mad person to index such a large thing
@@ -115,6 +119,89 @@ jQuery(document).ready(function($) {
 
 	var icm_icons_3 = [57542, 57544, 57550, 57551, 57552, 57553, 57554, 57555, 57556, 57557];
 	var icm_icon_search_3 = ['Eye', 'Eye 2', 'Star', 'Star 2', 'Star 3', 'Heart', 'Heart 2', 'Heart broken', 'Thumbs up', 'Thumbs up 2'];
+
+	var fnt_icons = ["icon-music", "icon-search", "icon-mail", "icon-mail-alt", "icon-heart", "icon-heart-empty", "icon-star", "icon-star-empty", "icon-star-half", "icon-star-half-alt", "icon-user", "icon-users", "icon-male", "icon-female", "icon-video", "icon-videocam", "icon-picture", "icon-camera", "icon-camera-alt", "icon-th-large", "icon-th", "icon-th-list", "icon-ok", "icon-ok-circled", "icon-ok-circled2", "icon-ok-squared", "icon-cancel", "icon-cancel-circled", "icon-cancel-circled2", "icon-plus", "icon-plus-circled", "icon-plus-squared", "icon-plus-squared-small", "icon-minus", "icon-minus-circled", "icon-minus-squared", "icon-minus-squared-alt", "icon-minus-squared-small", "icon-help", "icon-help-circled", "icon-info-circled", "icon-info", "icon-home", "icon-link", "icon-unlink", "icon-link-ext", "icon-link-ext-alt", "icon-attach", "icon-lock", "icon-lock-open", "icon-lock-open-alt", "icon-pin", "icon-eye", "icon-eye-off", "icon-tag", "icon-tags", "icon-bookmark", "icon-bookmark-empty", "icon-flag", "icon-flag-empty", "icon-flag-checkered", "icon-thumbs-up", "icon-thumbs-down", "icon-thumbs-up-alt", "icon-thumbs-down-alt", "icon-download", "icon-upload", "icon-download-cloud", "icon-upload-cloud", "icon-reply", "icon-reply-all", "icon-forward", "icon-quote-left", "icon-quote-right", "icon-code", "icon-export", "icon-export-alt", "icon-pencil", "icon-pencil-squared", "icon-edit", "icon-print", "icon-retweet", "icon-keyboard", "icon-gamepad", "icon-comment", "icon-chat", "icon-comment-empty", "icon-chat-empty", "icon-bell", "icon-bell-alt"];
+
+	var fnt_icons_categorized = {
+		'Web Application Icons' : ["icon-mail", "icon-mail-alt", "icon-th-large", "icon-th", "icon-th-list", "icon-help-circled", "icon-info-circled", "icon-info", "icon-home", "icon-link", "icon-unlink", "icon-link-ext", "icon-link-ext-alt", "icon-attach", "icon-tag", "icon-tags", "icon-bookmark", "icon-bookmark-empty", "icon-download", "icon-upload", "icon-download-cloud", "icon-upload-cloud", "icon-reply", "icon-reply-all"],
+		'Form Control Icons' : ["icon-search", "icon-ok", "icon-ok-circled", "icon-ok-circled2", "icon-ok-squared", "icon-cancel", "icon-cancel-circled", "icon-cancel-circled2", "icon-plus", "icon-plus-circled", "icon-plus-squared", "icon-plus-squared-small", "icon-minus", "icon-minus-circled", "icon-minus-squared", "icon-minus-squared-alt", "icon-minus-squared-small", "icon-quote-right", "icon-code", "icon-comment-empty", "icon-chat-empty"],
+		'Media Icons' : ["icon-video", "icon-videocam", "icon-picture", "icon-camera", "icon-camera-alt", "icon-export", "icon-export-alt", "icon-pencil", "icon-pencil-squared", "icon-edit", "icon-print"],
+		'Popular Icons' : ["icon-heart", "icon-heart-empty", "icon-star", "icon-star-empty", "icon-star-half", "icon-star-half-alt", "icon-user", "icon-users", "icon-male", "icon-female", "icon-forward", "icon-quote-left", "icon-retweet", "icon-keyboard", "icon-gamepad", "icon-comment", "icon-chat"],
+		'Others' : ["icon-music", "icon-help", "icon-lock", "icon-lock-open", "icon-lock-open-alt", "icon-pin", "icon-eye", "icon-eye-off", "icon-flag", "icon-flag-empty", "icon-flag-checkered", "icon-thumbs-up", "icon-thumbs-down", "icon-thumbs-up-alt", "icon-thumbs-down-alt", "icon-bell", "icon-bell-alt"]
+	};
+
+	var fnt_icons_1 = ["icon-mail", "icon-mail-alt", "icon-th-large", "icon-th", "icon-th-list", "icon-help-circled", "icon-info-circled", "icon-info", "icon-home", "icon-link", "icon-unlink", "icon-link-ext", "icon-link-ext-alt", "icon-attach", "icon-tag", "icon-tags", "icon-bookmark", "icon-bookmark-empty", "icon-download", "icon-upload", "icon-download-cloud", "icon-upload-cloud", "icon-reply", "icon-reply-all"];
+	var fnt_icons_2 = ["icon-video", "icon-videocam", "icon-picture", "icon-camera", "icon-camera-alt", "icon-export", "icon-export-alt", "icon-pencil", "icon-pencil-squared", "icon-edit", "icon-print"];
+
+	/**
+	 * Example codes
+	 */
+	// Example 1
+	$('#e1_element').fontIconPicker();
+
+	// Example 2
+	$('#e2_element').fontIconPicker({
+		useAttribute: true,
+		theme: 'fip-bootstrap',
+		attributeName: 'data-icomoon'
+	});
+
+	// Example 3
+	$('#e3_element').fontIconPicker({
+		source: fnt_icons,
+		theme: 'fip-darkgrey'
+	})
+
+	// Example 4
+	$('#e4_element').fontIconPicker({
+		source: fnt_icons_categorized,
+		theme: 'fip-bootstrap'
+	});
+
+	// Example 5
+	$('#e5_element').fontIconPicker({
+		source: icm_icons_2,
+		searchSource: icm_icon_search_2,
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		theme: 'fip-bootstrap'
+	});
+
+	// Example 6
+	// Init the picker
+	var e6_element = $('#e6_element').fontIconPicker({
+		source: fnt_icons,
+		theme: 'fip-darkgrey'
+	});
+	// Bind the click event on the buttons
+	$('#e6_buttons').on('click', 'button', function(e) {
+		e.preventDefault();
+		// First change classes of every buttons
+		$('#e6_buttons').find('button').removeClass('btn-primary').addClass('btn-default');
+
+		// Change the icon according to which button was clicked
+		var _self = $(this);
+		// If all
+		if ( _self.hasClass('set_all') ) {
+			e6_element.setIcons(fnt_icons);
+		// If categorized
+		} else if ( _self.hasClass('set_cat') ) {
+			e6_element.setIcons(fnt_icons_categorized);
+		// If set one
+		} else if ( _self.hasClass('set_1') ) {
+			e6_element.setIcons(fnt_icons_1);
+		// If set two
+		} else {
+			e6_element.setIcons(fnt_icons_2);
+		}
+
+		// Change the appearance
+		_self.removeClass('btn-default').addClass('btn-primary');
+
+		// Stop propagation to prevent event bubbling
+		// We could've also done return false, but it is deprecated now
+		e.stopPropagation();
+	});
 
 	/**
 	 * Refresh iconPicker on DOM change

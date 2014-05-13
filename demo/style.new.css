@@ -35,6 +35,10 @@ section h2 .icon-up-open:hover {
 	padding-top: 0;
 }
 
+.live-preview {
+	margin: 0 0 20px 0;
+	text-align: center;
+}
 .example-code {
 	margin-top: 20px;
 }
