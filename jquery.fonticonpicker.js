@@ -184,7 +184,7 @@
 				    return v > 4 ? v : !v;
 				}());
 				var el = document.createElement('div');
-				this.triggerEvent = (ieVersion === 9 || !('oninput' in el)) ? 'keyup' : 'input';
+				this.triggerEvent = (ieVersion === 9 || !('oninput' in el)) ? ['keyup'] : ['input', 'keyup']; // Let's keep the keyup event for scripts that listens to it
 			}
 
 			// If current element is SELECT populate settings.source
@@ -619,8 +619,8 @@
 				this.iconPicker.find('.selector-footer').hide();
 			}
 
-			// Set the text for page number index
-			this.iconPicker.find('.selector-pages').text(this.currentPage + '/' + this.totalPage);
+			// Set the text for page number index and total icons
+			this.iconPicker.find('.selector-pages').html(this.currentPage + '/' + this.totalPage + ' <em>(' + this.iconsCount + ')</em>');
 
 			// Set the offset for slice
 			offset = (this.currentPage - 1) * this.settings.iconsPerPage;
@@ -716,7 +716,10 @@
 			// Set the value of the element and trigger change event
 			this.element.val((theIcon === '' ? this.settings.emptyIconValue : theIcon )).trigger('change');
 			if ( this.triggerEvent !== null ) {
-				this.element.trigger(this.triggerEvent);
+				// Trigger other events
+				for ( var eventKey in this.triggerEvent ) {
+					this.element.trigger(this.triggerEvent[eventKey]);
+				}
 			}
 			this.currentIcon = theIcon;
 			this.setHighlightedIcon();

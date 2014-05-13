@@ -6,38 +6,74 @@ jQuery(document).ready(function($) {
 	 * These are DEMO related codes
 	 */
 	SyntaxHighlighter.all();
-	$('body, html').scrollspy({
-		target: '.navbar-main',
-		offset: $('.navbar-main').outerHeight(true) * 2
-	});
 	$('.bstooltip').tooltip();
 
 	/**
-	 * Init the fontIconPickers on the jumbotron
+	 * Custom attachment to scrollspy body onto navbar
+	 * {@link http://jsfiddle.net/mekwall/up4nu/}
+	 * A little bit modified though
 	 */
-	$('#inverted-theme').fontIconPicker({
-		useAttribute: true,
-		theme: 'fip-inverted',
-		attributeName: 'data-icomoon',
-		emptyIconValue: 'none'
+	// Cache selectors
+	var lastId,
+	topMenu = $("#header .navbar-main"),
+	topMenuHeight = topMenu.outerHeight()+15,
+	// All list items
+	menuItems = topMenu.find("a"),
+	// Anchors corresponding to menu items
+	scrollItems = menuItems.map(function() {
+		var item = $($(this).attr("href"));
+		if (item.length) {
+			return item;
+		}
 	});
-	$('#bootstrap-theme').fontIconPicker({
-		useAttribute: true,
-		theme: 'fip-bootstrap',
-		attributeName: 'data-icomoon',
-		emptyIconValue: 'none'
+
+	console.log(topMenuHeight);
+
+	// Bind click handler to menu items
+	// so we can get a fancy scroll animation
+	menuItems.click(function(e){
+		var href = $(this).attr("href"),
+		offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight+1;
+		$('html, body').stop().animate({
+			scrollTop: offsetTop
+		}, 300);
+		e.preventDefault();
 	});
-	$('#dark-grey-theme').fontIconPicker({
-		useAttribute: true,
-		theme: 'fip-darkgrey',
-		attributeName: 'data-icomoon',
-		emptyIconValue: 'none'
-	});
-	$('#grey-theme').fontIconPicker({
-		useAttribute: true,
-		attributeName: 'data-icomoon',
-		emptyIconValue: 'none'
-	});
+
+	var fipScrollSpy = function() {
+		// Get container scroll position
+		var fromTop = $(this).scrollTop()+topMenuHeight;
+
+		// Get id of current scroll item
+		var maxScrollTop = 0, cur = null;
+		scrollItems.map(function(){
+			var scrollPosition = $(this).offset().top;
+			if ( scrollPosition < fromTop ) {
+				if ( scrollPosition > maxScrollTop ) {
+					maxScrollTop = scrollPosition;
+					cur = this;
+				}
+			}
+			return this;
+		});
+		console.log(cur);
+
+		var id = cur && cur.length ? cur[0].id : "";
+		console.log(id);
+
+		if (lastId !== id) {
+			lastId = id;
+			// Set/remove active class
+			menuItems
+			.parent().removeClass("active")
+			.end().filter("[href=#"+id+"]").parent().addClass("active");
+		}
+	};
+
+	// Bind to scroll + resize
+	$(window).scroll(fipScrollSpy);
+	$(window).on('resize', fipScrollSpy);
+	fipScrollSpy();
 
 	/**
 	 * fip examples
@@ -134,6 +170,41 @@ jQuery(document).ready(function($) {
 	var fnt_icons_2 = ["icon-video", "icon-videocam", "icon-picture", "icon-camera", "icon-camera-alt", "icon-export", "icon-export-alt", "icon-pencil", "icon-pencil-squared", "icon-edit", "icon-print"];
 
 	/**
+	 * Init the fontIconPickers on the jumbotron
+	 */
+	$('#inverted-theme').fontIconPicker({
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		useAttribute: true,
+		theme: 'fip-inverted',
+		attributeName: 'data-icomoon',
+		emptyIconValue: 'none'
+	});
+	$('#bootstrap-theme').fontIconPicker({
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		useAttribute: true,
+		theme: 'fip-bootstrap',
+		attributeName: 'data-icomoon',
+		emptyIconValue: 'none'
+	});
+	$('#dark-grey-theme').fontIconPicker({
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		useAttribute: true,
+		theme: 'fip-darkgrey',
+		attributeName: 'data-icomoon',
+		emptyIconValue: 'none'
+	});
+	$('#grey-theme').fontIconPicker({
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		emptyIconValue: 'none'
+	});
+
+	/**
 	 * Example codes
 	 */
 	// Example 1
@@ -150,7 +221,7 @@ jQuery(document).ready(function($) {
 	$('#e3_element').fontIconPicker({
 		source: fnt_icons,
 		theme: 'fip-darkgrey'
-	})
+	});
 
 	// Example 4
 	$('#e4_element').fontIconPicker({
@@ -314,7 +385,7 @@ jQuery(document).ready(function($) {
 			iconToChange.html('<i class="' + selectedIcon + '"></i>');
 			iconToChange.addClass('text-primary').removeClass('text-danger');
 		}
-	})
+	});
 	$('#e10_element_2').fontIconPicker({
 		theme: 'fip-bootstrap',
 		source: icm_icons,
@@ -432,8 +503,10 @@ jQuery(document).ready(function($) {
 		attributeName: 'data-icomoon',
 		theme: 'fip-bootstrap'
 	});
+	// bootstrapValidator
+	// @link: http://bootstrapvalidator.com/
+	// Works out of the box, no need to change any configurations
 	$('#e12_form').bootstrapValidator({
-		excluded: [':disabled', ':hidden'],
 		feedbackIcons: {
 			valid: 'glyphicon glyphicon-ok',
 			invalid: 'glyphicon glyphicon-remove',

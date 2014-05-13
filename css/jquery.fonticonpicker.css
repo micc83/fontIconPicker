@@ -151,6 +151,7 @@
 .icons-selector .selector-footer {
 	line-height: 12px;
 	padding: 5px 5px 0 5px;
+	text-align: center;
 }
 
 /* Pagination and footer icons */
@@ -164,11 +165,17 @@
 /* Pagination text */
 .icons-selector .selector-pages {
 	font-size: 11px;
+	float: left;
 }
 /* Pagination arrows icons */
 .icons-selector .selector-arrows i {
 	cursor: pointer;
 }
+/* Total icons */
+.icons-selector .selector-footer em {
+	font-style: italic;
+}
+
 
 /* No icons found */
 .icons-selector .icons-picker-error i:before {
