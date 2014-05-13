@@ -26,6 +26,7 @@
 /* Display */
 .icons-selector {
 	display: inline-block;
+	vertical-align: middle;
 }
 
 /* Icon selector */
@@ -46,7 +47,7 @@
 
 /* Selector open button icon */
 .icons-selector .selector-button i {
-	line-height: 40px;
+	line-height: 38px;
 	text-align: center;
 }
 
@@ -61,7 +62,7 @@
 
 /* Selected icon */
 .icons-selector .selected-icon i {
-	line-height: 42px;
+	line-height: 40px;
 	font-size: 18px;
 	cursor: default;
 }

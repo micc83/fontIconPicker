@@ -1,6 +1,10 @@
 /**
  * Grey Theme file for fontIconPicker
  */
+/* Main Container */
+.fip-grey.icons-selector {
+	font-size: 16px;
+}
 /* Icon selector */
 .fip-grey.icons-selector .selector {
 	border: 1px solid #EDEDED;

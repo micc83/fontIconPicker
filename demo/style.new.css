@@ -3,6 +3,7 @@
  */
 body {
 	color: #666;
+	font-size: 14px;
 }
 #about .jumbotron {
 	margin-top: 50px;
@@ -11,7 +12,9 @@ body {
 section h2 {
 	clear: both;
 }
-section h2:after {
+section:after,
+section h2:after,
+article:after {
 	content: "";
 	display: block;
 	clear: both;
@@ -25,9 +28,47 @@ section h2 .icon-up-open:hover {
 	text-decoration: none;
 }
 
+.tab-pane {
+	padding-top: 20px;
+}
+.vertical .tab-pane {
+	padding-top: 0;
+}
+
+.example-code {
+	margin-top: 20px;
+}
+
+#options table th:last-child,
+#options table td:last-child {
+	max-width: 400px;
+}
+#options table th:nth-child(3),
+#options table td:nth-child(3) {
+	min-width: 300px;
+}
+#options table th:nth-child(2),
+#options table td:nth-child(2),
+#options table th:nth-child(4),
+#options table td:nth-child(4) {
+	text-align: center;
+}
+#options table code {
+	white-space: normal;
+}
+
+#plugin-apis table th:last-child,
+#plugin-apis table td:last-child {
+	max-width: 400px;
+}
+
 #site-footer .well {
 	margin: 50px 0 0;
 	border-radius: 0;
+}
+#site-footer .browsers i {
+	font-size: 32px;
+	margin: 0 10px;
 }
 
 /** Make SyntaxHighlighter play nice with bootstrap */
@@ -45,6 +86,7 @@ section h2 .icon-up-open:hover {
 .syntaxhighlighter .container:after {
 	display: none;
 }
+#options .syntaxhighlighter code,
 .syntaxhighlighter code {
 	white-space: nowrap;
 }

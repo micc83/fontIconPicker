@@ -24,12 +24,14 @@
 	<!-- icon picker -->
 	<script type="text/javascript" src="../jquery.fonticonpicker.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/jquery.fonticonpicker.css" />
-	<link rel="stylesheet" type="text/css" href="../themes/grey-theme/jquery.fonticonpicker.grey.min.css" />
+	<link rel="stylesheet" type="text/css" href="../themes/grey-theme/jquery.fonticonpicker.grey.css" />
 	<link rel="stylesheet" type="text/css" href="../themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css" />
+	<link rel="stylesheet" type="text/css" href="../themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../themes/inverted-theme/jquery.fonticonpicker.inverted.css" />
 
 	<!-- Font -->
 	<link rel="stylesheet" type="text/css" href="fontello-7275ca86/css/fontello.css" />
-	<link rel="stylesheet" type="text/css" href="icomoon/icomoon.css" />
+	<link rel="stylesheet" type="text/css" href="icomoon/style.css" />
 
 	<!-- Init script for this DEMO -->
 	<script type="text/javascript" src="demo.js"></script>
@@ -57,7 +59,11 @@
 						<li><a href="#setup">Setup</a></li>
 						<li><a href="#examples">Examples</a></li>
 						<li><a href="#options">Plugin Options</a></li>
-						<li><a href="#api">Plugin APIs</a></li>
+						<li><a href="#plugin-apis">Plugin APIs</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#about">About</a></li>
+						<li><a href="#site-footer">Credits</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div>
@@ -70,8 +76,1984 @@
 			<div class="container">
 				<h1>jQuery fontIconPicker <small>v2.0.0</small></h1>
 				<p>jQuery fontIconPicker is a small (1.58kb gzipped) jQuery plugin which allows you to include a simple icon picker with search and pagination inside your administration forms. The list of icons can be loaded manually using a <code>SELECT</code> field, loading an array of icons or directly from a Fontello config.json file.</p>
-				<p class="text-center">
-					<a class="btn btn-primary btn-lg" href="https://github.com/micc83/fontIconPicker"><i class="icon-github"></i> Download</a>
+				<p class="text-left">
+					<a class="btn btn-primary btn-lg pull-right" href="https://github.com/micc83/fontIconPicker"><i class="icon-github"></i> Download</a>
+					<select name="grey-theme" id="grey-theme">
+						<optgroup label="Web Applications">
+							<option value="57436">Box add</option>
+							<option value="57437">Box remove</option>
+							<option value="57438">Download</option>
+							<option value="57439">Upload</option>
+							<option value="57524">List</option>
+							<option value="57525">List 2</option>
+							<option value="57526">Numbered list</option>
+							<option value="57527">Menu</option>
+							<option value="57528">Menu 2</option>
+							<option value="57531">Cloud download</option>
+							<option value="57532">Cloud upload</option>
+							<option value="57533">Download 2</option>
+							<option value="57534">Upload 2</option>
+							<option value="57535">Download 3</option>
+							<option value="57536">Upload 3</option>
+							<option value="57537">Globe</option>
+							<option value="57541">Attachment</option>
+							<option value="57545">Bookmark</option>
+							<option value="57691">Embed</option>
+							<option value="57692">Code</option>
+						</optgroup>
+						<optgroup label="Business Icons">
+							<option value="57347">Office</option>
+							<option value="57348">Newspaper</option>
+							<option value="57375">Book</option>
+							<option value="57376">Books</option>
+							<option value="57377">Library</option>
+							<option value="57379">Profile</option>
+							<option value="57403">Support</option>
+							<option value="57406">Address book</option>
+							<option value="57432">Cabinet</option>
+							<option value="57433">Drawer</option>
+							<option value="57434">Drawer 2</option>
+							<option value="57435">Drawer 3</option>
+							<option value="57450">Bubble</option>
+							<option value="57453">Bubble 2</option>
+							<option value="57456">User</option>
+							<option value="57458">User 2</option>
+							<option value="57460">User 3</option>
+							<option value="57461">User 4</option>
+							<option value="57463">Busy</option>
+						</optgroup>
+						<optgroup label="eCommerce">
+							<option value="57392">Tag</option>
+							<option value="57397">Cart</option>
+							<option value="57398">Cart 2</option>
+							<option value="57399">Cart 3</option>
+							<option value="57402">Calculate</option>
+						</optgroup>
+						<optgroup label="Currency Icons">
+						</optgroup>
+						<optgroup label="Form Control Icons">
+							<option value="57383">Copy</option>
+							<option value="57384">Copy 2</option>
+							<option value="57385">Copy 3</option>
+							<option value="57386">Paste</option>
+							<option value="57387">Paste 2</option>
+							<option value="57388">Paste 3</option>
+							<option value="57484">Settings</option>
+							<option value="57594">Cancel circle</option>
+							<option value="57595">Checkmark circle</option>
+							<option value="57600">Spell check</option>
+							<option value="57603">Enter</option>
+							<option value="57604">Exit</option>
+							<option value="57659">Radio checked</option>
+							<option value="57660">Radio unchecked</option>
+							<option value="57693">Console</option>
+						</optgroup>
+						<optgroup label="User Action & Text Editor">
+							<option value="57442">Undo</option>
+							<option value="57443">Redo</option>
+							<option value="57444">Flip</option>
+							<option value="57445">Flip 2</option>
+							<option value="57446">Undo 2</option>
+							<option value="57447">Redo 2</option>
+							<option value="57472">Zoomin</option>
+							<option value="57473">Zoomout</option>
+							<option value="57474">Expand</option>
+							<option value="57475">Contract</option>
+							<option value="57476">Expand 2</option>
+							<option value="57477">Contract 2</option>
+							<option value="57539">Link</option>
+							<option value="57662">Scissors</option>
+							<option value="57668">Bold</option>
+							<option value="57669">Underline</option>
+							<option value="57670">Italic</option>
+							<option value="57671">Strikethrough</option>
+							<option value="57674">Table</option>
+							<option value="57675">Table 2</option>
+							<option value="57688">Indent increase</option>
+							<option value="57689">Indent decrease</option>
+						</optgroup>
+						<optgroup label="Charts and Codes">
+							<option value="57493">Pie</option>
+						</optgroup>
+						<optgroup label="Attentive">
+							<option value="57543">Eye blocked</option>
+							<option value="57588">Warning</option>
+							<option value="57590">Question</option>
+							<option value="57591">Info</option>
+							<option value="57592">Info 2</option>
+							<option value="57593">Blocked</option>
+							<option value="57596">Spam</option>
+						</optgroup>
+						<optgroup label="Multimedia Icons">
+							<option value="57356">Image</option>
+							<option value="57357">Image 2</option>
+							<option value="57362">Play</option>
+							<option value="57363">Film</option>
+							<option value="57448">Forward</option>
+							<option value="57485">Equalizer</option>
+							<option value="57547">Brightness medium</option>
+							<option value="57548">Brightness contrast</option>
+							<option value="57549">Contrast</option>
+							<option value="57605">Play 2</option>
+							<option value="57606">Pause</option>
+							<option value="57609">Forward 2</option>
+							<option value="57610">Play 3</option>
+							<option value="57611">Pause 2</option>
+							<option value="57614">Forward 3</option>
+							<option value="57617">Previous</option>
+							<option value="57618">Next</option>
+							<option value="57620">Volume high</option>
+							<option value="57621">Volume medium</option>
+							<option value="57622">Volume low</option>
+							<option value="57623">Volume mute</option>
+							<option value="57624">Volume mute 2</option>
+							<option value="57625">Volume increase</option>
+							<option value="57626">Volume decrease</option>
+						</optgroup>
+						<optgroup label="Location and Contact">
+							<option value="57344">Home</option>
+							<option value="57345">Home 2</option>
+							<option value="57346">Home 3</option>
+							<option value="57404">Phone</option>
+							<option value="57405">Phone hang up</option>
+							<option value="57408">Envelope</option>
+							<option value="57410">Location</option>
+							<option value="57411">Location 2</option>
+							<option value="57413">Map</option>
+							<option value="57414">Map 2</option>
+							<option value="57540">Flag</option>
+						</optgroup>
+						<optgroup label="Date and Time">
+							<option value="57415">History</option>
+							<option value="57416">Clock</option>
+							<option value="57417">Clock 2</option>
+							<option value="57421">Stopwatch</option>
+							<option value="57422">Calendar</option>
+							<option value="57423">Calendar 2</option>
+						</optgroup>
+						<optgroup label="Devices">
+							<option selected="selected" value="57359">Camera</option>
+							<option value="57361">Headphones</option>
+							<option value="57364">Camera 2</option>
+							<option value="57425">Keyboard</option>
+							<option value="57426">Screen</option>
+							<option value="57430">Tablet</option>
+						</optgroup>
+						<optgroup label="Tools">
+							<option value="57349">Pencil</option>
+							<option value="57350">Pencil 2</option>
+							<option value="57352">Pen</option>
+							<option value="57355">Paint format</option>
+							<option value="57365">Dice</option>
+							<option value="57478">Key</option>
+							<option value="57479">Key 2</option>
+							<option value="57480">Lock</option>
+							<option value="57481">Lock 2</option>
+							<option value="57482">Unlocked</option>
+							<option value="57483">Wrench</option>
+							<option value="57486">Cog</option>
+							<option value="57487">Cogs</option>
+							<option value="57488">Cog 2</option>
+							<option value="57663">Filter</option>
+							<option value="57664">Filter 2</option>
+						</optgroup>
+						<optgroup label="Social and Networking">
+							<option value="57694">Share</option>
+							<option value="57700">Googleplus</option>
+							<option value="57701">Googleplus 2</option>
+							<option value="57702">Googleplus 3</option>
+							<option value="57703">Googleplus 4</option>
+							<option value="57704">Google drive</option>
+							<option value="57705">Facebook</option>
+							<option value="57706">Facebook 2</option>
+							<option value="57707">Facebook 3</option>
+							<option value="57709">Twitter</option>
+							<option value="57710">Twitter 2</option>
+							<option value="57711">Twitter 3</option>
+							<option value="57717">Vimeo</option>
+							<option value="57718">Vimeo 2</option>
+							<option value="57719">Vimeo 3</option>
+							<option value="57736">Github</option>
+							<option value="57737">Github 2</option>
+							<option value="57738">Github 3</option>
+							<option value="57739">Github 4</option>
+							<option value="57740">Github 5</option>
+							<option value="57741">Wordpress</option>
+							<option value="57742">Wordpress 2</option>
+							<option value="57746">Tumblr</option>
+							<option value="57747">Tumblr 2</option>
+							<option value="57748">Yahoo</option>
+							<option value="57755">Soundcloud</option>
+							<option value="57756">Soundcloud 2</option>
+							<option value="57758">Reddit</option>
+							<option value="57759">Linkedin</option>
+							<option value="57760">Lastfm</option>
+							<option value="57761">Lastfm 2</option>
+							<option value="57763">Stumbleupon</option>
+							<option value="57764">Stumbleupon 2</option>
+							<option value="57765">Stackoverflow</option>
+							<option value="57766">Pinterest</option>
+							<option value="57767">Pinterest 2</option>
+							<option value="57776">Yelp</option>
+						</optgroup>
+						<optgroup label="Brands">
+							<option value="57743">Joomla</option>
+							<option value="57750">Apple</option>
+							<option value="57751">Finder</option>
+							<option value="57752">Android</option>
+							<option value="57753">Windows</option>
+							<option value="57754">Windows 8</option>
+							<option value="57757">Skype</option>
+							<option value="57773">Paypal</option>
+							<option value="57774">Paypal 2</option>
+							<option value="57775">Paypal 3</option>
+							<option value="57789">Chrome</option>
+							<option value="57790">Firefox</option>
+							<option value="57792">Opera</option>
+							<option value="57793">Safari</option>
+						</optgroup>
+						<optgroup label="Files & Documents">
+							<option value="57378">File</option>
+							<option value="57380">File 2</option>
+							<option value="57381">File 3</option>
+							<option value="57382">File 4</option>
+							<option value="57390">Folder</option>
+							<option value="57391">Folder open</option>
+							<option value="57778">File pdf</option>
+							<option value="57779">File openoffice</option>
+							<option value="57780">File word</option>
+							<option value="57781">File excel</option>
+							<option value="57782">File zip</option>
+							<option value="57783">File powerpoint</option>
+							<option value="57784">File xml</option>
+							<option value="57785">File css</option>
+							<option value="57786">Html 5</option>
+							<option value="57787">Html 52</option>
+						</optgroup>
+						<optgroup label="Like & Dislike Icons">
+							<option value="57542">Eye</option>
+							<option value="57544">Eye 2</option>
+							<option value="57550">Star</option>
+							<option value="57551">Star 2</option>
+							<option value="57552">Star 3</option>
+							<option value="57553">Heart</option>
+							<option value="57554">Heart 2</option>
+							<option value="57555">Heart broken</option>
+							<option value="57556">Thumbs up</option>
+							<option value="57557">Thumbs up 2</option>
+						</optgroup>
+						<optgroup label="Emoticons">
+							<option value="57558">Happy</option>
+							<option value="57559">Happy 2</option>
+							<option value="57560">Smiley</option>
+							<option value="57561">Smiley 2</option>
+							<option value="57562">Tongue</option>
+							<option value="57563">Tongue 2</option>
+							<option value="57564">Sad</option>
+							<option value="57565">Sad 2</option>
+							<option value="57566">Wink</option>
+							<option value="57567">Wink 2</option>
+							<option value="57568">Grin</option>
+							<option value="57569">Grin 2</option>
+							<option value="57570">Cool</option>
+							<option value="57571">Cool 2</option>
+							<option value="57572">Angry</option>
+							<option value="57573">Angry 2</option>
+							<option value="57574">Evil</option>
+							<option value="57575">Evil 2</option>
+							<option value="57576">Shocked</option>
+							<option value="57577">Shocked 2</option>
+							<option value="57578">Confused</option>
+							<option value="57579">Confused 2</option>
+							<option value="57580">Neutral</option>
+							<option value="57581">Neutral 2</option>
+							<option value="57582">Wondering</option>
+							<option value="57583">Wondering 2</option>
+						</optgroup>
+						<optgroup label="Directional Icons">
+							<option value="57584">Point up</option>
+							<option value="57585">Point right</option>
+							<option value="57586">Point down</option>
+							<option value="57587">Point left</option>
+							<option value="57631">Arrow up left</option>
+							<option value="57632">Arrow up</option>
+							<option value="57633">Arrow up right</option>
+							<option value="57634">Arrow right</option>
+							<option value="57635">Arrow down right</option>
+							<option value="57636">Arrow down</option>
+							<option value="57637">Arrow down left</option>
+							<option value="57638">Arrow left</option>
+							<option value="57639">Arrow up left 2</option>
+							<option value="57640">Arrow up 2</option>
+							<option value="57641">Arrow up right 2</option>
+							<option value="57642">Arrow right 2</option>
+							<option value="57643">Arrow down right 2</option>
+							<option value="57644">Arrow down 2</option>
+							<option value="57645">Arrow down left 2</option>
+							<option value="57646">Arrow left 2</option>
+							<option value="57647">Arrow up left 3</option>
+							<option value="57648">Arrow up 3</option>
+							<option value="57649">Arrow up right 3</option>
+							<option value="57650">Arrow right 3</option>
+							<option value="57651">Arrow down right 3</option>
+							<option value="57652">Arrow down 3</option>
+							<option value="57653">Arrow down left 3</option>
+							<option value="57654">Arrow left 3</option>
+						</optgroup>
+						<optgroup label="Other Icons">
+							<option value="57351">Quill</option>
+							<option value="57353">Blog</option>
+							<option value="57354">Droplet</option>
+							<option value="57358">Images</option>
+							<option value="57360">Music</option>
+							<option value="57366">Pacman</option>
+							<option value="57367">Spades</option>
+							<option value="57368">Clubs</option>
+							<option value="57369">Diamonds</option>
+							<option value="57370">Pawn</option>
+							<option value="57371">Bullhorn</option>
+							<option value="57372">Connection</option>
+							<option value="57373">Podcast</option>
+							<option value="57374">Feed</option>
+							<option value="57389">Stack</option>
+							<option value="57393">Tags</option>
+							<option value="57394">Barcode</option>
+							<option value="57395">Qrcode</option>
+							<option value="57396">Ticket</option>
+							<option value="57400">Coin</option>
+							<option value="57401">Credit</option>
+							<option value="57407">Notebook</option>
+							<option value="57409">Pushpin</option>
+							<option value="57412">Compass</option>
+							<option value="57418">Alarm</option>
+							<option value="57419">Alarm 2</option>
+							<option value="57420">Bell</option>
+							<option value="57424">Print</option>
+							<option value="57427">Laptop</option>
+							<option value="57428">Mobile</option>
+							<option value="57429">Mobile 2</option>
+							<option value="57431">Tv</option>
+							<option value="57440">Disk</option>
+							<option value="57441">Storage</option>
+							<option value="57449">Reply</option>
+							<option value="57451">Bubbles</option>
+							<option value="57452">Bubbles 2</option>
+							<option value="57454">Bubbles 3</option>
+							<option value="57455">Bubbles 4</option>
+							<option value="57457">Users</option>
+							<option value="57459">Users 2</option>
+							<option value="57462">Quotes left</option>
+							<option value="57464">Spinner</option>
+							<option value="57465">Spinner 2</option>
+							<option value="57466">Spinner 3</option>
+							<option value="57467">Spinner 4</option>
+							<option value="57468">Spinner 5</option>
+							<option value="57469">Spinner 6</option>
+							<option value="57470">Binoculars</option>
+							<option value="57471">Search</option>
+							<option value="57489">Hammer</option>
+							<option value="57490">Wand</option>
+							<option value="57491">Aid</option>
+							<option value="57492">Bug</option>
+							<option value="57494">Stats</option>
+							<option value="57495">Bars</option>
+							<option value="57496">Bars 2</option>
+							<option value="57497">Gift</option>
+							<option value="57498">Trophy</option>
+							<option value="57499">Glass</option>
+							<option value="57500">Mug</option>
+							<option value="57501">Food</option>
+							<option value="57502">Leaf</option>
+							<option value="57503">Rocket</option>
+							<option value="57504">Meter</option>
+							<option value="57505">Meter 2</option>
+							<option value="57506">Dashboard</option>
+							<option value="57507">Hammer 2</option>
+							<option value="57508">Fire</option>
+							<option value="57509">Lab</option>
+							<option value="57510">Magnet</option>
+							<option value="57511">Remove</option>
+							<option value="57512">Remove 2</option>
+							<option value="57513">Briefcase</option>
+							<option value="57514">Airplane</option>
+							<option value="57515">Truck</option>
+							<option value="57516">Road</option>
+							<option value="57517">Accessibility</option>
+							<option value="57518">Target</option>
+							<option value="57519">Shield</option>
+							<option value="57520">Lightning</option>
+							<option value="57521">Switch</option>
+							<option value="57522">Powercord</option>
+							<option value="57523">Signup</option>
+							<option value="57529">Tree</option>
+							<option value="57530">Cloud</option>
+							<option value="57538">Earth</option>
+							<option value="57546">Bookmarks</option>
+							<option value="57589">Notification</option>
+							<option value="57597">Close</option>
+							<option value="57598">Checkmark</option>
+							<option value="57599">Checkmark 2</option>
+							<option value="57601">Minus</option>
+							<option value="57602">Plus</option>
+							<option value="57607">Stop</option>
+							<option value="57608">Backward</option>
+							<option value="57612">Stop 2</option>
+							<option value="57613">Backward 2</option>
+							<option value="57615">First</option>
+							<option value="57616">Last</option>
+							<option value="57619">Eject</option>
+							<option value="57627">Loop</option>
+							<option value="57628">Loop 2</option>
+							<option value="57629">Loop 3</option>
+							<option value="57630">Shuffle</option>
+							<option value="57655">Tab</option>
+							<option value="57656">Checkbox checked</option>
+							<option value="57657">Checkbox unchecked</option>
+							<option value="57658">Checkbox partial</option>
+							<option value="57661">Crop</option>
+							<option value="57665">Font</option>
+							<option value="57666">Text height</option>
+							<option value="57667">Text width</option>
+							<option value="57672">Omega</option>
+							<option value="57673">Sigma</option>
+							<option value="57676">Insert template</option>
+							<option value="57677">Pilcrow</option>
+							<option value="57678">Lefttoright</option>
+							<option value="57679">Righttoleft</option>
+							<option value="57680">Paragraph left</option>
+							<option value="57681">Paragraph center</option>
+							<option value="57682">Paragraph right</option>
+							<option value="57683">Paragraph justify</option>
+							<option value="57684">Paragraph left 2</option>
+							<option value="57685">Paragraph center 2</option>
+							<option value="57686">Paragraph right 2</option>
+							<option value="57687">Paragraph justify 2</option>
+							<option value="57690">Newtab</option>
+							<option value="57695">Mail</option>
+							<option value="57696">Mail 2</option>
+							<option value="57697">Mail 3</option>
+							<option value="57698">Mail 4</option>
+							<option value="57699">Google</option>
+							<option value="57708">Instagram</option>
+							<option value="57712">Feed 2</option>
+							<option value="57713">Feed 3</option>
+							<option value="57714">Feed 4</option>
+							<option value="57715">Youtube</option>
+							<option value="57716">Youtube 2</option>
+							<option value="57720">Lanyrd</option>
+							<option value="57721">Flickr</option>
+							<option value="57722">Flickr 2</option>
+							<option value="57723">Flickr 3</option>
+							<option value="57724">Flickr 4</option>
+							<option value="57725">Picassa</option>
+							<option value="57726">Picassa 2</option>
+							<option value="57727">Dribbble</option>
+							<option value="57728">Dribbble 2</option>
+							<option value="57729">Dribbble 3</option>
+							<option value="57730">Forrst</option>
+							<option value="57731">Forrst 2</option>
+							<option value="57732">Deviantart</option>
+							<option value="57733">Deviantart 2</option>
+							<option value="57734">Steam</option>
+							<option value="57735">Steam 2</option>
+							<option value="57744">Blogger</option>
+							<option value="57745">Blogger 2</option>
+							<option value="57749">Tux</option>
+							<option value="57762">Delicious</option>
+							<option value="57768">Xing</option>
+							<option value="57769">Xing 2</option>
+							<option value="57770">Flattr</option>
+							<option value="57771">Foursquare</option>
+							<option value="57772">Foursquare 2</option>
+							<option value="57777">Libreoffice</option>
+							<option value="57788">Css 3</option>
+							<option value="57791">IE</option>
+							<option value="57794">IcoMoon</option>
+						</optgroup>
+					</select>
+					&dash;
+					<select name="dark-grey-theme" id="dark-grey-theme">
+						<optgroup label="Web Applications">
+							<option value="57436">Box add</option>
+							<option value="57437">Box remove</option>
+							<option value="57438">Download</option>
+							<option value="57439">Upload</option>
+							<option value="57524">List</option>
+							<option value="57525">List 2</option>
+							<option value="57526">Numbered list</option>
+							<option value="57527">Menu</option>
+							<option value="57528">Menu 2</option>
+							<option value="57531">Cloud download</option>
+							<option value="57532">Cloud upload</option>
+							<option value="57533">Download 2</option>
+							<option value="57534">Upload 2</option>
+							<option value="57535">Download 3</option>
+							<option value="57536">Upload 3</option>
+							<option value="57537">Globe</option>
+							<option value="57541">Attachment</option>
+							<option value="57545">Bookmark</option>
+							<option value="57691">Embed</option>
+							<option value="57692">Code</option>
+						</optgroup>
+						<optgroup label="Business Icons">
+							<option selected="selected" value="57347">Office</option>
+							<option value="57348">Newspaper</option>
+							<option value="57375">Book</option>
+							<option value="57376">Books</option>
+							<option value="57377">Library</option>
+							<option value="57379">Profile</option>
+							<option value="57403">Support</option>
+							<option value="57406">Address book</option>
+							<option value="57432">Cabinet</option>
+							<option value="57433">Drawer</option>
+							<option value="57434">Drawer 2</option>
+							<option value="57435">Drawer 3</option>
+							<option value="57450">Bubble</option>
+							<option value="57453">Bubble 2</option>
+							<option value="57456">User</option>
+							<option value="57458">User 2</option>
+							<option value="57460">User 3</option>
+							<option value="57461">User 4</option>
+							<option value="57463">Busy</option>
+						</optgroup>
+						<optgroup label="eCommerce">
+							<option value="57392">Tag</option>
+							<option value="57397">Cart</option>
+							<option value="57398">Cart 2</option>
+							<option value="57399">Cart 3</option>
+							<option value="57402">Calculate</option>
+						</optgroup>
+						<optgroup label="Currency Icons">
+						</optgroup>
+						<optgroup label="Form Control Icons">
+							<option value="57383">Copy</option>
+							<option value="57384">Copy 2</option>
+							<option value="57385">Copy 3</option>
+							<option value="57386">Paste</option>
+							<option value="57387">Paste 2</option>
+							<option value="57388">Paste 3</option>
+							<option value="57484">Settings</option>
+							<option value="57594">Cancel circle</option>
+							<option value="57595">Checkmark circle</option>
+							<option value="57600">Spell check</option>
+							<option value="57603">Enter</option>
+							<option value="57604">Exit</option>
+							<option value="57659">Radio checked</option>
+							<option value="57660">Radio unchecked</option>
+							<option value="57693">Console</option>
+						</optgroup>
+						<optgroup label="User Action & Text Editor">
+							<option value="57442">Undo</option>
+							<option value="57443">Redo</option>
+							<option value="57444">Flip</option>
+							<option value="57445">Flip 2</option>
+							<option value="57446">Undo 2</option>
+							<option value="57447">Redo 2</option>
+							<option value="57472">Zoomin</option>
+							<option value="57473">Zoomout</option>
+							<option value="57474">Expand</option>
+							<option value="57475">Contract</option>
+							<option value="57476">Expand 2</option>
+							<option value="57477">Contract 2</option>
+							<option value="57539">Link</option>
+							<option value="57662">Scissors</option>
+							<option value="57668">Bold</option>
+							<option value="57669">Underline</option>
+							<option value="57670">Italic</option>
+							<option value="57671">Strikethrough</option>
+							<option value="57674">Table</option>
+							<option value="57675">Table 2</option>
+							<option value="57688">Indent increase</option>
+							<option value="57689">Indent decrease</option>
+						</optgroup>
+						<optgroup label="Charts and Codes">
+							<option value="57493">Pie</option>
+						</optgroup>
+						<optgroup label="Attentive">
+							<option value="57543">Eye blocked</option>
+							<option value="57588">Warning</option>
+							<option value="57590">Question</option>
+							<option value="57591">Info</option>
+							<option value="57592">Info 2</option>
+							<option value="57593">Blocked</option>
+							<option value="57596">Spam</option>
+						</optgroup>
+						<optgroup label="Multimedia Icons">
+							<option value="57356">Image</option>
+							<option value="57357">Image 2</option>
+							<option value="57362">Play</option>
+							<option value="57363">Film</option>
+							<option value="57448">Forward</option>
+							<option value="57485">Equalizer</option>
+							<option value="57547">Brightness medium</option>
+							<option value="57548">Brightness contrast</option>
+							<option value="57549">Contrast</option>
+							<option value="57605">Play 2</option>
+							<option value="57606">Pause</option>
+							<option value="57609">Forward 2</option>
+							<option value="57610">Play 3</option>
+							<option value="57611">Pause 2</option>
+							<option value="57614">Forward 3</option>
+							<option value="57617">Previous</option>
+							<option value="57618">Next</option>
+							<option value="57620">Volume high</option>
+							<option value="57621">Volume medium</option>
+							<option value="57622">Volume low</option>
+							<option value="57623">Volume mute</option>
+							<option value="57624">Volume mute 2</option>
+							<option value="57625">Volume increase</option>
+							<option value="57626">Volume decrease</option>
+						</optgroup>
+						<optgroup label="Location and Contact">
+							<option value="57344">Home</option>
+							<option value="57345">Home 2</option>
+							<option value="57346">Home 3</option>
+							<option value="57404">Phone</option>
+							<option value="57405">Phone hang up</option>
+							<option value="57408">Envelope</option>
+							<option value="57410">Location</option>
+							<option value="57411">Location 2</option>
+							<option value="57413">Map</option>
+							<option value="57414">Map 2</option>
+							<option value="57540">Flag</option>
+						</optgroup>
+						<optgroup label="Date and Time">
+							<option value="57415">History</option>
+							<option value="57416">Clock</option>
+							<option value="57417">Clock 2</option>
+							<option value="57421">Stopwatch</option>
+							<option value="57422">Calendar</option>
+							<option value="57423">Calendar 2</option>
+						</optgroup>
+						<optgroup label="Devices">
+							<option value="57359">Camera</option>
+							<option value="57361">Headphones</option>
+							<option value="57364">Camera 2</option>
+							<option value="57425">Keyboard</option>
+							<option value="57426">Screen</option>
+							<option value="57430">Tablet</option>
+						</optgroup>
+						<optgroup label="Tools">
+							<option value="57349">Pencil</option>
+							<option value="57350">Pencil 2</option>
+							<option value="57352">Pen</option>
+							<option value="57355">Paint format</option>
+							<option value="57365">Dice</option>
+							<option value="57478">Key</option>
+							<option value="57479">Key 2</option>
+							<option value="57480">Lock</option>
+							<option value="57481">Lock 2</option>
+							<option value="57482">Unlocked</option>
+							<option value="57483">Wrench</option>
+							<option value="57486">Cog</option>
+							<option value="57487">Cogs</option>
+							<option value="57488">Cog 2</option>
+							<option value="57663">Filter</option>
+							<option value="57664">Filter 2</option>
+						</optgroup>
+						<optgroup label="Social and Networking">
+							<option value="57694">Share</option>
+							<option value="57700">Googleplus</option>
+							<option value="57701">Googleplus 2</option>
+							<option value="57702">Googleplus 3</option>
+							<option value="57703">Googleplus 4</option>
+							<option value="57704">Google drive</option>
+							<option value="57705">Facebook</option>
+							<option value="57706">Facebook 2</option>
+							<option value="57707">Facebook 3</option>
+							<option value="57709">Twitter</option>
+							<option value="57710">Twitter 2</option>
+							<option value="57711">Twitter 3</option>
+							<option value="57717">Vimeo</option>
+							<option value="57718">Vimeo 2</option>
+							<option value="57719">Vimeo 3</option>
+							<option value="57736">Github</option>
+							<option value="57737">Github 2</option>
+							<option value="57738">Github 3</option>
+							<option value="57739">Github 4</option>
+							<option value="57740">Github 5</option>
+							<option value="57741">Wordpress</option>
+							<option value="57742">Wordpress 2</option>
+							<option value="57746">Tumblr</option>
+							<option value="57747">Tumblr 2</option>
+							<option value="57748">Yahoo</option>
+							<option value="57755">Soundcloud</option>
+							<option value="57756">Soundcloud 2</option>
+							<option value="57758">Reddit</option>
+							<option value="57759">Linkedin</option>
+							<option value="57760">Lastfm</option>
+							<option value="57761">Lastfm 2</option>
+							<option value="57763">Stumbleupon</option>
+							<option value="57764">Stumbleupon 2</option>
+							<option value="57765">Stackoverflow</option>
+							<option value="57766">Pinterest</option>
+							<option value="57767">Pinterest 2</option>
+							<option value="57776">Yelp</option>
+						</optgroup>
+						<optgroup label="Brands">
+							<option value="57743">Joomla</option>
+							<option value="57750">Apple</option>
+							<option value="57751">Finder</option>
+							<option value="57752">Android</option>
+							<option value="57753">Windows</option>
+							<option value="57754">Windows 8</option>
+							<option value="57757">Skype</option>
+							<option value="57773">Paypal</option>
+							<option value="57774">Paypal 2</option>
+							<option value="57775">Paypal 3</option>
+							<option value="57789">Chrome</option>
+							<option value="57790">Firefox</option>
+							<option value="57792">Opera</option>
+							<option value="57793">Safari</option>
+						</optgroup>
+						<optgroup label="Files & Documents">
+							<option value="57378">File</option>
+							<option value="57380">File 2</option>
+							<option value="57381">File 3</option>
+							<option value="57382">File 4</option>
+							<option value="57390">Folder</option>
+							<option value="57391">Folder open</option>
+							<option value="57778">File pdf</option>
+							<option value="57779">File openoffice</option>
+							<option value="57780">File word</option>
+							<option value="57781">File excel</option>
+							<option value="57782">File zip</option>
+							<option value="57783">File powerpoint</option>
+							<option value="57784">File xml</option>
+							<option value="57785">File css</option>
+							<option value="57786">Html 5</option>
+							<option value="57787">Html 52</option>
+						</optgroup>
+						<optgroup label="Like & Dislike Icons">
+							<option value="57542">Eye</option>
+							<option value="57544">Eye 2</option>
+							<option value="57550">Star</option>
+							<option value="57551">Star 2</option>
+							<option value="57552">Star 3</option>
+							<option value="57553">Heart</option>
+							<option value="57554">Heart 2</option>
+							<option value="57555">Heart broken</option>
+							<option value="57556">Thumbs up</option>
+							<option value="57557">Thumbs up 2</option>
+						</optgroup>
+						<optgroup label="Emoticons">
+							<option value="57558">Happy</option>
+							<option value="57559">Happy 2</option>
+							<option value="57560">Smiley</option>
+							<option value="57561">Smiley 2</option>
+							<option value="57562">Tongue</option>
+							<option value="57563">Tongue 2</option>
+							<option value="57564">Sad</option>
+							<option value="57565">Sad 2</option>
+							<option value="57566">Wink</option>
+							<option value="57567">Wink 2</option>
+							<option value="57568">Grin</option>
+							<option value="57569">Grin 2</option>
+							<option value="57570">Cool</option>
+							<option value="57571">Cool 2</option>
+							<option value="57572">Angry</option>
+							<option value="57573">Angry 2</option>
+							<option value="57574">Evil</option>
+							<option value="57575">Evil 2</option>
+							<option value="57576">Shocked</option>
+							<option value="57577">Shocked 2</option>
+							<option value="57578">Confused</option>
+							<option value="57579">Confused 2</option>
+							<option value="57580">Neutral</option>
+							<option value="57581">Neutral 2</option>
+							<option value="57582">Wondering</option>
+							<option value="57583">Wondering 2</option>
+						</optgroup>
+						<optgroup label="Directional Icons">
+							<option value="57584">Point up</option>
+							<option value="57585">Point right</option>
+							<option value="57586">Point down</option>
+							<option value="57587">Point left</option>
+							<option value="57631">Arrow up left</option>
+							<option value="57632">Arrow up</option>
+							<option value="57633">Arrow up right</option>
+							<option value="57634">Arrow right</option>
+							<option value="57635">Arrow down right</option>
+							<option value="57636">Arrow down</option>
+							<option value="57637">Arrow down left</option>
+							<option value="57638">Arrow left</option>
+							<option value="57639">Arrow up left 2</option>
+							<option value="57640">Arrow up 2</option>
+							<option value="57641">Arrow up right 2</option>
+							<option value="57642">Arrow right 2</option>
+							<option value="57643">Arrow down right 2</option>
+							<option value="57644">Arrow down 2</option>
+							<option value="57645">Arrow down left 2</option>
+							<option value="57646">Arrow left 2</option>
+							<option value="57647">Arrow up left 3</option>
+							<option value="57648">Arrow up 3</option>
+							<option value="57649">Arrow up right 3</option>
+							<option value="57650">Arrow right 3</option>
+							<option value="57651">Arrow down right 3</option>
+							<option value="57652">Arrow down 3</option>
+							<option value="57653">Arrow down left 3</option>
+							<option value="57654">Arrow left 3</option>
+						</optgroup>
+						<optgroup label="Other Icons">
+							<option value="57351">Quill</option>
+							<option value="57353">Blog</option>
+							<option value="57354">Droplet</option>
+							<option value="57358">Images</option>
+							<option value="57360">Music</option>
+							<option value="57366">Pacman</option>
+							<option value="57367">Spades</option>
+							<option value="57368">Clubs</option>
+							<option value="57369">Diamonds</option>
+							<option value="57370">Pawn</option>
+							<option value="57371">Bullhorn</option>
+							<option value="57372">Connection</option>
+							<option value="57373">Podcast</option>
+							<option value="57374">Feed</option>
+							<option value="57389">Stack</option>
+							<option value="57393">Tags</option>
+							<option value="57394">Barcode</option>
+							<option value="57395">Qrcode</option>
+							<option value="57396">Ticket</option>
+							<option value="57400">Coin</option>
+							<option value="57401">Credit</option>
+							<option value="57407">Notebook</option>
+							<option value="57409">Pushpin</option>
+							<option value="57412">Compass</option>
+							<option value="57418">Alarm</option>
+							<option value="57419">Alarm 2</option>
+							<option value="57420">Bell</option>
+							<option value="57424">Print</option>
+							<option value="57427">Laptop</option>
+							<option value="57428">Mobile</option>
+							<option value="57429">Mobile 2</option>
+							<option value="57431">Tv</option>
+							<option value="57440">Disk</option>
+							<option value="57441">Storage</option>
+							<option value="57449">Reply</option>
+							<option value="57451">Bubbles</option>
+							<option value="57452">Bubbles 2</option>
+							<option value="57454">Bubbles 3</option>
+							<option value="57455">Bubbles 4</option>
+							<option value="57457">Users</option>
+							<option value="57459">Users 2</option>
+							<option value="57462">Quotes left</option>
+							<option value="57464">Spinner</option>
+							<option value="57465">Spinner 2</option>
+							<option value="57466">Spinner 3</option>
+							<option value="57467">Spinner 4</option>
+							<option value="57468">Spinner 5</option>
+							<option value="57469">Spinner 6</option>
+							<option value="57470">Binoculars</option>
+							<option value="57471">Search</option>
+							<option value="57489">Hammer</option>
+							<option value="57490">Wand</option>
+							<option value="57491">Aid</option>
+							<option value="57492">Bug</option>
+							<option value="57494">Stats</option>
+							<option value="57495">Bars</option>
+							<option value="57496">Bars 2</option>
+							<option value="57497">Gift</option>
+							<option value="57498">Trophy</option>
+							<option value="57499">Glass</option>
+							<option value="57500">Mug</option>
+							<option value="57501">Food</option>
+							<option value="57502">Leaf</option>
+							<option value="57503">Rocket</option>
+							<option value="57504">Meter</option>
+							<option value="57505">Meter 2</option>
+							<option value="57506">Dashboard</option>
+							<option value="57507">Hammer 2</option>
+							<option value="57508">Fire</option>
+							<option value="57509">Lab</option>
+							<option value="57510">Magnet</option>
+							<option value="57511">Remove</option>
+							<option value="57512">Remove 2</option>
+							<option value="57513">Briefcase</option>
+							<option value="57514">Airplane</option>
+							<option value="57515">Truck</option>
+							<option value="57516">Road</option>
+							<option value="57517">Accessibility</option>
+							<option value="57518">Target</option>
+							<option value="57519">Shield</option>
+							<option value="57520">Lightning</option>
+							<option value="57521">Switch</option>
+							<option value="57522">Powercord</option>
+							<option value="57523">Signup</option>
+							<option value="57529">Tree</option>
+							<option value="57530">Cloud</option>
+							<option value="57538">Earth</option>
+							<option value="57546">Bookmarks</option>
+							<option value="57589">Notification</option>
+							<option value="57597">Close</option>
+							<option value="57598">Checkmark</option>
+							<option value="57599">Checkmark 2</option>
+							<option value="57601">Minus</option>
+							<option value="57602">Plus</option>
+							<option value="57607">Stop</option>
+							<option value="57608">Backward</option>
+							<option value="57612">Stop 2</option>
+							<option value="57613">Backward 2</option>
+							<option value="57615">First</option>
+							<option value="57616">Last</option>
+							<option value="57619">Eject</option>
+							<option value="57627">Loop</option>
+							<option value="57628">Loop 2</option>
+							<option value="57629">Loop 3</option>
+							<option value="57630">Shuffle</option>
+							<option value="57655">Tab</option>
+							<option value="57656">Checkbox checked</option>
+							<option value="57657">Checkbox unchecked</option>
+							<option value="57658">Checkbox partial</option>
+							<option value="57661">Crop</option>
+							<option value="57665">Font</option>
+							<option value="57666">Text height</option>
+							<option value="57667">Text width</option>
+							<option value="57672">Omega</option>
+							<option value="57673">Sigma</option>
+							<option value="57676">Insert template</option>
+							<option value="57677">Pilcrow</option>
+							<option value="57678">Lefttoright</option>
+							<option value="57679">Righttoleft</option>
+							<option value="57680">Paragraph left</option>
+							<option value="57681">Paragraph center</option>
+							<option value="57682">Paragraph right</option>
+							<option value="57683">Paragraph justify</option>
+							<option value="57684">Paragraph left 2</option>
+							<option value="57685">Paragraph center 2</option>
+							<option value="57686">Paragraph right 2</option>
+							<option value="57687">Paragraph justify 2</option>
+							<option value="57690">Newtab</option>
+							<option value="57695">Mail</option>
+							<option value="57696">Mail 2</option>
+							<option value="57697">Mail 3</option>
+							<option value="57698">Mail 4</option>
+							<option value="57699">Google</option>
+							<option value="57708">Instagram</option>
+							<option value="57712">Feed 2</option>
+							<option value="57713">Feed 3</option>
+							<option value="57714">Feed 4</option>
+							<option value="57715">Youtube</option>
+							<option value="57716">Youtube 2</option>
+							<option value="57720">Lanyrd</option>
+							<option value="57721">Flickr</option>
+							<option value="57722">Flickr 2</option>
+							<option value="57723">Flickr 3</option>
+							<option value="57724">Flickr 4</option>
+							<option value="57725">Picassa</option>
+							<option value="57726">Picassa 2</option>
+							<option value="57727">Dribbble</option>
+							<option value="57728">Dribbble 2</option>
+							<option value="57729">Dribbble 3</option>
+							<option value="57730">Forrst</option>
+							<option value="57731">Forrst 2</option>
+							<option value="57732">Deviantart</option>
+							<option value="57733">Deviantart 2</option>
+							<option value="57734">Steam</option>
+							<option value="57735">Steam 2</option>
+							<option value="57744">Blogger</option>
+							<option value="57745">Blogger 2</option>
+							<option value="57749">Tux</option>
+							<option value="57762">Delicious</option>
+							<option value="57768">Xing</option>
+							<option value="57769">Xing 2</option>
+							<option value="57770">Flattr</option>
+							<option value="57771">Foursquare</option>
+							<option value="57772">Foursquare 2</option>
+							<option value="57777">Libreoffice</option>
+							<option value="57788">Css 3</option>
+							<option value="57791">IE</option>
+							<option value="57794">IcoMoon</option>
+						</optgroup>
+					</select>
+					&dash;
+					<select name="bootstrap-theme" id="bootstrap-theme">
+						<optgroup label="Web Applications">
+							<option value="57436">Box add</option>
+							<option value="57437">Box remove</option>
+							<option value="57438">Download</option>
+							<option value="57439">Upload</option>
+							<option value="57524">List</option>
+							<option value="57525">List 2</option>
+							<option value="57526">Numbered list</option>
+							<option value="57527">Menu</option>
+							<option value="57528">Menu 2</option>
+							<option value="57531">Cloud download</option>
+							<option value="57532">Cloud upload</option>
+							<option value="57533">Download 2</option>
+							<option value="57534">Upload 2</option>
+							<option value="57535">Download 3</option>
+							<option value="57536">Upload 3</option>
+							<option value="57537">Globe</option>
+							<option value="57541">Attachment</option>
+							<option value="57545">Bookmark</option>
+							<option value="57691">Embed</option>
+							<option value="57692">Code</option>
+						</optgroup>
+						<optgroup label="Business Icons">
+							<option value="57347">Office</option>
+							<option value="57348">Newspaper</option>
+							<option value="57375">Book</option>
+							<option value="57376">Books</option>
+							<option value="57377">Library</option>
+							<option value="57379">Profile</option>
+							<option value="57403">Support</option>
+							<option value="57406">Address book</option>
+							<option value="57432">Cabinet</option>
+							<option value="57433">Drawer</option>
+							<option value="57434">Drawer 2</option>
+							<option value="57435">Drawer 3</option>
+							<option value="57450">Bubble</option>
+							<option value="57453">Bubble 2</option>
+							<option value="57456">User</option>
+							<option value="57458">User 2</option>
+							<option value="57460">User 3</option>
+							<option value="57461">User 4</option>
+							<option value="57463">Busy</option>
+						</optgroup>
+						<optgroup label="eCommerce">
+							<option value="57392">Tag</option>
+							<option value="57397">Cart</option>
+							<option value="57398">Cart 2</option>
+							<option value="57399">Cart 3</option>
+							<option value="57402">Calculate</option>
+						</optgroup>
+						<optgroup label="Currency Icons">
+						</optgroup>
+						<optgroup label="Form Control Icons">
+							<option value="57383">Copy</option>
+							<option value="57384">Copy 2</option>
+							<option value="57385">Copy 3</option>
+							<option value="57386">Paste</option>
+							<option value="57387">Paste 2</option>
+							<option value="57388">Paste 3</option>
+							<option value="57484">Settings</option>
+							<option value="57594">Cancel circle</option>
+							<option value="57595">Checkmark circle</option>
+							<option value="57600">Spell check</option>
+							<option value="57603">Enter</option>
+							<option value="57604">Exit</option>
+							<option value="57659">Radio checked</option>
+							<option value="57660">Radio unchecked</option>
+							<option value="57693">Console</option>
+						</optgroup>
+						<optgroup label="User Action & Text Editor">
+							<option value="57442">Undo</option>
+							<option value="57443">Redo</option>
+							<option value="57444">Flip</option>
+							<option value="57445">Flip 2</option>
+							<option value="57446">Undo 2</option>
+							<option value="57447">Redo 2</option>
+							<option value="57472">Zoomin</option>
+							<option value="57473">Zoomout</option>
+							<option value="57474">Expand</option>
+							<option value="57475">Contract</option>
+							<option value="57476">Expand 2</option>
+							<option value="57477">Contract 2</option>
+							<option value="57539">Link</option>
+							<option value="57662">Scissors</option>
+							<option value="57668">Bold</option>
+							<option value="57669">Underline</option>
+							<option value="57670">Italic</option>
+							<option value="57671">Strikethrough</option>
+							<option value="57674">Table</option>
+							<option value="57675">Table 2</option>
+							<option value="57688">Indent increase</option>
+							<option value="57689">Indent decrease</option>
+						</optgroup>
+						<optgroup label="Charts and Codes">
+							<option value="57493">Pie</option>
+						</optgroup>
+						<optgroup label="Attentive">
+							<option value="57543">Eye blocked</option>
+							<option value="57588">Warning</option>
+							<option value="57590">Question</option>
+							<option value="57591">Info</option>
+							<option value="57592">Info 2</option>
+							<option value="57593">Blocked</option>
+							<option value="57596">Spam</option>
+						</optgroup>
+						<optgroup label="Multimedia Icons">
+							<option value="57356">Image</option>
+							<option value="57357">Image 2</option>
+							<option value="57362">Play</option>
+							<option value="57363">Film</option>
+							<option value="57448">Forward</option>
+							<option value="57485">Equalizer</option>
+							<option value="57547">Brightness medium</option>
+							<option value="57548">Brightness contrast</option>
+							<option value="57549">Contrast</option>
+							<option value="57605">Play 2</option>
+							<option value="57606">Pause</option>
+							<option value="57609">Forward 2</option>
+							<option value="57610">Play 3</option>
+							<option value="57611">Pause 2</option>
+							<option value="57614">Forward 3</option>
+							<option value="57617">Previous</option>
+							<option value="57618">Next</option>
+							<option value="57620">Volume high</option>
+							<option value="57621">Volume medium</option>
+							<option value="57622">Volume low</option>
+							<option value="57623">Volume mute</option>
+							<option value="57624">Volume mute 2</option>
+							<option value="57625">Volume increase</option>
+							<option value="57626">Volume decrease</option>
+						</optgroup>
+						<optgroup label="Location and Contact">
+							<option value="57344">Home</option>
+							<option value="57345">Home 2</option>
+							<option value="57346">Home 3</option>
+							<option value="57404">Phone</option>
+							<option value="57405">Phone hang up</option>
+							<option value="57408">Envelope</option>
+							<option value="57410">Location</option>
+							<option value="57411">Location 2</option>
+							<option value="57413">Map</option>
+							<option value="57414">Map 2</option>
+							<option value="57540">Flag</option>
+						</optgroup>
+						<optgroup label="Date and Time">
+							<option value="57415">History</option>
+							<option value="57416">Clock</option>
+							<option value="57417">Clock 2</option>
+							<option value="57421">Stopwatch</option>
+							<option value="57422">Calendar</option>
+							<option value="57423">Calendar 2</option>
+						</optgroup>
+						<optgroup label="Devices">
+							<option selected="selected" value="57359">Camera</option>
+							<option value="57361">Headphones</option>
+							<option value="57364">Camera 2</option>
+							<option value="57425">Keyboard</option>
+							<option value="57426">Screen</option>
+							<option value="57430">Tablet</option>
+						</optgroup>
+						<optgroup label="Tools">
+							<option value="57349">Pencil</option>
+							<option value="57350">Pencil 2</option>
+							<option value="57352">Pen</option>
+							<option value="57355">Paint format</option>
+							<option value="57365">Dice</option>
+							<option value="57478">Key</option>
+							<option value="57479">Key 2</option>
+							<option value="57480">Lock</option>
+							<option value="57481">Lock 2</option>
+							<option value="57482">Unlocked</option>
+							<option value="57483">Wrench</option>
+							<option value="57486">Cog</option>
+							<option value="57487">Cogs</option>
+							<option value="57488">Cog 2</option>
+							<option value="57663">Filter</option>
+							<option value="57664">Filter 2</option>
+						</optgroup>
+						<optgroup label="Social and Networking">
+							<option value="57694">Share</option>
+							<option value="57700">Googleplus</option>
+							<option value="57701">Googleplus 2</option>
+							<option value="57702">Googleplus 3</option>
+							<option value="57703">Googleplus 4</option>
+							<option value="57704">Google drive</option>
+							<option value="57705">Facebook</option>
+							<option value="57706">Facebook 2</option>
+							<option value="57707">Facebook 3</option>
+							<option value="57709">Twitter</option>
+							<option value="57710">Twitter 2</option>
+							<option value="57711">Twitter 3</option>
+							<option value="57717">Vimeo</option>
+							<option value="57718">Vimeo 2</option>
+							<option value="57719">Vimeo 3</option>
+							<option value="57736">Github</option>
+							<option value="57737">Github 2</option>
+							<option value="57738">Github 3</option>
+							<option value="57739">Github 4</option>
+							<option value="57740">Github 5</option>
+							<option value="57741">Wordpress</option>
+							<option value="57742">Wordpress 2</option>
+							<option value="57746">Tumblr</option>
+							<option value="57747">Tumblr 2</option>
+							<option value="57748">Yahoo</option>
+							<option value="57755">Soundcloud</option>
+							<option value="57756">Soundcloud 2</option>
+							<option value="57758">Reddit</option>
+							<option value="57759">Linkedin</option>
+							<option value="57760">Lastfm</option>
+							<option value="57761">Lastfm 2</option>
+							<option value="57763">Stumbleupon</option>
+							<option value="57764">Stumbleupon 2</option>
+							<option value="57765">Stackoverflow</option>
+							<option value="57766">Pinterest</option>
+							<option value="57767">Pinterest 2</option>
+							<option value="57776">Yelp</option>
+						</optgroup>
+						<optgroup label="Brands">
+							<option value="57743">Joomla</option>
+							<option value="57750">Apple</option>
+							<option value="57751">Finder</option>
+							<option value="57752">Android</option>
+							<option value="57753">Windows</option>
+							<option value="57754">Windows 8</option>
+							<option value="57757">Skype</option>
+							<option value="57773">Paypal</option>
+							<option value="57774">Paypal 2</option>
+							<option value="57775">Paypal 3</option>
+							<option value="57789">Chrome</option>
+							<option value="57790">Firefox</option>
+							<option value="57792">Opera</option>
+							<option value="57793">Safari</option>
+						</optgroup>
+						<optgroup label="Files & Documents">
+							<option value="57378">File</option>
+							<option value="57380">File 2</option>
+							<option value="57381">File 3</option>
+							<option value="57382">File 4</option>
+							<option value="57390">Folder</option>
+							<option value="57391">Folder open</option>
+							<option value="57778">File pdf</option>
+							<option value="57779">File openoffice</option>
+							<option value="57780">File word</option>
+							<option value="57781">File excel</option>
+							<option value="57782">File zip</option>
+							<option value="57783">File powerpoint</option>
+							<option value="57784">File xml</option>
+							<option value="57785">File css</option>
+							<option value="57786">Html 5</option>
+							<option value="57787">Html 52</option>
+						</optgroup>
+						<optgroup label="Like & Dislike Icons">
+							<option value="57542">Eye</option>
+							<option value="57544">Eye 2</option>
+							<option value="57550">Star</option>
+							<option value="57551">Star 2</option>
+							<option value="57552">Star 3</option>
+							<option value="57553">Heart</option>
+							<option value="57554">Heart 2</option>
+							<option value="57555">Heart broken</option>
+							<option value="57556">Thumbs up</option>
+							<option value="57557">Thumbs up 2</option>
+						</optgroup>
+						<optgroup label="Emoticons">
+							<option value="57558">Happy</option>
+							<option value="57559">Happy 2</option>
+							<option value="57560">Smiley</option>
+							<option value="57561">Smiley 2</option>
+							<option value="57562">Tongue</option>
+							<option value="57563">Tongue 2</option>
+							<option value="57564">Sad</option>
+							<option value="57565">Sad 2</option>
+							<option value="57566">Wink</option>
+							<option value="57567">Wink 2</option>
+							<option value="57568">Grin</option>
+							<option value="57569">Grin 2</option>
+							<option value="57570">Cool</option>
+							<option value="57571">Cool 2</option>
+							<option value="57572">Angry</option>
+							<option value="57573">Angry 2</option>
+							<option value="57574">Evil</option>
+							<option value="57575">Evil 2</option>
+							<option value="57576">Shocked</option>
+							<option value="57577">Shocked 2</option>
+							<option value="57578">Confused</option>
+							<option value="57579">Confused 2</option>
+							<option value="57580">Neutral</option>
+							<option value="57581">Neutral 2</option>
+							<option value="57582">Wondering</option>
+							<option value="57583">Wondering 2</option>
+						</optgroup>
+						<optgroup label="Directional Icons">
+							<option value="57584">Point up</option>
+							<option value="57585">Point right</option>
+							<option value="57586">Point down</option>
+							<option value="57587">Point left</option>
+							<option value="57631">Arrow up left</option>
+							<option value="57632">Arrow up</option>
+							<option value="57633">Arrow up right</option>
+							<option value="57634">Arrow right</option>
+							<option value="57635">Arrow down right</option>
+							<option value="57636">Arrow down</option>
+							<option value="57637">Arrow down left</option>
+							<option value="57638">Arrow left</option>
+							<option value="57639">Arrow up left 2</option>
+							<option value="57640">Arrow up 2</option>
+							<option value="57641">Arrow up right 2</option>
+							<option value="57642">Arrow right 2</option>
+							<option value="57643">Arrow down right 2</option>
+							<option value="57644">Arrow down 2</option>
+							<option value="57645">Arrow down left 2</option>
+							<option value="57646">Arrow left 2</option>
+							<option value="57647">Arrow up left 3</option>
+							<option value="57648">Arrow up 3</option>
+							<option value="57649">Arrow up right 3</option>
+							<option value="57650">Arrow right 3</option>
+							<option value="57651">Arrow down right 3</option>
+							<option value="57652">Arrow down 3</option>
+							<option value="57653">Arrow down left 3</option>
+							<option value="57654">Arrow left 3</option>
+						</optgroup>
+						<optgroup label="Other Icons">
+							<option value="57351">Quill</option>
+							<option value="57353">Blog</option>
+							<option value="57354">Droplet</option>
+							<option value="57358">Images</option>
+							<option value="57360">Music</option>
+							<option value="57366">Pacman</option>
+							<option value="57367">Spades</option>
+							<option value="57368">Clubs</option>
+							<option value="57369">Diamonds</option>
+							<option value="57370">Pawn</option>
+							<option value="57371">Bullhorn</option>
+							<option value="57372">Connection</option>
+							<option value="57373">Podcast</option>
+							<option value="57374">Feed</option>
+							<option value="57389">Stack</option>
+							<option value="57393">Tags</option>
+							<option value="57394">Barcode</option>
+							<option value="57395">Qrcode</option>
+							<option value="57396">Ticket</option>
+							<option value="57400">Coin</option>
+							<option value="57401">Credit</option>
+							<option value="57407">Notebook</option>
+							<option value="57409">Pushpin</option>
+							<option value="57412">Compass</option>
+							<option value="57418">Alarm</option>
+							<option value="57419">Alarm 2</option>
+							<option value="57420">Bell</option>
+							<option value="57424">Print</option>
+							<option value="57427">Laptop</option>
+							<option value="57428">Mobile</option>
+							<option value="57429">Mobile 2</option>
+							<option value="57431">Tv</option>
+							<option value="57440">Disk</option>
+							<option value="57441">Storage</option>
+							<option value="57449">Reply</option>
+							<option value="57451">Bubbles</option>
+							<option value="57452">Bubbles 2</option>
+							<option value="57454">Bubbles 3</option>
+							<option value="57455">Bubbles 4</option>
+							<option value="57457">Users</option>
+							<option value="57459">Users 2</option>
+							<option value="57462">Quotes left</option>
+							<option value="57464">Spinner</option>
+							<option value="57465">Spinner 2</option>
+							<option value="57466">Spinner 3</option>
+							<option value="57467">Spinner 4</option>
+							<option value="57468">Spinner 5</option>
+							<option value="57469">Spinner 6</option>
+							<option value="57470">Binoculars</option>
+							<option value="57471">Search</option>
+							<option value="57489">Hammer</option>
+							<option value="57490">Wand</option>
+							<option value="57491">Aid</option>
+							<option value="57492">Bug</option>
+							<option value="57494">Stats</option>
+							<option value="57495">Bars</option>
+							<option value="57496">Bars 2</option>
+							<option value="57497">Gift</option>
+							<option value="57498">Trophy</option>
+							<option value="57499">Glass</option>
+							<option value="57500">Mug</option>
+							<option value="57501">Food</option>
+							<option value="57502">Leaf</option>
+							<option value="57503">Rocket</option>
+							<option value="57504">Meter</option>
+							<option value="57505">Meter 2</option>
+							<option value="57506">Dashboard</option>
+							<option value="57507">Hammer 2</option>
+							<option value="57508">Fire</option>
+							<option value="57509">Lab</option>
+							<option value="57510">Magnet</option>
+							<option value="57511">Remove</option>
+							<option value="57512">Remove 2</option>
+							<option value="57513">Briefcase</option>
+							<option value="57514">Airplane</option>
+							<option value="57515">Truck</option>
+							<option value="57516">Road</option>
+							<option value="57517">Accessibility</option>
+							<option value="57518">Target</option>
+							<option value="57519">Shield</option>
+							<option value="57520">Lightning</option>
+							<option value="57521">Switch</option>
+							<option value="57522">Powercord</option>
+							<option value="57523">Signup</option>
+							<option value="57529">Tree</option>
+							<option value="57530">Cloud</option>
+							<option value="57538">Earth</option>
+							<option value="57546">Bookmarks</option>
+							<option value="57589">Notification</option>
+							<option value="57597">Close</option>
+							<option value="57598">Checkmark</option>
+							<option value="57599">Checkmark 2</option>
+							<option value="57601">Minus</option>
+							<option value="57602">Plus</option>
+							<option value="57607">Stop</option>
+							<option value="57608">Backward</option>
+							<option value="57612">Stop 2</option>
+							<option value="57613">Backward 2</option>
+							<option value="57615">First</option>
+							<option value="57616">Last</option>
+							<option value="57619">Eject</option>
+							<option value="57627">Loop</option>
+							<option value="57628">Loop 2</option>
+							<option value="57629">Loop 3</option>
+							<option value="57630">Shuffle</option>
+							<option value="57655">Tab</option>
+							<option value="57656">Checkbox checked</option>
+							<option value="57657">Checkbox unchecked</option>
+							<option value="57658">Checkbox partial</option>
+							<option value="57661">Crop</option>
+							<option value="57665">Font</option>
+							<option value="57666">Text height</option>
+							<option value="57667">Text width</option>
+							<option value="57672">Omega</option>
+							<option value="57673">Sigma</option>
+							<option value="57676">Insert template</option>
+							<option value="57677">Pilcrow</option>
+							<option value="57678">Lefttoright</option>
+							<option value="57679">Righttoleft</option>
+							<option value="57680">Paragraph left</option>
+							<option value="57681">Paragraph center</option>
+							<option value="57682">Paragraph right</option>
+							<option value="57683">Paragraph justify</option>
+							<option value="57684">Paragraph left 2</option>
+							<option value="57685">Paragraph center 2</option>
+							<option value="57686">Paragraph right 2</option>
+							<option value="57687">Paragraph justify 2</option>
+							<option value="57690">Newtab</option>
+							<option value="57695">Mail</option>
+							<option value="57696">Mail 2</option>
+							<option value="57697">Mail 3</option>
+							<option value="57698">Mail 4</option>
+							<option value="57699">Google</option>
+							<option value="57708">Instagram</option>
+							<option value="57712">Feed 2</option>
+							<option value="57713">Feed 3</option>
+							<option value="57714">Feed 4</option>
+							<option value="57715">Youtube</option>
+							<option value="57716">Youtube 2</option>
+							<option value="57720">Lanyrd</option>
+							<option value="57721">Flickr</option>
+							<option value="57722">Flickr 2</option>
+							<option value="57723">Flickr 3</option>
+							<option value="57724">Flickr 4</option>
+							<option value="57725">Picassa</option>
+							<option value="57726">Picassa 2</option>
+							<option value="57727">Dribbble</option>
+							<option value="57728">Dribbble 2</option>
+							<option value="57729">Dribbble 3</option>
+							<option value="57730">Forrst</option>
+							<option value="57731">Forrst 2</option>
+							<option value="57732">Deviantart</option>
+							<option value="57733">Deviantart 2</option>
+							<option value="57734">Steam</option>
+							<option value="57735">Steam 2</option>
+							<option value="57744">Blogger</option>
+							<option value="57745">Blogger 2</option>
+							<option value="57749">Tux</option>
+							<option value="57762">Delicious</option>
+							<option value="57768">Xing</option>
+							<option value="57769">Xing 2</option>
+							<option value="57770">Flattr</option>
+							<option value="57771">Foursquare</option>
+							<option value="57772">Foursquare 2</option>
+							<option value="57777">Libreoffice</option>
+							<option value="57788">Css 3</option>
+							<option value="57791">IE</option>
+							<option value="57794">IcoMoon</option>
+						</optgroup>
+					</select>
+					&dash;
+					<select name="inverted-theme" id="inverted-theme">
+						<optgroup label="Web Applications">
+							<option value="57436">Box add</option>
+							<option value="57437">Box remove</option>
+							<option value="57438">Download</option>
+							<option value="57439">Upload</option>
+							<option value="57524">List</option>
+							<option value="57525">List 2</option>
+							<option value="57526">Numbered list</option>
+							<option value="57527">Menu</option>
+							<option value="57528">Menu 2</option>
+							<option value="57531">Cloud download</option>
+							<option value="57532">Cloud upload</option>
+							<option value="57533">Download 2</option>
+							<option value="57534">Upload 2</option>
+							<option value="57535">Download 3</option>
+							<option value="57536">Upload 3</option>
+							<option value="57537">Globe</option>
+							<option value="57541">Attachment</option>
+							<option value="57545">Bookmark</option>
+							<option value="57691">Embed</option>
+							<option value="57692">Code</option>
+						</optgroup>
+						<optgroup label="Business Icons">
+							<option value="57347">Office</option>
+							<option value="57348">Newspaper</option>
+							<option value="57375">Book</option>
+							<option value="57376">Books</option>
+							<option value="57377">Library</option>
+							<option value="57379">Profile</option>
+							<option value="57403">Support</option>
+							<option value="57406">Address book</option>
+							<option value="57432">Cabinet</option>
+							<option value="57433">Drawer</option>
+							<option value="57434">Drawer 2</option>
+							<option value="57435">Drawer 3</option>
+							<option value="57450">Bubble</option>
+							<option value="57453">Bubble 2</option>
+							<option value="57456">User</option>
+							<option value="57458">User 2</option>
+							<option value="57460">User 3</option>
+							<option value="57461">User 4</option>
+							<option value="57463">Busy</option>
+						</optgroup>
+						<optgroup label="eCommerce">
+							<option value="57392">Tag</option>
+							<option value="57397">Cart</option>
+							<option value="57398">Cart 2</option>
+							<option value="57399">Cart 3</option>
+							<option value="57402">Calculate</option>
+						</optgroup>
+						<optgroup label="Currency Icons">
+						</optgroup>
+						<optgroup label="Form Control Icons">
+							<option value="57383">Copy</option>
+							<option value="57384">Copy 2</option>
+							<option value="57385">Copy 3</option>
+							<option value="57386">Paste</option>
+							<option value="57387">Paste 2</option>
+							<option value="57388">Paste 3</option>
+							<option value="57484">Settings</option>
+							<option value="57594">Cancel circle</option>
+							<option value="57595">Checkmark circle</option>
+							<option value="57600">Spell check</option>
+							<option value="57603">Enter</option>
+							<option value="57604">Exit</option>
+							<option value="57659">Radio checked</option>
+							<option value="57660">Radio unchecked</option>
+							<option value="57693">Console</option>
+						</optgroup>
+						<optgroup label="User Action & Text Editor">
+							<option value="57442">Undo</option>
+							<option value="57443">Redo</option>
+							<option value="57444">Flip</option>
+							<option value="57445">Flip 2</option>
+							<option value="57446">Undo 2</option>
+							<option value="57447">Redo 2</option>
+							<option value="57472">Zoomin</option>
+							<option value="57473">Zoomout</option>
+							<option value="57474">Expand</option>
+							<option value="57475">Contract</option>
+							<option value="57476">Expand 2</option>
+							<option value="57477">Contract 2</option>
+							<option value="57539">Link</option>
+							<option value="57662">Scissors</option>
+							<option value="57668">Bold</option>
+							<option value="57669">Underline</option>
+							<option value="57670">Italic</option>
+							<option value="57671">Strikethrough</option>
+							<option value="57674">Table</option>
+							<option value="57675">Table 2</option>
+							<option value="57688">Indent increase</option>
+							<option value="57689">Indent decrease</option>
+						</optgroup>
+						<optgroup label="Charts and Codes">
+							<option value="57493">Pie</option>
+						</optgroup>
+						<optgroup label="Attentive">
+							<option value="57543">Eye blocked</option>
+							<option value="57588">Warning</option>
+							<option value="57590">Question</option>
+							<option value="57591">Info</option>
+							<option value="57592">Info 2</option>
+							<option value="57593">Blocked</option>
+							<option value="57596">Spam</option>
+						</optgroup>
+						<optgroup label="Multimedia Icons">
+							<option value="57356">Image</option>
+							<option value="57357">Image 2</option>
+							<option value="57362">Play</option>
+							<option value="57363">Film</option>
+							<option value="57448">Forward</option>
+							<option value="57485">Equalizer</option>
+							<option value="57547">Brightness medium</option>
+							<option value="57548">Brightness contrast</option>
+							<option value="57549">Contrast</option>
+							<option value="57605">Play 2</option>
+							<option value="57606">Pause</option>
+							<option value="57609">Forward 2</option>
+							<option value="57610">Play 3</option>
+							<option value="57611">Pause 2</option>
+							<option value="57614">Forward 3</option>
+							<option value="57617">Previous</option>
+							<option value="57618">Next</option>
+							<option value="57620">Volume high</option>
+							<option value="57621">Volume medium</option>
+							<option value="57622">Volume low</option>
+							<option value="57623">Volume mute</option>
+							<option value="57624">Volume mute 2</option>
+							<option value="57625">Volume increase</option>
+							<option value="57626">Volume decrease</option>
+						</optgroup>
+						<optgroup label="Location and Contact">
+							<option value="57344">Home</option>
+							<option value="57345">Home 2</option>
+							<option value="57346">Home 3</option>
+							<option value="57404">Phone</option>
+							<option value="57405">Phone hang up</option>
+							<option value="57408">Envelope</option>
+							<option value="57410">Location</option>
+							<option value="57411">Location 2</option>
+							<option value="57413">Map</option>
+							<option value="57414">Map 2</option>
+							<option value="57540">Flag</option>
+						</optgroup>
+						<optgroup label="Date and Time">
+							<option value="57415">History</option>
+							<option value="57416">Clock</option>
+							<option value="57417">Clock 2</option>
+							<option value="57421">Stopwatch</option>
+							<option value="57422">Calendar</option>
+							<option value="57423">Calendar 2</option>
+						</optgroup>
+						<optgroup label="Devices">
+							<option selected="selected" value="57359">Camera</option>
+							<option value="57361">Headphones</option>
+							<option value="57364">Camera 2</option>
+							<option value="57425">Keyboard</option>
+							<option value="57426">Screen</option>
+							<option value="57430">Tablet</option>
+						</optgroup>
+						<optgroup label="Tools">
+							<option value="57349">Pencil</option>
+							<option value="57350">Pencil 2</option>
+							<option value="57352">Pen</option>
+							<option value="57355">Paint format</option>
+							<option value="57365">Dice</option>
+							<option value="57478">Key</option>
+							<option value="57479">Key 2</option>
+							<option value="57480">Lock</option>
+							<option value="57481">Lock 2</option>
+							<option value="57482">Unlocked</option>
+							<option value="57483">Wrench</option>
+							<option value="57486">Cog</option>
+							<option value="57487">Cogs</option>
+							<option value="57488">Cog 2</option>
+							<option value="57663">Filter</option>
+							<option value="57664">Filter 2</option>
+						</optgroup>
+						<optgroup label="Social and Networking">
+							<option value="57694">Share</option>
+							<option value="57700">Googleplus</option>
+							<option value="57701">Googleplus 2</option>
+							<option value="57702">Googleplus 3</option>
+							<option value="57703">Googleplus 4</option>
+							<option value="57704">Google drive</option>
+							<option value="57705">Facebook</option>
+							<option value="57706">Facebook 2</option>
+							<option value="57707">Facebook 3</option>
+							<option value="57709">Twitter</option>
+							<option value="57710">Twitter 2</option>
+							<option value="57711">Twitter 3</option>
+							<option value="57717">Vimeo</option>
+							<option value="57718">Vimeo 2</option>
+							<option value="57719">Vimeo 3</option>
+							<option value="57736">Github</option>
+							<option value="57737">Github 2</option>
+							<option value="57738">Github 3</option>
+							<option value="57739">Github 4</option>
+							<option value="57740">Github 5</option>
+							<option value="57741">Wordpress</option>
+							<option value="57742">Wordpress 2</option>
+							<option value="57746">Tumblr</option>
+							<option value="57747">Tumblr 2</option>
+							<option value="57748">Yahoo</option>
+							<option value="57755">Soundcloud</option>
+							<option value="57756">Soundcloud 2</option>
+							<option value="57758">Reddit</option>
+							<option value="57759">Linkedin</option>
+							<option value="57760">Lastfm</option>
+							<option value="57761">Lastfm 2</option>
+							<option value="57763">Stumbleupon</option>
+							<option value="57764">Stumbleupon 2</option>
+							<option value="57765">Stackoverflow</option>
+							<option value="57766">Pinterest</option>
+							<option value="57767">Pinterest 2</option>
+							<option value="57776">Yelp</option>
+						</optgroup>
+						<optgroup label="Brands">
+							<option value="57743">Joomla</option>
+							<option value="57750">Apple</option>
+							<option value="57751">Finder</option>
+							<option value="57752">Android</option>
+							<option value="57753">Windows</option>
+							<option value="57754">Windows 8</option>
+							<option value="57757">Skype</option>
+							<option value="57773">Paypal</option>
+							<option value="57774">Paypal 2</option>
+							<option value="57775">Paypal 3</option>
+							<option value="57789">Chrome</option>
+							<option value="57790">Firefox</option>
+							<option value="57792">Opera</option>
+							<option value="57793">Safari</option>
+						</optgroup>
+						<optgroup label="Files & Documents">
+							<option value="57378">File</option>
+							<option value="57380">File 2</option>
+							<option value="57381">File 3</option>
+							<option value="57382">File 4</option>
+							<option value="57390">Folder</option>
+							<option value="57391">Folder open</option>
+							<option value="57778">File pdf</option>
+							<option value="57779">File openoffice</option>
+							<option value="57780">File word</option>
+							<option value="57781">File excel</option>
+							<option value="57782">File zip</option>
+							<option value="57783">File powerpoint</option>
+							<option value="57784">File xml</option>
+							<option value="57785">File css</option>
+							<option value="57786">Html 5</option>
+							<option value="57787">Html 52</option>
+						</optgroup>
+						<optgroup label="Like & Dislike Icons">
+							<option value="57542">Eye</option>
+							<option value="57544">Eye 2</option>
+							<option value="57550">Star</option>
+							<option value="57551">Star 2</option>
+							<option value="57552">Star 3</option>
+							<option value="57553">Heart</option>
+							<option value="57554">Heart 2</option>
+							<option value="57555">Heart broken</option>
+							<option value="57556">Thumbs up</option>
+							<option value="57557">Thumbs up 2</option>
+						</optgroup>
+						<optgroup label="Emoticons">
+							<option value="57558">Happy</option>
+							<option value="57559">Happy 2</option>
+							<option value="57560">Smiley</option>
+							<option value="57561">Smiley 2</option>
+							<option value="57562">Tongue</option>
+							<option value="57563">Tongue 2</option>
+							<option value="57564">Sad</option>
+							<option value="57565">Sad 2</option>
+							<option value="57566">Wink</option>
+							<option value="57567">Wink 2</option>
+							<option value="57568">Grin</option>
+							<option value="57569">Grin 2</option>
+							<option value="57570">Cool</option>
+							<option value="57571">Cool 2</option>
+							<option value="57572">Angry</option>
+							<option value="57573">Angry 2</option>
+							<option value="57574">Evil</option>
+							<option value="57575">Evil 2</option>
+							<option value="57576">Shocked</option>
+							<option value="57577">Shocked 2</option>
+							<option value="57578">Confused</option>
+							<option value="57579">Confused 2</option>
+							<option value="57580">Neutral</option>
+							<option value="57581">Neutral 2</option>
+							<option value="57582">Wondering</option>
+							<option value="57583">Wondering 2</option>
+						</optgroup>
+						<optgroup label="Directional Icons">
+							<option value="57584">Point up</option>
+							<option value="57585">Point right</option>
+							<option value="57586">Point down</option>
+							<option value="57587">Point left</option>
+							<option value="57631">Arrow up left</option>
+							<option value="57632">Arrow up</option>
+							<option value="57633">Arrow up right</option>
+							<option value="57634">Arrow right</option>
+							<option value="57635">Arrow down right</option>
+							<option value="57636">Arrow down</option>
+							<option value="57637">Arrow down left</option>
+							<option value="57638">Arrow left</option>
+							<option value="57639">Arrow up left 2</option>
+							<option value="57640">Arrow up 2</option>
+							<option value="57641">Arrow up right 2</option>
+							<option value="57642">Arrow right 2</option>
+							<option value="57643">Arrow down right 2</option>
+							<option value="57644">Arrow down 2</option>
+							<option value="57645">Arrow down left 2</option>
+							<option value="57646">Arrow left 2</option>
+							<option value="57647">Arrow up left 3</option>
+							<option value="57648">Arrow up 3</option>
+							<option value="57649">Arrow up right 3</option>
+							<option value="57650">Arrow right 3</option>
+							<option value="57651">Arrow down right 3</option>
+							<option value="57652">Arrow down 3</option>
+							<option value="57653">Arrow down left 3</option>
+							<option value="57654">Arrow left 3</option>
+						</optgroup>
+						<optgroup label="Other Icons">
+							<option value="57351">Quill</option>
+							<option value="57353">Blog</option>
+							<option value="57354">Droplet</option>
+							<option value="57358">Images</option>
+							<option value="57360">Music</option>
+							<option value="57366">Pacman</option>
+							<option value="57367">Spades</option>
+							<option value="57368">Clubs</option>
+							<option value="57369">Diamonds</option>
+							<option value="57370">Pawn</option>
+							<option value="57371">Bullhorn</option>
+							<option value="57372">Connection</option>
+							<option value="57373">Podcast</option>
+							<option value="57374">Feed</option>
+							<option value="57389">Stack</option>
+							<option value="57393">Tags</option>
+							<option value="57394">Barcode</option>
+							<option value="57395">Qrcode</option>
+							<option value="57396">Ticket</option>
+							<option value="57400">Coin</option>
+							<option value="57401">Credit</option>
+							<option value="57407">Notebook</option>
+							<option value="57409">Pushpin</option>
+							<option value="57412">Compass</option>
+							<option value="57418">Alarm</option>
+							<option value="57419">Alarm 2</option>
+							<option value="57420">Bell</option>
+							<option value="57424">Print</option>
+							<option value="57427">Laptop</option>
+							<option value="57428">Mobile</option>
+							<option value="57429">Mobile 2</option>
+							<option value="57431">Tv</option>
+							<option value="57440">Disk</option>
+							<option value="57441">Storage</option>
+							<option value="57449">Reply</option>
+							<option value="57451">Bubbles</option>
+							<option value="57452">Bubbles 2</option>
+							<option value="57454">Bubbles 3</option>
+							<option value="57455">Bubbles 4</option>
+							<option value="57457">Users</option>
+							<option value="57459">Users 2</option>
+							<option value="57462">Quotes left</option>
+							<option value="57464">Spinner</option>
+							<option value="57465">Spinner 2</option>
+							<option value="57466">Spinner 3</option>
+							<option value="57467">Spinner 4</option>
+							<option value="57468">Spinner 5</option>
+							<option value="57469">Spinner 6</option>
+							<option value="57470">Binoculars</option>
+							<option value="57471">Search</option>
+							<option value="57489">Hammer</option>
+							<option value="57490">Wand</option>
+							<option value="57491">Aid</option>
+							<option value="57492">Bug</option>
+							<option value="57494">Stats</option>
+							<option value="57495">Bars</option>
+							<option value="57496">Bars 2</option>
+							<option value="57497">Gift</option>
+							<option value="57498">Trophy</option>
+							<option value="57499">Glass</option>
+							<option value="57500">Mug</option>
+							<option value="57501">Food</option>
+							<option value="57502">Leaf</option>
+							<option value="57503">Rocket</option>
+							<option value="57504">Meter</option>
+							<option value="57505">Meter 2</option>
+							<option value="57506">Dashboard</option>
+							<option value="57507">Hammer 2</option>
+							<option value="57508">Fire</option>
+							<option value="57509">Lab</option>
+							<option value="57510">Magnet</option>
+							<option value="57511">Remove</option>
+							<option value="57512">Remove 2</option>
+							<option value="57513">Briefcase</option>
+							<option value="57514">Airplane</option>
+							<option value="57515">Truck</option>
+							<option value="57516">Road</option>
+							<option value="57517">Accessibility</option>
+							<option value="57518">Target</option>
+							<option value="57519">Shield</option>
+							<option value="57520">Lightning</option>
+							<option value="57521">Switch</option>
+							<option value="57522">Powercord</option>
+							<option value="57523">Signup</option>
+							<option value="57529">Tree</option>
+							<option value="57530">Cloud</option>
+							<option value="57538">Earth</option>
+							<option value="57546">Bookmarks</option>
+							<option value="57589">Notification</option>
+							<option value="57597">Close</option>
+							<option value="57598">Checkmark</option>
+							<option value="57599">Checkmark 2</option>
+							<option value="57601">Minus</option>
+							<option value="57602">Plus</option>
+							<option value="57607">Stop</option>
+							<option value="57608">Backward</option>
+							<option value="57612">Stop 2</option>
+							<option value="57613">Backward 2</option>
+							<option value="57615">First</option>
+							<option value="57616">Last</option>
+							<option value="57619">Eject</option>
+							<option value="57627">Loop</option>
+							<option value="57628">Loop 2</option>
+							<option value="57629">Loop 3</option>
+							<option value="57630">Shuffle</option>
+							<option value="57655">Tab</option>
+							<option value="57656">Checkbox checked</option>
+							<option value="57657">Checkbox unchecked</option>
+							<option value="57658">Checkbox partial</option>
+							<option value="57661">Crop</option>
+							<option value="57665">Font</option>
+							<option value="57666">Text height</option>
+							<option value="57667">Text width</option>
+							<option value="57672">Omega</option>
+							<option value="57673">Sigma</option>
+							<option value="57676">Insert template</option>
+							<option value="57677">Pilcrow</option>
+							<option value="57678">Lefttoright</option>
+							<option value="57679">Righttoleft</option>
+							<option value="57680">Paragraph left</option>
+							<option value="57681">Paragraph center</option>
+							<option value="57682">Paragraph right</option>
+							<option value="57683">Paragraph justify</option>
+							<option value="57684">Paragraph left 2</option>
+							<option value="57685">Paragraph center 2</option>
+							<option value="57686">Paragraph right 2</option>
+							<option value="57687">Paragraph justify 2</option>
+							<option value="57690">Newtab</option>
+							<option value="57695">Mail</option>
+							<option value="57696">Mail 2</option>
+							<option value="57697">Mail 3</option>
+							<option value="57698">Mail 4</option>
+							<option value="57699">Google</option>
+							<option value="57708">Instagram</option>
+							<option value="57712">Feed 2</option>
+							<option value="57713">Feed 3</option>
+							<option value="57714">Feed 4</option>
+							<option value="57715">Youtube</option>
+							<option value="57716">Youtube 2</option>
+							<option value="57720">Lanyrd</option>
+							<option value="57721">Flickr</option>
+							<option value="57722">Flickr 2</option>
+							<option value="57723">Flickr 3</option>
+							<option value="57724">Flickr 4</option>
+							<option value="57725">Picassa</option>
+							<option value="57726">Picassa 2</option>
+							<option value="57727">Dribbble</option>
+							<option value="57728">Dribbble 2</option>
+							<option value="57729">Dribbble 3</option>
+							<option value="57730">Forrst</option>
+							<option value="57731">Forrst 2</option>
+							<option value="57732">Deviantart</option>
+							<option value="57733">Deviantart 2</option>
+							<option value="57734">Steam</option>
+							<option value="57735">Steam 2</option>
+							<option value="57744">Blogger</option>
+							<option value="57745">Blogger 2</option>
+							<option value="57749">Tux</option>
+							<option value="57762">Delicious</option>
+							<option value="57768">Xing</option>
+							<option value="57769">Xing 2</option>
+							<option value="57770">Flattr</option>
+							<option value="57771">Foursquare</option>
+							<option value="57772">Foursquare 2</option>
+							<option value="57777">Libreoffice</option>
+							<option value="57788">Css 3</option>
+							<option value="57791">IE</option>
+							<option value="57794">IcoMoon</option>
+						</optgroup>
+					</select>
+					<span class="clearfix"></span>
 				</p>
 			</div>
 		</div>
@@ -81,7 +2063,8 @@
 	<main class="container" id="main">
 		<!-- #setup -->
 		<section id="setup">
-			<h2><a href="#main" class="icon-up-open"></a><i class="icon-wrench"></i> How it works</h2>
+			<h2><i class="icon-cog"></i> How it works</h2>
+			<hr />
 			<p>
 				Just include a copy of jQuery, the fontIconPickers script, the fontIconPickers theme and your Font Icons. Now you can trigger it on a <code>SELECT</code> or <code>TEXT</code> input.  check the <a href="#examples">first example</a> to start!
 			</p>
@@ -111,8 +2094,10 @@
 &lt;!-- required default theme --&gt;
 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;themes/grey-theme/jquery.fonticonpicker.grey.min.css&quot; /&gt;
 
-&lt;!-- optional other themes --&gt;
+&lt;!-- optional themes --&gt;
 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../themes/inverted-theme/jquery.fonticonpicker.inverted.min.css&quot; /&gt;
 </pre>
 				</div>
 				<div class="tab-pane" id="setup_fonts">
@@ -179,305 +2164,866 @@
 				</div>
 			</div>
 			<hr />
-			<p>More advanced icon picker is available like the one with categorized icons or one with attribute selector (<code>&lt;i data-icon=&quot;&amp;#xe000;&quot;&gt;&lt;/i&gt;</code>).</p>
-			<select name="first-example" id="first-example">
-				<option value="none">No Icon</option>
-				<optgroup label="Web Elements">
-					<option value="57367">List</option>
-					<option value="57419">Sitemap</option>
-					<option value="57556">Cloud</option>
-					<option value="57557">Cloud Download</option>
-					<option value="57558">Cloud Upload</option>
-					<option value="57559">Download</option>
-					<option value="57560">Upload</option>
-					<option value="57563">WWW</option>
-					<option value="57564">Globe</option>
-					<option value="57565">Anchor Link</option>
-					<option value="57413">HTML 5</option>
-					<option value="57718">CSS 3</option>
-					<option value="57750">Embed</option>
-					<option value="57749">Code</option>
-					<option value="57377">Table</option>
-					<option value="57424">Checkbox Unchecked</option>
-					<option value="57746">Checkbox Checked</option>
-					<option value="57678">Checkbox Partial</option>
-					<option value="57745">Radio Unchecked</option>
-					<option value="57744">Radio Checked</option>
-					<option value="57553">Toggle</option>
-					<option value="57742">Solid Check</option>
-					<option value="57743">Hollow Check</option>
-					<option value="57684">Bold</option>
-					<option value="57685">Underline</option>
-					<option value="57686">Italic</option>
-					<option value="57687">Strike Through</option>
-					<option value="57754">Align Justify</option>
-					<option value="57755">Align Right</option>
-					<option value="57756">Align Center</option>
-					<option value="57757">Align Left</option>
-					<option value="57752">Indent Decrease</option>
-					<option value="57753">Indent Increase</option>
-				</optgroup>
-				<optgroup label="Business">
-					<option value="57461">Support</option>
-					<option value="57498">Testimonials</option>
-					<option value="57501">Testimonials 2</option>
-					<option value="57361">Members</option>
-					<option value="57503">Members 2</option>
-					<option value="57500">Comment</option>
-					<option value="57504">User</option>
-					<option value="57505">Corporate</option>
-					<option value="57428">Visiting Card</option>
-					<option value="57427">Office</option>
-				</optgroup>
-				<optgroup label="Charts and Codes">
-					<option value="57529">Pie Chart</option>
-					<option value="57530">Line Chart</option>
-					<option value="57365">Column Chart</option>
-					<option value="57455">QR Code</option>
-					<option value="57454">Bar Code</option>
-				</optgroup>
-				<optgroup label="User Actions">
-					<option value="57372">Cut</option>
-					<option value="57353">Copy</option>
-					<option value="57446">Paste</option>
-					<option value="57735">Settings</option>
-					<option value="57625">Enter</option>
-					<option value="57626">Exit</option>
-					<option value="57732">Save</option>
-					<option value="57544">Trash</option>
-					<option value="57371">Crop</option>
-					<option value="57734">Resize</option>
-					<option value="57373">Console</option>
-				</optgroup>
-				<optgroup label="eCommerce">
-					<option value="57457">Shopping Cart</option>
-					<option value="57354">Shopping Cart 2</option>
-					<option value="57458">USD</option>
-					<option value="57459">Card</option>
-					<option value="57460">Calculator</option>
-					<option value="57452">Tag</option>
-				</optgroup>
-				<optgroup label="Attentive">
-					<option value="57614">Warning</option>
-					<option value="57615">Information</option>
-					<option value="57616">Help</option>
-					<option value="57617">Information 2</option>
-					<option value="57618">Information 3</option>
-					<option value="57619">Not allowed</option>
-					<option value="57621">Allowed</option>
-				</optgroup>
-				<optgroup label="Multimedia">
-					<option value="57346">Image</option>
-					<option value="57417">Gallery</option>
-					<option value="57347">Headphone</option>
-					<option value="57348">Video Play</option>
-					<option value="57349">Video Recorder</option>
-					<option value="57418">Camera</option>
-					<option value="57719">Video Play 2</option>
-					<option value="57364">Equalizer</option>
-					<option value="57627">Play</option>
-					<option value="57628">Pause</option>
-					<option value="57629">Stop</option>
-					<option value="57630">Previous</option>
-					<option value="57631">Next</option>
-					<option value="57729">Music</option>
-					<option value="57642">Volume High</option>
-					<option value="57643">Volume Medium</option>
-					<option value="57644">Volume Low</option>
-					<option value="57645">Volume Mute</option>
-					<option value="57646">Volume Mute 2</option>
-					<option value="57647">Volume Increase</option>
-					<option value="57648">Volume Decrease</option>
-				</optgroup>
-				<optgroup label="Location and Contact">
-					<option value="57464">Phone Book</option>
-					<option value="57465">Phone Book Empty</option>
-					<option value="57466">Email</option>
-					<option value="57471">Map</option>
-					<option value="57472">Map 2</option>
-					<option value="57470">Compass</option>
-					<option value="57468">Location Marker</option>
-					<option value="57469">Location Marker 2</option>
-					<option value="57344">Home</option>
-					<option value="57425">Home 2</option>
-					<option value="57426">Home 3</option>
-				</optgroup>
-				<optgroup label="Date and Time">
-					<option value="57474">Clock</option>
-					<option value="57475">Solid Clock</option>
-					<option value="57476">Alarm Clock</option>
-					<option value="57480">Month Calendar</option>
-					<option value="57481">Day Calendar</option>
-					<option value="57479">Stopwatch</option>
-					<option value="57473">History</option>
-				</optgroup>
-				<optgroup label="Devices">
-					<option value="57482">Printer</option>
-					<option value="57483">Keyboard</option>
-					<option value="57355">Laptop</option>
-					<option value="57484">Phone</option>
-					<option value="57725">Desktop</option>
-					<option value="57727">Tablet</option>
-					<option value="57356">Television</option>
-				</optgroup>
-				<optgroup label="Tools">
-					<option value="57523">Wrench</option>
-					<option value="57420">Cogs</option>
-					<option value="57524">Cog</option>
-					<option value="57525">Hammer</option>
-					<option value="57430">Pen</option>
-					<option value="57345">Pencil</option>
-					<option value="57526">Wand</option>
-					<option value="57433">Paint Brush</option>
-					<option value="57541">Lab</option>
-					<option value="57518">Key</option>
-					<option value="57519">Key 2</option>
-					<option value="57520">Lock</option>
-					<option value="57521">Lock 2</option>
-					<option value="57522">Unlocked</option>
-					<option value="57679">Filter</option>
-					<option value="57680">Filter 2</option>
-				</optgroup>
-				<optgroup label="Social and Networking">
-					<option value="57374">Share</option>
-					<option value="57379">Google Plus</option>
-					<option value="57381">Google Plus Solid</option>
-					<option value="57382">Google Drive</option>
-					<option value="57383">Facebook</option>
-					<option value="57384">Facebook Solid</option>
-					<option value="57385">Instagram</option>
-					<option value="57386">Twitter</option>
-					<option value="57387">Twitter Solid</option>
-					<option value="57388">RSS</option>
-					<option value="57389">RSS Solid</option>
-					<option value="57390">YouTube</option>
-					<option value="57391">Vimeo</option>
-					<option value="57392">Vimeo Solid</option>
-					<option value="57693">Picasa</option>
-					<option value="57700">Steam</option>
-					<option value="57396">Github</option>
-					<option value="57701">Github 2</option>
-					<option value="57702">Github 3</option>
-					<option value="57703">Github Text</option>
-					<option value="57397">WordPress</option>
-					<option value="57407">Pinterest</option>
-					<option value="57399">Tumblr</option>
-					<option value="57705">Tumblr Solid</option>
-					<option value="57706">Yahoo</option>
-					<option value="57404">Last FM</option>
-					<option value="57786">Last FM Solid</option>
-					<option value="57780">LinkedIN</option>
-					<option value="57405">StumbleUpon</option>
-					<option value="57784">StumbleUpon Solid</option>
-					<option value="57704">Blogger</option>
-					<option value="57775">Blogger Solid</option>
-					<option value="57402">SoundCloud</option>
-					<option value="57708">SoundCloud Solid</option>
-					<option value="57403">Reddit</option>
-					<option value="57406">Stack Overflow</option>
-					<option value="57712">Yelp</option>
-				</optgroup>
-				<optgroup label="Brands">
-					<option value="57776">Apple</option>
-					<option value="57777">Android</option>
-					<option value="57410">PayPal</option>
-					<option value="57707">Linux</option>
-					<option value="57400">Finder</option>
-					<option value="57401">Windows 7</option>
-					<option value="57778">Windows 8</option>
-					<option value="57779">Skype</option>
-					<option value="57790">Chrome</option>
-					<option value="57791">FireFox</option>
-					<option value="57792">Internet Explorer</option>
-					<option value="57793">Safari</option>
-					<option value="57794">Opera</option>
-					<option value="57398">Joomla</option>
-				</optgroup>
-				<optgroup label="Files & Documents">
-					<option value="57450">Folder Closed</option>
-					<option value="57451">Folder Open</option>
-					<option value="57350">Empty File</option>
-					<option value="57722">Non Empty File</option>
-					<option value="57714">PDF</option>
-					<option value="57715">Open Office</option>
-					<option value="57411">ZIP</option>
-					<option value="57716">HTML / XML</option>
-					<option value="57717">Source Code / CSS</option>
-					<option value="57787">Word Document</option>
-					<option value="57788">Excel Sheet</option>
-					<option value="57713">Libre Office</option>
-					<option value="57412">PowerPoint</option>
-				</optgroup>
-				<optgroup label="Travel and Living">
-					<option value="57534">Coffee</option>
-					<option value="57535">Knife & Fork</option>
-					<option value="57576">Empty Star</option>
-					<option value="57577">Half Star</option>
-					<option value="57578">Full Star</option>
-					<option value="57547">Truck</option>
-					<option value="57546">Flight</option>
-					<option value="57579">Heart</option>
-					<option value="57581">Broken Heart</option>
-					<option value="57582">Like</option>
-					<option value="57583">Dislike</option>
-					<option value="57445">Library</option>
-					<option value="57443">Book</option>
-					<option value="57444">Books</option>
-				</optgroup>
-				<optgroup label="Emoticons">
-					<option value="57584">Happy</option>
-					<option value="57586">Smiley</option>
-					<option value="57588">Tease</option>
-					<option value="57590">Sad</option>
-					<option value="57592">Wink</option>
-					<option value="57594">Grin</option>
-					<option value="57596">Cool</option>
-					<option value="57598">Angry</option>
-					<option value="57600">Evil</option>
-					<option value="57602">Shocked</option>
-					<option value="57604">Confused</option>
-					<option value="57606">Neutral</option>
-					<option value="57608">Wondering</option>
-					<option value="57585">Happy - 2</option>
-					<option value="57587">Smiley - 2</option>
-					<option value="57589">Tease - 2</option>
-					<option value="57591">Sad - 2</option>
-					<option value="57593">Wink - 2</option>
-					<option value="57595">Grin - 2</option>
-					<option value="57597">Cool - 2</option>
-					<option value="57599">Angry - 2</option>
-					<option value="57601">Evil - 2</option>
-					<option value="57603">Shocked - 2</option>
-					<option value="57605">Confused - 2</option>
-					<option value="57607">Neutral - 2</option>
-					<option value="57609">Wondering - 2</option>
-				</optgroup>
-				<optgroup label="Arrows">
-					<option value="57653">Top Left</option>
-					<option value="57654">Top</option>
-					<option value="57655">Top Right</option>
-					<option value="57656">Right</option>
-					<option value="57657">Bottom Right</option>
-					<option value="57658">Bottom</option>
-					<option value="57659">Bottom Left</option>
-					<option value="57660">Left</option>
-					<option value="57669">Top Left Circular</option>
-					<option value="57670">Top Circular</option>
-					<option value="57671">Top Right Circular</option>
-					<option value="57672">Right Circular</option>
-					<option value="57673">Bottom Right Circular</option>
-					<option value="57674">Bottom Circular</option>
-					<option value="57675">Bottom Left Circular</option>
-					<option value="57676">Left Circular</option>
-				</optgroup>
-			</select>
-			<p>Please see more examples below.</p>
+			<p>More advanced icon picker is available like the one with categorized icons or one with attribute selector (<code>&lt;i data-icon=&quot;&amp;#xe000;&quot;&gt;&lt;/i&gt;</code>). Please see more examples below.</p>
 		</section> <!-- /#setup -->
 
 		<!-- #examples -->
 		<section id="examples">
+			<hr />
+			<h2><a href="#main" class="icon-up-open"></a> <i class="icon-menu"></i> Examples</h2>
+			<hr />
+			<div class="row">
+				<div class="col-md-5 col-md-push-7">
+					<ul class="nav nav-pills nav-stacked">
+						<li class="active"><a href="#e1" data-toggle="tab">
+							<span class="badge pull-right">basic</span> Load from <code>SELECT</code> field
+						</a></li>
+						<li><a href="#e2" data-toggle="tab">
+							<span class="badge pull-right">basic</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Load from <code>SELECT</code> with optgroup for auto categorizing
+						</a></li>
+						<li><a href="#e3" data-toggle="tab">
+							<span class="badge pull-right">basic</span> Load from <code>INPUT</code> text field with simple source
+						</a></li>
+						<li><a href="#e4" data-toggle="tab">
+							<span class="badge pull-right">advanced</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Load from <code>INPUT</code> text field with categorized source
+						</a></li>
+						<li><a href="#e5" data-toggle="tab">
+							<span class="badge pull-right">advanced</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Load with custom search and attribute selector
+						</a></li>
+						<li><a href="#e6" data-toggle="tab">
+							<span class="badge pull-right">advanced</span> Change icon set on the fly
+						</a></li>
+						<li><a href="#e7" data-toggle="tab">
+							<span class="badge pull-right">advanced</span> No empty icons and no search
+						</a></li>
+						<li><a href="#e8" data-toggle="tab">
+							<span class="badge pull-right">pro</span> Load icons from Fontello JSON config file
+						</a></li>
+						<li><a href="#e9" data-toggle="tab">
+							<span class="badge pull-right">pro</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Load icons from icomoon JSON selection file
+						</a></li>
+						<li><a href="#e10" data-toggle="tab">
+							<span class="badge pull-right">pro</span> Trigger event on icon change
+						</a></li>
+						<li><a href="#e11" data-toggle="tab">
+							<span class="badge pull-right">pro</span><span class="bstooltip" title="New in V2.0.0"><i class="icon-star"></i></span> Reinitialize with DOM modifications
+						</a></li>
+					</ul>
+				</div>
+				<div class="col-md-7 col-md-pull-5">
+					<div class="tab-content vertical">
+						<article id="e1" class="tab-pane active">
+							<p>This is a basic example where no configuration options are used. Icons are loaded from <code>SELECT > OPTION</code> elements.</p>
 
+						</article>
+						<article id="e2" class="tab-pane">
+
+						</article>
+						<article id="e3" class="tab-pane">
+
+						</article>
+						<article id="e4" class="tab-pane">
+
+						</article>
+						<article id="e5" class="tab-pane">
+
+						</article>
+						<article id="e6" class="tab-pane">
+
+						</article>
+						<article id="e7" class="tab-pane">
+
+						</article>
+						<article id="e8" class="tab-pane">
+
+						</article>
+						<article id="e9" class="tab-pane">
+
+						</article>
+						<article id="e10" class="tab-pane">
+
+						</article>
+						<article id="e10" class="tab-pane">
+
+						</article>
+						<article id="e11" class="tab-pane">
+							<p>If you are changing the dom content dynamically then you can call <code>refreshPicker</code> public method to get the new DOM items.</p>
+							<button type="button" id="e11_element_helper_change" class="btn btn-primary pull-right">Change DOM</button>
+							<button type="button" style="display: none" id="e11_element_helper_restore" class="btn btn-default pull-right">Restore DOM</button>
+							<select name="e11_element" id="e11_element">
+								<optgroup label="Web Applications">
+									<option value="57436">Box add</option>
+									<option value="57437">Box remove</option>
+									<option value="57438">Download</option>
+									<option value="57439">Upload</option>
+									<option value="57524">List</option>
+									<option value="57525">List 2</option>
+									<option value="57526">Numbered list</option>
+									<option value="57527">Menu</option>
+									<option value="57528">Menu 2</option>
+									<option value="57531">Cloud download</option>
+									<option value="57532">Cloud upload</option>
+									<option value="57533">Download 2</option>
+									<option value="57534">Upload 2</option>
+									<option value="57535">Download 3</option>
+									<option value="57536">Upload 3</option>
+									<option value="57537">Globe</option>
+									<option value="57541">Attachment</option>
+									<option value="57545">Bookmark</option>
+									<option value="57691">Embed</option>
+									<option value="57692">Code</option>
+								</optgroup>
+								<optgroup label="Business Icons">
+									<option value="57347">Office</option>
+									<option value="57348">Newspaper</option>
+									<option value="57375">Book</option>
+									<option value="57376">Books</option>
+									<option value="57377">Library</option>
+									<option value="57379">Profile</option>
+									<option value="57403">Support</option>
+									<option value="57406">Address book</option>
+									<option value="57432">Cabinet</option>
+									<option value="57433">Drawer</option>
+									<option value="57434">Drawer 2</option>
+									<option value="57435">Drawer 3</option>
+									<option value="57450">Bubble</option>
+									<option value="57453">Bubble 2</option>
+									<option value="57456">User</option>
+									<option value="57458">User 2</option>
+									<option value="57460">User 3</option>
+									<option value="57461">User 4</option>
+									<option value="57463">Busy</option>
+								</optgroup>
+							</select>
+
+							<div class="example-code">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#e11_html" data-toggle="tab">HTML</a></li>
+									<li><a href="#e11_js" data-toggle="tab">JavaScript</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane active" id="e11_html">
+										<pre class="brush: html">
+&lt;select name=&quot;e11_element&quot; id=&quot;e11_element&quot;&gt;
+	&lt;optgroup label=&quot;Web Applications&quot;&gt;
+		&lt;option value=&quot;57436&quot;&gt;Box add&lt;/option&gt;
+		&lt;option value=&quot;57437&quot;&gt;Box remove&lt;/option&gt;
+		&lt;option value=&quot;57438&quot;&gt;Download&lt;/option&gt;
+		&lt;option value=&quot;57439&quot;&gt;Upload&lt;/option&gt;
+		&lt;option value=&quot;57524&quot;&gt;List&lt;/option&gt;
+		&lt;option value=&quot;57525&quot;&gt;List 2&lt;/option&gt;
+		&lt;option value=&quot;57526&quot;&gt;Numbered list&lt;/option&gt;
+		&lt;option value=&quot;57527&quot;&gt;Menu&lt;/option&gt;
+		&lt;option value=&quot;57528&quot;&gt;Menu 2&lt;/option&gt;
+		&lt;option value=&quot;57531&quot;&gt;Cloud download&lt;/option&gt;
+		&lt;option value=&quot;57532&quot;&gt;Cloud upload&lt;/option&gt;
+		&lt;option value=&quot;57533&quot;&gt;Download 2&lt;/option&gt;
+		&lt;option value=&quot;57534&quot;&gt;Upload 2&lt;/option&gt;
+		&lt;option value=&quot;57535&quot;&gt;Download 3&lt;/option&gt;
+		&lt;option value=&quot;57536&quot;&gt;Upload 3&lt;/option&gt;
+		&lt;option value=&quot;57537&quot;&gt;Globe&lt;/option&gt;
+		&lt;option value=&quot;57541&quot;&gt;Attachment&lt;/option&gt;
+		&lt;option value=&quot;57545&quot;&gt;Bookmark&lt;/option&gt;
+		&lt;option value=&quot;57691&quot;&gt;Embed&lt;/option&gt;
+		&lt;option value=&quot;57692&quot;&gt;Code&lt;/option&gt;
+	&lt;/optgroup&gt;
+	&lt;optgroup label=&quot;Business Icons&quot;&gt;
+		&lt;option value=&quot;57347&quot;&gt;Office&lt;/option&gt;
+		&lt;option value=&quot;57348&quot;&gt;Newspaper&lt;/option&gt;
+		&lt;option value=&quot;57375&quot;&gt;Book&lt;/option&gt;
+		&lt;option value=&quot;57376&quot;&gt;Books&lt;/option&gt;
+		&lt;option value=&quot;57377&quot;&gt;Library&lt;/option&gt;
+		&lt;option value=&quot;57379&quot;&gt;Profile&lt;/option&gt;
+		&lt;option value=&quot;57403&quot;&gt;Support&lt;/option&gt;
+		&lt;option value=&quot;57406&quot;&gt;Address book&lt;/option&gt;
+		&lt;option value=&quot;57432&quot;&gt;Cabinet&lt;/option&gt;
+		&lt;option value=&quot;57433&quot;&gt;Drawer&lt;/option&gt;
+		&lt;option value=&quot;57434&quot;&gt;Drawer 2&lt;/option&gt;
+		&lt;option value=&quot;57435&quot;&gt;Drawer 3&lt;/option&gt;
+		&lt;option value=&quot;57450&quot;&gt;Bubble&lt;/option&gt;
+		&lt;option value=&quot;57453&quot;&gt;Bubble 2&lt;/option&gt;
+		&lt;option value=&quot;57456&quot;&gt;User&lt;/option&gt;
+		&lt;option value=&quot;57458&quot;&gt;User 2&lt;/option&gt;
+		&lt;option value=&quot;57460&quot;&gt;User 3&lt;/option&gt;
+		&lt;option value=&quot;57461&quot;&gt;User 4&lt;/option&gt;
+		&lt;option value=&quot;57463&quot;&gt;Busy&lt;/option&gt;
+	&lt;/optgroup&gt;
+&lt;/select&gt;
+										</pre>
+									</div>
+									<div class="tab-pane" id="e11_js">
+										<pre class="brush: js">
+/**
+ * Refresh iconPicker on DOM change
+ * Example 11
+ */
+// Init
+var e11_element = $(&#039;#e11_element&#039;).fontIconPicker({
+	useAttribute: true,
+	theme: &#039;fip-darkgrey&#039;,
+	attributeName: &#039;data-icomoon&#039;,
+	emptyIconValue: &#039;none&#039;
+});
+
+// Get the original HTML for later use
+var e11_original_html = e11_element.html();
+
+// Add event listener to the change button
+$(&#039;#e11_element_helper_change&#039;).on(&#039;click&#039;, function() {
+	// Change the item HTML
+	var new_html = &#039;&lt;optgroup label=&quot;Form Control Icons&quot;&gt;&#039; +
+		&#039;&lt;option value=&quot;57383&quot;&gt;Copy&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57384&quot;&gt;Copy 2&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57385&quot;&gt;Copy 3&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57386&quot;&gt;Paste&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57387&quot;&gt;Paste 2&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57388&quot;&gt;Paste 3&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57484&quot;&gt;Settings&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57594&quot;&gt;Cancel circle&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57595&quot;&gt;Checkmark circle&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57600&quot;&gt;Spell check&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57603&quot;&gt;Enter&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57604&quot;&gt;Exit&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57659&quot;&gt;Radio checked&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57660&quot;&gt;Radio unchecked&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57693&quot;&gt;Console&lt;/option&gt;&#039; +
+	&#039;&lt;/optgroup&gt;&#039; +
+	&#039;&lt;optgroup label=&quot;User Action &amp; Text Editor&quot;&gt;&#039; +
+		&#039;&lt;option value=&quot;57442&quot;&gt;Undo&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57443&quot;&gt;Redo&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57444&quot;&gt;Flip&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57445&quot;&gt;Flip 2&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57446&quot;&gt;Undo 2&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57447&quot;&gt;Redo 2&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57472&quot;&gt;Zoomin&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57473&quot;&gt;Zoomout&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57474&quot;&gt;Expand&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57475&quot;&gt;Contract&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57476&quot;&gt;Expand 2&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57477&quot;&gt;Contract 2&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57539&quot;&gt;Link&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57662&quot;&gt;Scissors&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57668&quot;&gt;Bold&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57669&quot;&gt;Underline&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57670&quot;&gt;Italic&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57671&quot;&gt;Strikethrough&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57674&quot;&gt;Table&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57675&quot;&gt;Table 2&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57688&quot;&gt;Indent increase&lt;/option&gt;&#039; +
+		&#039;&lt;option value=&quot;57689&quot;&gt;Indent decrease&lt;/option&gt;&#039; +
+	&#039;&lt;/optgroup&gt;&#039;;
+	e11_element.html(new_html);
+
+	// Refresh the iconPicker
+	e11_element.refreshPicker();
+
+	// Hide this element
+	$(this).hide();
+
+	// Show the restore button
+	$(&#039;#e11_element_helper_restore&#039;).fadeIn(&#039;fast&#039;);
+});
+
+// Add event listener to the restore button
+$(&#039;#e11_element_helper_restore&#039;).on(&#039;click&#039;, function() {
+	// Restore the original HTML
+	e11_element.html(e11_original_html);
+
+	// Refresh the iconPicker
+	e11_element.refreshPicker();
+
+	// Hide this button
+	$(this).hide();
+
+	// Show the change button
+	$(&#039;#e11_element_helper_change&#039;).fadeIn(&#039;fast&#039;);
+});
+										</pre>
+									</div>
+								</div>
+							</div>
+						</article>
+					</div>
+
+				</div>
+			</div>
 		</section> <!-- /#examples -->
+
+		<!-- #options -->
+		<section id="options">
+			<hr />
+			<h2><a href="#main" class="icon-up-open"></a> <i class="icon-cog-alt"></i> Plugin Options</h2>
+			<hr />
+			<p>You can pass the following options to the <code>fontIconPicker</code> constructor.</p>
+			<div class="table-responsive">
+				<table class="table table-striped table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>Option</th>
+							<th>Datatype</th>
+							<th>Description</th>
+							<th>Default</th>
+							<th>Example</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>theme</th>
+							<td><code>String</code></td>
+							<td>
+								The theme to be used with the <code>fontIconPicker</code>. Available values are:
+								<ul>
+									<li>
+										<code>fip-grey</code>: The default theme. Renders beautiful grey colored icon picker.
+									</li>
+									<li>
+										<code>fip-darkgrey</code>: A deeper shade of the grey theme with CSS3 gradients, rounded corners and shadows.
+									</li>
+									<li>
+										<code>fip-bootstrap</code>: A nice icon picker theme compatible with <a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>.
+									</li>
+									<li>
+										<code>fip-inverted</code>: Inverted color scheme.
+									</li>
+								</ul>
+							</td>
+							<td>
+								<code>&#039;fip-grey&#039;</code>
+							</td>
+							<td>
+								<pre class="brush: js">
+$(&#039;#icomoon&#039;).fontIconPicker({
+	theme: &#039;fip-darkgrey&#039;
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>source</th>
+							<td><code>Array | Object | Boolean</code></td>
+							<td>
+								The source of icons. Can be of two types:
+								<ul>
+									<li>
+										<code>Array:</code> For simple list of icons without any categorizing.
+									</li>
+									<li>
+										<code>Object:</code> For categorized list of icons. Each of the object variables should be an <code>array</code> consisting of icons under that category. Object variable name is used to populate that category.
+									</li>
+								</ul>
+							</td>
+							<td><code>false</code></td>
+							<td>
+								<h4>Simple list of icons, chained with other options</h4>
+								<pre class="brush: js">
+// init fontIconPicker
+$(&#039;.myselect&#039;).fontIconPicker({
+	source: [&#039;icon-heart&#039;, &#039;icon-lemon&#039;, &#039;icon-user&#039;, &#039;icon-tag&#039;, &#039;icon-help&#039;],
+	emptyIcon: false,
+	hasSearch: false
+});
+								</pre>
+								<h4>Categorized list of icons</h4>
+								<pre class="brush: js">
+var icm_icons = {
+	&#039;Web Applications&#039; : [57436, 57437, 57438, 57439, 57524, 57525, 57526, 57527, 57528, 57531, 57532, 57533, 57534, 57535, 57536, 57537, 57541, 57545, 57691, 57692],
+	&#039;Business Icons&#039; : [57347, 57348, 57375, 57376, 57377, 57379, 57403, 57406, 57432, 57433, 57434, 57435, 57450, 57453, 57456, 57458, 57460, 57461, 57463],
+	&#039;eCommerce&#039; : [57392, 57397, 57398, 57399, 57402],
+	&#039;Currency Icons&#039; : [],
+	&#039;Form Control Icons&#039; : [57383, 57384, 57385, 57386, 57387, 57388, 57484, 57594, 57595, 57600, 57603, 57604, 57659, 57660, 57693],
+	&#039;User Action &amp; Text Editor&#039; : [57442, 57443, 57444, 57445, 57446, 57447, 57472, 57473, 57474, 57475, 57476, 57477, 57539, 57662, 57668, 57669, 57670, 57671, 57674, 57675, 57688, 57689],
+	&#039;Charts and Codes&#039; : [57493],
+	&#039;Attentive&#039; : [57543, 57588, 57590, 57591, 57592, 57593, 57596]
+};
+$(&#039;.myselect&#039;).fontIconPicker({
+	source: icm_icons,
+	useAttribute: true,
+	attributeName: &#039;data-icomoon&#039;
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>emptyIcon</th>
+							<td><code>Boolean</code></td>
+							<td>Whether or not empty icon should be shown on the icon picker. If you give your users the option to pick no icon, then leave it enabled.</td>
+							<td><code>true</code></td>
+							<td>
+								<pre class="brush: js">
+$(&#039;.myselect&#039;).fontIconPicker({
+	emptyIcon: false
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>emptyIconValue</th>
+							<td><code>String</code></td>
+							<td>What should be the value of the <code>INPUT</code> or <code>SELECT</code> field when no icon is selected. This is only used when <code>emptyIcon</code> is set to true.</td>
+							<td><code>&#039;&#039;</code><br /><small class="text-muted">(empty string)</small></td>
+							<td>
+								<pre class="brush: js">
+// Use the value &quot;none&quot; when no icon is selected
+$(&#039;.myselect&#039;).fontIconPicker({
+	emptyIconValue: &#039;none&#039;
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>iconsPerPage</th>
+							<td><code>Number</code></td>
+							<td>Number of icons per page on the icon picker. Please note that if you have <code>emptyIcon</code> set to <code>true</code> then the actual number will be one less. For better appearance always provide a number in multiple of 5.</td>
+							<td><code>20</code></td>
+							<td>
+								<pre class="brush: js">
+// Show 50 icons per page
+$(&#039;.myselect&#039;).fontIconPicker({
+	iconsPerPage: 50
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>hasSearch</th>
+							<td><code>Boolean</code></td>
+							<td>Whether or not to show the search bar. The search result is always non case sensitive. When the <code>fontIconPicker</code> is initiated on a <code>SELECT</code> element, the option labels (or HTML) are used for search, not the option values.</td>
+							<td><code>true</code></td>
+							<td>
+								<pre class="brush: js">
+// Do not show the search bar
+$(&#039;.myselect&#039;).fontIconPicker({
+	hasSearch: false
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>searchSource</th>
+							<td><code>Array | Object | Boolean</code></td>
+							<td>Provide additional search strings for icons. Should be of the same format and <strong>order</strong> as the <code>source</code> option. This is particularly useful when passing numeric values to be used as unicode HTML attribute to the <code>source</code>. You can then provide this additional option to pass a custom search string.<br />
+							If provided, this will also be used to populate the titles of the icons.</td>
+							<td><code>false</code></td>
+							<td>
+								<pre class="brush: js">
+// Categorized Icon Source
+var icm_icons = {
+	&#039;Web Applications&#039; : [57436, 57437, 57438, 57439, 57524, 57525, 57526, 57527, 57528, 57531, 57532, 57533, 57534, 57535, 57536, 57537, 57541, 57545, 57691, 57692],
+	&#039;Business Icons&#039; : [57347, 57348, 57375, 57376, 57377, 57379, 57403, 57406, 57432, 57433, 57434, 57435, 57450, 57453, 57456, 57458, 57460, 57461, 57463],
+	&#039;eCommerce&#039; : [57392, 57397, 57398, 57399, 57402],
+	&#039;Form Control Icons&#039; : [57383, 57384, 57385, 57386, 57387, 57388, 57484, 57594, 57595, 57600, 57603, 57604, 57659, 57660, 57693]
+};
+
+// Categorized Search source
+// Under the same order as the source itself
+var icm_icon_search = {
+	&#039;Web Applications&#039; : [&#039;Box add&#039;, &#039;Box remove&#039;, &#039;Download&#039;, &#039;Upload&#039;, &#039;List&#039;, &#039;List 2&#039;, &#039;Numbered list&#039;, &#039;Menu&#039;, &#039;Menu 2&#039;, &#039;Cloud download&#039;, &#039;Cloud upload&#039;, &#039;Download 2&#039;, &#039;Upload 2&#039;, &#039;Download 3&#039;, &#039;Upload 3&#039;, &#039;Globe&#039;, &#039;Attachment&#039;, &#039;Bookmark&#039;, &#039;Embed&#039;, &#039;Code&#039;],
+	&#039;Business Icons&#039; : [&#039;Office&#039;, &#039;Newspaper&#039;, &#039;Book&#039;, &#039;Books&#039;, &#039;Library&#039;, &#039;Profile&#039;, &#039;Support&#039;, &#039;Address book&#039;, &#039;Cabinet&#039;, &#039;Drawer&#039;, &#039;Drawer 2&#039;, &#039;Drawer 3&#039;, &#039;Bubble&#039;, &#039;Bubble 2&#039;, &#039;User&#039;, &#039;User 2&#039;, &#039;User 3&#039;, &#039;User 4&#039;, &#039;Busy&#039;],
+	&#039;eCommerce&#039; : [&#039;Tag&#039;, &#039;Cart&#039;, &#039;Cart 2&#039;, &#039;Cart 3&#039;, &#039;Calculate&#039;],
+	&#039;Form Control Icons&#039; : [&#039;Copy&#039;, &#039;Copy 2&#039;, &#039;Copy 3&#039;, &#039;Paste&#039;, &#039;Paste 2&#039;, &#039;Paste 3&#039;, &#039;Settings&#039;, &#039;Cancel circle&#039;, &#039;Checkmark circle&#039;, &#039;Spell check&#039;, &#039;Enter&#039;, &#039;Exit&#039;, &#039;Radio checked&#039;, &#039;Radio unchecked&#039;, &#039;Console&#039;]
+};
+// Init the icon picker with custom source and search
+$(&#039;.myselect&#039;).fontIconPicker({
+	source: icm_icons,
+	searchSource: icm_icon_search,
+	useAttribute: true,
+	attributeName: &#039;data-icomoon&#039;
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>useAttribute</th>
+							<td><code>Boolean</code></td>
+							<td>Whether to use attribute selector instead of class selector for printing icons inside the picker. For example the HTML code <code>&lt;i data-icomoon=&quot;&amp;#xe1c2;&quot;&gt;&lt;/i&gt;</code> will print this icon: <i data-icomoon="&#xe1c2;"></i>. Under such curcumstances you will either pass numeric hexadecimal or decimal numbers to the source object and set the <code>convertToHex</code> option to true or pass the whole unicode string <code>&amp;#xe1c2;</code>.</td>
+							<td><code>&#039;data-icon&#039;</code></td>
+							<td>
+								<pre class="brush: js">
+$(&#039;.myselect&#039;).fontIconPicker({
+	source: [57392, 57397, 57398, 57399, 57402],
+	searchSource: [&#039;Tag&#039;, &#039;Cart&#039;, &#039;Cart 2&#039;, &#039;Cart 3&#039;, &#039;Calculate&#039;]
+	useAttribute: true,
+	attributeName: &#039;data-icomoon&#039;
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>attributeName</th>
+							<td><code>String</code></td>
+							<td>The name of the HTML attribute where the unicode is to be put. This is ignored if <code>useAttribute</code> is set to false.</td>
+							<td><code>&#039;data-icon&#039;</code></td>
+							<td>Please see <code>useAttribute</code></td>
+						</tr>
+						<tr>
+							<th>convertToHex</th>
+							<td><code>Boolean</code></td>
+							<td>Whether to convert the source to hexadecimal string and thereby put the unicode character to the provided HTML attribute. If set to false, then you need to provide the unicode character directly in escaped format (eg <code>&amp;#xe1c2;</code>). For ease of usage, it is best to pass direct decimal or hexadecimal <code>number</code> data to the source. This is ignored if <code>useAttribute</code> is set to false.</td>
+							<td><code>true</code></td>
+							<td>
+							<input type="text" id="no_hexadecimal" name="no_hexadecimal" />
+								<pre class="brush: html">
+&lt;!-- input field --&gt;
+&lt;input type=&quot;text&quot; id=&quot;no_hexadecimal&quot; name=&quot;no_hexadecimal&quot; /&gt;
+&lt;!-- init the icon picker --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	$(&#039;#no_hexadecimal&#039;).fontIconPicker({
+		source: [&#039;&amp;#xe1b1;&#039;, &#039;&amp;#xe1b2;&#039;, &#039;&amp;#xe1b3;&#039;, &#039;&amp;#xe1b4;&#039;, &#039;&amp;#xe1b5;&#039;, &#039;&amp;#xe1b6;&#039;, &#039;&amp;#xe1b7;&#039;, &#039;&amp;#xe1b8;&#039;, &#039;&amp;#xe1b9;&#039;, &#039;&amp;#xe1ba;&#039;],
+		searchSource: [&#039;Libre Office&#039;, &#039;File PDF&#039;, &#039;File Open Office&#039;, &#039;File Word&#039;, &#039;File Excel&#039;, &#039;File ZIP&#039;, &#039;File PowerPoint&#039;, &#039;File XML&#039;, &#039;File CSS&#039;, &#039;HTML 5&#039;],
+		useAttribute: true,
+		attributeName: &#039;data-icomoon&#039;,
+		convertToHex: false,
+		theme: &#039;fip-bootstrap&#039;
+	});
+&lt;/script&gt;
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>allCategoryText</th>
+							<td><code>String</code></td>
+							<td>If categorized then use this option to modify the <code>From all category</code> option of the category dropdown.</td>
+							<td><code>&#039;From all category&#039;</code></td>
+							<td>
+								<pre class="brush: js">
+$(&#039;.myselect&#039;).fontIconPicker({
+	useAttribute: true,
+	attributeName: &#039;data-icomoon&#039;,
+	allCategoryText: &#039;Show all&#039;
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>unCategorizedText</th>
+							<td><code>String</code></td>
+							<td>In case of <code>SELECT</code> fields with <code>OPTGROUP</code> any <code>OPTION</code> which is not a child of some <code>OPTGROUP</code> are considered under the <em>Uncategorized</em> category. You can change the label of this pseudo category using this option.</td>
+							<td><code>&#039;Uncategorized&#039;</code></td>
+							<td>
+								<pre class="brush: js">
+$(&#039;.myselect&#039;).fontIconPicker({
+	useAttribute: true,
+	attributeName: &#039;data-icomoon&#039;,
+	unCategorizedText: &#039;Default Icons&#039;
+});
+								</pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section> <!-- /#options -->
+
+		<!-- #apis -->
+		<section id="plugin-apis">
+			<hr />
+			<h2><a href="#main" class="icon-up-open"></a> <i class="icon-th"></i> Plugin APIs</h2>
+			<hr />
+			<p><code>fontIconPicker</code> provides three public APIs to manupulating the icon picker.</p>
+			<div class="table-responsive">
+				<table class="table table-striped table-bordered table-hover">
+					<thead>
+						<tr>
+							<th>API</th>
+							<th>Parameters</th>
+							<th>Description</th>
+							<th>Example</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th rowspan="2">setIcons</th>
+							<td>
+								<code>Array | Object</code> <code>newIcons</code><br /><em>An array or object of new icons. The format is same as <code>source</code> option.</em>
+							</td>
+							<td rowspan="2">
+								Use this method to dynamically change icons on the fly.
+							</td>
+							<td rowspan="2">
+								<h4>Live</h4>
+								<input type="text" name="change-icons" id="change-icons" />
+								<span class="change-icons-buttons">
+									<button type="button" class="btn btn-primary change-icons-all">All Icons</button>
+									<button type="button" class="btn btn-default change-icons-1">Set 1</button>
+									<button type="button" class="btn btn-default change-icons-2">Set 2</button>
+									<button type="button" class="btn btn-default change-icons-3">Set 3</button>
+								</span>
+								<hr />
+								<h4>HTML</h4>
+								<pre class="brush: html">
+&lt;input type=&quot;text&quot; name=&quot;change-icons&quot; id=&quot;change-icons&quot; /&gt;
+&lt;span class=&quot;change-icons-buttons&quot;&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-primary change-icons-all&quot;&gt;All Icons&lt;/button&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-default change-icons-1&quot;&gt;Set 1&lt;/button&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-default change-icons-2&quot;&gt;Set 2&lt;/button&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-default change-icons-3&quot;&gt;Set 3&lt;/button&gt;
+&lt;/span&gt;
+								</pre>
+								<h4>JS</h4>
+								<pre class="brush: js">
+/**
+ * Dynamically set icons
+ *
+ */
+// Get the variable to use the public APIs
+var dynamicIconsElement = $(&#039;#change-icons&#039;).fontIconPicker({
+	source: icm_icons,
+	searchSource: icm_icon_search,
+	useAttribute: true,
+	attributeName: &#039;data-icomoon&#039;,
+	theme: &#039;fip-bootstrap&#039;
+});
+
+// Add the event listeners and change icons dynamically
+$(&#039;.change-icons-all&#039;).on(&#039;click&#039;, function(e) {
+	// Prevent default action
+	e.preventDefault();
+
+	// Set the icon
+	dynamicIconsElement.setIcons(icm_icons, icm_icon_search);
+
+	// Change the button appearance
+	$(&#039;.change-icons-buttons button&#039;).removeClass(&#039;btn-primary&#039;).addClass(&#039;btn-default&#039;);
+	$(this).removeClass(&#039;btn-default&#039;).addClass(&#039;btn-primary&#039;);
+});
+$(&#039;.change-icons-1&#039;).on(&#039;click&#039;, function(e) {
+	// Prevent default action
+	e.preventDefault();
+
+	// Set the icon
+	dynamicIconsElement.setIcons(icm_icons_1, icm_icon_search_1);
+
+	// Change the button appearance
+	$(&#039;.change-icons-buttons button&#039;).removeClass(&#039;btn-primary&#039;).addClass(&#039;btn-default&#039;);
+	$(this).removeClass(&#039;btn-default&#039;).addClass(&#039;btn-primary&#039;);
+});
+$(&#039;.change-icons-2&#039;).on(&#039;click&#039;, function(e) {
+	// Prevent default action
+	e.preventDefault();
+
+	// Set the icon
+	dynamicIconsElement.setIcons(icm_icons_2, icm_icon_search_2);
+
+	// Change the button appearance
+	$(&#039;.change-icons-buttons button&#039;).removeClass(&#039;btn-primary&#039;).addClass(&#039;btn-default&#039;);
+	$(this).removeClass(&#039;btn-default&#039;).addClass(&#039;btn-primary&#039;);
+});
+$(&#039;.change-icons-3&#039;).on(&#039;click&#039;, function(e) {
+	// Prevent default action
+	e.preventDefault();
+
+	// Set the icon
+	dynamicIconsElement.setIcons(icm_icons_3, icm_icon_search_3);
+
+	// Change the button appearance
+	$(&#039;.change-icons-buttons button&#039;).removeClass(&#039;btn-primary&#039;).addClass(&#039;btn-default&#039;);
+	$(this).removeClass(&#039;btn-default&#039;).addClass(&#039;btn-primary&#039;);
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<code>Array | Object</code> <code>iconSearch</code><br /><em>An array or object of new icon search values. The format is same as <code>searchSource</code> option.</em>
+							</td>
+						</tr>
+						<tr>
+							<th>destroyPicker</th>
+							<td><code>N/A</code></td>
+							<td>Use this to remove the icon picker and restore the original element.</td>
+							<td>
+								<h4>Live</h4>
+								<select id="destroy-api" name="destroy-api">
+									<option value="">No icon</option>
+									<option>icon-user</option>
+									<option>icon-search</option>
+									<option>icon-right-dir</option>
+									<option>icon-star</option>
+									<option>icon-cancel</option>
+									<option>icon-help-circled</option>
+									<option>icon-info-circled</option>
+									<option>icon-eye</option>
+									<option>icon-tag</option>
+									<option>icon-bookmark</option>
+									<option>icon-heart</option>
+									<option>icon-thumbs-down-alt</option>
+									<option>icon-upload-cloud</option>
+									<option>icon-phone-squared</option>
+									<option>icon-cog</option>
+									<option>icon-wrench</option>
+									<option>icon-volume-down</option>
+									<option>icon-down-dir</option>
+									<option>icon-up-dir</option>
+									<option>icon-left-dir</option>
+									<option>icon-thumbs-up-alt</option>
+								</select>
+								<span class="destroy-api-buttons">
+									<button type="button" class="btn btn-default destroy-button-destroy">Destroy</button>
+									<button type="button" class="btn btn-default destroy-button-restore" style="display: none;">Restore</button>
+								</span>
+								<h4>HTML</h4>
+								<pre class="brush: html">
+&lt;select id=&quot;destroy-api&quot; name=&quot;destroy-api&quot;&gt;
+	&lt;option value=&quot;&quot;&gt;No icon&lt;/option&gt;
+	&lt;option&gt;icon-user&lt;/option&gt;
+	&lt;option&gt;icon-search&lt;/option&gt;
+	&lt;option&gt;icon-right-dir&lt;/option&gt;
+	&lt;option&gt;icon-star&lt;/option&gt;
+	&lt;option&gt;icon-cancel&lt;/option&gt;
+	&lt;option&gt;icon-help-circled&lt;/option&gt;
+	&lt;option&gt;icon-info-circled&lt;/option&gt;
+	&lt;option&gt;icon-eye&lt;/option&gt;
+	&lt;option&gt;icon-tag&lt;/option&gt;
+	&lt;option&gt;icon-bookmark&lt;/option&gt;
+	&lt;option&gt;icon-heart&lt;/option&gt;
+	&lt;option&gt;icon-thumbs-down-alt&lt;/option&gt;
+	&lt;option&gt;icon-upload-cloud&lt;/option&gt;
+	&lt;option&gt;icon-phone-squared&lt;/option&gt;
+	&lt;option&gt;icon-cog&lt;/option&gt;
+	&lt;option&gt;icon-wrench&lt;/option&gt;
+	&lt;option&gt;icon-volume-down&lt;/option&gt;
+	&lt;option&gt;icon-down-dir&lt;/option&gt;
+	&lt;option&gt;icon-up-dir&lt;/option&gt;
+	&lt;option&gt;icon-left-dir&lt;/option&gt;
+	&lt;option&gt;icon-thumbs-up-alt&lt;/option&gt;
+&lt;/select&gt;
+&lt;span class=&quot;destroy-api-buttons&quot;&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-default destroy-button-destroy&quot;&gt;Destroy&lt;/button&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-default destroy-button-restore&quot; style=&quot;display: none;&quot;&gt;Restore&lt;/button&gt;
+&lt;/span&gt;
+								</pre>
+								<h4>JS</h4>
+								<pre class="brush: js">
+/**
+ * Destroy API
+ */
+// Get the variables - Icon Picker and buttons
+var destroyIconElement = $(&#039;#destroy-api&#039;).fontIconPicker({
+	theme: &#039;fip-bootstrap&#039;
+}),
+destroyButton = $(&#039;.destroy-button-destroy&#039;),
+restoreButton = $(&#039;.destroy-button-restore&#039;);
+
+// Attach the events
+destroyButton.on(&#039;click&#039;, function() {
+	// Destroy the picker
+	destroyIconElement.destroyPicker();
+
+	// Change appearance
+	destroyButton.hide();
+	restoreButton.fadeIn(&#039;fast&#039;);
+});
+
+restoreButton.on(&#039;click&#039;, function() {
+	// Restore the picker
+	destroyIconElement.refreshPicker();
+
+	// Change appearance
+	restoreButton.hide();
+	destroyButton.fadeIn(&#039;fast&#039;);
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>refreshPicker</th>
+							<td>
+								<code>Object | Boolean</code> <code>newOptions</code><br /><em><strong>(Optional)</strong> Pass plugin options to override original ones. Pass false or do not pass anything to use the original ones.</em>
+							</td>
+							<td>
+								Refresh the icon picker from DOM or passed options. Useful when DOM has been changed or reinitializing after calling the destroy method.
+							</td>
+							<td>
+								<h4>Live</h4>
+								<select id="refresh-api" name="refresh-api">
+									<option value="">No icon</option>
+									<option>icon-user</option>
+									<option>icon-search</option>
+									<option>icon-right-dir</option>
+									<option>icon-star</option>
+									<option>icon-cancel</option>
+									<option>icon-help-circled</option>
+									<option>icon-info-circled</option>
+									<option>icon-eye</option>
+									<option>icon-tag</option>
+									<option>icon-bookmark</option>
+									<option>icon-heart</option>
+									<option>icon-thumbs-down-alt</option>
+									<option>icon-upload-cloud</option>
+									<option>icon-phone-squared</option>
+									<option>icon-cog</option>
+									<option>icon-wrench</option>
+									<option>icon-volume-down</option>
+									<option>icon-down-dir</option>
+									<option>icon-up-dir</option>
+									<option>icon-left-dir</option>
+									<option>icon-thumbs-up-alt</option>
+								</select>
+								<span class="refresh-api-buttons">
+									<button type="button" class="btn btn-default">Toggle Search</button>
+								</span>
+								<h4>HTML</h4>
+									<pre class="brush: html">
+&lt;select id=&quot;refresh-api&quot; name=&quot;refresh-api&quot;&gt;
+	&lt;option value=&quot;&quot;&gt;No icon&lt;/option&gt;
+	&lt;option&gt;icon-user&lt;/option&gt;
+	&lt;option&gt;icon-search&lt;/option&gt;
+	&lt;option&gt;icon-right-dir&lt;/option&gt;
+	&lt;option&gt;icon-star&lt;/option&gt;
+	&lt;option&gt;icon-cancel&lt;/option&gt;
+	&lt;option&gt;icon-help-circled&lt;/option&gt;
+	&lt;option&gt;icon-info-circled&lt;/option&gt;
+	&lt;option&gt;icon-eye&lt;/option&gt;
+	&lt;option&gt;icon-tag&lt;/option&gt;
+	&lt;option&gt;icon-bookmark&lt;/option&gt;
+	&lt;option&gt;icon-heart&lt;/option&gt;
+	&lt;option&gt;icon-thumbs-down-alt&lt;/option&gt;
+	&lt;option&gt;icon-upload-cloud&lt;/option&gt;
+	&lt;option&gt;icon-phone-squared&lt;/option&gt;
+	&lt;option&gt;icon-cog&lt;/option&gt;
+	&lt;option&gt;icon-wrench&lt;/option&gt;
+	&lt;option&gt;icon-volume-down&lt;/option&gt;
+	&lt;option&gt;icon-down-dir&lt;/option&gt;
+	&lt;option&gt;icon-up-dir&lt;/option&gt;
+	&lt;option&gt;icon-left-dir&lt;/option&gt;
+	&lt;option&gt;icon-thumbs-up-alt&lt;/option&gt;
+&lt;/select&gt;
+&lt;span class=&quot;refresh-api-buttons&quot;&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Toggle Search&lt;/button&gt;
+&lt;/span&gt;
+									</pre>
+								<h4>JS</h4>
+								<pre class="brush: js">
+/**
+ * Refresh API
+ */
+var refreshAPIElement = $(&#039;#refresh-api&#039;).fontIconPicker({
+	hasSearch: true,
+	theme: &#039;fip-bootstrap&#039;
+});
+$(&#039;.refresh-api-buttons button&#039;).on(&#039;click&#039;, function() {
+	// Toggle the hasSearch value
+	if ( $(this).data(&#039;searchCanceled&#039;) ) {
+		refreshAPIElement.refreshPicker({
+			hasSearch: true,
+			theme: &#039;fip-bootstrap&#039;
+		});
+		$(this).data(&#039;searchCanceled&#039;, false);
+	} else {
+		refreshAPIElement.refreshPicker({
+			hasSearch: false,
+			theme: &#039;fip-bootstrap&#039;
+		});
+		$(this).data(&#039;searchCanceled&#039;, true);
+	}
+});
+								</pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section> <!-- /#apis -->
 	</main>
 	<!-- /#main -->
 
@@ -488,7 +3034,13 @@
 				<div class="row">
 					<div class="col-md-4">
 						<h4><i class="icon-globe"></i> Browser Compatibility</h4>
-						<p>jQuery iconPicker has been successfully tested on: <strong>Firefox</strong> (edge), <strong>Safari</strong> (edge), <strong>Chrome</strong> (edge), <strong>IE8+</strong>.</p>
+						<p>jQuery iconPicker has been successfully tested on:</p>
+						<p class="text-center browsers">
+							<i class="icomoon-firefox bstooltip" title="Mozilla Firefox (edge)"></i>
+							<i class="icomoon-chrome bstooltip" title="Google Chrome (edge)"></i>
+							<i class="icomoon-IE bstooltip" title="Internet Explorer (IE8+)"></i>
+							<i class="icomoon-opera bstooltip" title="Opera (edge)"></i>
+						</p>
 					</div>
 					<div class="col-md-8">
 						<h4><i class="icon-thumbs-up"></i> Credits</h4>
