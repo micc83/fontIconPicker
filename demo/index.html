@@ -141,7 +141,7 @@
 </pre>
 				</div>
 				<div class="tab-pane fade" id="setup_fonts">
-					<p>Include the font files you wish to pick. In this demo we are using fontAwesome and IcoMoon fonts.</p>
+					<p>Include the font files you wish to pick. In this demo page we are using fontAwesome and IcoMoon fonts.</p>
 <pre class="brush: html">
 &lt;!-- Font --&gt;
 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;fontello-7275ca86/css/fontello.css&quot; /&gt;
@@ -150,8 +150,15 @@
 				</div>
 				<div class="tab-pane fade" id="setup_fire">
 					<p>Finally call the fontIconPicker on a <code>select</code> or <code>input[type="text"]</code> element.</p>
-					<h3>Using on SELECT elements</h3>
-					<p>Icons will be populated from <code>OPTION</code> elements and will be used as classes by default.</p>
+
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#setup_select_el" data-toggle="tab">Using on SELECT elements</a></li>
+						<li><a href="#setup_text_el" data-toggle="tab">Using on input[type="text"] elements</a></li>
+					</ul>
+
+					<div class="tab-content">
+						<div class="tab-pane in fade active" id="setup_select_el">
+							<p>Icons will be populated from <code>OPTION</code> elements and will be used as classes by default.</p>
 <pre class="brush: html">
 &lt;!-- SELECT element --&gt;
 &lt;select id=&quot;myselect2&quot; name=&quot;myselect2&quot; class=&quot;myselect2&quot;&gt;
@@ -186,8 +193,9 @@
 	});
 &lt;/script&gt;
 </pre>
-				<h3>Using on simple TEXT elements</h3>
-				<p>If you want to apply to text elements then provide a source.</p>
+						</div>
+						<div class="tab-pane fade" id="setup_text_el">
+							<p>If you want to apply to text elements then provide a source.</p>
 <pre class="brush: html">
 &lt;!-- INPUT element --&gt;
 &lt;input type=&quot;text&quot; name=&quot;myselect&quot; id=&quot;myselect&quot; /&gt;
@@ -201,6 +209,8 @@
 	});
 &lt;/script&gt;
 </pre>
+						</div>
+					</div>
 				</div>
 			</div>
 			<hr />
