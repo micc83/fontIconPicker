@@ -1654,19 +1654,24 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e9_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	// Example 8
+	
+	/**
+	 * Example 8
+	 * Load icons from icomoon JSON selections file
+	 */
+
 	// Init the font icon picker
 	var e9_element = $(&#039;#e9_element&#039;).fontIconPicker({
 		theme: &#039;fip-bootstrap&#039;
-	}),
-	icomoon_json_icons = [],
-	icomoon_json_search = [];
+		});
 
 	// Add the event on the button
 	$(&#039;#e9_buttons button&#039;).on(&#039;click&#039;, function(e) {
 		e.preventDefault();
+
 		// Show processing message
 		$(this).prop(&#039;disabled&#039;, true).html(&#039;&lt;i class=&quot;icon-cog demo-animate-spin&quot;&gt;&lt;/i&gt; Please wait...&#039;);
+
 		// Get the JSON file
 		$.ajax({
 			url: &#039;icomoon/selection.json&#039;,
@@ -1674,10 +1679,15 @@ jQuery(document).ready(function($) {
 			dataType: &#039;json&#039;
 		})
 		.done(function(response) {
-			// Get the class prefix
-			var classPrefix = response.preferences.fontPref.prefix;
 
+			// Get the class prefix
+			var classPrefix = response.preferences.fontPref.prefix,
+				icomoon_json_icons = [],
+				icomoon_json_search = [];
+
+			// For each icon
 			$.each(response.icons, function(i, v) {
+
 				// Set the source
 				icomoon_json_icons.push( classPrefix + v.properties.name );
 
@@ -1688,14 +1698,13 @@ jQuery(document).ready(function($) {
 					icomoon_json_search.push( v.properties.name );
 				}
 			});
+			
+			// Set new fonts on fontIconPicker
+			e9_element.setIcons(icomoon_json_icons, icomoon_json_search);
 
-			setTimeout(function() {
-				// Set new fonts
-				e9_element.setIcons(icomoon_json_icons, icomoon_json_search);
-
-				// Show success message and disable
-				$(&#039;#e9_buttons button&#039;).removeClass(&#039;btn-primary&#039;).addClass(&#039;btn-success&#039;).text(&#039;Successfully loaded icons&#039;).prop(&#039;disabled&#039;, true);
-			}, 1000);
+			// Show success message and disable
+			$(&#039;#e9_buttons button&#039;).removeClass(&#039;btn-primary&#039;).addClass(&#039;btn-success&#039;).text(&#039;Successfully loaded icons&#039;).prop(&#039;disabled&#039;, true);
+			
 		})
 		.fail(function() {
 			// Show error message and enable
@@ -1732,9 +1741,16 @@ jQuery(document).ready(function($) {
 										</pre>
 									</div>
 									<div class="tab-pane fade" id="e10_js">
-										<pre class="brush: js">
+									<pre class="brush: js">
+
 jQuery(document).ready(function($) {
-	// Example 10
+	
+	/**
+	 * Example 10
+	 * Trigger event on icon change
+	 */
+
+	// First icon picker with fontawesome
 	$(&#039;#e10_element_1&#039;).fontIconPicker({
 		theme: &#039;fip-darkgrey&#039;,
 		source: fnt_icons_categorized
@@ -1750,6 +1766,8 @@ jQuery(document).ready(function($) {
 			iconToChange.addClass(&#039;text-primary&#039;).removeClass(&#039;text-danger&#039;);
 		}
 	});
+
+	// Second icon picker with icomoons and attributes
 	$(&#039;#e10_element_2&#039;).fontIconPicker({
 		theme: &#039;fip-bootstrap&#039;,
 		source: icm_icons,
@@ -1768,6 +1786,7 @@ jQuery(document).ready(function($) {
 			iconToChange.addClass(&#039;text-primary&#039;).removeClass(&#039;text-danger&#039;);
 		}
 	});
+
 });
 										</pre>
 									</div>
@@ -1886,11 +1905,13 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e11_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
+
 	/**
-	 * Refresh iconPicker on DOM change
 	 * Example 11
+	 * Refresh iconPicker on DOM change
 	 */
-	// Init
+
+	// Init fontIconPicker
 	var e11_element = $(&#039;#e11_element&#039;).fontIconPicker({
 		useAttribute: true,
 		theme: &#039;fip-darkgrey&#039;,
@@ -1903,6 +1924,7 @@ jQuery(document).ready(function($) {
 
 	// Add event listener to the change button
 	$(&#039;#e11_element_helper_change&#039;).on(&#039;click&#039;, function() {
+
 		// Change the item HTML
 		var new_html = &#039;&lt;optgroup label=&quot;Form Control Icons&quot;&gt;&#039; +
 			&#039;&lt;option value=&quot;57383&quot;&gt;Copy&lt;/option&gt;&#039; +
@@ -1959,6 +1981,7 @@ jQuery(document).ready(function($) {
 
 	// Add event listener to the restore button
 	$(&#039;#e11_element_helper_restore&#039;).on(&#039;click&#039;, function() {
+
 		// Restore the original HTML
 		e11_element.html(e11_original_html);
 
@@ -1970,6 +1993,7 @@ jQuery(document).ready(function($) {
 
 		// Show the change button
 		$(&#039;#e11_element_helper_change&#039;).fadeIn(&#039;fast&#039;);
+
 	});
 });
 										</pre>
@@ -2054,11 +2078,22 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e12_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	// Example 12
+	
+	/**
+	 * Example 12
+	 * Form Validation with validator engines
+	 *
+	 * bootstrapValidator must be included
+	 * @link: http://bootstrapvalidator.com/
+	 */
+
+	// Init fontIconPicker 1
 	$(&#039;#e12_picker_1&#039;).fontIconPicker({
 		source: fnt_icons_categorized,
 		theme: &#039;fip-bootstrap&#039;
 	});
+
+	// Init fontIconPicker 2
 	$(&#039;#e12_picker_2&#039;).fontIconPicker({
 		source: icm_icons,
 		searchSource: icm_icon_search,
@@ -2066,8 +2101,8 @@ jQuery(document).ready(function($) {
 		attributeName: &#039;data-icomoon&#039;,
 		theme: &#039;fip-bootstrap&#039;
 	});
-	// bootstrapValidator
-	// @link: http://bootstrapvalidator.com/
+
+	// bootstrapValidator init
 	// Works out of the box, no need to change any configurations
 	$(&#039;#e12_form&#039;).bootstrapValidator({
 		feedbackIcons: {
