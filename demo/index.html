@@ -334,7 +334,13 @@
 									<div class="tab-pane fade" id="e1_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
+	
+	/**
+	 * Example 1
+	 * Load from SELECT field 
+	 */
 	$(&#039;#e1_element&#039;).fontIconPicker();
+
 });
 										</pre>
 									</div>
@@ -1348,12 +1354,17 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e2_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	// Example 2
+	
+	/**
+	 * Example 2
+	 * Load from SELECT with optgroup for auto categorizing 
+	 */
 	$(&#039;#e2_element&#039;).fontIconPicker({
 		useAttribute: true,
 		theme: &#039;fip-bootstrap&#039;,
 		attributeName: &#039;data-icomoon&#039;
 	});
+
 });
 										</pre>
 									</div>
@@ -1383,11 +1394,16 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e3_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	// Example 3
+
+	/**
+	 * Example 3
+	 * Load from INPUT text field with simple source
+	 */
 	$(&#039;#e3_element&#039;).fontIconPicker({
 		source: fnt_icons,
 		theme: &#039;fip-darkgrey&#039;
 	});
+
 });
 										</pre>
 									</div>
@@ -1417,11 +1433,16 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e4_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	// Example 4
+	
+	/**
+	 * Example 4
+	 * Load from INPUT text field with categorized source
+	 */
 	$(&#039;#e4_element&#039;).fontIconPicker({
 		source: fnt_icons_categorized,
 		theme: &#039;fip-bootstrap&#039;
 	});
+
 });
 										</pre>
 									</div>
@@ -1450,7 +1471,12 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e5_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	// Example 5
+	
+	/**
+	 * Example 5
+	 * Load with custom search and attribute selector
+	 */
+
 	$(&#039;#e5_element&#039;).fontIconPicker({
 		source: icm_icons_2,
 		searchSource: icm_icon_search_2,
@@ -1458,6 +1484,7 @@ jQuery(document).ready(function($) {
 		attributeName: &#039;data-icomoon&#039;,
 		theme: &#039;fip-bootstrap&#039;
 	});
+
 });
 										</pre>
 									</div>
@@ -1498,20 +1525,28 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e6_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	// Example 6
+	
+	/**
+	 * Example 6
+	 * Change icon set on the fly
+	 */
+
 	// Init the picker
 	var e6_element = $(&#039;#e6_element&#039;).fontIconPicker({
 		source: fnt_icons,
 		theme: &#039;fip-darkgrey&#039;
 	});
+
 	// Bind the click event on the buttons
 	$(&#039;#e6_buttons&#039;).on(&#039;click&#039;, &#039;button&#039;, function(e) {
 		e.preventDefault();
+
 		// First change classes of every buttons
 		$(&#039;#e6_buttons&#039;).find(&#039;button&#039;).removeClass(&#039;btn-primary&#039;).addClass(&#039;btn-default&#039;);
 
 		// Change the icon according to which button was clicked
 		var _self = $(this);
+
 		// If all
 		if ( _self.hasClass(&#039;set_all&#039;) ) {
 			e6_element.setIcons(fnt_icons);
@@ -1560,12 +1595,17 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e7_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	// Example 7
+	
+	/**
+	 * Example 7
+	 * No empty icons and no search
+	 */
 	$(&#039;#e7_element&#039;).fontIconPicker({
 		source: fnt_icons_categorized,
 		emptyIcon: false,
 		hasSearch: false
 	});
+
 });
 										</pre>
 									</div>
@@ -1599,18 +1639,24 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e8_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	// Example 8
+
+	/**
+	 * Example 8
+	 * Load icons from Fontello JSON config file
+	 */
+
 	// Init the font icon picker
 	var e8_element = $(&#039;#e8_element&#039;).fontIconPicker({
 		theme: &#039;fip-bootstrap&#039;
-	}),
-	fontello_json_icons = [];
+	});
 
 	// Add the event on the button
 	$(&#039;#e8_buttons button&#039;).on(&#039;click&#039;, function(e) {
 		e.preventDefault();
+
 		// Show processing message
 		$(this).prop(&#039;disabled&#039;, true).html(&#039;&lt;i class=&quot;icon-cog demo-animate-spin&quot;&gt;&lt;/i&gt; Please wait...&#039;);
+
 		// Get the JSON file
 		$.ajax({
 			url: &#039;fontello-7275ca86/config.json&#039;,
@@ -1618,18 +1664,20 @@ jQuery(document).ready(function($) {
 			dataType: &#039;json&#039;
 		})
 		.done(function(response) {
-			// Normalize the fonts
+
+			var fontello_json_icons = [];
+
+			// Push the fonts into the array
 			$.each(response.glyphs, function(i, v) {
 				fontello_json_icons.push( response.css_prefix_text + v.css );
 			});
 
-			setTimeout(function() {
-				// Set new fonts
-				e8_element.setIcons(fontello_json_icons);
+			// Set new fonts
+			e8_element.setIcons(fontello_json_icons);
 
-				// Show success message and disable
-				$(&#039;#e8_buttons button&#039;).removeClass(&#039;btn-primary&#039;).addClass(&#039;btn-success&#039;).text(&#039;Successfully loaded icons&#039;).prop(&#039;disabled&#039;, true);
-			}, 1000);
+			// Show success message and disable
+			$(&#039;#e8_buttons button&#039;).removeClass(&#039;btn-primary&#039;).addClass(&#039;btn-success&#039;).text(&#039;Successfully loaded icons&#039;).prop(&#039;disabled&#039;, true);
+			
 		})
 		.fail(function() {
 			// Show error message and enable
@@ -1637,6 +1685,7 @@ jQuery(document).ready(function($) {
 		});
 		e.stopPropagation();
 	});
+
 });
 										</pre>
 									</div>
