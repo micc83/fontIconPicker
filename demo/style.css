@@ -135,3 +135,12 @@ h3 [data-icomoon] {
 	font-size: 32px;
 	vertical-align: middle;
 }
+
+/* Some helper class */
+.margin-top {
+	margin-top: 30px;
+}
+.downloads i {
+	font-size: 32px;
+	vertical-align: middle;
+}

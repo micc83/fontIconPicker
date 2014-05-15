@@ -62,6 +62,7 @@
 						<li><a href="#examples">Examples</a></li>
 						<li><a href="#options">Plugin Options</a></li>
 						<li><a href="#plugin-apis">Plugin APIs</a></li>
+						<li><a href="#extras">Plugin Extras</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#about">About</a></li>
@@ -77,9 +78,17 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1>jQuery fontIconPicker <small>v2.0.0</small></h1>
-				<p>jQuery fontIconPicker is a small (1.58kb gzipped) jQuery plugin which allows you to include a simple icon picker with search and pagination inside your administration forms. The list of icons can be loaded manually using a <code>SELECT</code> field, loading an array of icons or directly from a Fontello config.json file.</p>
-				<p class="text-left">
-					<a class="btn btn-primary btn-lg pull-right" href="https://github.com/micc83/fontIconPicker"><i class="icon-github"></i> Download</a>
+				<p>jQuery fontIconPicker is a small (<code>3.22KB</code> gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a <code>SELECT</code> field, an <code>Array</code> or <code>Object</code> of icons or directly from a Fontello <code>config.json</code> or IcoMoon <code>selection.json</code> file. Here are some examples.</p>
+				<div class="text-left margin-top">
+					<div class="downloads pull-right">
+						<div class="btn-group btn-group-lg">
+							<a data-container="body" href="https://github.com/micc83/fontIconPicker/archive/2.0.0.zip" class="btn btn-primary bstooltip" title="Download the complete package (v2.0.0) including demo and sample codes."><i class="icomoon-download2"></i> Package</a>
+							<a data-container="body" href="../jquery.fonticonpicker.min.js" class="btn btn-default bstooltip" title="Production Release: Minified 12.3KB"><i class="icomoon-file-zip"></i> JS: Prod</a>
+							<a data-container="body" href="../jquery.fonticonpicker.js" class="btn btn-default bstooltip" title="Development Release: Uncompressed 26.8KB"><i class="icomoon-file-css"></i> JS: Dev</a>
+							<a data-container="body" class="btn btn-primary bstooltip" title="View on GitHub" href="https://github.com/micc83/fontIconPicker"><i class="icomoon-github3"></i> GitHub</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
 					<input type="text" id="grey-theme" name="grey-theme" value="" />
 					&dash;
 					<input type="text" id="dark-grey-theme" name="dark-grey-theme" value="57345" />
@@ -87,8 +96,8 @@
 					<input type="text" id="bootstrap-theme" name="bootstrap-theme" value="57353" />
 					&dash;
 					<input type="text" id="inverted-theme" name="inverted-theme" value="57356" />
-					<span class="clearfix"></span>
-				</p>
+					<div class="clearfix"></div>
+				</div>
 			</div>
 		</div>
 	</section> <!-- /#about -->
@@ -98,7 +107,7 @@
 
 		<div class="alert alert-warning">
 		<strong><i class="glyphicon glyphicon-asterisk"></i> ONLY FOR LOCAL DEMO (when online everything will be allright)</strong><br>
-		In firefox fontIconPicker icons won't be shown correctly because of CORS. For the same reason "Load icons from JSON config file" won't work on Chrome or IE 10. If you need to do some local testing you can disable strict_origin_policy at your risk. 
+		In firefox fontIconPicker icons won't be shown correctly because of CORS. For the same reason "Load icons from JSON config file" won't work on Chrome or IE 10. If you need to do some local testing you can disable strict_origin_policy at your risk.
 		</div>
 
 		<!-- #setup -->
@@ -106,12 +115,12 @@
 			<h2><i class="icomoon-wand"></i> How it works</h2>
 			<hr />
 			<p>
-				Just include a copy of jQuery, the fontIconPickers script, the fontIconPickers theme and your Font Icons. Now you can trigger it on a <code>SELECT</code> or <code>TEXT</code> input.  check the <a href="#examples">first example</a> to start!
+				Just include a copy of jQuery, the fontIconPickers script, the fontIconPickers theme and your Font Icons. Now you can trigger it on a <code>SELECT</code> or <code>INPUT[type=&quot;text&quot;]</code> element.  check the <a href="#examples">first example</a> to start!
 			</p>
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#setup_js" data-toggle="tab">Include JavaScript</a></li>
 				<li><a href="#setup_css" data-toggle="tab">Include CSS</a></li>
-				<li><a href="#setup_fonts" data-toggle="tab">Include Fonts</a></li>
+				<li><a href="#setup_fonts" data-toggle="tab">Include Font Icons</a></li>
 				<li><a href="#setup_fire" data-toggle="tab">Initialize with jQuery</a></li>
 			</ul>
 			<div class="tab-content">
@@ -136,8 +145,8 @@
 
 &lt;!-- optional themes --&gt;
 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css&quot; /&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css&quot; /&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;../themes/inverted-theme/jquery.fonticonpicker.inverted.min.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;themes/inverted-theme/jquery.fonticonpicker.inverted.min.css&quot; /&gt;
 </pre>
 				</div>
 				<div class="tab-pane fade" id="setup_fonts">
@@ -149,11 +158,11 @@
 </pre>
 				</div>
 				<div class="tab-pane fade" id="setup_fire">
-					<p>Finally call the fontIconPicker on a <code>select</code> or <code>input[type="text"]</code> element.</p>
+					<p>Finally call the fontIconPicker on a <code>SELECT</code> or <code>INPUT[type="text"]</code> element.</p>
 
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#setup_select_el" data-toggle="tab">Using on SELECT elements</a></li>
-						<li><a href="#setup_text_el" data-toggle="tab">Using on input[type="text"] elements</a></li>
+						<li class="active"><a href="#setup_select_el" data-toggle="tab">Using on <code>SELECT</code> elements</a></li>
+						<li><a href="#setup_text_el" data-toggle="tab">Using on <code>INPUT[type=&quot;text&quot;]</code> elements</a></li>
 					</ul>
 
 					<div class="tab-content">
@@ -161,7 +170,7 @@
 							<p>Icons will be populated from <code>OPTION</code> elements and will be used as classes by default.</p>
 <pre class="brush: html">
 &lt;!-- SELECT element --&gt;
-&lt;select id=&quot;myselect2&quot; name=&quot;myselect2&quot; class=&quot;myselect2&quot;&gt;
+&lt;select id=&quot;myselect&quot; name=&quot;myselect&quot; class=&quot;myselect&quot;&gt;
 	&lt;option value=&quot;&quot;&gt;No icon&lt;/option&gt;
 	&lt;option&gt;icon-user&lt;/option&gt;
 	&lt;option&gt;icon-search&lt;/option&gt;
@@ -189,7 +198,7 @@
 &lt;script type=&quot;text/javascript&quot;&gt;
 	// Make sure to fire only when the DOM is ready
 	jQuery(document).ready(function($) {
-		$(&#039;#myselect2&#039;).fontIconPicker(); // Load with default options
+		$(&#039;#myselect&#039;).fontIconPicker(); // Load with default options
 	});
 &lt;/script&gt;
 </pre>
@@ -198,7 +207,7 @@
 							<p>If you want to apply to text elements then provide a source.</p>
 <pre class="brush: html">
 &lt;!-- INPUT element --&gt;
-&lt;input type=&quot;text&quot; name=&quot;myselect&quot; id=&quot;myselect&quot; /&gt;
+&lt;input type=&quot;text&quot; name=&quot;mytext&quot; id=&quot;mytext&quot; /&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;
 	jQuery(document).ready(function($) {
 		$(&#039;#mytext&#039;).fontIconPicker({
@@ -334,10 +343,10 @@
 									<div class="tab-pane fade" id="e1_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	
+
 	/**
 	 * Example 1
-	 * Load from SELECT field 
+	 * Load from SELECT field
 	 */
 	$(&#039;#e1_element&#039;).fontIconPicker();
 
@@ -1354,10 +1363,10 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e2_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	
+
 	/**
 	 * Example 2
-	 * Load from SELECT with optgroup for auto categorizing 
+	 * Load from SELECT with optgroup for auto categorizing
 	 */
 	$(&#039;#e2_element&#039;).fontIconPicker({
 		useAttribute: true,
@@ -1433,7 +1442,7 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e4_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	
+
 	/**
 	 * Example 4
 	 * Load from INPUT text field with categorized source
@@ -1471,7 +1480,7 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e5_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	
+
 	/**
 	 * Example 5
 	 * Load with custom search and attribute selector
@@ -1525,7 +1534,7 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e6_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	
+
 	/**
 	 * Example 6
 	 * Change icon set on the fly
@@ -1595,7 +1604,7 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e7_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	
+
 	/**
 	 * Example 7
 	 * No empty icons and no search
@@ -1677,7 +1686,7 @@ jQuery(document).ready(function($) {
 
 			// Show success message and disable
 			$(&#039;#e8_buttons button&#039;).removeClass(&#039;btn-primary&#039;).addClass(&#039;btn-success&#039;).text(&#039;Successfully loaded icons&#039;).prop(&#039;disabled&#039;, true);
-			
+
 		})
 		.fail(function() {
 			// Show error message and enable
@@ -1719,7 +1728,7 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e9_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	
+
 	/**
 	 * Example 9
 	 * Load icons from icomoon JSON selections file
@@ -1763,13 +1772,13 @@ jQuery(document).ready(function($) {
 					icomoon_json_search.push( v.properties.name );
 				}
 			});
-			
+
 			// Set new fonts on fontIconPicker
 			e9_element.setIcons(icomoon_json_icons, icomoon_json_search);
 
 			// Show success message and disable
 			$(&#039;#e9_buttons button&#039;).removeClass(&#039;btn-primary&#039;).addClass(&#039;btn-success&#039;).text(&#039;Successfully loaded icons&#039;).prop(&#039;disabled&#039;, true);
-			
+
 		})
 		.fail(function() {
 			// Show error message and enable
@@ -1809,7 +1818,7 @@ jQuery(document).ready(function($) {
 									<pre class="brush: js">
 
 jQuery(document).ready(function($) {
-	
+
 	/**
 	 * Example 10
 	 * Trigger event on icon change
@@ -2143,7 +2152,7 @@ jQuery(document).ready(function($) {
 									<div class="tab-pane fade" id="e12_js">
 										<pre class="brush: js">
 jQuery(document).ready(function($) {
-	
+
 	/**
 	 * Example 12
 	 * Form Validation with validator engines
@@ -2770,7 +2779,7 @@ restoreButton.on(&#039;click&#039;, function() {
 								<code>Object | Boolean</code> <br /><em>Pass plugin options to override original ones. Pass false or do not pass anything to use the original ones.</em>
 							</td>
 							<td>
-								Refresh the icon picker from DOM or passed options. Useful when DOM has been changed or reinitializing after calling the destroy method.
+								Refresh the icon picker from DOM or passed options. Useful when DOM has been changed or reinitializing after calling the destroy method or changing the options values.
 							</td>
 							<td>
 								<h4>Live</h4>
@@ -2863,6 +2872,137 @@ $(&#039;.refresh-api-buttons button&#039;).on(&#039;click&#039;, function() {
 				</table>
 			</div>
 		</section> <!-- /#apis -->
+
+		<!-- #extras -->
+		<section id="extras">
+			<hr />
+			<h2><a class="icon-up-open" href="#main"></a><i class="icomoon-plus"></i> Plugin Extras</h2>
+			<hr />
+			<h3><i class="icomoon-paint-format"></i> Creating your own theme</h3>
+			<hr />
+			<p>Using the <code>theme</code> parameter of the plugin settings, you can give custom classes to the icon picker and thereby change the appearance of individual pickers on the same page. For example if you pass <code>theme: 'mytheme'</code> then a class <code>mytheme</code> will be added to <code>.icons-selector</code> container. Then you can add custom styling using CSS selectors like <code>.mytheme.icons-selector</code>. For the sake of convention and to avoid CSS conflict, we suggest prefixing your theme name with <code>fip-</code>. So the settings becomes <code>theme: 'fip-mytheme'</code> and CSS selector becomes <code>.fip-mytheme.icons-selector</code>. A sample CSS file is given below:</p>
+			<pre class="brush: css">
+/* fontIconPicker My Theme {@link https://github.com/micc83/fontIconPicker} */
+/* Main container */
+.fip-mytheme.icons-selector {
+
+}
+/* Icon selector */
+.fip-mytheme.icons-selector .selector {
+
+}
+/* Selector open button */
+.fip-mytheme.icons-selector .selector-button {
+
+}
+/* Selector open button hover */
+.fip-mytheme.icons-selector .selector-button:hover {
+
+}
+.fip-mytheme.icons-selector .selector-button:active {
+
+}
+.fip-mytheme.icons-selector .selector-button:hover i {
+
+}
+/* Selector open button icon */
+.fip-mytheme.icons-selector .selector-button i {
+
+}
+/* Selected icon */
+.fip-mytheme.icons-selector .selected-icon {
+
+}
+.fip-mytheme.icons-selector .selected-icon i {
+
+}
+/* IconPicker Popup */
+.fip-mytheme.icons-selector .selector-popup {
+
+}
+/* Search input & category selector */
+.fip-mytheme.icons-selector .selector-search input[type="text"],
+.fip-mytheme.icons-selector .selector-category select {
+
+}
+.fip-mytheme.icons-selector .selector-search input[type="text"]:focus,
+.fip-mytheme.icons-selector .selector-category select:focus {
+
+}
+/* Search input placeholder */
+.fip-mytheme.icons-selector input::-webkit-input-placeholder {
+
+}
+.fip-mytheme.icons-selector input:-moz-placeholder {
+
+}
+.fip-mytheme.icons-selector input::-moz-placeholder {
+
+}
+.fip-mytheme.icons-selector input:-ms-input-placeholder {
+
+}
+/* Search and cancel icon */
+.fip-mytheme.icons-selector .selector-search i {
+
+}
+/* Icon Container inside Popup */
+.fip-mytheme.icons-selector .fip-icons-container {
+
+}
+/* Icon container loading */
+.fip-mytheme.icons-selector .fip-icons-container .loading {
+
+}
+/* Single icon box */
+.fip-mytheme.icons-selector .fip-box {
+
+}
+/* Single icon box hover */
+.fip-mytheme.icons-selector .fip-box:hover {
+
+}
+
+/* Pagination and footer icons */
+.fip-mytheme.icons-selector .selector-footer, .fip-mytheme.icons-selector .selector-footer i {
+
+}
+
+/* Pagination arrows icons hover */
+.fip-mytheme.icons-selector .selector-arrows i:hover {
+
+}
+/* Currently selected icon color */
+.fip-mytheme.icons-selector span.current-icon, .fip-mytheme.icons-selector span.current-icon:hover {
+
+}
+.fip-mytheme.icons-selector span.current-icon i, .fip-mytheme.icons-selector span.current-icon:hover i {
+
+}
+/* No icons found */
+.fip-mytheme.icons-selector .icons-picker-error i:before {
+
+}
+
+/* Transitions */
+.fip-mytheme.icons-selector .selector-search input[type="text"],
+.fip-mytheme.icons-selector .selector-category select,
+.fip-mytheme.icons-selector .fip-box {
+	-webkit-transition: all 300ms ease-in-out;
+	-moz-transition: all 300ms ease-in-out;
+	-ms-transition: all 300ms ease-in-out;
+	-o-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+}
+			</pre>
+			<p>If you have created something beautiful and want to share, then you are always welcome to send a pull request on <a href="https://github.com/micc83/fontIconPicker">github</a>.</p>
+			<h3><i class="icomoon-console"></i> Auto Indexing Icons</h3>
+			<hr />
+			<p>Categorizing icons from a rather large set of collection can be quite tedious. While fontIconPicker can be used to auto generate icon list from <code>selection.json</code> file, it still will not categorize the icons (yet) and will require your intervention to do so.</p>
+			<p>To save you from the trouble a PHP script was written to automatically categorize and index icons downloaded from <a href="http://icomoon.io">IcoMoon App</a>. You can get it for free from <a href="https://github.com/swashata/IcoMoonIconIndexer">this link</a>.</p>
+			<p>If you wish to use the icomoon and fontello library from this package then the icons are already indexed and the JS variables are already defined above in the examples section.</p>
+			<hr />
+		</section>
 	</main>
 	<!-- /#main -->
 
@@ -2886,12 +3026,16 @@ $(&#039;.refresh-api-buttons button&#039;).on(&#039;click&#039;, function() {
 						<p><strong>jQuery fontIconPicker</strong> has been made by <a href="http://codeb.it">me</a> &amp; <a href="https://github.com/swashata">swashata</a>. You can contact me at <a href="mailto:micc83@gmail.com">micc83@gmail.com</a> or <a href="https://twitter.com/Micc1983">twitter</a> for any issue or feature request.</p>
 
 						<p>I really have to thank <a href="http://www.minimamente.com">miniMAC</a> for the idea, <a href="http://zenorocha.com/">Zeno Rocha</a> for jQuery plugin boilerplate, <a href="http://fortawesome.github.io/Font-Awesome/">Dave Gandy</a> & <a href="http://icomoon.io/">KeyaMoon</a> for the beautiful sets of icons and <a href="http://www.advancedcustomfields.com/">Elliot Condon</a> for the amazing Advanced Custom Field WordPress plugin.</p>
+						<p>
+							Additionally <a href="http://getbootstrap.com/">Bootstrap</a>, <a href="http://bootstrapvalidator.com/">BootstrapValidator</a> and <a href="http://alexgorbatchev.com/SyntaxHighlighter/">SyntaxHighlighter</a> were used for this demo.
+						</p>
 
-						<p><strong>fontIconPicker 2</strong> is released under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>. Do wathever you want with it!</p>
+						<p><strong>fontIconPicker 2</strong> is released under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>. Do wathever you want with it and it is fully compatible with GPL so that you can include it in your <a href="http://wordpress.org/">WordPress</a> projects.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</footer> <!-- /#site-footer -->
+	<a href="https://github.com/micc83/fontIconPicker"><img style="position: fixed; top: 0; left: 0; border: 0; z-index: 1031" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
 </body>
 </html>

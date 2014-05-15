@@ -48,11 +48,11 @@ jQuery(document).ready(function($) {
 
 	var fipScrollSpy = function() {
 		// Get container scroll position
-		var fromTop = $(this).scrollTop()+topMenuHeight;
+		var fromTop = $(this).scrollTop() + topMenuHeight;
 
 		// Get id of current scroll item
 		var maxScrollTop = 0, cur = null;
-		if ( fromTop >= $('body').height() - $(window).height() ) {
+		if ( fromTop - topMenuHeight >= $('body').outerHeight() - $(window).height() ) {
 			cur = $('#site-footer');
 		} else {
 			scrollItems.map(function(){
@@ -90,7 +90,7 @@ jQuery(document).ready(function($) {
 	// Icomoon icon index
 	// If you are wondering who was the mad person to index such a large thing
 	// Well, basically that mad person created a PHP script to index it
-	// When it is closer to flawless the script will be released open source
+	// It has been released open source at: https://github.com/swashata/IcoMoonIconIndexer
 	var icm_icons = {
 		'Web Applications' : [57436, 57437, 57438, 57439, 57524, 57525, 57526, 57527, 57528, 57531, 57532, 57533, 57534, 57535, 57536, 57537, 57541, 57545, 57691, 57692],
 		'Business Icons' : [57347, 57348, 57375, 57376, 57377, 57379, 57403, 57406, 57432, 57433, 57434, 57435, 57450, 57453, 57456, 57458, 57460, 57461, 57463],
