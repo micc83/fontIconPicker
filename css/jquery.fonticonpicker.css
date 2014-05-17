@@ -69,14 +69,20 @@
 }
 
 /* IconPicker Popup */
-.icons-selector .selector-popup {
+.icons-selector .selector-popup-wrap,
+.icons-selector.selector-popup-wrap {
 	position: absolute;
 	z-index: 10000;
-	background-color: #fefefe;
-	padding: 5px;
+	width: 352px;
 	height: auto;
-	width: 342px;
+}
+.icons-selector .selector-popup {
 	margin-top:-1px;
+	padding: 5px;
+	width: 342px;
+	height: auto;
+	background-color: #fefefe;
+	position: absolute;
 }
 
 /* Search input & category selector */

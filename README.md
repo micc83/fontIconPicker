@@ -1,7 +1,7 @@
-jQuery fontIconPicker
-==============
+jQuery fontIconPicker `v2.1.0`
+==============================
 
-jQuery fontIconPicker is a small (`3.22KB` gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a `SELECT` field, an `Array` or `Object` of icons or directly from a Fontello `config.json` or IcoMoon `selection.json` file. Go to the [official plugin page](http://codeb.it/fonticonpicker) for examples and documentation.
+jQuery fontIconPicker is a small (`3.35KB` gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a `SELECT` field, an `Array` or `Object` of icons or directly from a Fontello `config.json` or IcoMoon `selection.json` file. Go to the [official plugin page](http://codeb.it/fonticonpicker) for examples and documentation.
 
 ![fontIconPickers](/demo/github-img.png)
 
@@ -101,6 +101,7 @@ var $picker = $('.picker').fontIconPicker({
 	iconsPerPage      : 20,                      // Number of icons per page
 	hasSearch         : true,                    // Is search enabled?
 	searchSource      : false,                   // Give a manual search values. If using attributes then for proper search feature we also need to pass icon names under the same order of source
+	appendTo          : 'self',                  // Where to append the selector popup. You can pass string selectors or jQuery objects
 	useAttribute      : false,                   // Whether to use attribute selector for printing icons
 	attributeName     : 'data-icon',             // HTML Attribute name
 	convertToHex      : true,                    // Whether or not to convert to hexadecimal for attribute value. If true then please pass decimal integer value to the source (or as value="" attribute of the select field)
