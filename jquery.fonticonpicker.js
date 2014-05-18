@@ -660,15 +660,25 @@
 				// Get the first icon
 				this.setSelectedIcon(iconsPaged[0]);
 
-			} else if ($.inArray(this.element.val(), this.settings.source) === -1) {
-
+			} else if ( $.inArray(this.element.val(), this.settings.source) === -1 ) {
+				// Issue #7
+				// Need to pass empty string
 				// Set empty
-				this.setSelectedIcon();
+				// Otherwise DOM will be set to null value
+				// which would break the initial select value
+				this.setSelectedIcon('');
 
 			} else {
-
+				// Fix issue #7
+				// The trick is to check the element value
+				// Internally fip-icon-block must be used for empty values
+				// So if element.val == emptyIconValue then pass fip-icon-block
+				var passDefaultIcon = this.element.val();
+				if ( passDefaultIcon === this.settings.emptyIconValue ) {
+					passDefaultIcon = 'fip-icon-block';
+				}
 				// Set the default selected icon even if not set
-				this.setSelectedIcon(this.element.val());
+				this.setSelectedIcon(passDefaultIcon);
 			}
 
 		},
