@@ -152,7 +152,8 @@
 				padding: '0',
 				margin: '0 -' + iconPickerWidth + 'px 0 0', // Left margin adjustment to account for dangling space
 				border: '0 none',
-				verticalAlign: 'top'
+				verticalAlign: 'top',
+				float: 'none' // Fixes positioning with floated elements
 			});
 
 			// Set the trigger event
@@ -326,34 +327,20 @@
 			 * Next page
 			 */
 			this.selectorPopup.on('click', '.selector-arrow-right', $.proxy(function (e) {
-
 				if (this.currentPage < this.totalPage) {
-					this.selectorPopup.find('.selector-arrow-left').show();
 					this.currentPage = this.currentPage + 1;
 					this.renderIconContainer();
 				}
-
-				if (this.currentPage === this.totalPage) {
-					$(e.currentTarget).hide();
-				}
-
 			}, this));
 
 			/**
 			 * Prev page
 			 */
 			this.selectorPopup.on('click', '.selector-arrow-left', $.proxy(function (e) {
-
 				if (this.currentPage > 1) {
-					this.selectorPopup.find('.selector-arrow-right').show();
 					this.currentPage = this.currentPage - 1;
 					this.renderIconContainer();
 				}
-
-				if (this.currentPage === 1) {
-					$(e.currentTarget).hide();
-				}
-
 			}, this));
 
 			/**
@@ -398,8 +385,9 @@
 			/**
 			 * Quit search
 			 */
-			this.selectorPopup.on('click', '.selector-search', $.proxy(function () {
-				this.iconPicker.find('.icons-search-input').focus();
+			// Quit search happens only if clicked on the cancel button
+			this.selectorPopup.on('click', '.selector-search .fip-icon-cancel', $.proxy(function () {
+				this.selectorPopup.find('.icons-search-input').focus();
 				this.resetSearch();
 			}, this));
 
@@ -569,18 +557,14 @@
 		 * Load icons
 		 */
 		loadIcons: function () {
-
 			// Set the content of the popup as loading
 			this.iconContainer.html('<i class="fip-icon-spin3 animate-spin loading"></i>');
 
 			// If source is set
 			if (this.settings.source instanceof Array) {
-
 				// Render icons
 				this.renderIconContainer();
-
 			}
-
 		},
 
 		/**
@@ -606,6 +590,20 @@
 			// Hide footer if no pagination is needed
 			if (this.totalPage > 1) {
 				this.selectorPopup.find('.selector-footer').show();
+				// Reset the pager buttons
+				// Fix #8 {@link https://github.com/micc83/fontIconPicker/issues/8}
+				// It is better to set/hide the pager button here
+				// instead of all other functions that calls back renderIconContainer
+				if ( this.currentPage < this.totalPage ) { // current page is less than total, so show the arrow right
+					this.selectorPopup.find('.selector-arrow-right').show();
+				} else { // else hide it
+					this.selectorPopup.find('.selector-arrow-right').hide();
+				}
+				if ( this.currentPage > 1 ) { // current page is greater than one, so show the arrow left
+					this.selectorPopup.find('.selector-arrow-left').show();
+				} else { // else hide it
+					this.selectorPopup.find('.selector-arrow-left').hide();
+				}
 			} else {
 				this.selectorPopup.find('.selector-footer').hide();
 			}
@@ -769,26 +767,19 @@
 		 * Reset search
 		 */
 		resetSearch: function () {
-
 			// Empty input
-			this.iconPicker.find('.icons-search-input').val('');
+			this.selectorPopup.find('.icons-search-input').val('');
 
 			// Reset search icon class
 			this.searchIcon.removeClass('fip-icon-cancel');
 			this.searchIcon.addClass('fip-icon-search');
 
-			// Go back to page 1 and remove back arrow
-			this.iconPicker.find('.selector-arrow-left').hide();
+			// Go back to page 1
 			this.currentPage = 1;
 			this.isSearch = false;
 
 			// Rerender icons
 			this.renderIconContainer();
-
-			// Restore pagination if needed
-			if (this.totalPage > 1) {
-				this.iconPicker.find('.selector-arrow-right').show();
-			}
 		}
 	};
 
@@ -840,7 +831,8 @@
 					padding: '',
 					margin: '',
 					border: '',
-					verticalAlign: ''
+					verticalAlign: '',
+					float: ''
 				});
 
 				// destroy data
