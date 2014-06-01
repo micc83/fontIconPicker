@@ -2416,6 +2416,23 @@ $(&#039;.myselect&#039;).fontIconPicker({
 							</td>
 						</tr>
 						<tr>
+							<th>autoClose</th>
+							<td><code>Boolean</code></td>
+							<td>Whether or not to close the icon picker automatically when clicked elsewhere.</td>
+							<td><code>true</code></td>
+							<td>
+								<p>
+									Clicking outside will not close &dash; <input type="text" name="option_autoclose" id="option_autoclose" value="none" />
+								</p>
+
+								<pre class="brush: js">
+$(&#039;.myselect&#039;).fontIconPicker({
+	autoClose: false
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
 							<th>iconsPerPage</th>
 							<td><code>Number</code></td>
 							<td>Number of icons per page on the icon picker. Please note that if you have <code>emptyIcon</code> set to <code>true</code> then the actual number will be one less. For better appearance always provide a number in multiple of 5.</td>

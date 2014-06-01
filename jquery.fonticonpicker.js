@@ -21,6 +21,7 @@
 			source            : false,                   // Icons source (array|false|object)
 			emptyIcon         : true,                    // Empty icon should be shown?
 			emptyIconValue    : '',                      // The value of the empty icon, change if you select has something else, say "none"
+			autoClose         : true,                    // Whether or not to close the FIP automatically when clicked outside
 			iconsPerPage      : 20,                      // Number of icons per page
 			hasSearch         : true,                    // Is search enabled?
 			searchSource      : false,                   // Give a manual search values. If using attributes then for proper search feature we also need to pass icon names under the same order of source
@@ -409,12 +410,16 @@
 
 			/**
 			 * On click out
+			 * Add the functionality #9
+			 * {@link https://github.com/micc83/fontIconPicker/issues/9}
 			 */
-			$('html').click($.proxy(function () {
-				if (this.open) {
-					this.toggleIconSelector();
-				}
-			}, this));
+			if ( this.settings.autoClose ) {
+				$('html').click($.proxy(function () {
+					if (this.open) {
+						this.toggleIconSelector();
+					}
+				}, this));
+			}
 
 		},
 
@@ -743,15 +748,30 @@
 					this.selectorPopup.appendTo( this.settings.appendTo ).css({
 						left: offsetLeft,
 						top: offsetTop,
-						zIndex: 10000
+						zIndex: 1000 // Let's decrease the zIndex to something reasonable
 					}).addClass('icons-selector ' + this.settings.theme );
+				}
+
+				// Adjust the offsetLeft
+				// Resolves issue #10
+				// @link https://github.com/micc83/fontIconPicker/issues/10
+				this.selectorPopup.find('.selector-popup').show();
+				var popupWidth = this.selectorPopup.width(),
+				windowWidth = $(window).width(),
+				popupOffsetLeft = this.selectorPopup.offset().left,
+				containerOffset = ( this.settings.appendTo == 'self' ? this.selectorPopup.parent().offset() : $( this.settings.appendTo ).offset() );
+				this.selectorPopup.find('.selector-popup').hide();
+				if ( popupOffsetLeft + popupWidth > windowWidth - 20 /* 20px adjustment for better appearance */ ) {
+					this.selectorPopup.css({
+						left: windowWidth - 20 - popupWidth - containerOffset.left
+					});
 				}
 			}
 			this.selectorPopup.find('.selector-popup').slideToggle(300, $.proxy(function() {
 				this.iconPicker.find('.selector-button i').toggleClass('fip-icon-down-dir');
 				this.iconPicker.find('.selector-button i').toggleClass('fip-icon-up-dir');
 				if (this.open) {
-					this.iconPicker.find('.icons-search-input').focus().select();
+					this.selectorPopup.find('.icons-search-input').focus().select();
 				} else {
 					// append and revert to the original position and reset theme
 					this.selectorPopup.appendTo( this.iconPicker ).css({

@@ -529,6 +529,17 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	// AutoClose
+	$('#option_autoclose').fontIconPicker({
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		theme: 'fip-bootstrap',
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		appendTo: $('#main'), // Or simply pass 'body'
+		autoClose: false
+	});
+
 	// Append To #main
 	$('#option_appendto').fontIconPicker({
 		source: icm_icons,
