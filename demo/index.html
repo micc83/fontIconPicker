@@ -2554,6 +2554,33 @@ $(&#039;.myselect&#039;).fontIconPicker({
 								</pre>
 							</td>
 						</tr>
+						<tr>
+							<th>placeHolder</th>
+							<td><code>String</code></td>
+							<td>This allows the defaule place holder text of "Search icon" to be overridden in the case of a need to internationalize the user interface. Can also be set to an empty string.</td>
+							<td><code>&#039;Search icon&#039;</code></td>
+							<td>
+								<pre class="brush: js">
+$(&#039;.myselect&#039;).fontIconPicker({
+	placeHolder: 'Zoeken pictogrammen'
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>extraClass</th>
+							<td><code>String</code></td>
+							<td>If the font set requires an extra class (like recent versions
+of FontAwesome, this allows that extra class (or classes) to be specified without turning your icon names into multi-string class definitions.</td>
+							<td><code>&#039;&#039;</code></td>
+							<td>
+								<pre class="brush: js">
+$(&#039;.myselect&#039;).fontIconPicker({
+	extraClass: 'fa'
+});
+								</pre>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>

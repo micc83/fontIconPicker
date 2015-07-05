@@ -1,5 +1,5 @@
 /**
- *  jQuery fontIconPicker - v2.0.0
+ *  jQuery fontIconPicker - v2.0.1-cs
  *
  *  An icon picker built on top of font icons and jQuery
  *
@@ -8,6 +8,7 @@
  *  Made by Alessandro Benoit & Swashata
  *  Under MIT License
  *
+ * {@link https://github.com/csev/fontIconPicker}
  * {@link https://github.com/micc83/fontIconPicker}
  */
 
@@ -28,7 +29,9 @@
 			attributeName     : 'data-icon',             // HTML Attribute name
 			convertToHex      : true,                    // Whether or not to convert to hexadecimal for attribute value. If true then please pass decimal integer value to the source (or as value="" attribute of the select field)
 			allCategoryText   : 'From all categories',   // The text for the select all category option
-			unCategorizedText : 'Uncategorized'          // The text for the select uncategorized option
+			unCategorizedText : 'Uncategorized',         // The text for the select uncategorized option
+			placeHolder       : 'Search icons',          // The text for the placeholder
+			extraClass        : ''                       // When an extra class is needed class="fa fa-adjust"
 		};
 
 	// The actual plugin constructor
@@ -51,7 +54,7 @@
 						 '</div>' +
 						 '<div class="selector-popup" style="display: none;">' + ((this.settings.hasSearch) ?
 							 '<div class="selector-search">' +
-								 '<input type="text" name="" value="" placeholder="Search icon" class="icons-search-input"/>' +
+								 '<input type="text" name="" value="" placeholder="' + this.settings.placeHolder + '" class="icons-search-input"/>' +
 								 '<i class="fip-icon-search"></i>' +
 							 '</div>' : '') +
 							 '<div class="selector-category">' +
@@ -637,7 +640,7 @@
 
 				// Set the icon box
 				$('<span/>', {
-					html:      '<i data-fip-value="' + item + '" ' + (this.settings.useAttribute ? (this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(item, 10).toString(16) + ';' : item ) + '"') : 'class="' + item + '"') + '></i>',
+					html:      '<i data-fip-value="' + item + '" ' + (this.settings.useAttribute ? (this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(item, 10).toString(16) + ';' : item ) + '"') : 'class="' +this.settings.extraClass + ' ' + item + '"') + '></i>',
 					'class':   'fip-box',
 					title: flipBoxTitle
 				}).appendTo(this.iconContainer);
@@ -691,7 +694,7 @@
 				}
 			// Use class
 			} else {
-				this.iconPicker.find('.selected-icon').html('<i class="' + (theIcon || 'fip-icon-block') + '"></i>');
+				this.iconPicker.find('.selected-icon').html('<i class="' + (this.settings.extraClass + ' ' + theIcon || 'fip-icon-block') + '"></i>');
 			}
 			// Set the value of the element and trigger change event
 			this.element.val((theIcon === '' ? this.settings.emptyIconValue : theIcon )).trigger('change');
