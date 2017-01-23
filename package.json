@@ -1,0 +1,7 @@
+{
+    "name": "@micc83/fontIconPicker",
+    "license": "MIT",
+    "dependencies": {
+        "jquery": ">=1.7.1"
+    }
+}
