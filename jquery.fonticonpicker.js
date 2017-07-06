@@ -175,6 +175,7 @@
 				this.settings.searchSource = [];
 				this.svgs = {};
 
+
 				// Check if optgroup is present within the select
 				// If it is present then the source has to be grouped
 				if ( this.element.find('optgroup').length ) {
