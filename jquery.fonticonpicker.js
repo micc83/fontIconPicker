@@ -35,6 +35,7 @@
 	function Plugin(element, options) {
 		this.element = $(element);
 		this.settings = $.extend({}, defaults, options);
+		this.svgs = {};
 		if (this.settings.emptyIcon) {
 			this.settings.iconsPerPage--;
 		}
@@ -130,7 +131,6 @@
 			// Add the icon picker after the select
 			this.element.before(this.iconPicker);
 
-
 			// Hide source element
 			// Instead of doing a display:none, we would rather
 			// make the element invisible
@@ -173,6 +173,8 @@
 				// These will be populated according to the available options
 				this.settings.source = [];
 				this.settings.searchSource = [];
+				this.svgs = {};
+
 
 				// Check if optgroup is present within the select
 				// If it is present then the source has to be grouped
@@ -200,12 +202,14 @@
 						// Now loop through it's option elements and add the icons
 						$(el).find('option').each($.proxy(function(i, cel) {
 							var newIconValue = $(cel).val(),
-							newIconLabel = $(cel).html();
+							newIconLabel = $(cel).html(),
+							newsvg = $(cel).attr('svg');
 
 							// Check if the option element has value and this value does not equal to the empty value
 							if (newIconValue && newIconValue !== this.settings.emptyIconValue) {
 								// Push to the source, because at first all icons are selected
 								this.settings.source.push(newIconValue);
+								this.svgs[newIconValue] = newsvg;
 
 								// Push to the availableCategories child array
 								this.availableCategories[thisCategoryKey].push(newIconValue);
@@ -221,7 +225,8 @@
 					if ( this.element.find('> option').length ) {
 						this.element.find('> option').each($.proxy(function(i, el) {
 							var newIconValue = $(el).val(),
-							newIconLabel = $(el).html();
+							newIconLabel = $(el).html(),
+							newsvg = $(el).attr('svg');
 
 							// Don't do anything if the new icon value is empty
 							if ( !newIconValue || newIconValue === '' || newIconValue == this.settings.emptyIconValue ) {
@@ -239,6 +244,7 @@
 
 							// Push the icon to the category
 							this.settings.source.push(newIconValue);
+							this.svgs[newIconValue] = newsvg;
 							this.availableCategories[this.unCategorizedKey].push(newIconValue);
 
 							// Push the icon to the search
@@ -250,9 +256,12 @@
 				} else {
 					this.element.find('option').each($.proxy(function (i, el) {
 						var newIconValue = $(el).val(),
-						newIconLabel = $(el).html();
+						newIconLabel = $(el).html(),
+						newsvg = $(el).attr('svg');
+
 						if (newIconValue) {
 							this.settings.source.push(newIconValue);
+							this.svgs[newIconValue] = newsvg;
 							this.searchValues.push(newIconLabel);
 						}
 					}, this));
@@ -396,7 +405,9 @@
 			 * On icon selected
 			 */
 			this.iconContainer.on('click', '.fip-box', $.proxy(function (e) {
-				this.setSelectedIcon($(e.currentTarget).find('i').attr('data-fip-value'));
+			    var italic = $(e.currentTarget).find('i').attr('data-fip-value');
+			    var iconName =  italic ? italic : $(e.currentTarget).find('img').attr('data-fip-value');
+			    this.setSelectedIcon(iconName);
 				this.toggleIconSelector();
 			}, this));
 
@@ -468,6 +479,7 @@
 
 				// Reset the source
 				this.settings.source = [];
+				this.svgs = {};
 
 				// Reset other variables
 				this.searchValues = [];
@@ -577,7 +589,7 @@
 		 */
 		renderIconContainer: function () {
 
-			var offset, iconsPaged = [];
+			var offset, iconsPaged = [], iconsSVGs = this.svgs;
 
 			// Set a temporary array for icons
 			if (this.isSearch) {
@@ -627,6 +639,7 @@
 			for (var i = 0, item; item = iconsPaged[i++];) {
 				// Set the icon title
 				var flipBoxTitle = item;
+				var svg = iconsSVGs[item];
 				$.grep(this.settings.source, $.proxy(function(e, i) {
 					if ( e === item ) {
 						flipBoxTitle =  this.searchValues[i];
@@ -635,9 +648,18 @@
 					return false;
 				}, this));
 
+				var html = '';
+
+				if (svg) {
+					html = '<img data-fip-value="' + item + '" ' + (this.settings.useAttribute ? (this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(item, 10).toString(16) + ';' : item ) + '"') : 'class="icon ' + item + '"') + ' src="' + svg +'">';
+				} else {
+					html = '<i data-fip-value="' + item + '" ' + (this.settings.useAttribute ? (this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(item, 10).toString(16) + ';' : item ) + '"') : 'class="' + item + '"') + '></i>';
+				}
+
+
 				// Set the icon box
 				$('<span/>', {
-					html:      '<i data-fip-value="' + item + '" ' + (this.settings.useAttribute ? (this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(item, 10).toString(16) + ';' : item ) + '"') : 'class="' + item + '"') + '></i>',
+					html: html,
 					'class':   'fip-box',
 					title: flipBoxTitle
 				}).appendTo(this.iconContainer);
@@ -685,13 +707,21 @@
 			// Check if attribute is to be used
 			if ( this.settings.useAttribute ) {
 				if ( theIcon ) {
-					this.iconPicker.find('.selected-icon').html('<i ' + this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(theIcon, 10).toString(16) + ';' : theIcon ) + '"></i>' );
+					if (this.svgs[theIcon]) {
+						this.iconPicker.find('.selected-icon').html('<img src="' + this.svgs[theIcon] + '" class="icon" ' + this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(theIcon, 10).toString(16) + ';' : theIcon ) + '"></img>');
+					} else {
+						this.iconPicker.find('.selected-icon').html('<i ' + this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(theIcon, 10).toString(16) + ';' : theIcon ) + '"></i>');
+					}
 				} else {
 					this.iconPicker.find('.selected-icon').html('<i class="fip-icon-block"></i>');
 				}
 			// Use class
 			} else {
+			if (this.svgs[theIcon]) {
+				this.iconPicker.find('.selected-icon').html('<img src="' + this.svgs[theIcon] + '" class="icon ' + (theIcon || 'fip-icon-block') + '"></img>');
+			} else {
 				this.iconPicker.find('.selected-icon').html('<i class="' + (theIcon || 'fip-icon-block') + '"></i>');
+			}
 			}
 			// Set the value of the element and trigger change event
 			this.element.val((theIcon === '' ? this.settings.emptyIconValue : theIcon )).trigger('change');
