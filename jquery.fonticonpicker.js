@@ -718,9 +718,9 @@
 			// Use class
 			} else {
 			if (this.svgs[theIcon]) {
-					this.iconPicker.find('.selected-icon').html('<img src="' + this.svgs[theIcon] + '" class="icon ' + (theIcon || 'fip-icon-block') + '"></img>');
+				this.iconPicker.find('.selected-icon').html('<img src="' + this.svgs[theIcon] + '" class="icon ' + (theIcon || 'fip-icon-block') + '"></img>');
 			} else {
-					this.iconPicker.find('.selected-icon').html('<i class="' + (theIcon || 'fip-icon-block') + '"></i>');
+				this.iconPicker.find('.selected-icon').html('<i class="' + (theIcon || 'fip-icon-block') + '"></i>');
 			}
 			}
 			// Set the value of the element and trigger change event
