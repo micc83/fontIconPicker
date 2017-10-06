@@ -439,8 +439,8 @@
 
 				// We are going to convert the source items to string
 				// This is necessary because passed source might not be "strings" for attribute related icons
-				this.settings.source = $.map(this.settings.source, function(e, i) {
-					if ( typeof(e.toString) == 'function' ) {
+				this.settings.source = $.map(this.settings.source, function(e) {
+					if ( typeof(e.toString) === 'function' ) {
 						return e.toString();
 					} else {
 						return e;
@@ -451,8 +451,8 @@
 				// First check if the search is given by user
 				if ( $.isArray(this.settings.searchSource) ) {
 					// Convert everything inside the searchSource to string
-					this.searchValues = $.map(this.settings.searchSource, function(e, i) {
-						if ( typeof(e.toString) == 'function' ) {
+					this.searchValues = $.map(this.settings.searchSource, function(e) {
+						if ( typeof(e.toString) === 'function' ) {
 							return e.toString();
 						} else {
 							return e;
@@ -482,6 +482,9 @@
 
 				// Now loop through the source and add to the list
 				for (var categoryLabel in originalSource) {
+					if(!originalSource.hasOwnProperty(categoryLabel)) {
+						return;
+					}
 					// Get the key of the new category array
 					var thisCategoryKey = this.availableCategories.length,
 					// Create the new option for the selectCategory SELECT field
@@ -501,6 +504,9 @@
 
 					// Now loop through it's icons and add to the list
 					for ( var newIconKey in originalSource[categoryLabel] ) {
+                        if(!originalSource[categoryLabel].hasOwnProperty(newIconKey)) {
+                        	return;
+                        }
 						// Get the new icon value
 						var newIconValue = originalSource[categoryLabel][newIconKey];
 						// Get the label either from the searchSource if set, otherwise from the source itself
@@ -510,7 +516,7 @@
 						// Try to convert to the source value string
 						// This is to avoid attribute related icon sets
 						// Where hexadecimal or decimal numbers might be passed
-						if ( typeof(newIconValue.toString) == 'function' ) {
+						if ( typeof(newIconValue.toString) === 'function' ) {
 							newIconValue = newIconValue.toString();
 						}
 						// Check if the option element has value and this value does not equal to the empty value
@@ -697,9 +703,11 @@
 			this.element.val((theIcon === '' ? this.settings.emptyIconValue : theIcon )).trigger('change');
 			if ( this.triggerEvent !== null ) {
 				// Trigger other events
-				for ( var eventKey in this.triggerEvent ) {
-					this.element.trigger(this.triggerEvent[eventKey]);
-				}
+                for ( var eventKey in this.triggerEvent ) {
+                    if(this.triggerEvent.hasOwnProperty(eventKey)) {
+                        this.element.trigger(this.triggerEvent[eventKey]);
+                    }
+                }
 			}
 			this.currentIcon = theIcon;
 			this.setHighlightedIcon();
