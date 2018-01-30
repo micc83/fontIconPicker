@@ -572,6 +572,13 @@
 
 		},
 
+		iconGenerator: function(item) {
+			if (this.settings.iconGenerator) {
+				return this.settings.iconGenerator(item);
+			}
+			return '<i data-fip-value="' + item + '" ' + (this.settings.useAttribute ? (this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(item, 10).toString(16) + ';' : item ) + '"') : 'class="' + item + '"') + '></i>';
+		},
+
 		/**
 		 * Render icons inside the popup
 		 */
@@ -637,7 +644,7 @@
 
 				// Set the icon box
 				$('<span/>', {
-					html:      '<i data-fip-value="' + item + '" ' + (this.settings.useAttribute ? (this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt(item, 10).toString(16) + ';' : item ) + '"') : 'class="' + item + '"') + '></i>',
+					html:      this.iconGenerator(item),
 					'class':   'fip-box',
 					title: flipBoxTitle
 				}).appendTo(this.iconContainer);
