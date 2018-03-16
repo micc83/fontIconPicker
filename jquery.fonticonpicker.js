@@ -1,5 +1,5 @@
 /**
- *  jQuery fontIconPicker - v2.0.0
+ *  jQuery fontIconPicker - v2.1.0
  *
  *  An icon picker built on top of font icons and jQuery
  *
@@ -21,9 +21,11 @@
 			source            : false,                   // Icons source (array|false|object)
 			emptyIcon         : true,                    // Empty icon should be shown?
 			emptyIconValue    : '',                      // The value of the empty icon, change if you select has something else, say "none"
+			autoClose         : true,                    // Whether or not to close the FIP automatically when clicked outside
 			iconsPerPage      : 20,                      // Number of icons per page
 			hasSearch         : true,                    // Is search enabled?
 			searchSource      : false,                   // Give a manual search values. If using attributes then for proper search feature we also need to pass icon names under the same order of source
+			appendTo          : 'self',                  // Where to append the selector popup. You can pass string selectors or jQuery objects
 			useAttribute      : false,                   // Whether to use attribute selector for printing icons
 			attributeName     : 'data-icon',             // HTML Attribute name
 			convertToHex      : true,                    // Whether or not to convert to hexadecimal for attribute value. If true then please pass decimal integer value to the source (or as value="" attribute of the select field)
@@ -49,31 +51,34 @@
 								'<i class="fip-icon-down-dir"></i>' +
 							'</span>' +
 						 '</div>' +
-						 '<div class="selector-popup" style="display: none;">' + ((this.settings.hasSearch) ?
-							 '<div class="selector-search">' +
-								 '<input type="text" name="" value="" placeholder="Search icon" class="icons-search-input"/>' +
-								 '<i class="fip-icon-search"></i>' +
-							 '</div>' : '') +
-							 '<div class="selector-category">' +
-								 '<select name="" class="icon-category-select" style="display: none">' +
-								 '</select>' +
-							 '</div>' +
-							 '<div class="fip-icons-container"></div>' +
-							 '<div class="selector-footer" style="display:none;">' +
-								 '<span class="selector-pages">1/2</span>' +
-								 '<span class="selector-arrows">' +
-									 '<span class="selector-arrow-left" style="display:none;">' +
-										 '<i class="fip-icon-left-dir"></i>' +
+						 '<div class="selector-popup-wrap">' +
+							 '<div class="selector-popup" style="display: none;">' + ((this.settings.hasSearch) ?
+								 '<div class="selector-search">' +
+									 '<input type="text" name="" value="" placeholder="Search icon" class="icons-search-input"/>' +
+									 '<i class="fip-icon-search"></i>' +
+								 '</div>' : '') +
+								 '<div class="selector-category">' +
+									 '<select name="" class="icon-category-select" style="display: none">' +
+									 '</select>' +
+								 '</div>' +
+								 '<div class="fip-icons-container"></div>' +
+								 '<div class="selector-footer" style="display:none;">' +
+									 '<span class="selector-pages">1/2</span>' +
+									 '<span class="selector-arrows">' +
+										 '<span class="selector-arrow-left" style="display:none;">' +
+											 '<i class="fip-icon-left-dir"></i>' +
+										 '</span>' +
+										 '<span class="selector-arrow-right">' +
+											 '<i class="fip-icon-right-dir"></i>' +
+										 '</span>' +
 									 '</span>' +
-									 '<span class="selector-arrow-right">' +
-										 '<i class="fip-icon-right-dir"></i>' +
-									 '</span>' +
-								 '</span>' +
+								 '</div>' +
 							 '</div>' +
 						 '</div>'
 		});
 		this.iconContainer = this.iconPicker.find('.fip-icons-container');
 		this.searchIcon = this.iconPicker.find('.selector-search i');
+		this.selectorPopup = this.iconPicker.find('.selector-popup-wrap');
 		this.iconsSearched = [];
 		this.isSearch = false;
 		this.totalPage = 1;
@@ -148,7 +153,8 @@
 				padding: '0',
 				margin: '0 -' + iconPickerWidth + 'px 0 0', // Left margin adjustment to account for dangling space
 				border: '0 none',
-				verticalAlign: 'top'
+				verticalAlign: 'top',
+				float: 'none' // Fixes positioning with floated elements
 			});
 
 			// Set the trigger event
@@ -274,9 +280,26 @@
 			this.loadIcons();
 
 			/**
+			 * On down arrow click
+			 */
+			this.iconPicker.find('.selector-button').click($.proxy(function (event) {
+				// Stop event propagation for self closing
+				event.stopPropagation();
+
+				// Open/Close the icon picker
+				this.toggleIconSelector();
+
+			}, this));
+
+			// Since the popup can be appended anywhere
+			// We will add the event listener to the popup
+			// And will stop the eventPropagation on click
+			// @since v2.1.0
+
+			/**
 			 * Category changer
 			 */
-			this.selectCategory.on('change keyup', $.proxy(function(e) {
+			this.selectorPopup.on('change keyup', '.icon-category-select', $.proxy(function(e) {
 				// Don't do anything if not categorized
 				if ( this.isCategorized === false ) {
 					return false;
@@ -302,53 +325,29 @@
 			}, this));
 
 			/**
-			 * On down arrow click
-			 */
-			this.iconPicker.find('.selector-button').click($.proxy(function () {
-
-				// Open/Close the icon picker
-				this.toggleIconSelector();
-
-			}, this));
-
-			/**
 			 * Next page
 			 */
-			this.iconPicker.find('.selector-arrow-right').click($.proxy(function (e) {
-
+			this.selectorPopup.on('click', '.selector-arrow-right', $.proxy(function (e) {
 				if (this.currentPage < this.totalPage) {
-					this.iconPicker.find('.selector-arrow-left').show();
 					this.currentPage = this.currentPage + 1;
 					this.renderIconContainer();
 				}
-
-				if (this.currentPage === this.totalPage) {
-					$(e.currentTarget).hide();
-				}
-
 			}, this));
 
 			/**
 			 * Prev page
 			 */
-			this.iconPicker.find('.selector-arrow-left').click($.proxy(function (e) {
-
+			this.selectorPopup.on('click', '.selector-arrow-left', $.proxy(function (e) {
 				if (this.currentPage > 1) {
-					this.iconPicker.find('.selector-arrow-right').show();
 					this.currentPage = this.currentPage - 1;
 					this.renderIconContainer();
 				}
-
-				if (this.currentPage === 1) {
-					$(e.currentTarget).hide();
-				}
-
 			}, this));
 
 			/**
 			 * Realtime Icon Search
 			 */
-			this.iconPicker.find('.icons-search-input').keyup($.proxy(function (e) {
+			this.selectorPopup.on('keyup', '.icons-search-input', $.proxy(function (e) {
 
 				// Get the search string
 				var searchString = $(e.currentTarget).val();
@@ -387,15 +386,16 @@
 			/**
 			 * Quit search
 			 */
-			this.iconPicker.find('.selector-search').on('click', '.fip-icon-cancel', $.proxy(function () {
-				this.iconPicker.find('.icons-search-input').focus();
+			// Quit search happens only if clicked on the cancel button
+			this.selectorPopup.on('click', '.selector-search .fip-icon-cancel', $.proxy(function () {
+				this.selectorPopup.find('.icons-search-input').focus();
 				this.resetSearch();
 			}, this));
 
 			/**
 			 * On icon selected
 			 */
-			this.iconContainer.on('click', '.fip-box', $.proxy(function (e) {
+			this.selectorPopup.on('click', '.fip-box', $.proxy(function (e) {
 				this.setSelectedIcon($(e.currentTarget).find('i').attr('data-fip-value'));
 				this.toggleIconSelector();
 			}, this));
@@ -403,19 +403,23 @@
 			/**
 			 * Stop click propagation on iconpicker
 			 */
-			this.iconPicker.click(function (event) {
+			this.selectorPopup.click(function (event) {
 				event.stopPropagation();
 				return false;
 			});
 
 			/**
 			 * On click out
+			 * Add the functionality #9
+			 * {@link https://github.com/micc83/fontIconPicker/issues/9}
 			 */
-			$('html').click($.proxy(function () {
-				if (this.open) {
-					this.toggleIconSelector();
-				}
-			}, this));
+			if ( this.settings.autoClose ) {
+				$('html').click($.proxy(function () {
+					if (this.open) {
+						this.toggleIconSelector();
+					}
+				}, this));
+			}
 
 		},
 
@@ -558,18 +562,14 @@
 		 * Load icons
 		 */
 		loadIcons: function () {
-
 			// Set the content of the popup as loading
 			this.iconContainer.html('<i class="fip-icon-spin3 animate-spin loading"></i>');
 
 			// If source is set
 			if (this.settings.source instanceof Array) {
-
 				// Render icons
 				this.renderIconContainer();
-
 			}
-
 		},
 
 		/**
@@ -577,7 +577,7 @@
 		 */
 		renderIconContainer: function () {
 
-			var offset, iconsPaged = [];
+			var offset, iconsPaged = [], footerTotalIcons;
 
 			// Set a temporary array for icons
 			if (this.isSearch) {
@@ -594,13 +594,27 @@
 
 			// Hide footer if no pagination is needed
 			if (this.totalPage > 1) {
-				this.iconPicker.find('.selector-footer').show();
+				this.selectorPopup.find('.selector-footer').show();
+				// Reset the pager buttons
+				// Fix #8 {@link https://github.com/micc83/fontIconPicker/issues/8}
+				// It is better to set/hide the pager button here
+				// instead of all other functions that calls back renderIconContainer
+				if ( this.currentPage < this.totalPage ) { // current page is less than total, so show the arrow right
+					this.selectorPopup.find('.selector-arrow-right').show();
+				} else { // else hide it
+					this.selectorPopup.find('.selector-arrow-right').hide();
+				}
+				if ( this.currentPage > 1 ) { // current page is greater than one, so show the arrow left
+					this.selectorPopup.find('.selector-arrow-left').show();
+				} else { // else hide it
+					this.selectorPopup.find('.selector-arrow-left').hide();
+				}
 			} else {
-				this.iconPicker.find('.selector-footer').hide();
+				this.selectorPopup.find('.selector-footer').hide();
 			}
 
 			// Set the text for page number index and total icons
-			this.iconPicker.find('.selector-pages').html(this.currentPage + '/' + this.totalPage + ' <em>(' + this.iconsCount + ')</em>');
+			this.selectorPopup.find('.selector-pages').html(this.currentPage + '/' + this.totalPage + ' <em>(' + this.iconsCount + ')</em>');
 
 			// Set the offset for slice
 			offset = (this.currentPage - 1) * this.settings.iconsPerPage;
@@ -649,15 +663,25 @@
 				// Get the first icon
 				this.setSelectedIcon(iconsPaged[0]);
 
-			} else if ($.inArray(this.element.val(), this.settings.source) === -1) {
-
+			} else if ( $.inArray(this.element.val(), this.settings.source) === -1 ) {
+				// Issue #7
+				// Need to pass empty string
 				// Set empty
-				this.setSelectedIcon();
+				// Otherwise DOM will be set to null value
+				// which would break the initial select value
+				this.setSelectedIcon('');
 
 			} else {
-
+				// Fix issue #7
+				// The trick is to check the element value
+				// Internally fip-icon-block must be used for empty values
+				// So if element.val == emptyIconValue then pass fip-icon-block
+				var passDefaultIcon = this.element.val();
+				if ( passDefaultIcon === this.settings.emptyIconValue ) {
+					passDefaultIcon = 'fip-icon-block';
+				}
 				// Set the default selected icon even if not set
-				this.setSelectedIcon(this.element.val());
+				this.setSelectedIcon(passDefaultIcon);
 			}
 
 		},
@@ -710,38 +734,72 @@
 		 */
 		toggleIconSelector: function () {
 			this.open = (!this.open) ? 1 : 0;
-			this.iconPicker.find('.selector-popup').slideToggle(300);
-			this.iconPicker.find('.selector-button i').toggleClass('fip-icon-down-dir');
-			this.iconPicker.find('.selector-button i').toggleClass('fip-icon-up-dir');
-			if (this.open) {
-				this.iconPicker.find('.icons-search-input').focus().select();
+
+			// Append the popup if needed
+			if ( this.open ) {
+				// Check the origin
+				if ( this.settings.appendTo !== 'self' ) {
+					// Calculate the position + width
+					var offset = this.iconPicker.offset(),
+					offsetTop = offset.top + this.iconPicker.outerHeight(true),
+					offsetLeft = offset.left;
+
+					// Append to the selector and set the CSS + theme
+					this.selectorPopup.appendTo( this.settings.appendTo ).css({
+						left: offsetLeft,
+						top: offsetTop,
+						zIndex: 1000 // Let's decrease the zIndex to something reasonable
+					}).addClass('icons-selector ' + this.settings.theme );
+				}
+
+				// Adjust the offsetLeft
+				// Resolves issue #10
+				// @link https://github.com/micc83/fontIconPicker/issues/10
+				this.selectorPopup.find('.selector-popup').show();
+				var popupWidth = this.selectorPopup.width(),
+				windowWidth = $(window).width(),
+				popupOffsetLeft = this.selectorPopup.offset().left,
+				containerOffset = ( this.settings.appendTo == 'self' ? this.selectorPopup.parent().offset() : $( this.settings.appendTo ).offset() );
+				this.selectorPopup.find('.selector-popup').hide();
+				if ( popupOffsetLeft + popupWidth > windowWidth - 20 /* 20px adjustment for better appearance */ ) {
+					this.selectorPopup.css({
+						left: windowWidth - 20 - popupWidth - containerOffset.left
+					});
+				}
 			}
+			this.selectorPopup.find('.selector-popup').slideToggle(300, $.proxy(function() {
+				this.iconPicker.find('.selector-button i').toggleClass('fip-icon-down-dir');
+				this.iconPicker.find('.selector-button i').toggleClass('fip-icon-up-dir');
+				if (this.open) {
+					this.selectorPopup.find('.icons-search-input').focus().select();
+				} else {
+					// append and revert to the original position and reset theme
+					this.selectorPopup.appendTo( this.iconPicker ).css({
+						left: '',
+						top: '',
+						zIndex: ''
+					}).removeClass('icons-selector ' + this.settings.theme );
+				}
+			}, this));
 		},
 
 		/**
 		 * Reset search
 		 */
 		resetSearch: function () {
-
 			// Empty input
-			this.iconPicker.find('.icons-search-input').val('');
+			this.selectorPopup.find('.icons-search-input').val('');
 
 			// Reset search icon class
 			this.searchIcon.removeClass('fip-icon-cancel');
 			this.searchIcon.addClass('fip-icon-search');
 
-			// Go back to page 1 and remove back arrow
-			this.iconPicker.find('.selector-arrow-left').hide();
+			// Go back to page 1
 			this.currentPage = 1;
 			this.isSearch = false;
 
 			// Rerender icons
 			this.renderIconContainer();
-
-			// Restore pagination if needed
-			if (this.totalPage > 1) {
-				this.iconPicker.find('.selector-arrow-right').show();
-			}
 		}
 	};
 
@@ -793,7 +851,8 @@
 					padding: '',
 					margin: '',
 					border: '',
-					verticalAlign: ''
+					verticalAlign: '',
+					float: ''
 				});
 
 				// destroy data

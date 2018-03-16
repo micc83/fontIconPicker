@@ -186,7 +186,8 @@ jQuery(document).ready(function($) {
 		useAttribute: true,
 		theme: 'fip-inverted',
 		attributeName: 'data-icomoon',
-		emptyIconValue: 'none'
+		emptyIconValue: 'none',
+		appendTo: 'body'
 	});
 	$('#bootstrap-theme').fontIconPicker({
 		source: icm_icons,
@@ -194,7 +195,8 @@ jQuery(document).ready(function($) {
 		useAttribute: true,
 		theme: 'fip-bootstrap',
 		attributeName: 'data-icomoon',
-		emptyIconValue: 'none'
+		emptyIconValue: 'none',
+		appendTo: 'body'
 	});
 	$('#dark-grey-theme').fontIconPicker({
 		source: icm_icons,
@@ -202,14 +204,16 @@ jQuery(document).ready(function($) {
 		useAttribute: true,
 		theme: 'fip-darkgrey',
 		attributeName: 'data-icomoon',
-		emptyIconValue: 'none'
+		emptyIconValue: 'none',
+		appendTo: 'body'
 	});
 	$('#grey-theme').fontIconPicker({
 		source: icm_icons,
 		searchSource: icm_icon_search,
 		useAttribute: true,
 		attributeName: 'data-icomoon',
-		emptyIconValue: 'none'
+		emptyIconValue: 'none',
+		appendTo: 'body'
 	});
 
 	/**
@@ -523,6 +527,37 @@ jQuery(document).ready(function($) {
 		submitHandler: function(validator, form, submitButton) {
 			alert('Validated');
 		}
+	});
+
+	// AutoClose
+	$('#option_autoclose').fontIconPicker({
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		theme: 'fip-bootstrap',
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		appendTo: $('#main'), // Or simply pass 'body'
+		autoClose: false
+	});
+
+	// Append To #main
+	$('#option_appendto').fontIconPicker({
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		theme: 'fip-bootstrap',
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		appendTo: $('#main') // Or simply pass 'body'
+	});
+
+	// Append To Self
+	$('#option_noappendto').fontIconPicker({
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		theme: 'fip-bootstrap',
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		appendTo: 'self' // This is the default value, so you can ignore it.
 	});
 
 	// No hexadecimal

@@ -78,14 +78,14 @@
 	<section id="about">
 		<div class="jumbotron">
 			<div class="container">
-				<h1>jQuery fontIconPicker <small>v2.0.0</small></h1>
-				<p>jQuery fontIconPicker is a small (<code>3.22KB</code> gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a <code>SELECT</code> field, an <code>Array</code> or <code>Object</code> of icons or directly from a Fontello <code>config.json</code> or IcoMoon <code>selection.json</code> file. Here are some examples.</p>
+				<h1>jQuery fontIconPicker <small>v2.1.0</small></h1>
+				<p>jQuery fontIconPicker is a small (<code>3.35KB</code> gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a <code>SELECT</code> field, an <code>Array</code> or <code>Object</code> of icons or directly from a Fontello <code>config.json</code> or IcoMoon <code>selection.json</code> file. Here are some examples.</p>
 				<div class="text-left margin-top">
 					<div class="downloads pull-right">
 						<div class="btn-group btn-group-lg">
 							<a data-container="body" href="https://github.com/micc83/fontIconPicker/archive/2.0.0.zip" class="btn btn-primary bstooltip" title="Download the complete package (v2.0.0) including demo and sample codes."><i class="icomoon-download2"></i> Package</a>
-							<a data-container="body" href="../jquery.fonticonpicker.min.js" class="btn btn-default bstooltip" title="Production Release: Minified 12.3KB"><i class="icomoon-file-zip"></i> JS: Prod</a>
-							<a data-container="body" href="../jquery.fonticonpicker.js" class="btn btn-default bstooltip" title="Development Release: Uncompressed 26.8KB"><i class="icomoon-file-css"></i> JS: Dev</a>
+							<a data-container="body" href="../jquery.fonticonpicker.min.js" class="btn btn-default bstooltip" title="Production Release: Minified 12.8KB"><i class="icomoon-file-zip"></i> JS: Prod</a>
+							<a data-container="body" href="../jquery.fonticonpicker.js" class="btn btn-default bstooltip" title="Development Release: Uncompressed 28.2KB"><i class="icomoon-file-css"></i> JS: Dev</a>
 							<a data-container="body" class="btn btn-primary bstooltip" title="View on GitHub" href="https://github.com/micc83/fontIconPicker"><i class="icomoon-github3"></i> GitHub</a>
 						</div>
 						<div class="clearfix"></div>
@@ -2416,6 +2416,23 @@ $(&#039;.myselect&#039;).fontIconPicker({
 							</td>
 						</tr>
 						<tr>
+							<th>autoClose</th>
+							<td><code>Boolean</code></td>
+							<td>Whether or not to close the icon picker automatically when clicked elsewhere.</td>
+							<td><code>true</code></td>
+							<td>
+								<p>
+									Clicking outside will not close &dash; <input type="text" name="option_autoclose" id="option_autoclose" value="none" />
+								</p>
+
+								<pre class="brush: js">
+$(&#039;.myselect&#039;).fontIconPicker({
+	autoClose: false
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
 							<th>iconsPerPage</th>
 							<td><code>Number</code></td>
 							<td>Number of icons per page on the icon picker. Please note that if you have <code>emptyIcon</code> set to <code>true</code> then the actual number will be one less. For better appearance always provide a number in multiple of 5.</td>
@@ -2473,6 +2490,52 @@ $(&#039;.myselect&#039;).fontIconPicker({
 	searchSource: icm_icon_search,
 	useAttribute: true,
 	attributeName: &#039;data-icomoon&#039;
+});
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>appendTo</th>
+							<td><code>String | jQuery Object</code></td>
+							<td>Where to append the icon picker popup. By default it is appended right after the icon picker toggle button. But if you are nesting under a relative positioned container, then you'd like to append to it's parent or body. The option accpets string selector or jQuery object. Use the value <code>self</code> to append to original position.</td>
+							<td><code>&#039;self&#039;</code></td>
+							<td>
+								<p>Notice how the second fontIconPicker will react because it is nested inside a position relative container.</p>
+								<div style="position: relative; height: 50px; overflow: hidden;">
+									<code>$('#main')</code> &dash; <input type="text" name="option_appendto" id="option_appendto" /> &dash;
+									<code>&#039;self&#039;</code> &dash; <input type="text" name="option_noppendto" id="option_noappendto" />
+								</div>
+								<h4>HTML</h4>
+								<pre class="brush: html">
+&lt;div style=&quot;position: relative; height: 50px; overflow: hidden;&quot;&gt;
+	&lt;!-- Append to #main --&gt;
+	&lt;input type=&quot;text&quot; name=&quot;option_appendto&quot; id=&quot;option_appendto&quot; /&gt;
+	&lt;!-- Append to self --&gt;
+	&lt;input type=&quot;text&quot; name=&quot;option_noppendto&quot; id=&quot;option_noappendto&quot; /&gt;
+&lt;/div&gt;
+								</pre>
+								<h4>JavaScript</h4>
+								<pre class="brush: js">
+jQuery(document).ready(function($) {
+	// Append To #main
+	$(&#039;#option_appendto&#039;).fontIconPicker({
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		theme: &#039;fip-bootstrap&#039;,
+		useAttribute: true,
+		attributeName: &#039;data-icomoon&#039;,
+		appendTo: $(&#039;#main&#039;) // Or simply pass &#039;body&#039;
+	});
+
+	// Append To Self
+	$(&#039;#option_noappendto&#039;).fontIconPicker({
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		theme: &#039;fip-bootstrap&#039;,
+		useAttribute: true,
+		attributeName: &#039;data-icomoon&#039;,
+		appendTo: &#039;self&#039; // This is the default value, so you can ignore it.
+	});
 });
 								</pre>
 							</td>

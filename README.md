@@ -1,7 +1,7 @@
-jQuery fontIconPicker
-==============
+jQuery fontIconPicker `v2.1.0`
+==============================
 
-jQuery fontIconPicker is a small (`3.22KB` gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a `SELECT` field, an `Array` or `Object` of icons or directly from a Fontello `config.json` or IcoMoon `selection.json` file. Go to the [official plugin page](http://codeb.it/fonticonpicker) for examples and documentation.
+jQuery fontIconPicker is a small (`3.35KB` gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a `SELECT` field, an `Array` or `Object` of icons or directly from a Fontello `config.json` or IcoMoon `selection.json` file. Go to the [official plugin page](http://codeb.it/fonticonpicker) for examples and documentation.
 
 **Notice** : Many of the features introduced with release 2.0.0 were the result of a collaboration. Unfortunately the developer of those features is not actively following the project anymore so you're more than welcome to step in. The problem is that since version 1.0.0 jQuery fontIconPicker has grown much and it's not mantainable anymore without writing first a carefully drafted test suite. So the first stage of any collaboration would be about writing unit and integration testing for everything implemented up to now (I know it's a pain in the ...). **Until then unfortunately It won't be possible to me to address any bug or add new features.** Thx for the understanding.
 
@@ -103,6 +103,7 @@ var $picker = $('.picker').fontIconPicker({
 	iconsPerPage      : 20,                      // Number of icons per page
 	hasSearch         : true,                    // Is search enabled?
 	searchSource      : false,                   // Give a manual search values. If using attributes then for proper search feature we also need to pass icon names under the same order of source
+	appendTo          : 'self',                  // Where to append the selector popup. You can pass string selectors or jQuery objects
 	useAttribute      : false,                   // Whether to use attribute selector for printing icons
 	attributeName     : 'data-icon',             // HTML Attribute name
 	convertToHex      : true,                    // Whether or not to convert to hexadecimal for attribute value. If true then please pass decimal integer value to the source (or as value="" attribute of the select field)
