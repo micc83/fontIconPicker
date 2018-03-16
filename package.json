@@ -1,0 +1,26 @@
+{
+  "name": "fonticonpicker",
+  "version": "3.0.0",
+  "description": "jQuery Plugin which allows you to include a simple icon picker with search and pagination inside your administration forms.",
+  "main": "src/jquery.fonticonpicker.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micc83/fontIconPicker.git"
+  },
+  "keywords": [
+    "jquery",
+    "font",
+    "picker",
+    "iconpicker",
+    "fontpicker"
+  ],
+  "author": "Swashata Ghosh, Alessandro Benoit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/micc83/fontIconPicker/issues"
+  },
+  "homepage": "https://github.com/micc83/fontIconPicker#readme"
+}
