@@ -1,5 +1,5 @@
 /**
- *  jQuery fontIconPicker - v2.1.0
+ *  jQuery fontIconPicker - v2.1.1
  *
  *  An icon picker built on top of font icons and jQuery
  *
@@ -418,7 +418,7 @@
 					if (this.open) {
 						this.toggleIconSelector();
 					}
-				}, this));
+				}, this));				
 			}
 
 		},
@@ -730,26 +730,45 @@
 		},
 
 		/**
+		 * Recalculate the position of the Popup
+		 */
+		repositionIconSelector: function() {
+			// Calculate the position + width
+			var offset = this.iconPicker.offset(),
+			offsetTop = offset.top + this.iconPicker.outerHeight(true),
+			offsetLeft = offset.left;					
+
+			this.selectorPopup.css({
+				left: offsetLeft,
+				top: offsetTop
+			});			
+		},
+
+		/**
 		 * Open/close popup (toggle)
 		 */
 		toggleIconSelector: function () {
 			this.open = (!this.open) ? 1 : 0;
 
+			$(window).off('resize.fonticonpicker');
+			this.selectorPopup.find('.selector-popup').off('clickoutside touchendoutside');
+
 			// Append the popup if needed
 			if ( this.open ) {
 				// Check the origin
 				if ( this.settings.appendTo !== 'self' ) {
-					// Calculate the position + width
-					var offset = this.iconPicker.offset(),
-					offsetTop = offset.top + this.iconPicker.outerHeight(true),
-					offsetLeft = offset.left;
-
 					// Append to the selector and set the CSS + theme
 					this.selectorPopup.appendTo( this.settings.appendTo ).css({
-						left: offsetLeft,
-						top: offsetTop,
 						zIndex: 1000 // Let's decrease the zIndex to something reasonable
 					}).addClass('icons-selector ' + this.settings.theme );
+
+					// call resize()
+				    this.repositionIconSelector();
+
+				    // resize on window resize
+				    $(window).on('resize.fonticonpicker', $.proxy(function() {
+				    	this.repositionIconSelector();
+				    }, this));
 				}
 
 				// Adjust the offsetLeft
@@ -765,6 +784,14 @@
 					this.selectorPopup.css({
 						left: windowWidth - 20 - popupWidth - containerOffset.left
 					});
+				}
+
+				if ( this.settings.autoClose ) {
+					this.selectorPopup.find('.selector-popup').on('clickoutside touchendoutside', $.proxy(function () {
+						if (this.open) {
+							this.toggleIconSelector();
+						}
+					}, this));
 				}
 			}
 			this.selectorPopup.find('.selector-popup').slideToggle(300, $.proxy(function() {
