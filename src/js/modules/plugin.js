@@ -2,11 +2,12 @@
  * fontIconPicker Plugin Class
  */
 
-import $ from 'jquery';
 import defaults from './defaults.js';
+import jQuery from 'jquery';
 
 'use strict';
 
+const $ = jQuery;
 function FontIconPicker( element, options ) {
 	this.element = $( element );
 	this.settings = $.extend( {}, defaults, options );

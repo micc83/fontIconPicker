@@ -4,7 +4,8 @@
   "description": "jQuery Plugin which allows you to include a simple icon picker with search and pagination inside your administration forms.",
   "main": "src/jquery.fonticonpicker.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "gulp test",
+    "build": "rollup -c rollup.config.js"
   },
   "repository": {
     "type": "git",
@@ -26,12 +27,17 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.42",
     "@babel/core": "^7.0.0-beta.42",
+    "@babel/plugin-transform-modules-umd": "^7.0.0-beta.42",
     "@babel/preset-env": "^7.0.0-beta.42",
     "eslint": "^4.18.2",
     "eslint-config-wordpress": "^2.0.0",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "npm": "^5.7.1",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^4.0.0-beta.2",
+    "rollup-plugin-node-resolve": "^3.3.0"
   },
   "dependencies": {
-    "jquery": "^1.12.4"
+    "jquery": "^3.3.1"
   }
 }

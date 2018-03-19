@@ -44,14 +44,6 @@ module.exports = {
                 }
             }
 		],
-		"key-spacing": [
-			"error", {
-				"align": {
-					"beforeColon": true,
-					"afterColon": true,
-					"on": "colon"
-				}
-			}
-		]
+		"key-spacing": "off"
     }
 };
