@@ -43,6 +43,15 @@ module.exports = {
                     "!": true
                 }
             }
-        ]
+		],
+		"key-spacing": [
+			"error", {
+				"align": {
+					"beforeColon": true,
+					"afterColon": true,
+					"on": "colon"
+				}
+			}
+		]
     }
 };
