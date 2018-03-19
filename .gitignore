@@ -66,7 +66,8 @@ typings/
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -129,3 +130,6 @@ $RECYCLE.BIN/
 
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
+
+# Build Specific
+dist/
