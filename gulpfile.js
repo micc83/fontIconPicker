@@ -10,7 +10,20 @@ const rollUpUglify = require( 'rollup-plugin-uglify' );
 // Get package information
 const pkg = require( './package.json' );
 
+// Define environment
 const environment = 'production' === process.env.NODE_ENV ? 'production' : 'development';
+
+// Our paths
+const paths = {
+	scripts: {
+		src: 'src/js/jquery.fonticonpicker.js',
+		dest: 'dist/js'
+	},
+	styles: {
+		src: 'src/scss/**/*.scss',
+		dest: 'dist/css'
+	}
+};
 
 // 1. Build main JS
 function scripts() {
@@ -38,13 +51,13 @@ function scripts() {
 		file = 'jquery.fonticonpicker.min.js';
 	}
 	return rollup.rollup( {
-		input: 'src/js/jquery.fonticonpicker.js',
+		input: paths.scripts.src,
 		external: [ 'jquery' ],
 		plugins
 	} )
 		.then( bundle => {
 			return bundle.write( {
-				file: `dist/${file}`,
+				file: `${paths.scripts.dest}/${file}`,
 				format: 'umd',
 				globals: {
 					jquery: 'jQuery'

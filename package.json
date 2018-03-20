@@ -2,11 +2,11 @@
   "name": "fonticonpicker",
   "version": "3.0.0-alpha.0",
   "description": "jQuery Plugin which allows you to include a simple icon picker with search and pagination inside your administration forms.",
-  "main": "src/jquery.fonticonpicker.js",
+  "main": "dist/js/jquery.fonticonpicker.min.js",
   "scripts": {
     "test": "gulp test",
-		"build": "gulp build",
-		"watch": "gulp watch"
+    "build": "gulp build",
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,10 @@
     "iconpicker",
     "fontpicker"
   ],
-  "author": "Swashata Ghosh, Alessandro Benoit",
+  "author": "Alessandro Benoit <micc83@gmail.com> (http://codeb.it/)",
+  "contributors": [
+    "Swashata Ghosh <swashata4u@gmail.com> (https://wpquark.com)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/micc83/fontIconPicker/issues"
@@ -37,9 +40,14 @@
     "rollup": "^0.57.1",
     "rollup-plugin-babel": "^4.0.0-beta.2",
     "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-uglify": "^3.0.0"
-  },
-  "dependencies": {
+    "rollup-plugin-uglify": "^3.0.0",
     "jquery": "^3.3.1"
+  },
+  "peerDependencies": {
+    "jquery": "^3.3.1"
+  },
+  "engines": {
+    "node": ">=8.0.0",
+    "npm": ">= 5.0.0"
   }
 }
