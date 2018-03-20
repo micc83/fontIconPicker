@@ -27,6 +27,9 @@ const paths = {
 	fonts: {
 		src: 'src/fonts/**/*.*',
 		dest: 'dist/fonts'
+	},
+	demo: {
+		src: 'demo/**/*.*'
 	}
 };
 
@@ -42,7 +45,8 @@ const serve = ( done ) => {
 			routes: {
 				'/dist': 'dist'
 			}
-		}
+		},
+		notify: true
 	} );
 	done();
 };
@@ -108,7 +112,7 @@ const scripts = () => {
  *
  *  http://codeb.it/fontIconPicker
  *
- *  @author Alessandro Benoit & Swashata
+ *  @author Alessandro Benoit & Swashata Ghosh
  *  @license MIT License
  *
  * {@link https://github.com/micc83/fontIconPicker}
@@ -157,7 +161,11 @@ const styles = () => {
 			.pipe( sass().on( 'error', sass.logError ) ) // eslint-disable-line
 			.pipe( postcss( plugins ) ) // eslint-disable-line
 		.pipe( sourcemaps.write( './' ) )
-		.pipe( rename( path => path.extname = '.min.css' ) )
+		.pipe( rename( path => {
+			if ( '.css' === path.extname ) {
+				path.extname = '.min.css';
+			}
+		} ) )
 		.pipe( gulp.dest( paths.styles.dest ) )
 		.pipe( server.stream() );
 };
@@ -182,6 +190,9 @@ const watch = () => {
 
 	// Watch styles - TODO
 	gulp.watch( paths.styles.src, gulp.series( styles ) );
+
+	// Watch demo files
+	gulp.watch( paths.demo.src, gulp.series( reload ) );
 };
 
 gulp.task( 'serve', gulp.series( clean, scripts, styles, fonts, serve, watch ) );

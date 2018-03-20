@@ -1,0 +1,100 @@
+/**
+ * Grey Theme file for fontIconPicker
+ * {@link https://github.com/micc83/fontIconPicker}
+ */
+@import '../../partials/variables';
+@import '../../partials/mixins';
+/** main selector */
+.#{$main-selector} {
+	/** scoped to theme */
+	&.fip-grey {
+		/* Main Container */
+		font-size: 16px;
+		/* Icon selector */
+		.selector {
+			border: 1px solid #EDEDED;
+			background-color: #fff;
+		}
+		/* Selector open button */
+		.selector-button {
+			background-color: #F4F4F4;
+			border-left: 1px solid #E1E1E1;
+			/* Selector open button icon */
+			i {
+				color: #aaa;
+				text-shadow: 0px 1px 0px #FFF;
+			}
+			/* Selector open button hover */
+			&:hover {
+				background-color: #f1f1f1;
+				i {
+					color: #999;
+				}
+			}
+		}
+		/* Selected icon */
+		.selected-icon i {
+			color: #404040;
+		}
+		/* IconPicker Popup */
+		.selector-popup {
+			box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+			border: 1px solid #E5E5E5;
+		}
+		/* Search input & category selector */
+		.selector-search input[type="text"],
+		.selector-category select {
+			border: 1px solid #EDEDED;
+			color: #404040;
+			box-shadow: none;
+			outline: none;
+		}
+		/* Search input placeholder */
+		input::placeholder {
+			color:#ddd !important;
+		}
+		/* Search and cancel icon */
+		.selector-search i {
+			color: #eee;
+		}
+		/* Icon Container inside Popup */
+		.fip-icons-container {
+			background-color: #fff;
+			border: 1px solid #EDEDED;
+			/* Icon container loading */
+			.loading {
+				color:#eee;
+			}
+		}
+		/* Single icon box */
+		.fip-box {
+			border: 1px solid #EFEFEF;
+			/* Single icon box hover */
+			&:hover {
+				background-color: #f6f6f6;
+			}
+		}
+
+		/* Pagination and footer icons */
+		.selector-footer,
+		.selector-footer i {
+			color: #ddd;
+		}
+
+		/* Pagination arrows icons hover */
+		.selector-arrows i:hover {
+			color: #777;
+		}
+		/* Currently selected icon color */
+		span.current-icon,
+		span.current-icon:hover {
+			background-color: #2EA2CC;
+			color: #fff;
+			border: 1px solid #298CBA;
+		}
+		/* No icons found */
+		.icons-picker-error i:before {
+			color: #eee;
+		}
+	}
+}

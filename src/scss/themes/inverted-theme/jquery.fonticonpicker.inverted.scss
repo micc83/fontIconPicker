@@ -1,0 +1,107 @@
+/**
+ * inverted Theme file for fontIconPicker
+ * {@link https://github.com/micc83/fontIconPicker}
+ */
+@import '../../partials/variables';
+@import '../../partials/mixins';
+/* Main Container */
+.#{$main-selector} {
+	/** scoped to theme */
+	&.fip-inverted {
+		font-size: 16px;
+		color: #aaa;
+
+		/* Icon selector */
+		.selector {
+			border: 1px solid #111;
+			background-color: #333;
+		}
+		/* Selector open button */
+		.selector-button {
+			background-color: #222;
+			border-left: 1px solid #111;
+			/* Selector open button icon */
+			i {
+				color: #eee;
+			}
+			/* Selector open button hover */
+			&:hover {
+				background-color: #000;
+				i {
+					color: #fff;
+				}
+			}
+		}
+
+		/* Selected icon */
+		.selected-icon i {
+			color: #ccc;
+			text-shadow: 0 0 1px #000;
+		}
+		/* IconPicker Popup */
+		.selector-popup {
+			box-shadow: 0 1px 1px rgba(255,255,255,0.04);
+			border: 1px solid #111;
+			background-color: #101010;
+		}
+		/* Search input & category selector */
+		.selector-search input[type="text"],
+		.selector-category select {
+			border: 1px solid #111;
+			background: #333;
+			color: #aaa;
+			box-shadow: none;
+			outline: none;
+		}
+		/* Search input placeholder */
+		input::placeholder {
+			color:#aaa !important;
+		}
+		/* Search and cancel icon */
+		.selector-search i {
+			color: #aaa;
+		}
+		/* Icon Container inside Popup */
+		.fip-icons-container {
+			background-color: #333;
+			border: 1px solid #111;
+			/* Icon container loading */
+			.loading {
+				color:#aaa;
+			}
+		}
+		/* Single icon box */
+		.fip-box {
+			border: 1px solid #111;
+			/* Single icon box hover */
+			&:hover {
+				background-color: #000;
+				color: #eee;
+			}
+		}
+
+		/* Pagination and footer icons */
+		.selector-footer,
+		.selector-footer i {
+			color: #aaa;
+		}
+
+		/* Pagination arrows icons hover */
+		.selector-arrows i:hover {
+			color: #000;
+		}
+		/* Currently selected icon color */
+		span.current-icon,
+		span.current-icon:hover {
+			background-color: #000;
+			color: #fff;
+		}
+		/* No icons found */
+		.icons-picker-error i:before,
+		.fip-icon-block:before {
+			color: #663333;
+			text-shadow: none;
+		 }
+	}
+}
+
