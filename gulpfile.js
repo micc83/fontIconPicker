@@ -197,3 +197,8 @@ const watch = () => {
 
 gulp.task( 'serve', gulp.series( clean, scripts, styles, fonts, serve, watch ) );
 
+// build task
+const build = gulp.series( clean, gulp.parallel( scripts, styles, fonts ) );
+gulp.task( 'build', build );
+gulp.task( 'default', build );
+
