@@ -1,4 +1,7 @@
 // rollup.config.js
+// Do not use rollup directly
+// Use gulp rollup instead
+// This is for historical purpose
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 

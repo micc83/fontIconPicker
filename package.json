@@ -1,11 +1,12 @@
 {
   "name": "fonticonpicker",
-  "version": "3.0.0",
+  "version": "3.0.0-alpha.0",
   "description": "jQuery Plugin which allows you to include a simple icon picker with search and pagination inside your administration forms.",
   "main": "src/jquery.fonticonpicker.js",
   "scripts": {
     "test": "gulp test",
-    "build": "rollup -c rollup.config.js"
+		"build": "gulp build",
+		"watch": "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -35,7 +36,8 @@
     "npm": "^5.7.1",
     "rollup": "^0.57.1",
     "rollup-plugin-babel": "^4.0.0-beta.2",
-    "rollup-plugin-node-resolve": "^3.3.0"
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-uglify": "^3.0.0"
   },
   "dependencies": {
     "jquery": "^3.3.1"

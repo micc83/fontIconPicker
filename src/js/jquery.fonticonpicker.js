@@ -1,12 +1,12 @@
 /**
- *  jQuery fontIconPicker - v2.1.1
+ *  jQuery fontIconPicker
  *
  *  An icon picker built on top of font icons and jQuery
  *
  *  http://codeb.it/fontIconPicker
  *
  *  Made by Alessandro Benoit & Swashata
- *  Under MIT License
+ *  Licensed under MIT License
  *
  * {@link https://github.com/micc83/fontIconPicker}
  */
