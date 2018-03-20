@@ -202,3 +202,32 @@ const build = gulp.series( clean, gulp.parallel( scripts, styles, fonts ) );
 gulp.task( 'build', build );
 gulp.task( 'default', build );
 
+// Linting and testing
+const esLint = require( 'gulp-eslint' );
+const lintScripts = () => {
+	return gulp.src( paths.scripts.all )
+		.pipe( esLint( {
+			useEslintrc: true
+		} ) )
+		.pipe( esLint.format() )
+		.pipe( esLint.failAfterError() );
+};
+gulp.task( 'lint:script', lintScripts );
+
+const styleLint = require( 'gulp-stylelint' );
+const lintStyles = () => {
+	return gulp.src( paths.styles.src )
+		.pipe( styleLint( {
+			failAfterError: true,
+			reporters: [
+				{
+					formatter: 'verbose',
+					console: true
+				}
+			]
+		} ) );
+};
+gulp.task( 'lint:style', lintStyles );
+
+// Combine
+gulp.task( 'lint', gulp.series( 'lint:style', 'lint:script' ) );
