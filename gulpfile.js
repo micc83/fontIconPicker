@@ -1,6 +1,12 @@
 // Init gulp
 const gulp = require( 'gulp' );
 
+// Init sourcemaps
+const sourcemaps = require( 'gulp-sourcemaps' );
+
+// Init rename
+const rename = require( 'gulp-rename' );
+
 // Get package information
 const pkg = require( './package.json' );
 
@@ -17,7 +23,34 @@ const paths = {
 	styles: {
 		src: 'src/scss/**/*.scss',
 		dest: 'dist/css'
+	},
+	fonts: {
+		src: 'src/fonts/**/*.*',
+		dest: 'dist/fonts'
 	}
+};
+
+// Create an instance for browsersync
+const browserSync = require( 'browser-sync' );
+const server = browserSync.create();
+
+// Function to serve
+const serve = ( done ) => {
+	server.init( {
+		server: {
+			baseDir: 'demo',
+			routes: {
+				'/dist': 'dist'
+			}
+		}
+	} );
+	done();
+};
+
+// Function to reload browser
+const reload = ( done ) => {
+	server.reload();
+	done();
 };
 
 // Clean function
@@ -87,33 +120,59 @@ const scripts = () => {
 };
 
 // The rollup task
-gulp.task( 'rollup', scripts );
+gulp.task( 'scripts', scripts );
 
-// Create an instance for browsersync
-const browserSync = require( 'browser-sync' );
-const server = browserSync.create();
+// Create CSS from SCSS
+const sass = require( 'gulp-sass' );
+const postcss = require( 'gulp-postcss' );
+const autoPrefixer = require( 'autoprefixer' );
+const cssnano = require( 'cssnano' );
+const postCSSBanner = require( 'postcss-banner' );
 
-// Function to serve
-const serve = ( done ) => {
-	server.init( {
-		server: {
-			baseDir: 'demo',
-			routes: {
-				'/dist': 'dist',
-				'/css': 'css',
-				'/themes': 'themes'
-			}
-		}
-	} );
-	done();
+// Build Styles
+const styles = () => {
+	const plugins = [
+		autoPrefixer( {
+			browsers: [ 'last 2 versions' ]
+		} ),
+		cssnano( {
+			preset: 'default',
+			reduceIdents: false,
+			zindex: false,
+			mergeIdents: false,
+			discardUnused: false
+		} ),
+		postCSSBanner( {
+			banner: `CSS files for fontIconPicker
+
+@license MIT
+@version ${pkg.version}
+{@link https://github.com/micc83/fontIconPicker}
+`,
+			important: true
+		} )
+	];
+	return gulp.src( paths.styles.src )
+		.pipe( sourcemaps.init() )
+			.pipe( sass().on( 'error', sass.logError ) ) // eslint-disable-line
+			.pipe( postcss( plugins ) ) // eslint-disable-line
+		.pipe( sourcemaps.write( './' ) )
+		.pipe( rename( path => path.extname = '.min.css' ) )
+		.pipe( gulp.dest( paths.styles.dest ) )
+		.pipe( server.stream() );
 };
 
-// Function to reload browser
-const reload = ( done ) => {
-	server.reload();
-	done();
+// styles task
+gulp.task( 'styles', styles );
+
+// Copy fonts
+const fonts = () => {
+	return gulp.src( paths.fonts.src )
+		.pipe( gulp.dest( paths.fonts.dest ) );
 };
 
+// fonts task
+gulp.task( 'fonts', fonts );
 
 // Watch function
 const watch = () => {
@@ -122,7 +181,8 @@ const watch = () => {
 	gulp.watch( paths.scripts.all, gulp.series( scripts, reload ) );
 
 	// Watch styles - TODO
+	gulp.watch( paths.styles.src, gulp.series( styles ) );
 };
 
-gulp.task( 'serve', gulp.series( clean, scripts, /** styles, */ serve, watch ) );
+gulp.task( 'serve', gulp.series( clean, scripts, styles, fonts, serve, watch ) );
 
