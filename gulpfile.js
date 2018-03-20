@@ -1,12 +1,6 @@
 // Init gulp
 const gulp = require( 'gulp' );
 
-// Get all rollup related things
-const rollup = require( 'rollup' );
-const rollupNodeResolve = require( 'rollup-plugin-node-resolve' );
-const rollUpBabel = require( 'rollup-plugin-babel' );
-const rollUpUglify = require( 'rollup-plugin-uglify' );
-
 // Get package information
 const pkg = require( './package.json' );
 
@@ -17,6 +11,7 @@ const environment = 'production' === process.env.NODE_ENV ? 'production' : 'deve
 const paths = {
 	scripts: {
 		src: 'src/js/jquery.fonticonpicker.js',
+		all: 'src/js/**/*.js',
 		dest: 'dist/js'
 	},
 	styles: {
@@ -25,8 +20,18 @@ const paths = {
 	}
 };
 
+// Clean function
+const del = require( 'del' );
+const clean = () => del( [ 'dist' ] );
+
+// Get all rollup related things
+const rollup = require( 'rollup' );
+const rollupNodeResolve = require( 'rollup-plugin-node-resolve' );
+const rollUpBabel = require( 'rollup-plugin-babel' );
+const rollUpUglify = require( 'rollup-plugin-uglify' );
+
 // 1. Build main JS
-function scripts() {
+const scripts = () => {
 	const plugins = [
 		rollupNodeResolve(),
 		rollUpBabel( {
@@ -79,5 +84,45 @@ function scripts() {
 				sourcemap
 			} );
 		} );
-}
+};
+
+// The rollup task
 gulp.task( 'rollup', scripts );
+
+// Create an instance for browsersync
+const browserSync = require( 'browser-sync' );
+const server = browserSync.create();
+
+// Function to serve
+const serve = ( done ) => {
+	server.init( {
+		server: {
+			baseDir: 'demo',
+			routes: {
+				'/dist': 'dist',
+				'/css': 'css',
+				'/themes': 'themes'
+			}
+		}
+	} );
+	done();
+};
+
+// Function to reload browser
+const reload = ( done ) => {
+	server.reload();
+	done();
+};
+
+
+// Watch function
+const watch = () => {
+
+	// Watch scripts
+	gulp.watch( paths.scripts.all, gulp.series( scripts, reload ) );
+
+	// Watch styles - TODO
+};
+
+gulp.task( 'serve', gulp.series( clean, scripts, /** styles, */ serve, watch ) );
+
