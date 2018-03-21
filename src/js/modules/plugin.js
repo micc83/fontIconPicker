@@ -254,7 +254,8 @@ FontIconPicker.prototype = {
 	 */
 	_initIconSelect() {
 		this.selectorPopup.on( 'click', '.fip-box', e => {
-			this._setSelectedIcon( $( e.currentTarget ).find( 'i' ).attr( 'data-fip-value' ) );
+			const fipBox = $( e.currentTarget );
+			this._setSelectedIcon( fipBox.attr( 'data-fip-value' ), fipBox.attr( 'title' ) );
 			this._toggleIconSelector();
 		} );
 	},
@@ -699,11 +700,11 @@ FontIconPicker.prototype = {
 	 *
 	 * Supports hookable third-party renderer function.
 	 */
-	_iconGenerator: function( item, flipBoxTitle, i ) {
+	_iconGenerator: function( item ) {
 		if ( 'function' === typeof this.settings.iconGenerator ) {
-			return this.settings.iconGenerator( item, flipBoxTitle, i );
+			return this.settings.iconGenerator( item );
 		}
-		return '<i data-fip-value="' + item + '" ' + ( this.settings.useAttribute ? ( this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt( item, 10 ).toString( 16 ) + ';' : item ) + '"' ) : 'class="' + item + '"' ) + '></i>';
+		return '<i ' + ( this.settings.useAttribute ? ( this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt( item, 10 ).toString( 16 ) + ';' : item ) + '"' ) : 'class="' + item + '"' ) + '></i>';
 	},
 
 	/**
@@ -760,11 +761,11 @@ FontIconPicker.prototype = {
 		if ( this.settings.emptyIcon ) {
 
 			// Reset icon container HTML and prepend empty icon
-			this.iconContainer.html( '<span class="fip-box"><i class="fip-icon-block" data-fip-value="fip-icon-block"></i></span>' );
+			this.iconContainer.html( '<span class="fip-box" data-fip-value="fip-icon-block"><i class="fip-icon-block"></i></span>' );
 
 		// If not show an error when no icons are found
 		} else if ( 1 > iconsPaged.length ) {
-			this.iconContainer.html( '<span class="icons-picker-error"><i class="fip-icon-block" data-fip-value="fip-icon-block"></i></span>' );
+			this.iconContainer.html( '<span class="icons-picker-error" data-fip-value="fip-icon-block"><i class="fip-icon-block"></i></span>' );
 			return;
 
 		// else empty the container
@@ -779,10 +780,10 @@ FontIconPicker.prototype = {
 		for ( let i = 0, item; item = iconsPaged[i++]; ) { // eslint-disable-line
 
 			// Set the icon title
-			let flipBoxTitle = item;
+			let fipBoxTitle = item;
 			$.grep( this.settings.source, $.proxy( function( e, i ) {
 				if ( e === item ) {
-					flipBoxTitle =  this.searchValues[i];
+					fipBoxTitle =  this.searchValues[i];
 					return true;
 				}
 				return false;
@@ -790,9 +791,12 @@ FontIconPicker.prototype = {
 
 			// Set the icon box
 			$( '<span/>', {
-				html:      this._iconGenerator( item, flipBoxTitle, i ),
-				'class':   'fip-box',
-				title: flipBoxTitle
+				html:      this._iconGenerator( item ),
+				attr: {
+					'data-fip-value': item
+				},
+				class:   'fip-box',
+				title: fipBoxTitle
 			} ).appendTo( this.iconContainer );
 		}
 
@@ -834,7 +838,7 @@ FontIconPicker.prototype = {
 	_setHighlightedIcon: function() {
 		this.iconContainer.find( '.current-icon' ).removeClass( 'current-icon' );
 		if ( this.currentIcon ) {
-			this.iconContainer.find( '[data-fip-value="' + this.currentIcon + '"]' ).parent( 'span' ).addClass( 'current-icon' );
+			this.iconContainer.find( '[data-fip-value="' + this.currentIcon + '"]' ).addClass( 'current-icon' );
 		}
 	},
 
@@ -848,17 +852,15 @@ FontIconPicker.prototype = {
 			theIcon = '';
 		}
 
-		// Check if attribute is to be used
-		if ( this.settings.useAttribute ) {
-			if ( theIcon ) {
-				this.iconPicker.find( '.selected-icon' ).html( '<i ' + this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt( theIcon, 10 ).toString( 16 ) + ';' : theIcon ) + '"></i>' );
-			} else {
-				this.iconPicker.find( '.selected-icon' ).html( '<i class="fip-icon-block"></i>' );
-			}
+		const selectedIcon = this.iconPicker.find( '.selected-icon' );
 
-		// Use class
+		// if the icon is empty, then reset to empty
+		if ( '' === theIcon ) {
+			selectedIcon.html( '<i class="fip-icon-block"></i>' );
 		} else {
-			this.iconPicker.find( '.selected-icon' ).html( '<i class="' + ( theIcon || 'fip-icon-block' ) + '"></i>' );
+
+			// Pass it to the render function
+			selectedIcon.html( this._iconGenerator( theIcon ) );
 		}
 
 		// Check if actually changing the DOM element

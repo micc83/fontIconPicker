@@ -530,6 +530,20 @@ jQuery(document).ready(function($) {
 		}
 	});
 
+	// Example 13 - SVG
+	var svgs = [ 'Baby-Mobile', 'Bag-Present', 'Application-Map', 'Batman',
+		'Battery-Charging', 'Beach', 'Bell', 'Bonsai', 'Boss-2', 'Boss-3',
+		'Boss-5', 'Burglar', 'Bus', 'Businesswoman-1', 'Camera-Front',
+		'Candles', 'Canoe', 'Captain-Shield', 'Candy', 'Cement-Mixer',
+		'Car-Jumper', 'Checklist', 'Cheese', 'Cashier-2', 'Chair-4', 'Chat-2' ];
+	$( '#svg_renderer' ).fontIconPicker({
+		source: svgs,
+		theme: 'fip-bootstrap',
+		iconGenerator: function( item, flipBoxTitle, index ) {
+			return '<i data-fip-value="' + item + '" style="display: flex; align-items: center; justify-content: center; height: 100%;"><svg style="height: 32px; width: auto;" class="svg-icon ' + item + '"><use xlink:href="#' + item + '"></use></svg></i>';
+		}
+	})
+
 	// AutoClose
 	$('#option_autoclose').fontIconPicker({
 		source: icm_icons,
