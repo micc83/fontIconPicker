@@ -852,15 +852,20 @@ FontIconPicker.prototype = {
 			this.iconPicker.find( '.selected-icon' ).html( '<i class="' + ( theIcon || 'fip-icon-block' ) + '"></i>' );
 		}
 
-		// Set the value of the element and trigger change event
-		this.element.val( ( '' === theIcon ? this.settings.emptyIconValue : theIcon ) ).trigger( 'change' );
-		if ( null !== this.triggerEvent ) {
+		// Check if actually changing the DOM element
+		const currentValue = this.element.val();
 
-			// Trigger other events
-			for ( let eventKey in this.triggerEvent ) {
-				this.element.trigger( this.triggerEvent[eventKey] );
+		// Set the value of the element
+		this.element.val( ( '' === theIcon ? this.settings.emptyIconValue : theIcon ) );
+
+		// trigger event if change has actually occured
+		if ( currentValue !== theIcon ) {
+			this.element.trigger( 'change' );
+			if ( null !== this.triggerEvent ) {
+				this.element.trigger( this.triggerEvent );
 			}
 		}
+
 		this.currentIcon = theIcon;
 		this._setHighlightedIcon();
 	},
