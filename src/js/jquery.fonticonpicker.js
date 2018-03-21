@@ -26,7 +26,7 @@ jQuery.fn.fontIconPicker = function( options ) {
 	} );
 
 	// setIcons method
-	this.setIcons = jQuery.proxy( function( newIcons, iconSearch ) {
+	this.setIcons = ( newIcons, iconSearch ) => {
 		if ( undefined === newIcons ) {
 			newIcons = false;
 		}
@@ -40,10 +40,10 @@ jQuery.fn.fontIconPicker = function( options ) {
 			jQuery.data( this, 'fontIconPicker' ).resetSearch();
 			jQuery.data( this, 'fontIconPicker' ).loadIcons();
 		} );
-	}, this );
+	};
 
 	// destroy method
-	this.destroyPicker = jQuery.proxy( function() {
+	this.destroyPicker = () => {
 		this.each( function() {
 			if ( ! jQuery.data( this, 'fontIconPicker' ) ) {
 				return;
@@ -72,10 +72,10 @@ jQuery.fn.fontIconPicker = function( options ) {
 			// destroy data
 			jQuery.removeData( this, 'fontIconPicker' );
 		} );
-	}, this );
+	};
 
 	// reInit method
-	this.refreshPicker = jQuery.proxy( function( newOptions ) {
+	this.refreshPicker = ( newOptions ) => {
 		if ( ! newOptions ) {
 			newOptions = options;
 		}
@@ -86,10 +86,10 @@ jQuery.fn.fontIconPicker = function( options ) {
 		// Now reset
 		this.each( function() {
 			if ( ! jQuery.data( this, 'fontIconPicker' ) ) {
-				jQuery.data( this, 'fontIconPicker', new Plugin( this, newOptions ) );
+				jQuery.data( this, 'fontIconPicker', new FontIconPicker( this, newOptions ) );
 			}
 		} );
-	}, this );
+	};
 
 	return this;
 };
