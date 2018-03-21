@@ -18,7 +18,8 @@ const options = {
 	allCategoryText    : 'From all categories',   // The text for the select all category option
 	unCategorizedText  : 'Uncategorized',         // The text for the select uncategorized option
 	iconGenerator      : null,                    // Icon Generator function. Passes, item, flipBoxTitle and index
-	windowDebounceDelay: 150                      // Debounce delay while fixing position on windowResize
+	windowDebounceDelay: 150,                     // Debounce delay while fixing position on windowResize
+	searchPlaceholder  : 'Search Icons'            // Placeholder for the search input
 };
 
 export default options;

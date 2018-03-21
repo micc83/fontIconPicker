@@ -404,7 +404,7 @@ FontIconPicker.prototype = {
 <div class="selector-popup-wrap">
 	<div class="selector-popup" style="display: none;"> ${ ( this.settings.hasSearch ) ?
 		`<div class="selector-search">
-			<input type="text" name="" value="" placeholder="Search icon" class="icons-search-input"/>
+			<input type="text" name="" value="" placeholder="${ this.settings.searchPlaceholder }" class="icons-search-input"/>
 			<i class="fip-icon-search"></i>
 		</div>` : '' }
 		<div class="selector-category">
