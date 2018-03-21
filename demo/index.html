@@ -23,6 +23,8 @@
 	<script type="text/javascript" src="lib/js/brush/shBrushJScript.js"></script>
 	<script type="text/javascript" src="lib/js/brush/shBrushPlain.js"></script>
 	<script type="text/javascript" src="lib/js/brush/shBrushXml.js"></script>
+	<script type="text/javascript" src="lib/js/brush/shBrushBash.js"></script>
+
 
 	<!-- icon picker -->
 	<script type="text/javascript" src="../dist/js/jquery.fonticonpicker.js"></script>
@@ -111,6 +113,64 @@
 		In firefox fontIconPicker icons won't be shown correctly because of CORS. For the same reason "Load icons from JSON config file" won't work on Chrome or IE 10. If you need to do some local testing you can disable strict_origin_policy at your risk.
 		</div>
 
+		<!-- #installation -->
+		<section id="installation">
+			<h2><i class="icomoon-download"></i> Installation</h2>
+			<hr>
+			<p>
+				Starting version 3.0.0, fontIconPicker has repository in npm and is wrapped in an <a href="https://github.com/umdjs/umd">UMD</a>. So you can install with your favorite package manager.
+			</p>
+			<p>
+				<code>jQuery</code> is defined as a peer dependency. Any version greater than <code>1.12.4</code> (tested upto <code>3.3.1</code>) will work.
+			</p>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#installation_npm" data-toggle="tab">NPM</a></li>
+				<li><a href="#installation_yarn" data-toggle="tab">YARN</a></li>
+				<li><a href="#installation_cdn" data-toggle="tab">CDN</a></li>
+				<li><a href="#installation_script" data-toggle="tab">SCRIPT</a></li>
+			</ul>
+			<div class="tab-content">
+				<div class="tab-pane in-fade active" id="installation_npm">
+					<p>First install fontIconPicker as your project dependency along with jQuery.</p>
+					<pre class="brush: bash">
+npm install jquery@3.3.1 fonticonpicker --save
+					</pre>
+					<p>Now <code>import</code> or <code>include</code> or <code>require</code> the package.</p>
+					<pre class="brush: js">
+const jQuery = require( 'jquery' );
+const fip = require( 'fonticonpicker' );
+// Your code
+					</pre>
+				</div>
+				<div class="tab-pane in-fade" id="installation_yarn">
+					<p>First install fontIconPicker as your project dependency along with jQuery.</p>
+					<pre class="brush: bash">
+yarn add jquery@3.3.1 fonticonpicker
+					</pre>
+					<p>Now <code>import</code> or <code>include</code> or <code>require</code> the package.</p>
+					<pre class="brush: js">
+const jQuery = require( 'jquery' );
+const fip = require( 'fonticonpicker' );
+// Your code
+					</pre>
+				</div>
+				<div class="tab-pane in-fade" id="installation_cdn">
+					<p><a href="https://cdnjs.com">CDNJS</a> provides free CDNs for you to consume.</p>
+					<h3>Script</h3>
+					<pre class="brush: html">
+<script type="text/javascript" src=""></script>
+					</pre>
+					<h3>Styles</h3>
+					<pre class="brush: html">
+<link type="text/css" rel="stylesheet" href=""></script>
+					</pre>
+				</div>
+				<div class="tab-pane in-fade" id="installation_script">
+					<p>Go to <a href="https://github.com/micc83/fontIconPicker/releases">GitHub Release</a> and download a release. Use the compiled JS and CSS files.</p>
+				</div>
+			</div>
+		</section>
+
 		<!-- #setup -->
 		<section id="setup">
 			<h2><i class="icomoon-wand"></i> How it works</h2>
@@ -129,7 +189,7 @@
 				<p>Only plugin dependency is jQuery (1.7.1+).</p>
 <pre class="brush: html">
 &lt;!-- jQuery --&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.7.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
 
 &lt;!-- fontIconPicker JS --&gt;
 &lt;script type=&quot;text/javascript&quot; src=&quot;jquery.fonticonpicker.min.js&quot;&gt;&lt;/script&gt;
