@@ -13,7 +13,7 @@
 	<link rel="stylesheet" type="text/css" href="lib/css/shCoreDefault.css" />
 
 	<!-- jQuery -->
-	<script src="lib/js/jquery-1.11.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
 	<!-- Demo Scripts -->
 	<script type="text/javascript" src="lib/js/bootstrap.min.js"></script>
@@ -2639,6 +2639,33 @@ $(&#039;.myselect&#039;).fontIconPicker({
 						</tr>
 					</thead>
 					<tbody>
+						<tr>
+							<th>setIcon</th>
+							<td>
+								<strong>newIcon</strong><br />
+								<code>String</code><br /><em>The value of the new icon to set.</em>
+							</td>
+							<td>Use this to programmatically set a new selected icon. You should only use this when changing the selected icon. The original DOM element will also be updated and <code>change</code> and <code>input</code> events will be triggered.</td>
+							<td>
+								<h4>Live</h4>
+								<input type="text" name="set-icon" id="set-icon" /> - Current: <strong id="current-set-icon"><i class="icomoon-blocked"></i></strong>
+								<br /><br />
+								<span class="set-icons-buttons">
+									<button type="button" class="btn btn-default set-icons-4" data-icon-value="">Reset</button>
+									<button type="button" class="btn btn-default set-icons-1" data-icon-value="57484"><i data-icomoon="&#xe08c;"></i></button>
+									<button type="button" class="btn btn-default set-icons-2" data-icon-value="57600"><i data-icomoon="&#xe100;"></i></button>
+									<button type="button" class="btn btn-default set-icons-3" data-icon-value="57693"><i data-icomoon="&#xe15d;"></i></button>
+								</span>
+								<h4>HTML</h4>
+								<pre class="brush: html">
+&lt;input type=&quot;text&quot; name=&quot;set-icon&quot; id=&quot;set-icon&quot; /&gt; - Current: &lt;strong id=&quot;current-set-icon&quot;&gt;&lt;i class=&quot;icomoon-blocked&quot;&gt;&lt;/i&gt;&lt;/strong&gt;&#10;&lt;br /&gt;&lt;br /&gt;&#10;&lt;span class=&quot;set-icons-buttons&quot;&gt;&#10;&#9;&lt;button type=&quot;button&quot; class=&quot;btn btn-default set-icons-4&quot; data-icon-value=&quot;&quot;&gt;Reset&lt;/button&gt;&#10;&#9;&lt;button type=&quot;button&quot; class=&quot;btn btn-default set-icons-1&quot; data-icon-value=&quot;57484&quot;&gt;&lt;i data-icomoon=&quot;&amp;#xe08c;&quot;&gt;&lt;/i&gt;&lt;/button&gt;&#10;&#9;&lt;button type=&quot;button&quot; class=&quot;btn btn-default set-icons-2&quot; data-icon-value=&quot;57600&quot;&gt;&lt;i data-icomoon=&quot;&amp;#xe100;&quot;&gt;&lt;/i&gt;&lt;/button&gt;&#10;&#9;&lt;button type=&quot;button&quot; class=&quot;btn btn-default set-icons-3&quot; data-icon-value=&quot;57693&quot;&gt;&lt;i data-icomoon=&quot;&amp;#xe15d;&quot;&gt;&lt;/i&gt;&lt;/button&gt;&#10;&lt;/span&gt;
+								</pre>
+								<h4>JS</h4>
+								<pre class="brush: js">
+// Set selected icon&#10;var setSelectedIcon = $( &apos;#set-icon&apos; ).fontIconPicker({&#10;&#9;source: icm_icons,&#10;&#9;searchSource: icm_icon_search,&#10;&#9;useAttribute: true,&#10;&#9;attributeName: &apos;data-icomoon&apos;,&#10;&#9;theme: &apos;fip-bootstrap&apos;&#10;})&#10;&#9;.on( &apos;change&apos;, function() {&#10;&#9;&#9;var setIcon = $( this ).val(),&#10;&#9;&#9;icon;&#10;&#9;&#9;if ( &apos;&apos; === setIcon ) {&#10;&#9;&#9;&#9;icon = &apos;&lt;i class=&quot;icomoon-blocked&quot;&gt;&lt;/i&gt;&apos;&#10;&#9;&#9;} else {&#10;&#9;&#9;&#9;icon = &apos;&lt;i data-icomoon=&quot;&amp;#x&apos; + parseInt( setIcon, 10 ).toString( 16 ) + &apos;;&quot;&gt;&lt;/i&gt;&apos;;&#10;&#9;&#9;}&#10;&#9;&#9;$(&apos;#current-set-icon&apos;).html( icon );&#10;&#9;} );&#10;&#10;$(&apos;.set-icons-buttons&apos;).on( &apos;click&apos;, &apos;.btn&apos;, function( e ) {&#10;&#9;var newIcon = $(this).data( &apos;iconValue&apos; );&#10;&#9;setSelectedIcon.setIcon( newIcon );&#10;} );
+								</pre>
+							</td>
+						</tr>
 						<tr>
 							<th rowspan="2">setIcons</th>
 							<td>

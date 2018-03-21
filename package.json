@@ -58,7 +58,7 @@
     "stylelint-scss": "^2.5.0"
   },
   "peerDependencies": {
-    "jquery": "^3.3.1"
+    "jquery": ">=1.12.4"
   },
   "engines": {
     "node": ">=8.0.0",

@@ -26,15 +26,16 @@ jQuery.fn.fontIconPicker = function( options ) {
 	} );
 
 	// setIcons method
-	this.setIcons = ( newIcons, iconSearch ) => {
-		if ( undefined === newIcons ) {
-			newIcons = false;
-		}
-		if ( undefined === iconSearch ) {
-			iconSearch = false;
-		}
+	this.setIcons = ( newIcons = false, iconSearch = false ) => {
 		this.each( function() {
 			jQuery.data( this, 'fontIconPicker' ).setIcons( newIcons, iconSearch );
+		} );
+	};
+
+	// setIcon method
+	this.setIcon = ( newIcon = '' ) => {
+		this.each( function() {
+			jQuery.data( this, 'fontIconPicker' ).setIcon( newIcon );
 		} );
 	};
 

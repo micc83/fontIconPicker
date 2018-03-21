@@ -163,6 +163,15 @@ FontIconPicker.prototype = {
 	},
 
 	/**
+	 * Set currently selected icon programmatically
+	 *
+	 * @param {string} theIcon current icon value
+	 */
+	setIcon( theIcon = '' ) {
+		this._setSelectedIcon( theIcon );
+	},
+
+	/**
 	 * Destroy picker and all events
 	 */
 	destroy() {
@@ -369,12 +378,12 @@ FontIconPicker.prototype = {
 	 * Initialize Dropdown button
 	 */
 	_initDropDown() {
-		this.iconPicker.find( '.selector-button' ).click( $.proxy( function( event ) {
+		this.iconPicker.find( '.selector-button' ).on( 'click', event => {
 
 			// Open/Close the icon picker
 			this._toggleIconSelector();
 
-		}, this ) );
+		} );
 	},
 
 	/**
@@ -957,7 +966,7 @@ FontIconPicker.prototype = {
 			this.iconPicker.find( '.selector-button i' ).toggleClass( 'fip-icon-down-dir' );
 			this.iconPicker.find( '.selector-button i' ).toggleClass( 'fip-icon-up-dir' );
 			if ( this.open ) {
-				this.selectorPopup.find( '.icons-search-input' ).focus().select();
+				this.selectorPopup.find( '.icons-search-input' ).trigger( 'focus' ).trigger( 'select' );
 			} else {
 
 				// append and revert to the original position and reset theme

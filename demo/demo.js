@@ -1,6 +1,7 @@
 /**
  * Demo JS for fontIconPicker
  */
+/* eslint-disable */
 jQuery(document).ready(function($) {
 	/**
 	 * These are DEMO related codes
@@ -29,7 +30,7 @@ jQuery(document).ready(function($) {
 
 	// Bind click handler to menu items
 	// so we can get a fancy scroll animation
-	menuItems.click(function(e) {
+	menuItems.on('click', function(e) {
 		var href = $(this).attr("href"),
 		offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
 		$('html, body').stop().animate({
@@ -38,7 +39,7 @@ jQuery(document).ready(function($) {
 		e.preventDefault();
 	});
 
-	$('a[href="#main"]').click(function(e) {
+	$('a[href="#main"]').on('click', function(e) {
 		e.preventDefault();
 		var offsetTop = $('#main').offset().top - topMenuHeight + 1;
 		$('html, body').stop().animate({
@@ -74,12 +75,12 @@ jQuery(document).ready(function($) {
 			// Set/remove active class
 			menuItems
 			.parent().removeClass("active")
-			.end().filter("[href=#"+id+"]").parent().addClass("active");
+			.end().filter("[href='#"+id+"']").parent().addClass("active");
 		}
 	};
 
 	// Bind to scroll + resize
-	$(window).scroll(fipScrollSpy);
+	$(window).on('scroll', fipScrollSpy);
 	$(window).on('resize', fipScrollSpy);
 	fipScrollSpy.apply(window);
 
@@ -569,6 +570,30 @@ jQuery(document).ready(function($) {
 		convertToHex: false,
 		theme: 'fip-bootstrap'
 	});
+
+	// Set selected icon
+	var setSelectedIcon = $( '#set-icon' ).fontIconPicker({
+		source: icm_icons,
+		searchSource: icm_icon_search,
+		useAttribute: true,
+		attributeName: 'data-icomoon',
+		theme: 'fip-bootstrap'
+	})
+		.on( 'change', function() {
+			var setIcon = $( this ).val(),
+			icon;
+			if ( '' === setIcon ) {
+				icon = '<i class="icomoon-blocked"></i>'
+			} else {
+				icon = '<i data-icomoon="&#x' + parseInt( setIcon, 10 ).toString( 16 ) + ';"></i>';
+			}
+			$('#current-set-icon').html( icon );
+		} );
+
+	$('.set-icons-buttons').on( 'click', '.btn', function( e ) {
+		var newIcon = $(this).data( 'iconValue' );
+		setSelectedIcon.setIcon( newIcon );
+	} );
 
 	/**
 	 * Dynamically set icons
