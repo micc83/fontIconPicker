@@ -158,6 +158,7 @@ FontIconPicker.prototype = {
 		this.settings.source = newIcons;
 		this.settings.searchSource = iconSearch;
 		this._initSourceIndex();
+		this._loadCategories();
 		this._resetSearch();
 		this._loadIcons();
 	},

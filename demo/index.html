@@ -276,6 +276,9 @@
 						<li><a href="#e13" data-toggle="tab">
 							<span class="badge pull-right">pro</span><span class="bstooltip" title="New in v3.0.0"><i class="icon-star"></i></span> Use SVG in fontIconPicker with <code>iconGenerator</code>
 						</a></li>
+						<li><a href="#e14" data-toggle="tab">
+							<span class="badge pull-right">pro</span><span class="bstooltip" title="New in v3.0.0"><i class="icon-star"></i></span> Load FontAwesome 5 Icons
+						</a></li>
 					</ul>
 				</div>
 				<div class="col-md-7 col-md-pull-5">
@@ -2235,6 +2238,34 @@ var svgs = [ &apos;Baby-Mobile&apos;, &apos;Bag-Present&apos;, &apos;Application
 										<p>We also need to append the SVG source somewhere in the document, preferably before closing <code>&lt;body&gt;</code> tag.</p>
 										<p>The SVG is downloaded from <a href="http://www.kameleon.pics/">Kameleon</a> and bundled with <a href="https://www.npmjs.com/package/svg-join">svg-join</a>.</p>
 										<p>You can find it <a href="lib/svgs/bundle.svg">here</a>.</p>
+									</div>
+								</div>
+							</div>
+						</article>
+
+						<article id="e14" class="fade tab-pane">
+							<div class="live-preview text-left">
+								<p>The example uses a settings json from <a href="https://gist.github.com/migliori/60154172ba0eea70e3c0dd4c3b5d82d0">here</a>.</p>
+								<input type="text" id="e14_element" name="e14_element" />
+								<span id="e14_buttons">
+									<button autocomplete="off" type="button" class="btn btn-primary">Load from FontAwesome</button>
+								</span>
+							</div>
+							<div class="example-code">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#e14_html" data-toggle="tab">HTML</a></li>
+									<li><a href="#e14_js" data-toggle="tab">JavaScript</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane in fade active" id="e14_html">
+										<pre class="brush: html">
+&lt;input type=&quot;text&quot; id=&quot;e14_element&quot; name=&quot;e14_element&quot; /&gt;&#10;&lt;span id=&quot;e14_buttons&quot;&gt;&#10;&#9;&lt;button autocomplete=&quot;off&quot; type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Load from FontAwesome&lt;/button&gt;&#10;&lt;/span&gt;
+										</pre>
+									</div>
+									<div class="tab-pane in fade" id="e14_js">
+										<pre class="brush: js">
+// Add the event on the button&#10;$( &apos;#e14_buttons button&apos; ).on( &apos;click&apos;, function( e ) {&#10;&#9;// Append the fontawesome CDN&#10;&#9;if ( ! $( &apos;#fontawesome-cdn&apos; ).length ) {&#10;&#9;&#9;$(&apos;head&apos;).append( &apos;&lt;link id=&quot;fontawesome-cdn&quot; rel=&quot;stylesheet&quot; href=&quot;https://use.fontawesome.com/releases/v5.0.8/css/all.css&quot; integrity=&quot;sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S&quot; crossorigin=&quot;anonymous&quot;&gt;&apos; );&#10;&#9;}&#10;&#9;// Prevent default&#10;&#9;e.preventDefault();&#10;&#9;// Show processing message&#10;&#9;$( this ).prop( &apos;disabled&apos;, true )&#10;&#9;&#9;.html( &apos;&lt;i class=&quot;icon-cog demo-animate-spin&quot;&gt;&lt;/i&gt; Please wait&mldr;&apos; );&#10;&#9;// Get the JSON file&#10;&#9;$.ajax( {&#10;&#9;&#9;url: &apos;https://gist.githubusercontent.com/swashata/c0db916b33700c91ab75f59d4aeba7d3/raw/366789b2d001a99f5f41f1ceab980d991de059c3/fontawesome-icons-with-categories.json&apos;,&#10;&#9;&#9;type: &apos;GET&apos;,&#10;&#9;&#9;dataType: &apos;json&apos;&#10;&#9;} )&#10;&#9;.done( function( response ) {&#10;&#9;&#9;console.log( response );&#10;&#9;&#9;setTimeout( function() {&#10;&#9;&#9;&#9;// Reset icons&#10;&#9;&#9;&#9;e14_element.setIcons( response );&#10;&#10;&#9;&#9;&#9;// Show success message and disable&#10;&#9;&#9;&#9;$( &apos;#e14_buttons button&apos; )&#10;&#9;&#9;&#9;&#9;.removeClass( &apos;btn-primary&apos; )&#10;&#9;&#9;&#9;&#9;.addClass( &apos;btn-success&apos; )&#10;&#9;&#9;&#9;&#9;.text( &apos;Successfully loaded icons&apos; )&#10;&#9;&#9;&#9;&#9;.prop( &apos;disabled&apos;, true );&#10;&#9;&#9;}, 1000 );&#10;&#9;} )&#10;&#9;.fail( function() {&#10;&#9;&#9;// Show error message and enable&#10;&#9;&#9;$( &apos;#e14_buttons button&apos; )&#10;&#9;&#9;&#9;.removeClass( &apos;btn-primary&apos; )&#10;&#9;&#9;&#9;.addClass( &apos;btn-danger&apos; )&#10;&#9;&#9;&#9;.text( &apos;Error: Try Again?&apos; )&#10;&#9;&#9;&#9;.prop( &apos;disabled&apos;, false );&#10;&#9;} );&#10;&#9;e.stopPropagation();&#10;} );
+										</pre>
 									</div>
 								</div>
 							</div>

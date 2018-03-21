@@ -557,6 +557,54 @@ jQuery(document).ready(function($) {
 			liveImage.attr( 'src', 'lib/svgs/parts/' + item + '.svg' );
 		} );
 
+	// Example 14 - FontAwesome
+	// <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+	var e14_element = $('#e14_element').fontIconPicker({
+		theme: 'fip-bootstrap'
+	});
+
+	// Add the event on the button
+	$( '#e14_buttons button' ).on( 'click', function( e ) {
+		// Append the fontawesome CDN
+		if ( ! $( '#fontawesome-cdn' ).length ) {
+			$('head').append( '<link id="fontawesome-cdn" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">' );
+		}
+		// Prevent default
+		e.preventDefault();
+		// Show processing message
+		$( this ).prop( 'disabled', true )
+			.html( '<i class="icon-cog demo-animate-spin"></i> Please wait…' );
+		// Get the JSON file
+		$.ajax( {
+			url: 'https://gist.githubusercontent.com/swashata/c0db916b33700c91ab75f59d4aeba7d3/raw/366789b2d001a99f5f41f1ceab980d991de059c3/fontawesome-icons-with-categories.json',
+			type: 'GET',
+			dataType: 'json'
+		} )
+		.done( function( response ) {
+			console.log( response );
+			setTimeout( function() {
+				// Reset icons
+				e14_element.setIcons( response );
+
+				// Show success message and disable
+				$( '#e14_buttons button' )
+					.removeClass( 'btn-primary' )
+					.addClass( 'btn-success' )
+					.text( 'Successfully loaded icons' )
+					.prop( 'disabled', true );
+			}, 1000 );
+		} )
+		.fail( function() {
+			// Show error message and enable
+			$( '#e14_buttons button' )
+				.removeClass( 'btn-primary' )
+				.addClass( 'btn-danger' )
+				.text( 'Error: Try Again?' )
+				.prop( 'disabled', false );
+		} );
+		e.stopPropagation();
+	} );
+
 	// AutoClose
 	$('#option_autoclose').fontIconPicker({
 		source: icm_icons,
