@@ -34,11 +34,7 @@ jQuery.fn.fontIconPicker = function( options ) {
 			iconSearch = false;
 		}
 		this.each( function() {
-			jQuery.data( this, 'fontIconPicker' ).settings.source = newIcons;
-			jQuery.data( this, 'fontIconPicker' ).settings.searchSource = iconSearch;
-			jQuery.data( this, 'fontIconPicker' ).initSourceIndex();
-			jQuery.data( this, 'fontIconPicker' ).resetSearch();
-			jQuery.data( this, 'fontIconPicker' ).loadIcons();
+			jQuery.data( this, 'fontIconPicker' ).setIcons( newIcons, iconSearch );
 		} );
 	};
 
@@ -50,24 +46,7 @@ jQuery.fn.fontIconPicker = function( options ) {
 			}
 
 			// Remove the iconPicker
-			jQuery.data( this, 'fontIconPicker' ).iconPicker.remove();
-
-			// Reset the CSS
-			jQuery.data( this, 'fontIconPicker' ).element.css( {
-				visibility: '',
-				top: '',
-				position: '',
-				zIndex: '',
-				left: '',
-				display: '',
-				height: '',
-				width: '',
-				padding: '',
-				margin: '',
-				border: '',
-				verticalAlign: '',
-				float: ''
-			} );
+			jQuery.data( this, 'fontIconPicker' ).destroy();
 
 			// destroy data
 			jQuery.removeData( this, 'fontIconPicker' );

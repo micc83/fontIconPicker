@@ -152,6 +152,39 @@ FontIconPicker.prototype = {
 	},
 
 	/**
+	 * Set icons after the fip has been initialized
+	 */
+	setIcons( newIcons, iconSearch ) {
+		this.settings.source = newIcons;
+		this.settings.searchSource = iconSearch;
+		this._initSourceIndex();
+		this._resetSearch();
+		this._loadIcons();
+	},
+
+	/**
+	 * Destroy picker and all events
+	 */
+	destroy() {
+		this.iconPicker.off().remove();
+		this.element.css( {
+			visibility: '',
+			top: '',
+			position: '',
+			zIndex: '',
+			left: '',
+			display: '',
+			height: '',
+			width: '',
+			padding: '',
+			margin: '',
+			border: '',
+			verticalAlign: '',
+			float: ''
+		} );
+	},
+
+	/**
 	 * Initialize Fix on window resize with debouncing
 	 * This helps reduce function call unnecessary times.
 	 */
