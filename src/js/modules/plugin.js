@@ -17,7 +17,7 @@ function FontIconPicker( element, options ) {
 	this.iconPicker = $( '<div/>', {
 		class : 'icons-selector',
 		style : 'position: relative',
-		html  : this.getPickerTemplate()
+		html  : this._getPickerTemplate()
 	} );
 	this.iconContainer = this.iconPicker.find( '.fip-icons-container' );
 	this.searchIcon = this.iconPicker.find( '.selector-search i' );
@@ -112,20 +112,18 @@ FontIconPicker.prototype = {
 		if ( ! this.settings.source && this.element.is( 'select' ) ) {
 
 			// Populate data from select
-			this.populateSourceFromSelect();
-
-			// load the categories
-			this.loadCategories();
+			this._populateSourceFromSelect();
 
 		// Normalize the given source
 		} else {
-			this.initSourceIndex();
-
-			// No need to call loadCategories or take backups because these are called from the initSourceIndex
+			this._initSourceIndex();
 		}
 
+		// load the categories
+		this._loadCategories();
+
 		// Load icons
-		this.loadIcons();
+		this._loadIcons();
 
 		// Initialize dropdown button
 		this._initDropDown();
@@ -148,6 +146,37 @@ FontIconPicker.prototype = {
 		 * {@link https://github.com/micc83/fontIconPicker/issues/9}
 		 */
 		this._initAutoClose();
+
+		// Window resize fix
+		this._initFixOnResize();
+	},
+
+	/**
+	 * Initialize Fix on window resize with debouncing
+	 * This helps reduce function call unnecessary times.
+	 */
+	_initFixOnResize() {
+
+		/**
+		 * Implementation of debounce function
+		 *
+		 * {@link https://medium.com/a-developers-perspective/throttling-and-debouncing-in-javascript-b01cad5c8edf}
+		 * @param {Function} func callback function
+		 * @param {int} delay delay in milliseconds
+		 */
+		const debounce = ( func, delay ) => {
+			let inDebounce;
+			return function() {
+				const context = this;
+				const args = arguments;
+				clearTimeout( inDebounce );
+				inDebounce = setTimeout( () => func.apply( context, args ), delay );
+			};
+		};
+
+		$( window ).on( 'resize.fonticonpicker', debounce( () => {
+			this._fixOnResize();
+		}, this.settings.windowDebounceDelay ) );
 	},
 
 	/**
@@ -172,7 +201,7 @@ FontIconPicker.prototype = {
 
 				// Close it
 				if ( this.open ) {
-					this.toggleIconSelector();
+					this._toggleIconSelector();
 				}
 			} );
 		}
@@ -183,8 +212,8 @@ FontIconPicker.prototype = {
 	 */
 	_initIconSelect() {
 		this.selectorPopup.on( 'click', '.fip-box', e => {
-			this.setSelectedIcon( $( e.currentTarget ).find( 'i' ).attr( 'data-fip-value' ) );
-			this.toggleIconSelector();
+			this._setSelectedIcon( $( e.currentTarget ).find( 'i' ).attr( 'data-fip-value' ) );
+			this._toggleIconSelector();
 		} );
 	},
 
@@ -199,7 +228,7 @@ FontIconPicker.prototype = {
 
 			// If the string is not empty
 			if ( '' === searchString ) {
-				this.resetSearch();
+				this._resetSearch();
 				return;
 			}
 
@@ -225,7 +254,7 @@ FontIconPicker.prototype = {
 			} );
 
 			// Render icon list
-			this.renderIconContainer();
+			this._renderIconContainer();
 		} );
 
 		/**
@@ -234,7 +263,7 @@ FontIconPicker.prototype = {
 		// Quit search happens only if clicked on the cancel button
 		this.selectorPopup.on( 'click', '.selector-search .fip-icon-cancel', () => {
 			this.selectorPopup.find( '.icons-search-input' ).focus();
-			this.resetSearch();
+			this._resetSearch();
 		} );
 	},
 
@@ -249,7 +278,7 @@ FontIconPicker.prototype = {
 		this.selectorPopup.on( 'click', '.selector-arrow-right', e => {
 			if ( this.currentPage < this.totalPage ) {
 				this.currentPage = this.currentPage + 1;
-				this.renderIconContainer();
+				this._renderIconContainer();
 			}
 		} );
 
@@ -259,7 +288,7 @@ FontIconPicker.prototype = {
 		this.selectorPopup.on( 'click', '.selector-arrow-left', e => {
 			if ( 1 < this.currentPage ) {
 				this.currentPage = this.currentPage - 1;
-				this.renderIconContainer();
+				this._renderIconContainer();
 			}
 		} );
 	},
@@ -298,8 +327,8 @@ FontIconPicker.prototype = {
 					this.searchValues = this.availableCategoriesSearch[key];
 				}
 			}
-			this.resetSearch();
-			this.loadIcons();
+			this._resetSearch();
+			this._loadIcons();
 		} );
 	},
 
@@ -310,7 +339,7 @@ FontIconPicker.prototype = {
 		this.iconPicker.find( '.selector-button' ).click( $.proxy( function( event ) {
 
 			// Open/Close the icon picker
-			this.toggleIconSelector();
+			this._toggleIconSelector();
 
 		}, this ) );
 	},
@@ -318,7 +347,7 @@ FontIconPicker.prototype = {
 	/**
 	 * Get icon Picker Template String
 	 */
-	getPickerTemplate() {
+	_getPickerTemplate() {
 		const pickerTemplate = `
 <div class="selector">
 	<span class="selected-icon">
@@ -359,7 +388,7 @@ FontIconPicker.prototype = {
 	 * Init the source & search index from the current settings
 	 * @return {void}
 	 */
-	initSourceIndex: function() {
+	_initSourceIndex: function() {
 
 		// First check for any sorts of errors
 		if ( 'object' !== typeof this.settings.source ) {
@@ -377,7 +406,7 @@ FontIconPicker.prototype = {
 
 			// We are going to convert the source items to string
 			// This is necessary because passed source might not be "strings" for attribute related icons
-			this.settings.source = $.map( this.settings.source, function( e, i ) {
+			this.settings.source = $.map( this.settings.source, ( e, i ) => {
 				if ( 'function' == typeof e.toString ) {
 					return e.toString();
 				} else {
@@ -390,7 +419,7 @@ FontIconPicker.prototype = {
 			if ( $.isArray( this.settings.searchSource ) ) {
 
 				// Convert everything inside the searchSource to string
-				this.searchValues = $.map( this.settings.searchSource, function( e, i ) {
+				this.searchValues = $.map( this.settings.searchSource, ( e, i ) => {
 					if ( 'function' == typeof e.toString ) {
 						return e.toString();
 					} else {
@@ -404,7 +433,7 @@ FontIconPicker.prototype = {
 
 		// Categorized icon set
 		} else {
-			let originalSource = $.extend( true, {}, this.settings.source );
+			const originalSource = $.extend( true, {}, this.settings.source );
 
 			// Reset the source
 			this.settings.source = [];
@@ -421,10 +450,10 @@ FontIconPicker.prototype = {
 			this.selectCategory.html( '' );
 
 			// Now loop through the source and add to the list
-			for ( let categoryLabel in originalSource ) {
+			for ( const categoryLabel in originalSource ) {
 
 				// Get the key of the new category array
-				let thisCategoryKey = this.availableCategories.length,
+				const thisCategoryKey = this.availableCategories.length,
 
 					// Create the new option for the selectCategory SELECT field
 					categoryOption = $( '<option />' );
@@ -443,13 +472,13 @@ FontIconPicker.prototype = {
 				this.availableCategoriesSearch[thisCategoryKey] = [];
 
 				// Now loop through it's icons and add to the list
-				for ( let newIconKey in originalSource[categoryLabel] ) {
+				for ( const newIconKey in originalSource[categoryLabel] ) {
 
 					// Get the new icon value
-					let newIconValue = originalSource[categoryLabel][newIconKey];
+					const newIconValue = originalSource[categoryLabel][newIconKey];
 
 					// Get the label either from the searchSource if set, otherwise from the source itself
-					let newIconLabel = ( this.settings.searchSource && this.settings.searchSource[categoryLabel] && this.settings.searchSource[categoryLabel][newIconKey] ) ?
+					const newIconLabel = ( this.settings.searchSource && this.settings.searchSource[categoryLabel] && this.settings.searchSource[categoryLabel][newIconKey] ) ?
 						this.settings.searchSource[categoryLabel][newIconKey] : newIconValue;
 
 					// Try to convert to the source value string
@@ -479,9 +508,6 @@ FontIconPicker.prototype = {
 		// Clone and backup the original source and search
 		this.backupSource = this.settings.source.slice( 0 );
 		this.backupSearch = this.searchValues.slice( 0 );
-
-		// Call the loadCategories
-		this.loadCategories();
 	},
 
 	/**
@@ -489,7 +515,7 @@ FontIconPicker.prototype = {
 	 * Check if select has optgroup, if so, then we are dealing with categorized
 	 * data. Otherwise, plain data.
 	 */
-	populateSourceFromSelect() {
+	_populateSourceFromSelect() {
 
 		// Reset the source and searchSource
 		// These will be populated according to the available options
@@ -596,7 +622,7 @@ FontIconPicker.prototype = {
 	 * Load Categories
 	 * @return {void}
 	 */
-	loadCategories: function() {
+	_loadCategories: function() {
 
 		// Dont do anything if it is not categorized
 		if ( false === this.isCategorized ) {
@@ -613,22 +639,27 @@ FontIconPicker.prototype = {
 	/**
 	 * Load icons
 	 */
-	loadIcons: function() {
+	_loadIcons: function() {
 
 		// Set the content of the popup as loading
 		this.iconContainer.html( '<i class="fip-icon-spin3 animate-spin loading"></i>' );
 
 		// If source is set
-		if ( this.settings.source instanceof Array ) {
+		if ( $.isArray( this.settings.source ) ) {
 
 			// Render icons
-			this.renderIconContainer();
+			this._renderIconContainer();
 		}
 	},
 
-	iconGenerator: function( item ) {
-		if ( this.settings.iconGenerator ) {
-			return this.settings.iconGenerator( item );
+	/**
+	 * Generate icons
+	 *
+	 * Supports hookable third-party renderer function.
+	 */
+	_iconGenerator: function( item, flipBoxTitle, i ) {
+		if ( 'function' === typeof this.settings.iconGenerator ) {
+			return this.settings.iconGenerator( item, flipBoxTitle, i );
 		}
 		return '<i data-fip-value="' + item + '" ' + ( this.settings.useAttribute ? ( this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt( item, 10 ).toString( 16 ) + ';' : item ) + '"' ) : 'class="' + item + '"' ) + '></i>';
 	},
@@ -636,7 +667,7 @@ FontIconPicker.prototype = {
 	/**
 	 * Render icons inside the popup
 	 */
-	renderIconContainer: function() {
+	_renderIconContainer: function() {
 
 		let offset,
 			iconsPaged = [],
@@ -662,7 +693,7 @@ FontIconPicker.prototype = {
 			// Reset the pager buttons
 			// Fix #8 {@link https://github.com/micc83/fontIconPicker/issues/8}
 			// It is better to set/hide the pager button here
-			// instead of all other functions that calls back renderIconContainer
+			// instead of all other functions that calls back _renderIconContainer
 			if ( this.currentPage < this.totalPage ) { // current page is less than total, so show the arrow right
 				this.selectorPopup.find( '.selector-arrow-right' ).show();
 			} else { // else hide it
@@ -717,7 +748,7 @@ FontIconPicker.prototype = {
 
 			// Set the icon box
 			$( '<span/>', {
-				html:      this.iconGenerator( item ),
+				html:      this._iconGenerator( item, flipBoxTitle, i ),
 				'class':   'fip-box',
 				title: flipBoxTitle
 			} ).appendTo( this.iconContainer );
@@ -727,7 +758,7 @@ FontIconPicker.prototype = {
 		if ( ! this.settings.emptyIcon && ( ! this.element.val() || -1 === $.inArray( this.element.val(), this.settings.source ) ) ) {
 
 			// Get the first icon
-			this.setSelectedIcon( iconsPaged[0] );
+			this._setSelectedIcon( iconsPaged[0] );
 
 		} else if ( -1 === $.inArray( this.element.val(), this.settings.source ) ) {
 
@@ -736,7 +767,7 @@ FontIconPicker.prototype = {
 			// Set empty
 			// Otherwise DOM will be set to null value
 			// which would break the initial select value
-			this.setSelectedIcon( '' );
+			this._setSelectedIcon( '' );
 
 		} else {
 
@@ -750,7 +781,7 @@ FontIconPicker.prototype = {
 			}
 
 			// Set the default selected icon even if not set
-			this.setSelectedIcon( passDefaultIcon );
+			this._setSelectedIcon( passDefaultIcon );
 		}
 
 	},
@@ -758,7 +789,7 @@ FontIconPicker.prototype = {
 	/**
 	 * Set Highlighted icon
 	 */
-	setHighlightedIcon: function() {
+	_setHighlightedIcon: function() {
 		this.iconContainer.find( '.current-icon' ).removeClass( 'current-icon' );
 		if ( this.currentIcon ) {
 			this.iconContainer.find( '[data-fip-value="' + this.currentIcon + '"]' ).parent( 'span' ).addClass( 'current-icon' );
@@ -770,7 +801,7 @@ FontIconPicker.prototype = {
 	 *
 	 * @param {string} theIcon
 	 */
-	setSelectedIcon: function( theIcon ) {
+	_setSelectedIcon: function( theIcon ) {
 		if ( 'fip-icon-block' === theIcon ) {
 			theIcon = '';
 		}
@@ -798,16 +829,16 @@ FontIconPicker.prototype = {
 			}
 		}
 		this.currentIcon = theIcon;
-		this.setHighlightedIcon();
+		this._setHighlightedIcon();
 	},
 
 	/**
 	 * Recalculate the position of the Popup
 	 */
-	repositionIconSelector: function() {
+	_repositionIconSelector: function() {
 
 		// Calculate the position + width
-		var offset = this.iconPicker.offset(),
+		const offset = this.iconPicker.offset(),
 			offsetTop = offset.top + this.iconPicker.outerHeight( true ),
 			offsetLeft = offset.left;
 
@@ -818,13 +849,52 @@ FontIconPicker.prototype = {
 	},
 
 	/**
+	 * Fix window overflow of popup dropdown if needed
+	 *
+	 * This can happen if appending to self or someplace else
+	 */
+	_fixWindowOverflow() {
+
+		// Adjust the offsetLeft
+		// Resolves issue #10
+		// @link https://github.com/micc83/fontIconPicker/issues/10
+		const visibilityStatus = this.selectorPopup.find( '.selector-popup' ).is( ':visible' );
+		if ( ! visibilityStatus ) {
+			this.selectorPopup.find( '.selector-popup' ).show();
+		}
+		const popupWidth = this.selectorPopup.width(),
+			windowWidth = $( window ).width(),
+			popupOffsetLeft = this.selectorPopup.offset().left,
+			containerOffset = ( 'self' == this.settings.appendTo ? this.selectorPopup.parent().offset() : $( this.settings.appendTo ).offset() );
+		if ( ! visibilityStatus ) {
+			this.selectorPopup.find( '.selector-popup' ).hide();
+		}
+		if ( popupOffsetLeft + popupWidth > windowWidth - 20 /* 20px adjustment for better appearance */ ) {
+			this.selectorPopup.css( {
+				left: windowWidth - 20 - popupWidth - containerOffset.left
+			} );
+		}
+	},
+
+	/**
+	 * Fix on Window Resize
+	 */
+	_fixOnResize() {
+
+		// If the appendTo is not self, then we need to reposition the dropdown
+		if ( 'self' !== this.settings.appendTo ) {
+			this._repositionIconSelector();
+		}
+
+		// In any-case, we need to fix for window overflow
+		this._fixWindowOverflow();
+	},
+
+	/**
 	 * Open/close popup (toggle)
 	 */
-	toggleIconSelector: function() {
+	_toggleIconSelector: function() {
 		this.open = ( ! this.open ) ? 1 : 0;
-
-		$( window ).off( 'resize.fonticonpicker' );
-		this.selectorPopup.find( '.selector-popup' ).off( 'clickoutside touchendoutside' );
 
 		// Append the popup if needed
 		if ( this.open ) {
@@ -838,28 +908,11 @@ FontIconPicker.prototype = {
 				} ).addClass( 'icons-selector ' + this.settings.theme );
 
 				// call resize()
-				this.repositionIconSelector();
-
-				// resize on window resize
-				$( window ).on( 'resize.fonticonpicker', $.proxy( function() {
-					this.repositionIconSelector();
-				}, this ) );
+				this._repositionIconSelector();
 			}
 
-			// Adjust the offsetLeft
-			// Resolves issue #10
-			// @link https://github.com/micc83/fontIconPicker/issues/10
-			this.selectorPopup.find( '.selector-popup' ).show();
-			let popupWidth = this.selectorPopup.width(),
-				windowWidth = $( window ).width(),
-				popupOffsetLeft = this.selectorPopup.offset().left,
-				containerOffset = ( 'self' == this.settings.appendTo ? this.selectorPopup.parent().offset() : $( this.settings.appendTo ).offset() );
-			this.selectorPopup.find( '.selector-popup' ).hide();
-			if ( popupOffsetLeft + popupWidth > windowWidth - 20 /* 20px adjustment for better appearance */ ) {
-				this.selectorPopup.css( {
-					left: windowWidth - 20 - popupWidth - containerOffset.left
-				} );
-			}
+			// Fix positioning if needed
+			this._fixWindowOverflow();
 		}
 
 		this.selectorPopup.find( '.selector-popup' ).slideToggle( 300, $.proxy( function() {
@@ -882,7 +935,7 @@ FontIconPicker.prototype = {
 	/**
 	 * Reset search
 	 */
-	resetSearch: function() {
+	_resetSearch: function() {
 
 		// Empty input
 		this.selectorPopup.find( '.icons-search-input' ).val( '' );
@@ -896,7 +949,7 @@ FontIconPicker.prototype = {
 		this.isSearch = false;
 
 		// Rerender icons
-		this.renderIconContainer();
+		this._renderIconContainer();
 	}
 };
 
