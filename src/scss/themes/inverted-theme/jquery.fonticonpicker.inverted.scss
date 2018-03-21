@@ -14,7 +14,7 @@
 		/* Icon selector */
 		.selector {
 			border: 1px solid #111;
-			background-color: #333;
+			background-color: transparent;
 		}
 		/* Selector open button */
 		.selector-button {
@@ -34,9 +34,12 @@
 		}
 
 		/* Selected icon */
-		.selected-icon i {
-			color: #ccc;
-			text-shadow: 0 0 1px #000;
+		.selected-icon {
+			background-color: #333;
+			i {
+				color: #ccc;
+				text-shadow: 0 0 1px #000;
+			}
 		}
 		/* IconPicker Popup */
 		.selector-popup {

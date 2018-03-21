@@ -11,7 +11,7 @@
 		/* Icon selector */
 		.selector {
 			border: 0 none;
-			background-color: #fff;
+			background-color: transparent;
 			width: 102px;
 		}
 
@@ -44,6 +44,7 @@
 
 		/* Selected icon */
 		.selected-icon {
+			background-color: #fff;
 			border: 1px solid #ccc;
 			border-right: 0 none;
 			box-shadow: inset -1px 0 2px #ddd;

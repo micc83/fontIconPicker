@@ -2376,7 +2376,7 @@ var fnt_icons_2 = [&quot;icon-video&quot;, &quot;icon-videocam&quot;, &quot;icon
 			<hr />
 			<p>You can pass the following options to the <code>fontIconPicker</code> constructor.</p>
 			<div class="table-responsive">
-				<table class="table table-striped table-bordered table-hover">
+				<table class="table">
 					<thead>
 						<tr>
 							<th>Option</th>
@@ -2747,7 +2747,7 @@ $(&apos;.myselect&apos;).fontIconPicker({&#10;&#9;windowDebounceDelay: 10 // alm
 			<hr />
 			<p><code>fontIconPicker</code> provides three public APIs to manipulating the icon picker.</p>
 			<div class="table-responsive">
-				<table class="table table-striped table-bordered table-hover">
+				<table class="table">
 					<thead>
 						<tr>
 							<th>API</th>
@@ -3074,6 +3074,16 @@ $(&#039;.refresh-api-buttons button&#039;).on(&#039;click&#039;, function() {
 		$(this).data(&#039;searchCanceled&#039;, true);
 	}
 });
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>repositionPicker</th>
+							<td><code>N/A</code></td>
+							<td>Recalculate and reposition the picker popup. Useful if you have the picker inside a scrolling container.</td>
+							<td>
+								<pre class="brush: js">
+var picker = $(&apos;.myselect&apos;).fontIconPicker();&#10;$(&apos;.mycontainer&apos;).on( &apos;scroll&apos;, function() {&#10;&#9;picker.repositionPicker();&#10;} );
 								</pre>
 							</td>
 						</tr>

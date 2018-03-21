@@ -71,5 +71,12 @@ jQuery.fn.fontIconPicker = function( options ) {
 		} );
 	};
 
+	// reposition method
+	this.repositionPicker = () => {
+		this.each( function() {
+			jQuery.data( this, 'fontIconPicker' ).resetPosition();
+		} );
+	};
+
 	return this;
 };

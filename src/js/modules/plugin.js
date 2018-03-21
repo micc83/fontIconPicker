@@ -22,6 +22,7 @@ function FontIconPicker( element, options ) {
 	this.iconContainer = this.iconPicker.find( '.fip-icons-container' );
 	this.searchIcon = this.iconPicker.find( '.selector-search i' );
 	this.selectorPopup = this.iconPicker.find( '.selector-popup-wrap' );
+	this.selectorButton = this.iconPicker.find( '.selector-button' );
 	this.iconsSearched = [];
 	this.isSearch = false;
 	this.totalPage = 1;
@@ -192,6 +193,13 @@ FontIconPicker.prototype = {
 			verticalAlign: '',
 			float: ''
 		} );
+	},
+
+	/**
+	 * Manually reset position
+	 */
+	resetPosition() {
+		this._fixOnResize();
 	},
 
 	/**
@@ -380,7 +388,7 @@ FontIconPicker.prototype = {
 	 * Initialize Dropdown button
 	 */
 	_initDropDown() {
-		this.iconPicker.find( '.selector-button' ).on( 'click', event => {
+		this.selectorButton.on( 'click', event => {
 
 			// Open/Close the icon picker
 			this._toggleIconSelector();
@@ -912,7 +920,7 @@ FontIconPicker.prototype = {
 		if ( ! visibilityStatus ) {
 			this.selectorPopup.find( '.selector-popup' ).show();
 		}
-		const popupWidth = this.selectorPopup.width(),
+		const popupWidth = this.selectorPopup.outerWidth(),
 			windowWidth = $( window ).width(),
 			popupOffsetLeft = this.selectorPopup.offset().left,
 			containerOffset = ( 'self' == this.settings.appendTo ? this.selectorPopup.parent().offset() : $( this.settings.appendTo ).offset() );
@@ -920,9 +928,25 @@ FontIconPicker.prototype = {
 			this.selectorPopup.find( '.selector-popup' ).hide();
 		}
 		if ( popupOffsetLeft + popupWidth > windowWidth - 20 /* 20px adjustment for better appearance */ ) {
-			this.selectorPopup.css( {
-				left: windowWidth - 20 - popupWidth - containerOffset.left
-			} );
+			// First we try to position with right aligned
+			const pickerOffsetRight = this.selectorButton.offset().left + this.selectorButton.outerWidth();
+			const preferredLeft =  Math.floor( pickerOffsetRight - popupWidth - 1 ); /** 1px adjustment for sub-pixels */
+			console.log( preferredLeft );
+
+			// If preferredLeft would put the popup out of window from left
+			// then don't do it
+			if ( 0 > preferredLeft ) {
+				this.selectorPopup.css( {
+					left: windowWidth - 20 - popupWidth - containerOffset.left
+				} );
+			} else {
+
+				// Put it in the preferred position
+				this.selectorPopup.css( {
+					left: preferredLeft
+				} );
+
+			}
 		}
 	},
 
