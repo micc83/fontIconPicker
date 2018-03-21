@@ -700,11 +700,11 @@ FontIconPicker.prototype = {
 	 *
 	 * Supports hookable third-party renderer function.
 	 */
-	_iconGenerator: function( item ) {
+	_iconGenerator: function( icon ) {
 		if ( 'function' === typeof this.settings.iconGenerator ) {
-			return this.settings.iconGenerator( item );
+			return this.settings.iconGenerator( icon );
 		}
-		return '<i ' + ( this.settings.useAttribute ? ( this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt( item, 10 ).toString( 16 ) + ';' : item ) + '"' ) : 'class="' + item + '"' ) + '></i>';
+		return '<i ' + ( this.settings.useAttribute ? ( this.settings.attributeName + '="' + ( this.settings.convertToHex ? '&#x' + parseInt( icon, 10 ).toString( 16 ) + ';' : icon ) + '"' ) : 'class="' + icon + '"' ) + '></i>';
 	},
 
 	/**
@@ -777,12 +777,12 @@ FontIconPicker.prototype = {
 		iconsPaged = iconsPaged.slice( offset, offset + this.settings.iconsPerPage );
 
 		// List icons
-		for ( let i = 0, item; item = iconsPaged[i++]; ) { // eslint-disable-line
+		for ( let i = 0, icon; icon = iconsPaged[i++]; ) { // eslint-disable-line
 
 			// Set the icon title
-			let fipBoxTitle = item;
+			let fipBoxTitle = icon;
 			$.grep( this.settings.source, $.proxy( function( e, i ) {
-				if ( e === item ) {
+				if ( e === icon ) {
 					fipBoxTitle =  this.searchValues[i];
 					return true;
 				}
@@ -791,9 +791,9 @@ FontIconPicker.prototype = {
 
 			// Set the icon box
 			$( '<span/>', {
-				html:      this._iconGenerator( item ),
+				html:      this._iconGenerator( icon ),
 				attr: {
-					'data-fip-value': item
+					'data-fip-value': icon
 				},
 				class:   'fip-box',
 				title: fipBoxTitle

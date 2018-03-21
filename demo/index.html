@@ -2203,7 +2203,40 @@ jQuery(document).ready(function($) {
 						<article id="e13" class="fade tab-pane">
 							<p>With the new <code>iconGenerator</code> option you can use anything to render things inside the picker. Like <strong>SVG</strong>.</p>
 							<div class="live-preview text-left">
-								<input type="text" id="svg_renderer" value="" />
+								<div id="rendered-svg" class="thumbnail" style="max-width: 350px;">
+									<img src="lib/svgs/placeholder.png" alt="Live View" style="width: 100%; background: #ddd; padding: 20px;">
+									<div class="caption">
+										<h3>Please Select…</h3>
+										<p>We also need to append the SVG source somewhere in the document, preferably before closing <code>&lt;body&gt;</code> tag.</p>
+										<p>The following SVG is downloaded from <a href="http://www.kameleon.pics/">Kameleon</a> and bundled with <a href="https://www.npmjs.com/package/svg-join">svg-join</a>.</p>
+										<p>Select an SVG below to see the content change.</p>
+										<input type="text" id="svg_renderer" value="" />
+									</div>
+								</div>
+							</div>
+							<div class="example-code">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#e13_html" data-toggle="tab">HTML</a></li>
+									<li><a href="#e13_js" data-toggle="tab">JavaScript</a></li>
+									<li><a href="#e13_svg" data-toggle="tab">SVG</a></li>
+								</ul>
+								<div class="tab-content">
+									<div class="tab-pane in fade active" id="e13_html">
+										<pre class="brush: html">
+&lt;div id=&quot;rendered-svg&quot; class=&quot;thumbnail&quot; style=&quot;max-width: 350px;&quot;&gt;&#10;&#9;&lt;img src=&quot;lib/svgs/placeholder.png&quot; alt=&quot;Live View&quot; style=&quot;width: 100%; background: #ddd; padding: 20px;&quot;&gt;&#10;&#9;&lt;div class=&quot;caption&quot;&gt;&#10;&#9;&#9;&lt;h3&gt;Please Select&mldr;&lt;/h3&gt;&#10;&#9;&#9;&lt;p&gt;We also need to append the SVG source somewhere in the document, preferably before closing &lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt; tag.&lt;/p&gt;&#10;&#9;&#9;&lt;p&gt;The following SVG is downloaded from &lt;a href=&quot;http://www.kameleon.pics/&quot;&gt;Kameleon&lt;/a&gt; and bundled with &lt;a href=&quot;https://www.npmjs.com/package/svg-join&quot;&gt;svg-join&lt;/a&gt;.&lt;/p&gt;&#10;&#9;&#9;&lt;p&gt;Select an SVG below to see the content change.&lt;/p&gt;&#10;&#9;&#9;&lt;input type=&quot;text&quot; id=&quot;svg_renderer&quot; value=&quot;&quot; /&gt;&#10;&#9;&lt;/div&gt;&#10;&lt;/div&gt;
+										</pre>
+									</div>
+									<div class="tab-pane in fade" id="e13_js">
+										<pre class="brush: js">
+var svgs = [ &apos;Baby-Mobile&apos;, &apos;Bag-Present&apos;, &apos;Application-Map&apos;, &apos;Batman&apos;,&#10;&#9;&apos;Battery-Charging&apos;, &apos;Beach&apos;, &apos;Bell&apos;, &apos;Bonsai&apos;, &apos;Boss-2&apos;, &apos;Boss-3&apos;,&#10;&#9;&apos;Boss-5&apos;, &apos;Burglar&apos;, &apos;Bus&apos;, &apos;Businesswoman-1&apos;, &apos;Camera-Front&apos;,&#10;&#9;&apos;Candles&apos;, &apos;Canoe&apos;, &apos;Captain-Shield&apos;, &apos;Candy&apos;, &apos;Cement-Mixer&apos;,&#10;&#9;&apos;Car-Jumper&apos;, &apos;Checklist&apos;, &apos;Cheese&apos;, &apos;Cashier-2&apos;, &apos;Chair-4&apos;, &apos;Chat-2&apos; ];&#10;$( &apos;#svg_renderer&apos; ).fontIconPicker({&#10;&#9;source: svgs,&#10;&#9;theme: &apos;fip-bootstrap&apos;,&#10;&#9;iconGenerator: function( item, flipBoxTitle, index ) {&#10;&#9;&#9;return &apos;&lt;i style=&quot;display: flex; align-items: center; justify-content: center; height: 100%;&quot;&gt;&lt;svg style=&quot;height: 32px; width: auto;&quot; class=&quot;svg-icon &apos; + item + &apos;&quot;&gt;&lt;use xlink:href=&quot;#&apos; + item + &apos;&quot;&gt;&lt;/use&gt;&lt;/svg&gt;&lt;/i&gt;&apos;;&#10;&#9;}&#10;})&#10;&#9;.on( &apos;change&apos;, function() {&#10;&#9;&#9;var item = $( this ).val(),&#10;&#9;&#9;liveView = $( &apos;#rendered-svg&apos; ),&#10;&#9;&#9;liveTitle = liveView.find( &apos;h3&apos; ),&#10;&#9;&#9;liveImage = liveView.find( &apos;img&apos; );&#10;&#9;&#9;if ( &apos;&apos; === item ) {&#10;&#9;&#9;&#9;liveTitle.html( &apos;Please Select&mldr;&apos; );&#10;&#9;&#9;&#9;liveImage.attr( &apos;src&apos;, &apos;lib/svgs/placeholder.png&apos; );&#10;&#9;&#9;&#9;return;&#10;&#9;&#9;}&#10;&#9;&#9;liveTitle.html( item.split( &apos;-&apos; ).join( &apos; &apos; ) );&#10;&#9;&#9;liveImage.attr( &apos;src&apos;, &apos;lib/svgs/parts/&apos; + item + &apos;.svg&apos; );&#10;&#9;} );
+										</pre>
+									</div>
+									<div class="tab-pane in fade" id="e13_svg">
+										<p>We also need to append the SVG source somewhere in the document, preferably before closing <code>&lt;body&gt;</code> tag.</p>
+										<p>The SVG is downloaded from <a href="http://www.kameleon.pics/">Kameleon</a> and bundled with <a href="https://www.npmjs.com/package/svg-join">svg-join</a>.</p>
+										<p>You can find it <a href="lib/svgs/bundle.svg">here</a>.</p>
+									</div>
+								</div>
 							</div>
 						</article>
 					</div>
@@ -2458,6 +2491,27 @@ $(&#039;.myselect&#039;).fontIconPicker({
 							</td>
 						</tr>
 						<tr>
+							<th>iconGenerator</th>
+							<td><code>Function</code></td>
+							<td>
+								<p>A custom generator function for rendering the icon list inside the dropdown box and the selected icon box. The following parameters are supported in the given order.</p>
+								<ol>
+									<li><strong>icon</strong> - <em><code>string</code></em> : The value of the icon as found from the source.</li>
+								</ol>
+							</td>
+							<td><code>null</code></td>
+							<td>
+								<pre class="brush: js">
+$('.myselect').fontIconPicker({
+	iconGenerator: function( icon ) {
+		source: [ 'address-book', 'adjust', 'bus' ]
+		return '<i class="fa ' + icon '"></i>';
+	}
+})
+								</pre>
+							</td>
+						</tr>
+						<tr>
 							<th>hasSearch</th>
 							<td><code>Boolean</code></td>
 							<td>Whether or not to show the search bar. The search result is always non case sensitive. When the <code>fontIconPicker</code> is initiated on a <code>SELECT</code> element, the option labels (or HTML) are used for search, not the option values.</td>
@@ -2625,6 +2679,17 @@ $(&#039;.myselect&#039;).fontIconPicker({
 	attributeName: &#039;data-icomoon&#039;,
 	unCategorizedText: &#039;Default Icons&#039;
 });
+								</pre>
+							</td>
+						</tr>
+						<tr>
+							<th>windowDebounceDelay</th>
+							<td><code>Number</code></td>
+							<td>When resizing window, the dropdown position is automatically fixed but after a certain time. Mention the time in milliseconds.</td>
+							<td><code>150</code></td>
+							<td>
+								<pre class="brush: js">
+$(&apos;.myselect&apos;).fontIconPicker({&#10;&#9;windowDebounceDelay: 10 // almost immediate repositioning&#10;});
 								</pre>
 							</td>
 						</tr>
@@ -3097,6 +3162,7 @@ $(&#039;.refresh-api-buttons button&#039;).on(&#039;click&#039;, function() {
 	transition: all 300ms ease-in-out;
 }
 			</pre>
+			<p>If you are familiar with <code>SCSS</code> then take a look at the source files at GitHub. It provides shorter and easier templates.</p>
 			<p>If you have created something beautiful and want to share, then you are always welcome to send a pull request on <a href="https://github.com/micc83/fontIconPicker">github</a>.</p>
 			<h3><i class="icomoon-console"></i> Auto Indexing Icons</h3>
 			<hr />

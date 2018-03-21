@@ -540,9 +540,22 @@ jQuery(document).ready(function($) {
 		source: svgs,
 		theme: 'fip-bootstrap',
 		iconGenerator: function( item, flipBoxTitle, index ) {
-			return '<i data-fip-value="' + item + '" style="display: flex; align-items: center; justify-content: center; height: 100%;"><svg style="height: 32px; width: auto;" class="svg-icon ' + item + '"><use xlink:href="#' + item + '"></use></svg></i>';
+			return '<i style="display: flex; align-items: center; justify-content: center; height: 100%;"><svg style="height: 32px; width: auto;" class="svg-icon ' + item + '"><use xlink:href="#' + item + '"></use></svg></i>';
 		}
 	})
+		.on( 'change', function() {
+			var item = $( this ).val(),
+			liveView = $( '#rendered-svg' ),
+			liveTitle = liveView.find( 'h3' ),
+			liveImage = liveView.find( 'img' );
+			if ( '' === item ) {
+				liveTitle.html( 'Please Select…' );
+				liveImage.attr( 'src', 'lib/svgs/placeholder.png' );
+				return;
+			}
+			liveTitle.html( item.split( '-' ).join( ' ' ) );
+			liveImage.attr( 'src', 'lib/svgs/parts/' + item + '.svg' );
+		} );
 
 	// AutoClose
 	$('#option_autoclose').fontIconPicker({

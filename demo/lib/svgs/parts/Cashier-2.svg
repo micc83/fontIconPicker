@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="110px"
+	 height="110px" viewBox="0 0 110 110" style="enable-background:new 0 0 110 110;" xml:space="preserve">
+<g id="Artboard">
+</g>
+<g id="Multicolor">
+	<circle style="fill:#25B7D3;" cx="55" cy="55" r="55"/>
+	<g>
+		<path style="fill:#CFD3D4;" d="M79,39c0-2.209-1.791-4-4-4H35c-2.209,0-4,1.791-4,4v12h48V39z"/>
+		<path style="fill:#F0F1F1;" d="M75,35H35c-2.209,0-4,1.791-4,4v12h29.744l15.716-15.716C76.006,35.106,75.517,35,75,35z"/>
+		<rect x="23" y="75" style="fill:#818284;" width="64" height="12"/>
+		<polygon style="fill:#F0F1F1;" points="31,51 79,51 87,71 23,71 		"/>
+		<polygon style="fill:#FFFFFF;" points="31,51 23,71 40.744,71 60.744,51 		"/>
+		<polygon style="fill:#FFFFFF;" points="35,43 35,27 39,31 43,27 47,31 51,27 51,43 		"/>
+		<rect x="23" y="71" style="fill:#CFD3D4;" width="64" height="4"/>
+		<rect x="55" y="39" style="fill:#17B198;" width="20" height="8"/>
+		<polygon style="fill:#4AC3AF;" points="72.744,39 55,39 55,47 64.744,47 		"/>
+		<rect x="69" y="32" style="fill:#818284;" width="4" height="3"/>
+		<path style="fill:#3E3E3F;" d="M83,24c0-0.552-0.448-1-1-1H60c-0.552,0-1,0.448-1,1v7c0,0.552,0.448,1,1,1h22c0.552,0,1-0.448,1-1
+			V24z"/>
+		<rect x="34" y="43" style="fill:#CFD3D4;" width="18" height="2"/>
+		<path style="fill:#CFD3D4;" d="M47,35.5c0,0.275-0.225,0.5-0.5,0.5h-7c-0.275,0-0.5-0.225-0.5-0.5l0,0c0-0.275,0.225-0.5,0.5-0.5
+			h7C46.775,35,47,35.225,47,35.5L47,35.5z"/>
+		<path style="fill:#CFD3D4;" d="M47,39.5c0,0.275-0.225,0.5-0.5,0.5h-7c-0.275,0-0.5-0.225-0.5-0.5l0,0c0-0.275,0.225-0.5,0.5-0.5
+			h7C46.775,39,47,39.225,47,39.5L47,39.5z"/>
+		<circle style="fill:#CFD3D4;" cx="55" cy="81" r="2"/>
+		<circle style="fill:#CFD3D4;" cx="35" cy="57" r="2"/>
+		<circle style="fill:#CFD3D4;" cx="43" cy="57" r="2"/>
+		<circle style="fill:#CFD3D4;" cx="51" cy="57" r="2"/>
+		<circle style="fill:#CFD3D4;" cx="33" cy="65" r="2"/>
+		<circle style="fill:#CFD3D4;" cx="41" cy="65" r="2"/>
+		<circle style="fill:#B6BCBD;" cx="49" cy="65" r="2"/>
+		<circle style="fill:#B6BCBD;" cx="61" cy="65" r="2"/>
+		<circle style="fill:#B6BCBD;" cx="69" cy="65" r="2"/>
+		<circle style="fill:#17B198;" cx="77" cy="65" r="2"/>
+		<circle style="fill:#B6BCBD;" cx="59" cy="57" r="2"/>
+		<circle style="fill:#B6BCBD;" cx="67" cy="57" r="2"/>
+		<circle style="fill:#FA5655;" cx="75" cy="57" r="2"/>
+		<path style="fill:#5B5C5F;" d="M74.272,23H60c-0.552,0-1,0.448-1,1v7c0,0.552,0.448,1,1,1h5.272L74.272,23z"/>
+	</g>
+</g>
+</svg>
