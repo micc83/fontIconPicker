@@ -143,26 +143,39 @@ FontIconPicker.prototype = {
 		this._initIconSelect();
 
 		/**
-		 * Stop click propagation on iconpicker
-		 */
-		this.selectorPopup.click( function( event ) {
-			event.stopPropagation();
-			return false;
-		} );
-
-		/**
 		 * On click out
 		 * Add the functionality #9
 		 * {@link https://github.com/micc83/fontIconPicker/issues/9}
 		 */
+		this._initAutoClose();
+	},
+
+	/**
+	 * Initiate autoClosing
+	 *
+	 * Checks for settings, and if set to yes, then autocloses the dropdown
+	 */
+	_initAutoClose() {
 		if ( this.settings.autoClose ) {
-			$( 'html' ).click( $.proxy( function() {
+			$( 'html' ).on( 'click', ( event ) => {
+
+				// Check if event is coming from selector popup or icon picker
+				const target = event.target;
+				if ( this.selectorPopup.has( target ).length ||
+					this.selectorPopup.is( target ) ||
+					this.iconPicker.has( target ).length ||
+					this.iconPicker.is( target ) ) {
+
+					// Return
+					return;
+				}
+
+				// Close it
 				if ( this.open ) {
 					this.toggleIconSelector();
 				}
-			}, this ) );
+			} );
 		}
-
 	},
 
 	/**
@@ -295,9 +308,6 @@ FontIconPicker.prototype = {
 	 */
 	_initDropDown() {
 		this.iconPicker.find( '.selector-button' ).click( $.proxy( function( event ) {
-
-			// Stop event propagation for self closing
-			event.stopPropagation();
 
 			// Open/Close the icon picker
 			this.toggleIconSelector();
@@ -850,15 +860,8 @@ FontIconPicker.prototype = {
 					left: windowWidth - 20 - popupWidth - containerOffset.left
 				} );
 			}
-
-			if ( this.settings.autoClose ) {
-				this.selectorPopup.find( '.selector-popup' ).on( 'clickoutside touchendoutside', $.proxy( function() {
-					if ( this.open ) {
-						this.toggleIconSelector();
-					}
-				}, this ) );
-			}
 		}
+
 		this.selectorPopup.find( '.selector-popup' ).slideToggle( 300, $.proxy( function() {
 			this.iconPicker.find( '.selector-button i' ).toggleClass( 'fip-icon-down-dir' );
 			this.iconPicker.find( '.selector-button i' ).toggleClass( 'fip-icon-up-dir' );
