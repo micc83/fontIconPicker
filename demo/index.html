@@ -92,8 +92,9 @@
 						<input type="text" id="inverted-theme" name="inverted-theme" value="57356" />
 					</div>
 					<div class="downloads text-center">
-						<a data-container="body" class="btn btn-primary bstooltip" title="View on GitHub" href="https://github.com/micc83/fontIconPicker"><i class="icomoon-github3"></i> View at GitHub</a>
-						<a data-container="body" class="btn btn-default bstooltip" title="View on NPM" href="https://github.com/micc83/fontIconPicker"><i class="icomoon-trophy"></i> Install from NPM</a>
+						<a data-container="body" class="btn btn-primary bstooltip" title="View on GitHub" href="https://github.com/micc83/fontIconPicker"><i class="icomoon-github3"></i> View on GitHub</a>
+						<a data-container="body" class="btn btn-default bstooltip" title="Install from NPM Repository" href="https://www.npmjs.com/package/@fonticonpicker/fonticonpicker"><i class="icomoon-trophy"></i> Install from NPM</a>
+						<a data-container="body" class="btn btn-default bstooltip" title="Use directly with CDN" href="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/"><i class="icomoon-rocket"></i> Use with CDN</a>
 						<a data-container="body" class="btn btn-default bstooltip" title="Download Compiled Package" href="https://github.com/micc83/fontIconPicker/releases"><i class="icomoon-box-add"></i> Download Build (ZIP)</a>
 
 						<div class="clearfix"></div>
@@ -134,34 +135,35 @@
 				<div class="tab-pane in-fade active" id="installation_npm">
 					<p>First install fontIconPicker as your project dependency along with jQuery.</p>
 					<pre class="brush: bash">
-npm install jquery@3.3.1 fonticonpicker --save</pre>
+npm install jquery@1.12.4 @fonticonpicker/fonticonpicker --save</pre>
 					<p>Now <code>import</code> or <code>include</code> or <code>require</code> the package.</p>
 					<pre class="brush: js">
 const jQuery = require( 'jquery' );
-const fip = require( 'fonticonpicker' );
+const fip = require( '@fonticonpicker/fonticonpicker' );
 // Your code</pre>
 				</div>
 				<div class="tab-pane in-fade" id="installation_yarn">
 					<p>First install fontIconPicker as your project dependency along with jQuery.</p>
 					<pre class="brush: bash">
-yarn add jquery@3.3.1 fonticonpicker</pre>
+yarn add jquery@3.3.1 @fonticonpicker/fonticonpicker</pre>
 					<p>Now <code>import</code> or <code>include</code> or <code>require</code> the package.</p>
 					<pre class="brush: js">
 const jQuery = require( 'jquery' );
-const fip = require( 'fonticonpicker' );
+const fip = require( '@fonticonpicker/fonticonpicker' );
 // Your code</pre>
 				</div>
 				<div class="tab-pane in-fade" id="installation_cdn">
-					<p><a href="https://cdnjs.com">CDNJS</a> provides free CDNs for you to consume.</p>
+					<p><a href="https://unpkg.com">unpkg.com</a> provides free CDNs for you to consume.</p>
 					<h3>Script</h3>
 					<pre class="brush: html">
-&lt;script type=&quot;text/javascript&quot; src=&quot;&quot;&gt;&lt;/script&gt;</pre>
+&lt;script type=&quot;text/javascript&quot; src=&quot;https://unpkg.com/@fonticonpicker/fonticonpicker/dist/js/jquery.fonticonpicker.min.js&quot;&gt;&lt;/script&gt;</pre>
 					<h3>Styles</h3>
 					<pre class="brush: html">
-&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;&quot;&gt;&lt;/script&gt;</pre>
+&lt;!-- styles --&gt;&#10;&lt;!-- base | always include --&gt;&#10;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/base/jquery.fonticonpicker.min.css&quot;&gt;&#10;&#10;&lt;!-- default grey-theme --&gt;&#10;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css&quot;&gt;&#10;&#10;&lt;!-- optional themes | no need to include default theme --&gt;&#10;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css&quot;&gt;&#10;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css&quot;&gt;&#10;&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css&quot;&gt;</pre>
 				</div>
 				<div class="tab-pane in-fade" id="installation_script">
 					<p>Go to <a href="https://github.com/micc83/fontIconPicker/releases">GitHub Release</a> and download a release. Use the compiled JS and CSS files.</p>
+					<p>All our builds are generated automatically with travis-ci.</p>
 				</div>
 			</div>
 		</section>

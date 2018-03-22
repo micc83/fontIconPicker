@@ -9,6 +9,8 @@ jQuery fontIconPicker is a small (`4.05KB` gzipped) jQuery plugin which allows y
 
 ## Installation
 
+### With NPM/YARN
+
 fontIconPicker v3.0.0 has been released over NPM. So you can either use NPM to install or download a [release](https://github.com/micc83/fontIconPicker/releases).
 
 ```bash
@@ -24,6 +26,27 @@ const fip = require( '@fonticonpicker/fonticonpicker' );
 jQuery( '.selector' ).fontIconPicker( {
 	// Options
 } );
+```
+
+### CDN support
+
+You can also use CDN from [unpkg.com](https://unpkg.com/#/).
+
+```html
+<!-- styles -->
+<!-- base | always include -->
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/base/jquery.fonticonpicker.min.css">
+
+<!-- default grey-theme -->
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/themes/grey-theme/jquery.fonticonpicker.grey.min.css">
+
+<!-- optional themes | no need to include default theme -->
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/@fonticonpicker/fonticonpicker@3.0.0-alpha.0/dist/css/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css">
+
+<!-- scripts -->
+<script type="text/javascript" src="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/js/jquery.fonticonpicker.min.js"></script>
 ```
 
 If you wish to use `ES6` module, then right now you can not do with the distributed package.
