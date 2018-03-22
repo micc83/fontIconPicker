@@ -1,5 +1,5 @@
 {
-  "name": "fonticonpicker",
+  "name": "@fonticonpicker/fonticonpicker",
   "version": "3.0.0-alpha.0",
   "description": "jQuery Plugin which allows you to include a simple icon picker with search and pagination inside your administration forms.",
   "main": "dist/js/jquery.fonticonpicker.min.js",
@@ -63,5 +63,8 @@
   "engines": {
     "node": ">=8.0.0",
     "npm": ">= 5.0.0"
-  }
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }
