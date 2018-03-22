@@ -18,7 +18,7 @@ npm install jquery@1.12.4 @fonticonpicker/fonticonpicker --save
 Now use with webpack or browserify.
 
 ```js
-const jQuery = require( 'jquery );
+const jQuery = require( 'jquery' );
 const fip = require( '@fonticonpicker/fonticonpicker' );
 
 jQuery( '.selector' ).fontIconPicker( {
