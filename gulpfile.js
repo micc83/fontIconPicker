@@ -68,7 +68,7 @@ const rollUpBabel = require( 'rollup-plugin-babel' );
 const rollUpUglify = require( 'rollup-plugin-uglify' );
 
 // 1. Build main JS
-const scripts = () => {
+const scripts = ( environment = 'development' ) => {
 	const plugins = [
 		rollupNodeResolve(),
 		rollUpBabel( {
@@ -124,7 +124,8 @@ const scripts = () => {
 };
 
 // The rollup task
-gulp.task( 'scripts', scripts );
+gulp.task( 'scripts:dev', () => scripts( 'development' ) );
+gulp.task( 'scripts:prod', () => scripts( 'production' ) );
 
 // Create CSS from SCSS
 const sass = require( 'gulp-sass' );
@@ -186,7 +187,7 @@ gulp.task( 'fonts', fonts );
 const watch = () => {
 
 	// Watch scripts
-	gulp.watch( paths.scripts.all, gulp.series( scripts, reload ) );
+	gulp.watch( paths.scripts.all, gulp.series( gulp.parallel( 'scripts:dev', 'scripts:prod' ), reload ) );
 
 	// Watch styles - TODO
 	gulp.watch( paths.styles.src, gulp.series( styles ) );
@@ -195,10 +196,10 @@ const watch = () => {
 	gulp.watch( paths.demo.src, gulp.series( reload ) );
 };
 
-gulp.task( 'serve', gulp.series( clean, scripts, styles, fonts, serve, watch ) );
+gulp.task( 'serve', gulp.series( clean, gulp.parallel( 'scripts:dev', 'scripts:prod', styles, fonts ), serve, watch ) );
 
 // build task
-const build = gulp.series( clean, gulp.parallel( scripts, styles, fonts ) );
+const build = gulp.series( clean, gulp.parallel( 'scripts:dev', 'scripts:prod', styles, fonts ) );
 gulp.task( 'build', build );
 gulp.task( 'default', build );
 
