@@ -220,6 +220,46 @@ jQuery iconPicker has been successfully tested on: Firefox (edge), Safari (edge)
 tested with `1.x` and `3.x` branch. jQuery Migrate doesn't produce any error when
 using with `3.x`.
 
+## Development Environment
+
+If you want to contribute keep a few things in mind.
+
+* Any code shouldn't produce any error with ESLint and Stylelint. We check for errors
+during build and if it does produce any error, then it will be rejected.
+* All new JS code should have unit or integration test implemented with jest.
+
+### Setup
+
+First make sure Node >= v8 is installed. Then clone the repository and run
+
+```bash
+npm install
+npm install -g npx
+```
+
+Which will install all dependencies. You do not need to install `jquery` as it
+is defined in `devDependencies`.
+
+Now edit the files in `src` as needed and while you do, run
+
+```bash
+npx gulp serve
+```
+
+This will serve the changes live in your browser. Access it through `http://localhost:3000`.
+
+### Available Gulp Commands
+
+* `default` - Builds all scripts/styles and put them in `dist` folder.
+* `build` - Same as default.
+* `lint` - Lint all CSS and JS files.
+	* `lint:script` - Lint all JS files.
+	* `lint:style` - Lint all SCSS files.
+* `fonts` - Copy font files to `dist` directory.
+* `serve` - Build the files, init browsersync and watch files to create dev env.
+
+Run these commands with [`npx`](https://www.npmjs.com/package/npx).
+
 ## Credits
 
 jQuery fontIconPicker has been made by [me](http://codeb.it) & [swashata](https://github.com/swashata). You can contact me at micc83@gmail.com or [twitter](https://twitter.com/Micc1983) for any issue or feauture request.
