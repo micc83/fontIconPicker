@@ -19,7 +19,7 @@ const options = {
 	unCategorizedText  : 'Uncategorized',         // The text for the select uncategorized option
 	iconGenerator      : null,                    // Icon Generator function. Passes, item, flipBoxTitle and index
 	windowDebounceDelay: 150,                     // Debounce delay while fixing position on windowResize
-	searchPlaceholder  : 'Search Icons'            // Placeholder for the search input
+	searchPlaceholder  : 'Search Icons'           // Placeholder for the search input
 };
 
 export default options;

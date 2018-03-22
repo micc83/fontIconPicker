@@ -1,11 +1,51 @@
-jQuery fontIconPicker `v2.1.0`
+jQuery fontIconPicker `v3.0.0`
 ==============================
 
-jQuery fontIconPicker is a small (`3.35KB` gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a `SELECT` field, an `Array` or `Object` of icons or directly from a Fontello `config.json` or IcoMoon `selection.json` file. Go to the [official plugin page](http://codeb.it/fonticonpicker) for examples and documentation.
+jQuery fontIconPicker is a small (`4.05KB` gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a `SELECT` field, an `Array` or `Object` of icons or directly from a Fontello `config.json` or IcoMoon `selection.json` file. Go to the [official plugin page](http://codeb.it/fonticonpicker) for examples and documentation.
 
-**Notice** : Many of the features introduced with release 2.0.0 were the result of a collaboration. Unfortunately the developer of those features is not actively following the project anymore so you're more than welcome to step in. The problem is that since version 1.0.0 jQuery fontIconPicker has grown much and it's not mantainable anymore without writing first a carefully drafted test suite. So the first stage of any collaboration would be about writing unit and integration testing for everything implemented up to now (I know it's a pain in the ...). **Until then unfortunately It won't be possible to me to address any bug or add new features.** Thx for the understanding.
+**fontIconPicker _v3.0.0_** supports jQuery `1.12.4` through `3.3.0`.
 
 ![fontIconPickers](/demo/github-img.png)
+
+## Installation
+
+fontIconPicker v3.0.0 has been released over NPM. So you can either use NPM to install or download a [release](https://github.com/micc83/fontIconPicker/releases).
+
+```bash
+npm install jquery@1.12.4 @fonticonpicker/fonticonpicker --save
+```
+
+Now use with webpack or browserify.
+
+```js
+const jQuery = require( 'jquery );
+const fip = require( '@fonticonpicker/fonticonpicker' );
+
+jQuery( '.selector' ).fontIconPicker( {
+	// Options
+} );
+```
+
+If you wish to use `ES6` module, then right now you can not do with the distributed package.
+
+Instead clone the repository and use modules under `src` directory.
+
+```js
+import jQuery from 'jquery';
+import initFontIconPicker from 'src/js/modules/initFontIconPicker.js';
+
+// Initiate the jQuery plugin
+initFontIconPicker();
+
+jQuery( '.selector' ).fontIconPicker( {
+	// Options
+} );
+```
+
+Right now, we do not export (ES6 export) anything in the NPM distribution
+directly. Because, it would have us pollute another global namespace which we
+do not want. We haven't found a way to fix it through rollupjs. If you know a
+solution then let us know.
 
 ## How it works
  Just include a copy of jQuery, the fontIconPickers script, the fontIconPickers theme and your Font Icons. Now you can trigger it on a `SELECT` or `INPUT[type="text"]` element.
@@ -13,24 +53,24 @@ jQuery fontIconPicker is a small (`3.35KB` gzipped) jQuery plugin which allows y
 ### Include the JavaScript
  ```html
  <!-- jQuery -->
-<script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="jquery-1.12.4.min.js"></script>
 
 <!-- fontIconPicker JS -->
-<script type="text/javascript" src="jquery.fonticonpicker.min.js"></script>
+<script type="text/javascript" src="js/jquery.fonticonpicker.min.js"></script>
 ```
 
 ### Include the CSS
 ```html
 <!-- fontIconPicker core CSS -->
-<link rel="stylesheet" type="text/css" href="jquery.fonticonpicker.min.css" />
+<link rel="stylesheet" type="text/css" href="css/base/jquery.fonticonpicker.min.css" />
 
 <!-- required default theme -->
-<link rel="stylesheet" type="text/css" href="themes/grey-theme/jquery.fonticonpicker.grey.min.css" />
+<link rel="stylesheet" type="text/css" href="css/themes/grey-theme/jquery.fonticonpicker.grey.min.css" />
 
 <!-- optional themes -->
-<link rel="stylesheet" type="text/css" href="themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css" />
-<link rel="stylesheet" type="text/css" href="themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="themes/inverted-theme/jquery.fonticonpicker.inverted.min.css" />
+<link rel="stylesheet" type="text/css" href="css/themes/dark-grey-theme/jquery.fonticonpicker.darkgrey.min.css" />
+<link rel="stylesheet" type="text/css" href="css/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="css/themes/inverted-theme/jquery.fonticonpicker.inverted.min.css" />
 ```
 
 ### Include Font Icons
@@ -96,24 +136,36 @@ Finally call the fontIconPicker on a `SELECT` or `INPUT[type="text"]` element.
 Here's fontIconPicker options:
 ```js
 var $picker = $('.picker').fontIconPicker({
-	theme             : 'fip-grey',              // The CSS theme to use with this fontIconPicker. You can set different themes on multiple elements on the same page
-	source            : false,                   // Icons source (array|false|object)
-	emptyIcon         : true,                    // Empty icon should be shown?
-	emptyIconValue    : '',                      // The value of the empty icon, change if you select has something else, say "none"
-	iconsPerPage      : 20,                      // Number of icons per page
-	hasSearch         : true,                    // Is search enabled?
-	searchSource      : false,                   // Give a manual search values. If using attributes then for proper search feature we also need to pass icon names under the same order of source
-	appendTo          : 'self',                  // Where to append the selector popup. You can pass string selectors or jQuery objects
-	useAttribute      : false,                   // Whether to use attribute selector for printing icons
-	attributeName     : 'data-icon',             // HTML Attribute name
-	convertToHex      : true,                    // Whether or not to convert to hexadecimal for attribute value. If true then please pass decimal integer value to the source (or as value="" attribute of the select field)
-	allCategoryText   : 'From all categories',   // The text for the select all category option
-	unCategorizedText : 'Uncategorized'          // The text for the select uncategorized option
+	theme              : 'fip-grey',              // The CSS theme to use with this fontIconPicker. You can set different themes on multiple elements on the same page
+	source             : false,                   // Icons source (array|false|object)
+	emptyIcon          : true,                    // Empty icon should be shown?
+	emptyIconValue     : '',                      // The value of the empty icon, change if you select has something else, say "none"
+	autoClose          : true,                    // Whether or not to close the FIP automatically when clicked outside
+	iconsPerPage       : 20,                      // Number of icons per page
+	hasSearch          : true,                    // Is search enabled?
+	searchSource       : false,                   // Give a manual search values. If using attributes then for proper search feature we also need to pass icon names under the same order of source
+	appendTo           : 'self',                  // Where to append the selector popup. You can pass string selectors or jQuery objects
+	useAttribute       : false,                   // Whether to use attribute selector for printing icons
+	attributeName      : 'data-icon',             // HTML Attribute name
+	convertToHex       : true,                    // Whether or not to convert to hexadecimal for attribute value. If true then please pass decimal integer value to the source (or as value="" attribute of the select field)
+	allCategoryText    : 'From all categories',   // The text for the select all category option
+	unCategorizedText  : 'Uncategorized',         // The text for the select uncategorized option
+	iconGenerator      : null,                    // Icon Generator function. Passes, item, flipBoxTitle and index
+	windowDebounceDelay: 150,                     // Debounce delay while fixing position on windowResize
+	searchPlaceholder  : 'Search Icons'           // Placeholder for the search input
 });
 ```
 
 ## Plugin APIs
 fontIconPicker provides three public APIs to manipulating the icon picker.
+
+### setIcon( `String` newIcon )
+
+Use this method to set an icon programmatically.
+
+```js
+$picker.setIcon( 'fa fa-arrow-down' );
+```
 
 ### setIcons( `Array|Object` newIcons, `Array|Object` iconSearch )
  Use this method to dynamically change icons on the fly. `newIcons` and `iconSearch` (optional) have same datatypes as `source` and `searchSource` options.
@@ -140,6 +192,18 @@ $picker.refreshPicker({
 });
 ```
 
+### repositionPicker()
+
+Reposition picker dropdown in the window. Use this if DOM has changed and dropdown
+is open. Or if your picker is inside a scrolling container.
+
+```js
+var picker = $('.myselect').fontIconPicker();
+$('.mycontainer').on( 'scroll', function() {
+	picker.repositionPicker();
+} );
+```
+
 Options and APIs are discussed in details with live examples at the project page.
 
 ### Important notes for local demo
@@ -149,6 +213,12 @@ Only when loading demo locally: In firefox fontIconPicker icons won't be shown c
 ## Browser Compatibility
 
 jQuery iconPicker has been successfully tested on: Firefox (edge), Safari (edge), Chrome (edge), IE8+ and Opera (edge).
+
+## jQuery Compatibility
+
+`jQuery` >= 1.12.4 has been set as `peerDependencies` in the `package.json`. We have
+tested with `1.x` and `3.x` branch. jQuery Migrate doesn't produce any error when
+using with `3.x`.
 
 ## Credits
 
