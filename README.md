@@ -21,7 +21,7 @@ Now use with webpack or browserify.
 
 ```js
 const jQuery = require( 'jquery' );
-const fip = require( '@fonticonpicker/fonticonpicker' );
+const fip = require( '@fonticonpicker/fonticonpicker' )( jQuery );
 
 jQuery( '.selector' ).fontIconPicker( {
 	// Options
@@ -49,16 +49,14 @@ You can also use CDN from [unpkg.com](https://unpkg.com/#/).
 <script type="text/javascript" src="https://unpkg.com/@fonticonpicker/fonticonpicker/dist/js/jquery.fonticonpicker.min.js"></script>
 ```
 
-If you wish to use `ES6` module, then right now you can not do with the distributed package.
-
-Instead clone the repository and use modules under `src` directory.
+If you wish to use `ES6` module, then you have to initialize manually.
 
 ```js
 import jQuery from 'jquery';
-import initFontIconPicker from 'src/js/modules/initFontIconPicker.js';
+import initFontIconPicker from '@fonticonpicker/fonticonpicker';
 
 // Initiate the jQuery plugin
-initFontIconPicker();
+initFontIconPicker( jQuery );
 
 jQuery( '.selector' ).fontIconPicker( {
 	// Options
