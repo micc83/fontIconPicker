@@ -5,6 +5,17 @@
 import { FontIconPicker } from './FontIconPicker.js';
 
 function fontIconPickerShim( $ ) {
+
+	// Do not init if jQuery doesn't have needed stuff
+	if ( ! $.fn ) {
+		return false;
+	}
+
+	// save from double init
+	if ( $.fn && $.fn.fontIconPicker ) {
+		return true;
+	}
+
 	$.fn.fontIconPicker = function( options ) {
 
 		// Instantiate the plugin
@@ -70,10 +81,9 @@ function fontIconPickerShim( $ ) {
 		return this;
 	};
 
-	return $;
+	return true;
 }
 
 export default function initFontIconPicker( jQuery ) {
-	fontIconPickerShim( jQuery );
-	return true;
+	return fontIconPickerShim( jQuery );
 }

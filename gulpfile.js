@@ -104,6 +104,7 @@ const scripts = ( environment = 'development' ) => {
 				globals: {
 					jquery: 'jQuery'
 				},
+				name: 'initFontIconPickerNode',
 				banner: `
 /**
  *  jQuery fontIconPicker - ${pkg.version}

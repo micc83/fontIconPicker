@@ -13,4 +13,15 @@
 import jQuery from 'jquery';
 import initFontIconPicker from './modules/initFontIconPicker.js';
 
-initFontIconPicker( jQuery );
+// Safely init the plugin
+// In browser this will work
+// But in node environment it might not.
+// because if jQu
+if ( jQuery && jQuery.fn ) {
+	initFontIconPicker( jQuery );
+}
+
+// Export the function anyway, so that it can be initiated
+// from node environment
+export default ( jQuery ) => initFontIconPicker( jQuery );
+
