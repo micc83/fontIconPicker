@@ -10,73 +10,7 @@
  *
  * {@link https://github.com/micc83/fontIconPicker}
  */
-import { FontIconPicker } from './modules/plugin.js';
 import jQuery from 'jquery';
+import initFontIconPicker from './modules/initFontIconPicker.js';
 
-'use strict';
-
-// Lightweight plugin wrapper
-jQuery.fn.fontIconPicker = function( options ) {
-
-	// Instantiate the plugin
-	this.each( function() {
-		if ( ! jQuery.data( this, 'fontIconPicker' ) ) {
-			jQuery.data( this, 'fontIconPicker', new FontIconPicker( this, options ) );
-		}
-	} );
-
-	// setIcons method
-	this.setIcons = ( newIcons = false, iconSearch = false ) => {
-		this.each( function() {
-			jQuery.data( this, 'fontIconPicker' ).setIcons( newIcons, iconSearch );
-		} );
-	};
-
-	// setIcon method
-	this.setIcon = ( newIcon = '' ) => {
-		this.each( function() {
-			jQuery.data( this, 'fontIconPicker' ).setIcon( newIcon );
-		} );
-	};
-
-	// destroy method
-	this.destroyPicker = () => {
-		this.each( function() {
-			if ( ! jQuery.data( this, 'fontIconPicker' ) ) {
-				return;
-			}
-
-			// Remove the iconPicker
-			jQuery.data( this, 'fontIconPicker' ).destroy();
-
-			// destroy data
-			jQuery.removeData( this, 'fontIconPicker' );
-		} );
-	};
-
-	// reInit method
-	this.refreshPicker = ( newOptions ) => {
-		if ( ! newOptions ) {
-			newOptions = options;
-		}
-
-		// First destroy
-		this.destroyPicker();
-
-		// Now reset
-		this.each( function() {
-			if ( ! jQuery.data( this, 'fontIconPicker' ) ) {
-				jQuery.data( this, 'fontIconPicker', new FontIconPicker( this, newOptions ) );
-			}
-		} );
-	};
-
-	// reposition method
-	this.repositionPicker = () => {
-		this.each( function() {
-			jQuery.data( this, 'fontIconPicker' ).resetPosition();
-		} );
-	};
-
-	return this;
-};
+initFontIconPicker( jQuery );

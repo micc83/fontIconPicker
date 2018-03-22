@@ -931,7 +931,6 @@ FontIconPicker.prototype = {
 			// First we try to position with right aligned
 			const pickerOffsetRight = this.selectorButton.offset().left + this.selectorButton.outerWidth();
 			const preferredLeft =  Math.floor( pickerOffsetRight - popupWidth - 1 ); /** 1px adjustment for sub-pixels */
-			console.log( preferredLeft );
 
 			// If preferredLeft would put the popup out of window from left
 			// then don't do it
