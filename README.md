@@ -1,4 +1,10 @@
-jQuery fontIconPicker
+jQuery fontIconPicker v3.0 is out
+==============
+Version 2.0 of jQuery fontIconPicker will no more receive updates nor support. You can find **Version 3.0** right here:
+
+[Click here to get jQuery fontIconPicker v3.0](https://github.com/fontIconPicker/fontIconPicker)
+
+jQuery fontIconPicker v2.0
 ==============
 
 jQuery fontIconPicker is a small (`3.22KB` gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a `SELECT` field, an `Array` or `Object` of icons or directly from a Fontello `config.json` or IcoMoon `selection.json` file. Go to the [official plugin page](http://codeb.it/fonticonpicker) for examples and documentation.
