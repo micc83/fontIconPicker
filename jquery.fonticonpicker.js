@@ -3,7 +3,7 @@
  *
  *  An icon picker built on top of font icons and jQuery
  *
- *  http://codeb.it/fontIconPicker
+ *  http://micc83.github.io/fontIconPicker/
  *
  *  Made by Alessandro Benoit & Swashata
  *  Under MIT License

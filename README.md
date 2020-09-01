@@ -7,7 +7,7 @@ Version 2.0 of jQuery fontIconPicker will no more receive updates nor support. Y
 jQuery fontIconPicker v2.0
 ==============
 
-jQuery fontIconPicker is a small (`3.22KB` gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a `SELECT` field, an `Array` or `Object` of icons or directly from a Fontello `config.json` or IcoMoon `selection.json` file. Go to the [official plugin page](http://codeb.it/fonticonpicker) for examples and documentation.
+jQuery fontIconPicker is a small (`3.22KB` gzipped) jQuery plugin which allows you to include an elegant icon picker with categories, search and pagination inside your administration forms. The list of icons can be loaded manually using a `SELECT` field, an `Array` or `Object` of icons or directly from a Fontello `config.json` or IcoMoon `selection.json` file. Go to the [official plugin page](http://micc83.github.io/fontIconPicker/) for examples and documentation.
 
 **Notice** : Many of the features introduced with release 2.0.0 were the result of a collaboration. Unfortunately the developer of those features is not actively following the project anymore so you're more than welcome to step in. The problem is that since version 1.0.0 jQuery fontIconPicker has grown much and it's not mantainable anymore without writing first a carefully drafted test suite. So the first stage of any collaboration would be about writing unit and integration testing for everything implemented up to now (I know it's a pain in the ...). **Until then unfortunately It won't be possible to me to address any bug or add new features.** Thx for the understanding.
 
@@ -157,6 +157,6 @@ jQuery iconPicker has been successfully tested on: Firefox (edge), Safari (edge)
 
 ## Credits
 
-jQuery fontIconPicker has been made by [me](http://codeb.it) & [swashata](https://github.com/swashata). You can contact me at micc83@gmail.com or [twitter](https://twitter.com/Micc1983) for any issue or feauture request.
+jQuery fontIconPicker has been made by [me](https://github.com/micc83) & [swashata](https://github.com/swashata). You can contact me at micc83@gmail.com or [twitter](https://twitter.com/Micc1983) for any issue or feauture request.
 
 I really have to thank miniMAC for the idea, Zeno Rocha for jQuery plugin boilerplate, Dave Gandy & KeyaMoon for the beautiful sets of icons and Elliot Condon for the amazing Advanced Custom Field WordPress plugin.
