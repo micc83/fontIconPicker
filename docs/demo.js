@@ -303,7 +303,7 @@ jQuery(document).ready(function($) {
 		$(this).prop('disabled', true).html('<i class="icon-cog demo-animate-spin"></i> Please wait...');
 		// Get the JSON file
 		$.ajax({
-			url: 'fontello-7275ca86/config.json',
+			url: 'docs/fontello-7275ca86/config.json',
 			type: 'GET',
 			dataType: 'json'
 		})
@@ -343,7 +343,7 @@ jQuery(document).ready(function($) {
 		$(this).prop('disabled', true).html('<i class="icon-cog demo-animate-spin"></i> Please wait...');
 		// Get the JSON file
 		$.ajax({
-			url: 'icomoon/selection.json',
+			url: 'docs/icomoon/selection.json',
 			type: 'GET',
 			dataType: 'json'
 		})
